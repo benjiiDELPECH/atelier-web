@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institut Sylvie Janus — Institut de beauté à Champel, Genève</title>
+<meta name="description" content="Institut de beauté à Champel, Genève. Plus de 40 ans d'expertise. Soins du visage et du corps, épilation, maquillage semi-permanent, cils, ongles. Réservez en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#c9a3a0;          /* rose poudré */
+    --rose-deep:#b07d7a;
+    --champagne:#e8dcd2;
+    --cream:#faf6f2;
+    --ink:#3a3330;
+    --ink-soft:#6f6661;
+    --gold:#bfa06a;
+    --shadow:0 18px 50px -22px rgba(58,51,48,.35);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:.3px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--rose-deep);font-weight:500;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:500;letter-spacing:.04em;
+    padding:15px 30px;border-radius:999px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Jost',sans-serif;font-size:1rem;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--rose-deep),var(--rose));
+    color:#fff;box-shadow:0 14px 30px -12px rgba(176,125,122,.85);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(176,125,122,.95)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--champagne)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,242,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,163,160,.22);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1120px;margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.05}
+  .brand b{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--ink)}
+  .brand span{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-deep)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);transition:color .15s}
+  .nav-links a:hover{color:var(--rose-deep)}
+  .nav-cta{padding:11px 22px;font-size:.9rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:78px 0 90px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(800px 420px at 78% 18%,rgba(201,163,160,.30),transparent 60%),
+      radial-gradient(620px 380px at 8% 88%,rgba(191,160,106,.16),transparent 60%),
+      linear-gradient(180deg,#fbf7f3,#f3e9e1);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.2rem);line-height:1.04;margin:8px 0 18px;color:var(--ink)}
+  .hero h1 em{font-style:italic;color:var(--rose-deep)}
+  .hero p.lead{font-size:1.16rem;color:var(--ink-soft);max-width:30em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:var(--ink-soft);margin-top:20px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:var(--ink)}
+
+  /* photo placeholders */
+  .ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow);
+  }
+  .ph .tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(58,51,48,.55);color:#fff;
+    font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);
+  }
+  .ph .lbl{padding:0 0 18px;font-size:.9rem;opacity:.92;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+  .ph-1{background:linear-gradient(150deg,#d9bdb8,#b98e89 55%,#8c6a66)}
+  .ph-2{background:linear-gradient(150deg,#e4d3c5,#c9a3a0)}
+  .ph-3{background:linear-gradient(150deg,#cdb8a8,#b9a07d)}
+  .ph-4{background:linear-gradient(150deg,#d7c3b6,#a98f86)}
+  .ph-5{background:linear-gradient(150deg,#e0cabf,#bf9a96)}
+  .hero-photo{height:480px}
+  .hero-photo .lbl{font-size:1.2rem}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--ink);color:#f3e9e1;padding:26px 0}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center}
+  .trust .num{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:#fff;line-height:1}
+  .trust .cap{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#cbb6ad;margin-top:6px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:42em;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--ink);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .about h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:18px;color:var(--ink)}
+  .about p{color:var(--ink-soft);margin-bottom:16px}
+  .about .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--rose-deep);margin-top:8px}
+  .about-photo{height:420px}
+
+  /* services / tarifs */
+  #soins{background:linear-gradient(180deg,#fff,#f7efe9)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid rgba(201,163,160,.2);box-shadow:0 12px 34px -24px rgba(58,51,48,.4);
+    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card .ic{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--champagne),#fff);font-size:1.5rem;margin-bottom:16px;
+    border:1px solid rgba(201,163,160,.3);
+  }
+  .card h3{font-size:1.5rem;color:var(--ink);margin-bottom:6px}
+  .card p.desc{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px;flex:1}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed rgba(201,163,160,.45);padding-top:10px;margin-top:auto}
+  .price-row .from{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .price-row .val{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--rose-deep)}
+  .tarif-note{
+    text-align:center;margin-top:34px;font-size:.86rem;color:var(--ink-soft);
+    background:#fff;border:1px dashed var(--rose);border-radius:12px;
+    padding:14px 20px;max-width:46em;margin-left:auto;margin-right:auto;
+  }
+
+  /* reviews */
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:0 12px 34px -26px rgba(58,51,48,.4);border:1px solid rgba(201,163,160,.18)}
+  .stars{color:var(--gold);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
+  .review p{font-style:italic;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.5;margin-bottom:14px}
+  .review .who{font-size:.86rem;color:var(--ink-soft);font-weight:500}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:16px}
+  .gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gallery .ph:nth-child(4){grid-column:span 2}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:26px;margin:0 24px;
+    background:linear-gradient(135deg,var(--rose-deep),var(--rose));color:#fff;
+    padding:62px 40px;text-align:center;box-shadow:var(--shadow)}
+  .cta-band h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:14px}
+  .cta-band p{opacity:.95;max-width:36em;margin:0 auto 26px;font-size:1.08rem}
+  .cta-band .btn-ghost{background:#fff;color:var(--rose-deep)}
+
+  /* infos / contact */
+  #infos{background:#fff}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info-card{background:var(--cream);border-radius:var(--radius);padding:34px;border:1px solid rgba(201,163,160,.22)}
+  .info-card h3{font-size:1.7rem;margin-bottom:18px;color:var(--ink)}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(201,163,160,.2);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--ink);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--rose-deep);font-weight:500}
+  .hours-line{display:flex;justify-content:space-between;font-size:.96rem;padding:7px 0;border-bottom:1px dotted rgba(201,163,160,.3)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--ink-soft)}
+  .hours-line .h{color:var(--ink);font-weight:500}
+  .map-ph{height:100%;min-height:320px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#cbb6ad;padding:54px 0 30px;margin-top:0}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer h4{color:#f3e9e1;font-family:'Jost',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#cbb6ad;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#9a8a82}
+  .socials{display:flex;gap:12px;margin-top:14px}
+  .socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:1.05rem;padding:0}
+  .socials a:hover{background:var(--rose-deep);color:#fff}
+
+  /* floating mobile reserve */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.info-grid{grid-template-columns:1fr}
+    .hero-photo{height:340px;order:-1}
+    .about-photo{height:300px}
+    .cards,.reviews-grid{grid-template-columns:1fr 1fr}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:60px 0}
+    .cards,.reviews-grid,.foot-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+    .gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 1}
+    .gallery .ph:nth-child(4){grid-column:span 2}
+    .nav-cta{display:none}
+    .cta-band{margin:0 16px;padding:48px 24px}
+    .float-cta{
+      display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;
+      justify-content:center;
+    }
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(176,125,122,.95)}
+    body{padding-bottom:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <b>Sylvie Janus</b>
+      <span>Institut de beauté · Champel</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#soins">Soins &amp; tarifs</a>
+      <a href="#apropos">L'institut</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Horaires &amp; accès</a>
+      <a href="#reserver" class="btn btn-primary nav-cta">Réserver en ligne</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Au cœur de Champel · Genève</p>
+      <h1>Prenez le temps de <em>prendre soin de vous</em>.</h1>
+      <p class="lead">Institut de beauté indépendant niché rue de Contamines. Plus de 40 ans de savoir-faire, des soins sur-mesure et des produits d'origine naturelle, dans un cadre lumineux où l'art a toute sa place.</p>
+      <div class="hero-actions">
+        <a href="#reserver" class="btn btn-primary">Réserver en ligne →</a>
+        <a href="tel:+41792068507" class="btn btn-ghost">📞 079 206 85 07</a>
+      </div>
+      <p class="hero-note">✦ <b>Ouvert 6j/7</b> · du lundi au samedi, 9h–20h · sur rendez-vous &amp; à domicile</p>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Façade / cabine de soin de l'institut</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num">40 ans</div><div class="cap">d'expertise</div></div>
+    <div><div class="num">6j / 7</div><div class="cap">lun. – sam. · 9h-20h</div></div>
+    <div><div class="num">Champel</div><div class="cap">rue de Contamines 26</div></div>
+    <div><div class="num">100 % naturel</div><div class="cap">produits sélectionnés</div></div>
+  </div>
+</div>
+
+<!-- SOINS & TARIFS -->
+<section id="soins">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">La carte des soins</p>
+      <h2>Soins &amp; tarifs</h2>
+      <p>Sept univers de prestations, du visage aux ongles. Chaque rendez-vous est personnalisé après un diagnostic offert.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">✨</div>
+        <h3>Soins du visage</h3>
+        <p class="desc">Nettoyage profond, soins anti-âge et éclat, sur-mesure selon votre peau. Produits d'origine naturelle.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 90.–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🌿</div>
+        <h3>Soins du corps</h3>
+        <p class="desc">Gommages, enveloppements et soins relaxants. Massages possibles avec notre massothérapeute partenaire.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 110.–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🕯️</div>
+        <h3>Épilation à la cire</h3>
+        <p class="desc">Épilation cire traditionnelle, précise et soignée, du visage au corps entier.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 20.–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">💡</div>
+        <h3>Épilation lumière pulsée</h3>
+        <p class="desc">Épilation durable à la lumière pulsée (IPL), sur devis personnalisé selon la zone.</p>
+        <div class="price-row"><span class="from">sur</span><span class="val">devis</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">💋</div>
+        <h3>Maquillage semi-permanent</h3>
+        <p class="desc">Dermopigmentation des sourcils, lèvres et yeux. Un réveil toujours parfait.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 250.–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">👁️</div>
+        <h3>Teinture &amp; permanente des cils</h3>
+        <p class="desc">Rehaussement, teinture et permanente pour un regard intense, sans mascara.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 45.–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ic">💅</div>
+        <h3>Soins des ongles</h3>
+        <p class="desc">Manucure, pose et beauté des mains &amp; des pieds, dans un esprit naturel et soigné.</p>
+        <div class="price-row"><span class="from">dès</span><span class="val">CHF 40.–</span></div>
+      </div>
+
+      <div class="card" style="background:linear-gradient(135deg,#fbf3ef,#f3e2db);justify-content:center;align-items:flex-start">
+        <div class="ic" style="background:#fff">🎁</div>
+        <h3>Carte cadeau</h3>
+        <p class="desc">Offrez une parenthèse beauté. Carte cadeau valable sur l'ensemble des prestations de l'institut.</p>
+        <a href="#reserver" class="btn btn-primary" style="padding:11px 22px;font-size:.92rem">Offrir une carte</a>
+      </div>
+
+    </div>
+    <p class="tarif-note">💡 <b>Tarifs indicatifs</b> — à confirmer avec l'institut. Les prix exacts seront intégrés à la mise en ligne. Chaque prestation débute par un diagnostic personnalisé offert.</p>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos" class="about">
+  <div class="wrap about-grid">
+    <div class="ph about-photo ph-2">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Portrait de Sylvie / ambiance de l'institut</span>
+    </div>
+    <div>
+      <p class="eyebrow">L'institut</p>
+      <h2>Un lieu unique, où l'art a toute sa place</h2>
+      <p>Depuis plus de 40 ans, Sylvie vous accueille dans un cadre lumineux, confortable et raffiné, au cœur du quartier de Champel. Un savoir-faire transmis avec passion, et une attention sincère portée à chaque cliente.</p>
+      <p>L'institut accueille régulièrement des expositions temporaires d'artistes de la région — peintures, photographies, gravures — qui font de chaque visite un moment hors du temps. Sylvie collabore également avec un massothérapeute de renom, fort de plus de 30 ans d'expérience.</p>
+      <p class="sig">« Prenez le temps de prendre soin de vous. »</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Galerie</p>
+      <h2>L'atmosphère de l'institut</h2>
+    </div>
+    <div class="gallery">
+      <div class="ph ph-3"><span class="tag">photo à fournir</span><span class="lbl">Espace soin principal</span></div>
+      <div class="ph ph-4"><span class="tag">photo à fournir</span><span class="lbl">Cabine visage</span></div>
+      <div class="ph ph-5"><span class="tag">photo à fournir</span><span class="lbl">Détail / produits</span></div>
+      <div class="ph ph-2"><span class="tag">photo à fournir</span><span class="lbl">Exposition d'art en cours</span></div>
+      <div class="ph ph-1"><span class="tag">photo à fournir</span><span class="lbl">Accueil &amp; ambiance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis" style="background:linear-gradient(180deg,#f7efe9,#fff)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Elles en parlent</p>
+      <h2>Une des meilleures esthéticiennes de Genève</h2>
+      <p>Ce que disent les clientes de l'institut.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Un lieu cocooning et convivial, un accueil très chaleureux de Sylvie et des soins d'une grande qualité. »</p>
+        <div class="who">— Cliente de l'institut</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Sylvie est une des meilleures esthéticiennes de Genève. On se sent immédiatement entre de bonnes mains. »</p>
+        <div class="who">— Cliente de l'institut</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Plus de 40 ans de savoir-faire, ça se ressent. Un vrai moment de douceur à chaque rendez-vous. »</p>
+        <div class="who">— Cliente de l'institut</div>
+      </div>
+    </div>
+    <p class="tarif-note">💡 Avis synthétisés à partir des retours publics — <b>à remplacer par de vrais avis vérifiés</b> (Google, Facebook) une fois la fiche connectée.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="reserver">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:#fff;opacity:.85">Réservation en ligne</p>
+    <h2>Réservez votre rendez-vous en 30 secondes</h2>
+    <p>Choisissez votre soin, votre créneau, et recevez une confirmation immédiate. Disponible 24h/24, même quand l'institut est fermé.</p>
+    <a href="#reserver" class="btn btn-ghost" onclick="alert('Maquette de démonstration — ici se branche le module de réservation en ligne (ex. Planity, Treatwell ou agenda propre).');return false;">Choisir un créneau →</a>
+    <p style="margin-top:18px;font-size:.85rem;opacity:.8">ou par téléphone au <a href="tel:+41792068507" style="color:#fff;text-decoration:underline">079 206 85 07</a></p>
+  </div>
+</section>
+
+<!-- INFOS / CONTACT -->
+<section id="infos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Horaires &amp; accès</p>
+      <h2>Venir à l'institut</h2>
+    </div>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Horaires</h3>
+        <div class="hours-line"><span class="d">Lundi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Mardi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Mercredi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Jeudi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Vendredi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Samedi</span><span class="h">9h00 – 20h00</span></div>
+        <div class="hours-line"><span class="d">Dimanche</span><span class="h">Fermé</span></div>
+        <p style="margin-top:14px;font-size:.88rem;color:var(--ink-soft)">Sur rendez-vous · prestations également possibles à votre domicile.</p>
+
+        <h3 style="margin-top:30px">Contact</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>Rue de Contamines 26, 1206 Genève (Champel)<br><a href="https://www.google.com/maps/search/?api=1&query=Rue+de+Contamines+26+1206+Gen%C3%A8ve" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Sylvie</b><a href="tel:+41792068507">079 206 85 07</a></span></div>
+        <div class="info-row"><span class="k">💆</span><span class="v"><b>Massage — Martial Ducrot-Dubreuil</b><a href="tel:+41764525242">076 452 52 42</a></span></div>
+        <div class="socials">
+          <a href="https://www.facebook.com/institutsylviejanus/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="#reserver" aria-label="Instagram (à fournir)" title="Instagram — à fournir">◎</a>
+        </div>
+      </div>
+
+      <div class="ph map-ph ph-4">
+        <span class="tag">plan / Google Maps</span>
+        <span class="lbl">Rue de Contamines 26 · Champel</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b style="font-size:1.5rem;font-family:'Cormorant Garamond',serif">Institut Sylvie Janus</b></div>
+        <p class="fp" style="margin-top:12px">Institut de beauté à Champel, Genève.<br>Plus de 40 ans de savoir-faire au service de votre beauté et de votre bien-être.</p>
+      </div>
+      <div>
+        <h4>Soins</h4>
+        <a href="#soins">Soins du visage</a>
+        <a href="#soins">Soins du corps</a>
+        <a href="#soins">Épilation cire &amp; IPL</a>
+        <a href="#soins">Maquillage semi-permanent</a>
+        <a href="#soins">Cils &amp; ongles</a>
+      </div>
+      <div>
+        <h4>L'institut</h4>
+        <a href="#apropos">Notre histoire</a>
+        <a href="#avis">Avis clientes</a>
+        <a href="#infos">Horaires &amp; accès</a>
+        <a href="tel:+41792068507">079 206 85 07</a>
+        <a href="#reserver">Réserver en ligne</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Institut Sylvie Janus · Rue de Contamines 26, 1206 Genève</span>
+      <span>Ouvert du lundi au samedi · 9h – 20h · sur rendez-vous</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile reserve button -->
+<div class="float-cta">
+  <a href="#reserver" class="btn btn-primary">Réserver en ligne →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- maquette de prospection, non officielle -->
+</body>
+</html>

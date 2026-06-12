@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atelier Web — Maquettes</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#16202e;--mid:#5a6678;--line:#e3e8ef;--accent:#1e447e;--bg:#f6f8fb}
+body{font-family:'Inter',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:64px 24px 80px}
+.kick{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+h1{font-family:'Spectral',Georgia,serif;font-size:38px;font-weight:600;margin:8px 0 6px}
+.sub{color:var(--mid);font-size:16px;max-width:620px;margin-bottom:40px}
+.sec{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:8px;margin:34px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{display:block;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 20px;text-decoration:none;color:inherit;transition:.12s;box-shadow:0 1px 2px rgba(22,55,99,.05)}
+.card:hover{box-shadow:0 8px 22px rgba(30,68,126,.13);transform:translateY(-1px)}
+.card-t{font-family:'Spectral',serif;font-size:20px;font-weight:600}
+.card-m{font-size:13px;color:var(--mid);margin-top:3px}
+.card-go{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--accent)}
+.docs a{color:var(--accent);font-weight:600;text-decoration:none;font-size:14px}
+.docs li{margin:7px 0;list-style:none}
+footer{margin-top:48px;color:var(--mid);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Atelier Web</div>
+  <h1>Maquettes de prospection</h1>
+  <p class="sub">Aperçus de refonte personnalisés (démonstrations non officielles, à la marque du prospect). Chaque maquette illustre la valeur d'un nouveau site avant tout engagement.</p>
+
+  <div class="sec">Maquettes</div>
+  <div class="grid">
+    <a class="card" href="mockups/sylvie-janus.html">
+      <div class="card-t">Institut Sylvie Janus</div>
+      <div class="card-m">Institut de beauté · Champel, Genève</div>
+      <div class="card-go">Voir la maquette →</div>
+    </a>
+  </div>
+
+  <div class="sec">Méthode</div>
+  <ul class="docs">
+    <li><a href="methode/PLAYBOOK.md">PLAYBOOK — process de vente &amp; livraison</a></li>
+    <li><a href="methode/GRILLE-AUDIT-WEB.md">GRILLE D'AUDIT — score d'un site prospect</a></li>
+    <li><a href="methode/EXPERIENCE-PROSPECTION.md">EXPÉRIENCE — quel segment attaquer (protocole + données)</a></li>
+  </ul>
+
+  <footer>Repo interne — distinct du projet client. © 2026</footer>
+</div>
+</body>
+</html>
