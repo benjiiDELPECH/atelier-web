@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandaction — Réseau de mandataires judiciaires des Hauts-de-France</title>
+<meta name="description" content="Mandaction : réseau de 12 mandataires judiciaires répartis sur 8 études dans les Hauts-de-France. Assistance et restructuration des entreprises en difficulté. Accès dédiés magistrats, créanciers, dirigeants et salariés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13294b;          /* bleu institutionnel profond */
+    --navy-soft:#1f3a5f;
+    --steel:#3d5a80;
+    --slate:#5b6b7d;
+    --line:#dde3ea;
+    --paper:#f6f8fb;
+    --paper-2:#eef2f7;
+    --ink:#1c2530;
+    --ink-soft:#4d5866;
+    --gold:#a07a37;          /* accent sobre, sérieux */
+    --white:#ffffff;
+    --shadow:0 18px 46px -26px rgba(19,41,75,.4);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:.1px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:6px;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+    cursor:pointer;border:none;font-family:'Libre Franklin',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -14px rgba(19,41,75,.8)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--navy-soft)}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--steel)}
+  .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.1)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;line-height:1.05}
+  .brand .mark{
+    width:42px;height:42px;border-radius:8px;flex:none;
+    background:linear-gradient(135deg,var(--navy),var(--steel));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Source Serif 4',serif;font-weight:600;font-size:1.3rem;
+  }
+  .brand b{font-family:'Source Serif 4',serif;font-size:1.4rem;font-weight:600;color:var(--navy);display:block}
+  .brand span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:84px 0 0}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(720px 420px at 82% 8%,rgba(61,90,128,.55),transparent 62%),
+      radial-gradient(560px 360px at 0% 96%,rgba(160,122,55,.18),transparent 60%),
+      linear-gradient(180deg,#13294b,#0f2240);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center;padding-bottom:84px}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.08;margin:6px 0 20px;color:#fff}
+  .hero h1 em{font-style:normal;color:#cdb98a}
+  .hero p.lead{font-size:1.12rem;color:#c4cedb;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#9fb0c4;margin-top:22px}
+
+  /* hero network stats panel */
+  .net-panel{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;padding:34px 32px;backdrop-filter:blur(4px);
+  }
+  .net-panel h3{font-size:1.05rem;color:#fff;margin-bottom:4px}
+  .net-panel .sub{font-size:.84rem;color:#9fb0c4;margin-bottom:24px}
+  .net-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px}
+  .net-stat .n{font-family:'Source Serif 4',serif;font-size:2.5rem;line-height:1;color:#cdb98a}
+  .net-stat .c{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#9fb0c4;margin-top:6px}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .trust-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:18px 0}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-soft);font-weight:500}
+  .trust-item .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:46em;margin:0 0 48px}
+  .sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:14px;line-height:1.15}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* missions */
+  #missions{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(19,41,75,.5);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c7d2e0}
+  .card .ic{
+    width:50px;height:50px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper-2);color:var(--navy);margin-bottom:18px;
+  }
+  .card .ic svg{width:24px;height:24px}
+  .card h3{font-size:1.3rem;color:var(--navy);margin-bottom:8px}
+  .card p.desc{font-size:.95rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
+  .card .more{font-size:.88rem;color:var(--gold);font-weight:600}
+
+  /* network / etudes */
+  .net-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;margin-bottom:54px}
+  .net-intro h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:16px;line-height:1.15}
+  .net-intro p{color:var(--ink-soft);margin-bottom:14px}
+  .net-figures{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .figure{background:var(--navy);color:#fff;border-radius:var(--radius);padding:26px 24px}
+  .figure .n{font-family:'Source Serif 4',serif;font-size:2.6rem;line-height:1;color:#cdb98a}
+  .figure .c{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#9fb0c4;margin-top:8px}
+
+  .etudes{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .etude{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 24px;box-shadow:0 8px 26px -26px rgba(19,41,75,.5);
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .etude:hover{border-color:#c7d2e0;box-shadow:var(--shadow)}
+  .etude .eyebrow{margin-bottom:6px}
+  .etude h3{font-size:1.3rem;color:var(--navy);margin-bottom:2px}
+  .etude .mj{font-size:.92rem;color:var(--ink-soft);margin-bottom:18px}
+  .etude .mj b{color:var(--ink)}
+  .sites{display:flex;flex-direction:column;gap:12px}
+  .site{display:flex;gap:11px;font-size:.9rem;color:var(--ink-soft);align-items:flex-start;
+        padding:10px 0;border-top:1px solid var(--line)}
+  .site:first-child{border-top:none;padding-top:2px}
+  .site .pin{color:var(--gold);flex:none;width:18px;text-align:center}
+  .site .ad b{color:var(--ink);display:block;font-weight:600}
+  .site .tel{color:var(--slate);font-size:.84rem}
+  .etude .web{display:inline-block;margin-top:16px;font-size:.86rem;color:var(--gold);font-weight:600}
+
+  /* zone d'intervention */
+  #zone{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  #zone::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 360px at 88% 12%,rgba(61,90,128,.5),transparent 60%)}
+  .zone-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  #zone h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:16px}
+  #zone p{color:#c4cedb;margin-bottom:24px}
+  .dept-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+  .dept{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+        border-radius:999px;padding:8px 16px;font-size:.86rem;color:#e6edf6}
+  .city-list{columns:2;column-gap:30px;margin-top:4px}
+  .city-list li{list-style:none;padding:7px 0;font-size:.92rem;color:#c4cedb;
+                border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:9px;align-items:center}
+  .city-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:#cdb98a;flex:none}
+  .map-ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;min-height:380px;
+    display:flex;align-items:flex-end;justify-content:center;color:#fff;text-align:center;
+    background:linear-gradient(150deg,#1f3a5f,#13294b 60%,#0d1d38);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .map-ph .tag{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.4);color:#fff;
+    font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  .map-ph .lbl{padding:0 0 24px;font-style:italic;font-family:'Source Serif 4',serif;font-size:1.05rem;opacity:.92}
+
+  /* accès dédiés */
+  #acces{background:var(--paper)}
+  .access-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .access{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;display:flex;flex-direction:column;
+    box-shadow:0 8px 26px -26px rgba(19,41,75,.5);transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .access:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c7d2e0}
+  .access .ic{width:46px;height:46px;border-radius:10px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .access .ic svg{width:22px;height:22px}
+  .access h3{font-size:1.18rem;color:var(--navy);margin-bottom:8px}
+  .access p{font-size:.9rem;color:var(--ink-soft);flex:1;margin-bottom:16px}
+  .access .lock{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--gold);font-weight:600}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:14px;
+    background:linear-gradient(135deg,var(--navy),var(--steel));color:#fff;
+    padding:58px 44px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.4fr auto;gap:30px;align-items:center}
+  .cta-band h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:12px;color:#fff}
+  .cta-band p{opacity:.92;max-width:40em;font-size:1.05rem}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* contact */
+  #contact{background:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  .contact-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+  .contact-card h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+  .contact-card .role{font-size:.9rem;color:var(--gold);font-weight:600;margin-bottom:20px}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{color:var(--gold);width:22px;flex:none;text-align:center;margin-top:2px}
+  .info-row .v{font-size:.96rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--steel);font-weight:600}
+  form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form label{display:block;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin:14px 0 6px}
+  form input,form select,form textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:6px;
+    font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;
+  }
+  form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(61,90,128,.12)}
+  form textarea{resize:vertical;min-height:110px}
+  .form-note{font-size:.8rem;color:var(--slate);margin-top:14px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#a8b7c9;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer .brand span{color:#8497ad}
+  footer h4{color:#e6edf6;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#a8b7c9;display:block;padding:5px 0;transition:color .15s;font-size:.92rem}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7;margin-top:12px;color:#a8b7c9}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7e91a8}
+  .foot-bottom a{display:inline;color:#a8b7c9}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-grid,.net-intro,.zone-grid,.contact-grid,.cta-band{grid-template-columns:1fr}
+    .cta-band{text-align:center}
+    .cta-actions{justify-content:center}
+    .cards,.access-grid{grid-template-columns:1fr 1fr}
+    .etudes{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+    .net-panel{order:-1}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.access-grid,.net-figures,.foot-grid{grid-template-columns:1fr}
+    .net-stats{grid-template-columns:1fr 1fr}
+    .city-list,.contact-card{column-count:1}
+    form .frow{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{padding:42px 24px}
+  }
+  .nav-links.open{
+    display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;
+    background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 18px;box-shadow:var(--shadow);
+  }
+  .nav-links.open a{padding:11px 0;border-bottom:1px solid var(--line)}
+  .nav-links.open .nav-cta{margin-top:10px;justify-content:center;border-bottom:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">M</span>
+      <span>
+        <b>Mandaction</b>
+        <span>Mandataires judiciaires · Hauts-de-France</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#missions">Nos missions</a>
+      <a href="#reseau">Le réseau</a>
+      <a href="#zone">Zone d'intervention</a>
+      <a href="#acces">Accès dédiés</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Nous contacter</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Réseau de mandataires judiciaires</p>
+      <h1>Le premier réseau de mandataires judiciaires des <em>Hauts-de-France</em>.</h1>
+      <p class="lead">12 mandataires judiciaires, 8 études, plus de 20 implantations. Mandaction réunit des professionnels au service des entreprises en difficulté : assistance, restructuration, redressement et liquidation, partout sur le territoire.</p>
+      <div class="hero-actions">
+        <a href="#reseau" class="btn btn-gold">Découvrir le réseau →</a>
+        <a href="#missions" class="btn btn-outline-light">Nos missions</a>
+      </div>
+      <p class="hero-note">Une organisation lisible, des interlocuteurs identifiés, une couverture régionale complète.</p>
+    </div>
+
+    <div class="net-panel">
+      <h3>Le réseau Mandaction en un coup d'œil</h3>
+      <p class="sub">Une force collective, une proximité locale.</p>
+      <div class="net-stats">
+        <div class="net-stat"><div class="n">12</div><div class="c">Mandataires judiciaires</div></div>
+        <div class="net-stat"><div class="n">8</div><div class="c">Études partenaires</div></div>
+        <div class="net-stat"><div class="n">20+</div><div class="c">Implantations</div></div>
+        <div class="net-stat"><div class="n">5</div><div class="c">Départements couverts</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><span class="dot"></span>Assistance aux entreprises en difficulté</div>
+    <div class="trust-item"><span class="dot"></span>Espaces réservés sécurisés</div>
+    <div class="trust-item"><span class="dot"></span>Accompagnement des dirigeants</div>
+    <div class="trust-item"><span class="dot"></span>Reclassement des salariés</div>
+  </div>
+</div>
+
+<!-- MISSIONS -->
+<section id="missions">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce que nous faisons</p>
+      <h2>Nos missions</h2>
+      <p>Au service de la justice commerciale et des acteurs économiques, nos études interviennent à chaque étape de la vie des entreprises en difficulté, dans le cadre de l'assistance et de la restructuration.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></div>
+        <h3>Restructuration &amp; assistance</h3>
+        <p class="desc">Accompagnement des entreprises en difficulté : sauvegarde, redressement, restructuration. Nous aidons à préserver l'activité et l'emploi chaque fois que c'est possible.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 4v6c0 5-3.5 7.5-9 8-5.5-.5-9-3-9-8V7l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Mandats judiciaires</h3>
+        <p class="desc">Exercice des mandats confiés par les tribunaux : représentation des créanciers, vérification des passifs, réalisation des actifs, dans le respect des décisions de justice.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Salariés &amp; reclassement</h3>
+        <p class="desc">Nous nous efforçons d'assurer le reclassement des salariés et tenons à jour, pour chaque dossier, une information exhaustive sur leur situation.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04M12 22V12"/></svg></div>
+        <h3>Actifs à vendre</h3>
+        <p class="desc">Consultez de manière précise et immédiate les actifs proposés à la vente dans le cadre des procédures : fonds de commerce, matériels, immobilier.</p>
+        <span class="more">Consulter les actifs →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-14M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Représentation des créanciers</h3>
+        <p class="desc">Défense des intérêts collectifs des créanciers : déclaration et vérification des créances, répartition des fonds, suivi de l'avancement des dossiers.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3>Information des magistrats</h3>
+        <p class="desc">Pour chaque dossier, nous mettons à disposition des magistrats les rapports et documents nécessaires à une parfaite information avant décision.</p>
+        <span class="more">Accès magistrats →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LE RÉSEAU / NOS ÉTUDES -->
+<section id="reseau">
+  <div class="wrap">
+    <div class="net-intro">
+      <div>
+        <p class="eyebrow">Le réseau &amp; nos études</p>
+        <h2>8 études et 12 mandataires à votre écoute</h2>
+        <p>Mandaction fédère des études indépendantes réparties sur les Hauts-de-France et au-delà. Chaque entreprise, chaque créancier, chaque tribunal trouve un interlocuteur de proximité — adossé à la solidité d'un réseau régional.</p>
+        <p>Trouvez l'étude la plus proche et son contact direct ci-dessous.</p>
+      </div>
+      <div class="net-figures">
+        <div class="figure"><div class="n">8</div><div class="c">Études du réseau</div></div>
+        <div class="figure"><div class="n">12</div><div class="c">Mandataires judiciaires</div></div>
+        <div class="figure"><div class="n">20+</div><div class="c">Adresses d'accueil</div></div>
+        <div class="figure"><div class="n">100 %</div><div class="c">Hauts-de-France &amp; limitrophes</div></div>
+      </div>
+    </div>
+
+    <div class="etudes">
+
+      <div class="etude">
+        <p class="eyebrow">Étude Delezenne</p>
+        <h3>Étude Delezenne</h3>
+        <p class="mj"><b>Alexandre Delezenne</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Dunkerque</b>18, place du Palais de Justice — 59140<span class="tel">T. 03 28 66 86 62 · F. 03 28 66 85 52</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Calais</b>64, bd Lafayette — 62100<span class="tel">T. 03 21 46 02 60 · F. 03 21 46 02 69</span></span></div>
+        </div>
+        <a class="web" href="https://www.etude-delezenne.fr/" target="_blank" rel="noopener">www.etude-delezenne.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">Étude Ruffin</p>
+        <h3>Étude Ruffin</h3>
+        <p class="mj"><b>Pascal Ruffin</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Boulogne-sur-Mer</b>5, place d'Angleterre — 62200</span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Saint-Omer</b>7, rue Saint Bertin — 62500</span></div>
+        </div>
+        <a class="web" href="https://www.etude-ruffin.com/" target="_blank" rel="noopener">www.etude-ruffin.com →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">Étude Malfaisan</p>
+        <h3>Étude Malfaisan</h3>
+        <p class="mj"><b>Emmanuel Malfaisan</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Douai</b>33, rue du Gouvernement — 59500<span class="tel">T. 03 27 90 99 05 · F. 03 27 90 99 09</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Wasquehal</b>34, rue du Triez — 59290<span class="tel">T. 03 20 68 81 00 · F. 03 20 68 81 10</span></span></div>
+        </div>
+        <a class="web" href="https://www.etude-malfaisan.fr/" target="_blank" rel="noopener">www.etude-malfaisan.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">Étude WRA</p>
+        <h3>Étude WRA</h3>
+        <p class="mj"><b>Christian Wiart</b> · Mandataires judiciaires</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Dunkerque</b>20, place du Palais de Justice — 59140<span class="tel">T. 03 28 58 87 62</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Calais</b>56, rue de la Paix — 62100<span class="tel">T. 03 21 34 58 10 · F. 03 21 97 05 30</span></span></div>
+        </div>
+        <a class="web" href="https://www.etude-wra.fr/" target="_blank" rel="noopener">www.etude-wra.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">Étude Soinne</p>
+        <h3>SELAS Nicolas Soinne &amp; Associés</h3>
+        <p class="mj"><b>Nicolas Soinne &amp; Associés</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Amiens</b>5, place Notre-Dame — 80000<span class="tel">T. 09 74 77 77 80 · F. 09 74 77 77 81</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Arras</b>4, rue Roger Salengro — 62000<span class="tel">T. 03 21 21 31 50 · F. 03 21 21 31 51</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Boulogne-sur-Mer</b>11, rue d'Aumont — 62200<span class="tel">T. 03 21 10 12 80 · F. 03 21 31 55 02</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Roubaix</b>65, bd de la République — 59100<span class="tel">T. 03 20 06 19 22 · F. 03 20 06 87 62</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Saint-Omer</b>42, rue de l'Écusserie — 62500<span class="tel">T. 03 21 98 29 11 · F. 03 21 98 03 24</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Valenciennes</b>4, rue Saint-Géry — 59300<span class="tel">T. 09 74 77 70 59 · F. 09 74 77 70 58</span></span></div>
+        </div>
+        <a class="web" href="https://www.etude-soinne.fr/" target="_blank" rel="noopener">www.etude-soinne.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">SELARL Grave Randoux</p>
+        <h3>SELARL Grave Randoux</h3>
+        <p class="mj"><b>Grave Randoux</b> · Mandataires judiciaires</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Amiens</b>54, rue Victor Hugo — 80000<span class="tel">T. 03 23 06 34 06 · F. 03 23 67 43 13</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Saint-Quentin</b>2, place des Campions — 02100<span class="tel">T. 03 23 06 34 06 · F. 03 23 67 43 13</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Soissons</b>11, place de l'Hôtel de Ville — 02200<span class="tel">T. 03 23 06 34 06 · F. 03 23 67 43 13</span></span></div>
+        </div>
+        <a class="web" href="https://www.grave-randoux.fr/" target="_blank" rel="noopener">www.grave-randoux.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">SCP Leblanc Lehericy Hermont</p>
+        <h3>SCP Leblanc Lehericy Hermont</h3>
+        <p class="mj"><b>Leblanc · Lehericy · Hermont</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Compiègne</b>10, place du Général de Gaulle — BP 30708 — 60207<span class="tel">T. 03 44 40 27 73</span></span></div>
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Agnetz</b>577, rue de la Croix Verte — 60600<span class="tel">T. 03 44 50 21 61</span></span></div>
+        </div>
+        <a class="web" href="https://www.scp-llh.fr/" target="_blank" rel="noopener">www.scp-llh.fr →</a>
+      </div>
+
+      <div class="etude">
+        <p class="eyebrow">Étude Brucelle</p>
+        <h3>Étude Brucelle</h3>
+        <p class="mj"><b>Brucelle</b> · Mandataire judiciaire</p>
+        <div class="sites">
+          <div class="site"><span class="pin">●</span><span class="ad"><b>Charleville-Mézières</b>101, rue de Lorraine — 08000</span></div>
+        </div>
+        <a class="web" href="https://www.mj08.fr/" target="_blank" rel="noopener">www.mj08.fr →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ZONE D'INTERVENTION -->
+<section id="zone">
+  <div class="wrap zone-grid">
+    <div>
+      <p class="eyebrow" style="color:#cdb98a">Couverture régionale</p>
+      <h2>Une zone d'intervention sur tout le Nord</h2>
+      <p>Du littoral de la Manche aux Ardennes, le réseau Mandaction couvre les principaux ressorts judiciaires des Hauts-de-France et des départements limitrophes.</p>
+      <div class="dept-tags">
+        <span class="dept">Nord (59)</span>
+        <span class="dept">Pas-de-Calais (62)</span>
+        <span class="dept">Somme (80)</span>
+        <span class="dept">Aisne (02)</span>
+        <span class="dept">Oise (60)</span>
+        <span class="dept">Ardennes (08)</span>
+      </div>
+      <ul class="city-list">
+        <li>Dunkerque</li>
+        <li>Calais</li>
+        <li>Boulogne-sur-Mer</li>
+        <li>Saint-Omer</li>
+        <li>Douai</li>
+        <li>Wasquehal</li>
+        <li>Roubaix</li>
+        <li>Valenciennes</li>
+        <li>Arras</li>
+        <li>Amiens</li>
+        <li>Saint-Quentin</li>
+        <li>Soissons</li>
+        <li>Compiègne</li>
+        <li>Agnetz</li>
+        <li>Charleville-Mézières</li>
+      </ul>
+    </div>
+    <div class="map-ph">
+      <span class="tag">carte interactive à intégrer</span>
+      <span class="lbl">Carte des 8 études &amp; 20+ implantations<br>(visuel à fournir)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACCÈS DÉDIÉS -->
+<section id="acces">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Espaces réservés</p>
+      <h2>Un accès dédié pour chaque partie</h2>
+      <p>Selon votre situation, accédez aux informations et documents qui vous concernent, en toute confidentialité, avec vos identifiants communiqués par le mandataire judiciaire.</p>
+    </div>
+    <div class="access-grid">
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h3>Magistrats</h3>
+        <p>Rapports et documents par dossier, en accès réservé, pour une parfaite information avant de statuer.</p>
+        <a href="#contact" class="lock">🔒 Accès réservé</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-14M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Créanciers</h3>
+        <p>Suivez l'état d'avancement de vos dossiers grâce aux identifiants transmis par le mandataire judiciaire.</p>
+        <a href="#contact" class="lock">🔒 Espace créancier</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Dirigeants</h3>
+        <p>Obtenez sans délai et en toute transparence les documents et informations utiles de votre dossier.</p>
+        <a href="#contact" class="lock">🔒 Espace dirigeant</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Salariés</h3>
+        <p>Information sur le reclassement et le suivi de votre situation au sein des procédures en cours.</p>
+        <a href="#contact" class="lock">🔒 Espace salarié</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Une entreprise en difficulté ? Parlons-en.</h2>
+        <p>Dirigeant, conseil, créancier ou juridiction : nos études vous orientent rapidement vers le bon interlocuteur, au plus près de chez vous.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-gold">Nous contacter →</a>
+        <a href="#reseau" class="btn btn-outline-light">Trouver une étude</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous contacter</p>
+      <h2>Un interlocuteur, une réponse rapide</h2>
+      <p>Adressez votre demande au réseau Mandaction ou contactez directement l'étude de votre choix dans la section « Le réseau ».</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Réseau Mandaction</h3>
+        <p class="role">Coordination — Étude Delezenne, Dunkerque</p>
+        <div class="info-row"><span class="k">👤</span><span class="v"><b>Alexandre Delezenne</b>Mandataire judiciaire</span></div>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>18, place du Palais de Justice, 59140 Dunkerque</span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+33328668662">03 28 66 86 62</a></span></div>
+        <div class="info-row"><span class="k">✉️</span><span class="v"><b>E-mail</b><a href="mailto:etude-delezenne@mandaction.fr">etude-delezenne@mandaction.fr</a></span></div>
+        <div class="info-row"><span class="k">🌐</span><span class="v"><b>Sites du réseau</b><a href="#reseau">8 études · voir toutes les coordonnées</a></span></div>
+        <p class="form-note">Coordonnées issues du site actuel — à confirmer avec le réseau avant mise en ligne.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Votre demande</h3>
+        <p class="role">Formulaire de contact (maquette)</p>
+        <form onsubmit="alert('Maquette de démonstration — ici se branche l\'envoi du formulaire (e-mail ou outil de gestion de demandes).');return false;">
+          <div class="frow">
+            <div><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+            <div><label>Votre qualité</label>
+              <select>
+                <option>Dirigeant d'entreprise</option>
+                <option>Créancier</option>
+                <option>Salarié</option>
+                <option>Magistrat / juridiction</option>
+                <option>Conseil / avocat</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div><label>E-mail</label><input type="email" placeholder="vous@exemple.fr" required></div>
+            <div><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+          </div>
+          <label>Étude concernée (facultatif)</label>
+          <select>
+            <option>Je ne sais pas — orientez-moi</option>
+            <option>Étude Delezenne (Dunkerque / Calais)</option>
+            <option>Étude Ruffin (Boulogne / Saint-Omer)</option>
+            <option>Étude Malfaisan (Douai / Wasquehal)</option>
+            <option>Étude WRA (Dunkerque / Calais)</option>
+            <option>SELAS Nicolas Soinne &amp; Associés</option>
+            <option>SELARL Grave Randoux</option>
+            <option>SCP Leblanc Lehericy Hermont</option>
+            <option>Étude Brucelle (Charleville-Mézières)</option>
+          </select>
+          <label>Votre message</label>
+          <textarea placeholder="Décrivez votre situation en quelques lignes…"></textarea>
+          <button type="submit" class="btn btn-primary" style="margin-top:18px;width:100%;justify-content:center">Envoyer ma demande</button>
+          <p class="form-note">Vos données ne sont pas transmises dans cette maquette de démonstration.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="align-items:flex-start">
+          <span class="mark">M</span>
+          <span><b style="font-size:1.5rem;font-family:'Source Serif 4',serif">Mandaction</b>
+          <span>Mandataires judiciaires</span></span>
+        </div>
+        <p class="fp">Le réseau des mandataires judiciaires des Hauts-de-France. Des professionnels pour assister les entreprises en difficulté — assistance, restructuration, représentation des créanciers et reclassement des salariés.</p>
+      </div>
+      <div>
+        <h4>Le réseau</h4>
+        <a href="#missions">Nos missions</a>
+        <a href="#reseau">Nos 8 études</a>
+        <a href="#zone">Zone d'intervention</a>
+        <a href="#acces">Accès dédiés</a>
+      </div>
+      <div>
+        <h4>Accès dédiés</h4>
+        <a href="#acces">Magistrats</a>
+        <a href="#acces">Créanciers</a>
+        <a href="#acces">Dirigeants</a>
+        <a href="#acces">Salariés &amp; reclassement</a>
+        <a href="#reseau">Actifs à vendre</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="#contact">Nous contacter</a>
+        <a href="tel:+33328668662">03 28 66 86 62</a>
+        <a href="mailto:etude-delezenne@mandaction.fr">etude-delezenne@mandaction.fr</a>
+        <a href="#reseau">Trouver une étude</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Mandaction · Réseau de mandataires judiciaires des Hauts-de-France</span>
+      <span><a href="#top">Mentions légales</a> · Maquette de démonstration — non officielle</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('open');});
+  });
+</script>
+
+<!-- maquette de prospection Atelier Web, non officielle -->
+</body>
+</html>

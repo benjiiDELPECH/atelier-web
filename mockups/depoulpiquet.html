@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Poulpiquet &amp; Associés — Notaires à Nice depuis plus de 150 ans</title>
+<meta name="description" content="Étude notariale De Poulpiquet & Associés, 31 avenue Jean Médecin, Nice (06). Plus de 150 ans d'expertise : immobilier, famille, entreprise, fiscalité. Annonces immobilières, estimation et prise de rendez-vous en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15233f;          /* bleu nuit */
+    --navy-2:#1d3055;
+    --bordeaux:#7a1f2b;      /* bordeaux */
+    --bordeaux-deep:#5e1620;
+    --gold:#b8975a;          /* or discret */
+    --paper:#f7f5f1;
+    --cream:#fcfbf8;
+    --ink:#1d2433;
+    --ink-soft:#5a6273;
+    --line:rgba(21,35,63,.14);
+    --shadow:0 22px 60px -28px rgba(21,35,63,.45);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--bordeaux);font-weight:600;margin-bottom:14px;
+  }
+  .gold-rule{width:54px;height:2px;background:var(--gold);margin:0 0 18px}
+  .sec-head .gold-rule{margin:0 auto 18px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:500;letter-spacing:.02em;
+    padding:14px 28px;border-radius:6px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Inter',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{
+    background:var(--bordeaux);color:#fff;
+    box-shadow:0 14px 30px -14px rgba(122,31,43,.85);
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--bordeaux-deep);box-shadow:0 20px 38px -14px rgba(122,31,43,.95)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+  .btn-ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+  .btn-light{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(21,35,63,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(184,151,90,.28);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.05;color:#fff}
+  .brand b{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff}
+  .brand span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.9rem;color:#d8dde8;transition:color .15s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:#fff;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:0;color:#fff}
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(115deg,rgba(15,25,46,.94) 0%,rgba(21,35,63,.82) 48%,rgba(94,22,32,.62) 100%),
+      radial-gradient(700px 400px at 82% 12%,rgba(184,151,90,.22),transparent 60%);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding:84px 0 92px}
+  .hero h1{font-size:clamp(2.7rem,5.4vw,4.1rem);line-height:1.05;margin:6px 0 18px;color:#fff}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{font-size:1.14rem;color:#dfe4ee;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.88rem;color:#c7cedd;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#fff}
+  .langs{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .lang{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#cfd6e4;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:4px 12px}
+
+  /* photo placeholders */
+  .ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow);
+  }
+  .ph .tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(21,35,63,.62);color:#fff;
+    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);
+  }
+  .ph .lbl{padding:0 0 18px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.12rem;opacity:.94}
+  .ph-1{background:linear-gradient(150deg,#2a3b5e,#15233f 60%,#0e1830)}
+  .ph-2{background:linear-gradient(150deg,#33445f,#1d3055)}
+  .ph-3{background:linear-gradient(150deg,#5e1620,#7a1f2b)}
+  .ph-4{background:linear-gradient(150deg,#2a3b5e,#4a3140)}
+  .ph-5{background:linear-gradient(150deg,#1d3055,#3a2630)}
+  .hero-photo{height:470px;border:1px solid rgba(184,151,90,.4)}
+  .hero-photo .lbl{font-size:1.2rem}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--navy-2);color:#e7ebf3;padding:0;border-top:1px solid rgba(184,151,90,.28)}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center;padding:30px 0}
+  .trust .num{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:#fff;line-height:1}
+  .trust .num em{color:var(--gold);font-style:normal}
+  .trust .cap{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#9aa6bd;margin-top:8px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:90px 0}
+  .sec-head{text-align:center;max-width:44em;margin:0 auto 54px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--navy);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:1.06rem}
+
+  /* ---------- 3 PILIERS EN LIGNE ---------- */
+  #enligne{background:linear-gradient(180deg,#fcfbf8,var(--paper))}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .pillar{
+    position:relative;background:#fff;border-radius:var(--radius);padding:36px 30px;
+    border:1px solid var(--line);box-shadow:0 16px 40px -28px rgba(21,35,63,.5);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;
+    display:flex;flex-direction:column;
+  }
+  .pillar:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(184,151,90,.5)}
+  .pillar .ic{
+    width:58px;height:58px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--navy);color:var(--gold);font-size:1.6rem;margin-bottom:18px;
+  }
+  .pillar h3{font-size:1.55rem;color:var(--navy);margin-bottom:8px}
+  .pillar p{font-size:.96rem;color:var(--ink-soft);margin-bottom:22px;flex:1}
+  .pillar .badge{
+    position:absolute;top:18px;right:18px;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--bordeaux);font-weight:600;border:1px solid rgba(122,31,43,.3);border-radius:999px;padding:3px 10px;
+  }
+  .pillar a.go{font-weight:600;color:var(--bordeaux);font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+
+  /* ---------- ANNONCES IMMO ---------- */
+  #annonces{background:var(--navy);color:#e7ebf3}
+  #annonces .sec-head h2{color:#fff}
+  #annonces .sec-head p{color:#bcc5d8}
+  #annonces .eyebrow{color:var(--gold)}
+  .listings{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .listing{background:#1d3055;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(184,151,90,.22);transition:transform .2s ease}
+  .listing:hover{transform:translateY(-5px)}
+  .listing .img{height:180px;display:flex;align-items:flex-end;justify-content:center;position:relative;color:#fff}
+  .listing .img .tag{position:absolute;top:12px;left:12px;background:rgba(15,25,46,.7);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px)}
+  .listing .img .price{position:absolute;top:12px;right:12px;background:var(--bordeaux);font-weight:600;font-size:.86rem;padding:5px 12px;border-radius:6px}
+  .listing .body{padding:20px 22px 24px}
+  .listing h3{font-size:1.35rem;color:#fff;margin-bottom:4px}
+  .listing .loc{font-size:.85rem;color:#aab5cc;margin-bottom:14px}
+  .listing .meta{display:flex;gap:16px;font-size:.84rem;color:#cdd5e6;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+  .listing .meta span{display:flex;align-items:center;gap:5px}
+  .annonces-note{
+    text-align:center;margin-top:34px;font-size:.88rem;color:#cdd5e6;
+    background:rgba(255,255,255,.05);border:1px dashed rgba(184,151,90,.5);border-radius:12px;
+    padding:15px 22px;max-width:50em;margin-left:auto;margin-right:auto;
+  }
+  .annonces-cta{text-align:center;margin-top:30px}
+
+  /* ---------- COMPÉTENCES ---------- */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:34px 30px;
+    border:1px solid var(--line);box-shadow:0 14px 38px -28px rgba(21,35,63,.45);
+    transition:transform .2s ease,box-shadow .2s ease;
+    display:flex;gap:22px;align-items:flex-start;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{
+    width:54px;height:54px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper);color:var(--bordeaux);font-size:1.5rem;border:1px solid var(--line);
+  }
+  .card h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+  .card p{font-size:.95rem;color:var(--ink-soft);margin-bottom:8px}
+  .card ul{list-style:none;font-size:.88rem;color:var(--ink-soft)}
+  .card li{padding:2px 0 2px 18px;position:relative}
+  .card li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+
+  /* ---------- L'ÉTUDE / HISTOIRE ---------- */
+  #etude{background:linear-gradient(180deg,var(--paper),#fff)}
+  .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center}
+  .about h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:18px;color:var(--navy)}
+  .about p{color:var(--ink-soft);margin-bottom:16px}
+  .about .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.45rem;color:var(--bordeaux);margin-top:8px}
+  .about-photo{height:440px}
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .tl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center}
+  .tl .y{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--bordeaux);line-height:1}
+  .tl .t{font-size:.78rem;color:var(--ink-soft);margin-top:6px}
+
+  /* ---------- ÉQUIPE ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .member{text-align:center}
+  .member .ph{height:230px;margin-bottom:14px}
+  .member h3{font-size:1.3rem;color:var(--navy);margin-bottom:2px}
+  .member .role{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bordeaux)}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{position:relative;overflow:hidden;border-radius:20px;margin:0 24px;
+    background:linear-gradient(120deg,var(--navy),var(--bordeaux));color:#fff;
+    padding:64px 40px;text-align:center;box-shadow:var(--shadow)}
+  .cta-band h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:14px}
+  .cta-band p{opacity:.95;max-width:38em;margin:0 auto 26px;font-size:1.08rem}
+
+  /* ---------- CONTACT ---------- */
+  #contact{background:#fff}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info-card{background:var(--paper);border-radius:var(--radius);padding:36px;border:1px solid var(--line)}
+  .info-card h3{font-size:1.65rem;margin-bottom:18px;color:var(--navy)}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center;color:var(--bordeaux)}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--bordeaux);font-weight:500}
+  .hours-line{display:flex;justify-content:space-between;font-size:.95rem;padding:7px 0;border-bottom:1px dotted var(--line)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--ink-soft)}
+  .hours-line .h{color:var(--ink);font-weight:500}
+  .map-ph{height:100%;min-height:340px}
+  .socials{display:flex;gap:12px;margin-top:16px}
+  .socials a{width:40px;height:40px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:600;padding:0;transition:background .15s}
+  .socials a:hover{background:var(--bordeaux)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#aab5cc;padding:56px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer h4{color:#e7ebf3;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#aab5cc;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:var(--gold)}
+  footer p.fp{font-size:.92rem;line-height:1.7}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7b8aa6}
+
+  /* floating mobile CTA */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    .hero-grid,.about-grid,.info-grid{grid-template-columns:1fr}
+    .hero-photo{height:320px;order:-1}
+    .about-photo{height:300px}
+    .pillars,.listings{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .team-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:62px 0}
+    .timeline{grid-template-columns:1fr}
+    .team-grid,.foot-grid{grid-template-columns:1fr}
+    .trust-inner{gap:18px}
+    .nav-cta{display:none}
+    .cta-band{margin:0 16px;padding:48px 24px}
+    .float-cta{
+      display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;
+    }
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(122,31,43,.95)}
+    body{padding-bottom:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <b>De Poulpiquet &amp; Associés</b>
+      <span>Notaires · Nice</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#enligne">Services en ligne</a>
+      <a href="#annonces">Annonces immobilières</a>
+      <a href="#competences">Compétences</a>
+      <a href="#etude">L'étude</a>
+      <a href="#contact">Contact</a>
+      <a href="#rdv" class="btn btn-primary nav-cta">Prendre rendez-vous</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" style="color:var(--gold)">Étude notariale · 31 avenue Jean Médecin, Nice</p>
+      <h1>Une étude niçoise <em>depuis plus de 150 ans</em>.</h1>
+      <p class="lead">De Poulpiquet &amp; Associés vous accompagne dans tous vos projets de vie : immobilier, famille, transmission, entreprise et fiscalité. La sécurité juridique d'un office historique, la simplicité des démarches en ligne.</p>
+      <div class="hero-actions">
+        <a href="#rdv" class="btn btn-primary">Prendre rendez-vous en ligne →</a>
+        <a href="#annonces" class="btn btn-ghost">Voir les annonces immobilières</a>
+      </div>
+      <p class="hero-note">✦ <b>Office fondé il y a plus de 150 ans</b> · au cœur de Nice, avenue Jean Médecin</p>
+      <div class="langs">
+        <span class="lang">Français</span>
+        <span class="lang">English</span>
+        <span class="lang">Italiano</span>
+        <span class="lang">Español</span>
+        <span class="lang">Deutsch</span>
+        <span class="lang">Русский</span>
+        <span class="lang">Polski</span>
+        <span class="lang">Українська</span>
+      </div>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Façade de l'étude / salle de signature</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num"><em>150</em>+ ans</div><div class="cap">d'expertise notariale</div></div>
+    <div><div class="num">4</div><div class="cap">domaines de compétences</div></div>
+    <div><div class="num">8</div><div class="cap">langues parlées à l'étude</div></div>
+    <div><div class="num">Nice</div><div class="cap">31 av. Jean Médecin · 06000</div></div>
+  </div>
+</div>
+
+<!-- 3 PILIERS EN LIGNE -->
+<section id="enligne">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Vos démarches simplifiées</p>
+      <div class="gold-rule"></div>
+      <h2>L'étude, accessible en ligne</h2>
+      <p>Trois services pensés pour vous faire gagner du temps, disponibles 24h/24 — sans remplacer le conseil personnalisé de votre notaire.</p>
+    </div>
+    <div class="pillars">
+
+      <div class="pillar">
+        <span class="badge">Nouveau</span>
+        <div class="ic">🏠</div>
+        <h3>Annonces immobilières</h3>
+        <p>Consultez les biens à vendre par l'intermédiaire de l'étude : maisons, appartements et terrains, avec la sécurité de la vente notariale.</p>
+        <a href="#annonces" class="go">Voir les biens →</a>
+      </div>
+
+      <div class="pillar">
+        <span class="badge">En ligne</span>
+        <div class="ic">📊</div>
+        <h3>Estimation en ligne</h3>
+        <p>Demandez une estimation de votre bien fondée sur les données réelles des transactions notariales de la région niçoise.</p>
+        <a href="#rdv" class="go" onclick="alert('Maquette — ici se branche le formulaire d''estimation en ligne (ex. outil Notaires de France / module propre).');return false;">Estimer mon bien →</a>
+      </div>
+
+      <div class="pillar">
+        <span class="badge">24h/24</span>
+        <div class="ic">📅</div>
+        <h3>Prise de rendez-vous</h3>
+        <p>Choisissez votre créneau et le motif de votre venue. Confirmation immédiate, même en dehors des heures d'ouverture.</p>
+        <a href="#rdv" class="go">Prendre rendez-vous →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ANNONCES IMMOBILIÈRES -->
+<section id="annonces">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Vente notariale</p>
+      <div class="gold-rule"></div>
+      <h2>Annonces immobilières de l'étude</h2>
+      <p>Acheter par l'intermédiaire d'un notaire, c'est la transparence sur le prix et la sécurité juridique de bout en bout.</p>
+    </div>
+    <div class="listings">
+
+      <div class="listing">
+        <div class="img ph-2">
+          <span class="tag">photo à fournir</span>
+          <span class="price">tarif indicatif</span>
+        </div>
+        <div class="body">
+          <h3>Appartement 3 pièces</h3>
+          <div class="loc">Nice — Carré d'Or</div>
+          <div class="meta"><span>📐 72 m²</span><span>🛏️ 2 ch.</span><span>🏢 3ᵉ ét.</span></div>
+        </div>
+      </div>
+
+      <div class="listing">
+        <div class="img ph-4">
+          <span class="tag">photo à fournir</span>
+          <span class="price">tarif indicatif</span>
+        </div>
+        <div class="body">
+          <h3>Maison de ville</h3>
+          <div class="loc">Nice — Cimiez</div>
+          <div class="meta"><span>📐 140 m²</span><span>🛏️ 4 ch.</span><span>🌳 jardin</span></div>
+        </div>
+      </div>
+
+      <div class="listing">
+        <div class="img ph-5">
+          <span class="tag">photo à fournir</span>
+          <span class="price">tarif indicatif</span>
+        </div>
+        <div class="body">
+          <h3>Studio rénové</h3>
+          <div class="loc">Nice — Jean Médecin</div>
+          <div class="meta"><span>📐 28 m²</span><span>🛏️ 1 pièce</span><span>🔆 lumineux</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="annonces-note">💡 Blocs d'exemple — <b>à connecter</b> au flux réel des annonces de l'étude (immonot / Notaires de France). Les biens, surfaces et prix affichés sont fictifs et seront remplacés à la mise en ligne.</p>
+    <div class="annonces-cta">
+      <a href="#contact" class="btn btn-ghost">Vous vendez un bien ? Parlons-en →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos domaines</p>
+      <div class="gold-rule"></div>
+      <h2>Compétences de l'étude</h2>
+      <p>Un conseil complet sur les grands actes de la vie, par des notaires et des collaborateurs spécialisés.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">🏛️</div>
+        <div>
+          <h3>Droit immobilier</h3>
+          <p>De la promesse à l'acte authentique, sécurisez vos achats, ventes et investissements.</p>
+          <ul>
+            <li>Vente, achat, négociation</li>
+            <li>Copropriété &amp; baux</li>
+            <li>Servitudes &amp; mitoyenneté</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ic">👪</div>
+        <div>
+          <h3>Droit de la famille</h3>
+          <p>Protéger ses proches et anticiper la transmission de son patrimoine.</p>
+          <ul>
+            <li>Mariage, PACS, régimes matrimoniaux</li>
+            <li>Donations &amp; successions</li>
+            <li>Testaments &amp; mandats de protection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🏢</div>
+        <div>
+          <h3>Droit des sociétés</h3>
+          <p>Accompagner la vie de l'entreprise, de la création à la transmission.</p>
+          <ul>
+            <li>Constitution &amp; statuts</li>
+            <li>Cession de parts &amp; de fonds</li>
+            <li>Baux commerciaux</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ic">📑</div>
+        <div>
+          <h3>Droit fiscal</h3>
+          <p>Optimiser et sécuriser la fiscalité de vos projets patrimoniaux.</p>
+          <ul>
+            <li>Fiscalité des donations &amp; successions</li>
+            <li>Plus-values immobilières</li>
+            <li>Stratégie patrimoniale</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- L'ÉTUDE / HISTOIRE -->
+<section id="etude" class="about">
+  <div class="wrap about-grid">
+    <div class="ph about-photo ph-3">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">L'étude hier &amp; aujourd'hui</span>
+    </div>
+    <div>
+      <p class="eyebrow">L'étude</p>
+      <div class="gold-rule"></div>
+      <h2>Plus de 150 ans au service des Niçois</h2>
+      <p>Installée au cœur de Nice, avenue Jean Médecin, l'étude De Poulpiquet &amp; Associés perpétue une tradition notariale de plus d'un siècle et demi. Une longévité rare, gage de confiance, de rigueur et d'une connaissance fine du territoire azuréen.</p>
+      <p>Cette histoire se conjugue avec les outils d'aujourd'hui : espace client sécurisé, prise de rendez-vous en ligne et accompagnement dans plusieurs langues, pour une clientèle locale comme internationale.</p>
+      <p class="sig">« La sécurité juridique d'hier, la simplicité d'aujourd'hui. »</p>
+      <div class="timeline">
+        <div class="tl"><div class="y">150+</div><div class="t">années d'existence</div></div>
+        <div class="tl"><div class="y">8</div><div class="t">langues parlées</div></div>
+        <div class="tl"><div class="y">Nice</div><div class="t">av. Jean Médecin</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section style="background:#fff;padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">L'équipe</p>
+      <div class="gold-rule"></div>
+      <h2>Notaires &amp; collaborateurs</h2>
+      <p>Une équipe disponible et pluridisciplinaire pour vous accompagner à chaque étape.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member"><div class="ph ph-1"><span class="tag">photo à fournir</span></div><h3>Notaire associé·e</h3><div class="role">Notaire</div></div>
+      <div class="member"><div class="ph ph-2"><span class="tag">photo à fournir</span></div><h3>Notaire associé·e</h3><div class="role">Notaire</div></div>
+      <div class="member"><div class="ph ph-4"><span class="tag">photo à fournir</span></div><h3>Notaire associé·e</h3><div class="role">Notaire</div></div>
+      <div class="member"><div class="ph ph-5"><span class="tag">photo à fournir</span></div><h3>Collaborateur·rice</h3><div class="role">Clerc / juriste</div></div>
+    </div>
+    <p class="annonces-note" style="color:var(--ink-soft);background:#fff;border-color:var(--gold)">💡 Noms, photos et fonctions <b>à fournir par l'étude</b> — la composition exacte de l'équipe sera intégrée à la mise en ligne.</p>
+  </div>
+</section>
+
+<!-- CTA BAND / RDV -->
+<section id="rdv">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:#fff;opacity:.85">Rendez-vous en ligne</p>
+    <h2>Prenez rendez-vous en quelques clics</h2>
+    <p>Choisissez le motif et le créneau qui vous conviennent. Confirmation immédiate, disponible 24h/24 — y compris lorsque l'étude est fermée.</p>
+    <a href="#rdv" class="btn btn-light" onclick="alert('Maquette de démonstration — ici se branche le module officiel « RDV en ligne » des Notaires de France (mondossiernotaire.fr).');return false;">Choisir un créneau →</a>
+    <p style="margin-top:18px;font-size:.85rem;opacity:.85">ou par téléphone au <a href="tel:+33493165000" style="color:#fff;text-decoration:underline">04 93 16 50 00</a></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous contacter</p>
+      <div class="gold-rule"></div>
+      <h2>Venir à l'étude</h2>
+    </div>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Coordonnées</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>31 avenue Jean Médecin, 06000 Nice<br><a href="https://goo.gl/maps/DzrvGucBKARMjw8G8" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+33493165000">04 93 16 50 00</a></span></div>
+        <div class="info-row"><span class="k">📠</span><span class="v"><b>Fax</b>04 93 16 05 54</span></div>
+        <div class="info-row"><span class="k">🔐</span><span class="v"><b>Espace client</b><a href="https://www.mondossiernotaire.fr/" target="_blank" rel="noopener">Suivre mon dossier en ligne →</a></span></div>
+
+        <h3 style="margin-top:30px">Horaires</h3>
+        <div class="hours-line"><span class="d">Lundi – Vendredi</span><span class="h">9h00 – 12h30 · 14h00 – 18h00</span></div>
+        <div class="hours-line"><span class="d">Samedi – Dimanche</span><span class="h">Fermé</span></div>
+        <p style="margin-top:12px;font-size:.84rem;color:var(--ink-soft)">💡 Horaires indicatifs — à confirmer avec l'étude.</p>
+
+        <div class="socials">
+          <a href="https://www.facebook.com/profile.php?id=100063737814911" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://www.linkedin.com/company/87984642/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://www.instagram.com/depoulpiquet.notaires/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div class="ph map-ph ph-2">
+        <span class="tag">plan / Google Maps</span>
+        <span class="lbl">31 avenue Jean Médecin · Nice</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b style="font-size:1.5rem;font-family:'Cormorant Garamond',serif">De Poulpiquet &amp; Associés</b></div>
+        <p class="fp" style="margin-top:12px">Étude notariale au cœur de Nice, avenue Jean Médecin.<br>Plus de 150 ans d'expertise au service de vos projets immobiliers, familiaux et patrimoniaux.</p>
+      </div>
+      <div>
+        <h4>Services en ligne</h4>
+        <a href="#annonces">Annonces immobilières</a>
+        <a href="#rdv">Estimation en ligne</a>
+        <a href="#rdv">Prise de rendez-vous</a>
+        <a href="https://www.mondossiernotaire.fr/" target="_blank" rel="noopener">Espace client</a>
+      </div>
+      <div>
+        <h4>L'étude</h4>
+        <a href="#competences">Compétences</a>
+        <a href="#etude">Notre histoire</a>
+        <a href="#contact">Horaires &amp; accès</a>
+        <a href="tel:+33493165000">04 93 16 50 00</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> De Poulpiquet &amp; Associés · 31 avenue Jean Médecin, 06000 Nice</span>
+      <span>Maquette de prospection — non officielle · Atelier Web</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile CTA -->
+<div class="float-cta">
+  <a href="#rdv" class="btn btn-primary">Prendre rendez-vous →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- maquette de prospection, non officielle -->
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet KOY — Maître Eric KOY, Avocat à Perpignan (66)</title>
+<meta name="description" content="Maître Eric KOY, avocat au barreau des Pyrénées-Orientales. Droit immobilier, construction et copropriété, vices cachés, droit routier, assurances, divorce. Perpignan, centre-ville. Prenez rendez-vous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#172a45;          /* bleu nuit */
+    --navy-deep:#0e1d33;
+    --navy-soft:#2c4363;
+    --slate:#46586f;
+    --slate-soft:#697d96;
+    --gold:#b8924a;          /* or discret */
+    --gold-soft:#cda766;
+    --cream:#f7f5f0;
+    --paper:#ffffff;
+    --line:#e3ddd2;
+    --ink:#1c2733;
+    --shadow:0 18px 50px -22px rgba(23,42,69,.35);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:500;letter-spacing:.02em;
+    padding:15px 30px;border-radius:6px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Inter',sans-serif;font-size:1rem;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+    color:#fff;box-shadow:0 14px 30px -12px rgba(184,146,74,.8);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(184,146,74,.95)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:#fff}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;line-height:1.05}
+  .brand .mark{
+    width:42px;height:42px;border-radius:7px;flex:none;
+    background:linear-gradient(135deg,var(--navy),var(--navy-deep));
+    color:var(--gold-soft);display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;
+    border:1px solid rgba(184,146,74,.4);
+  }
+  .brand .txt b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.32rem;font-weight:700;color:var(--navy);letter-spacing:.5px}
+  .brand .txt span{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--slate-soft)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--slate);transition:color .15s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{padding:11px 22px;font-size:.88rem;color:#fff}
+  .nav-cta:hover{color:#fff}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:84px 0 92px;background:var(--navy);color:#fff}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(720px 420px at 82% 12%,rgba(184,146,74,.22),transparent 60%),
+      radial-gradient(620px 420px at 6% 92%,rgba(44,67,99,.6),transparent 60%),
+      linear-gradient(160deg,var(--navy-deep),var(--navy));
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,5vw,3.9rem);line-height:1.06;margin:8px 0 18px;color:#fff;font-weight:600}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero p.lead{font-size:1.14rem;color:#c8d2e0;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#aebccd;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#fff}
+  .hero-portrait{
+    position:relative;border-radius:var(--radius);overflow:hidden;height:440px;
+    display:flex;align-items:flex-end;justify-content:center;color:#fff;text-align:center;
+    box-shadow:var(--shadow);
+    background:linear-gradient(160deg,#24395a,#16263f 60%,#0e1d33);
+    border:1px solid rgba(184,146,74,.28);
+  }
+  .ph-tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(14,29,51,.7);color:#e7d3a8;
+    font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);border:1px solid rgba(184,146,74,.3);
+  }
+  .ph-lbl{padding:0 0 20px;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;opacity:.9}
+  .hero-portrait .crest{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:3.4rem;opacity:.5}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--navy-deep);color:#cdd6e3;padding:24px 0;border-top:1px solid rgba(184,146,74,.2)}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center}
+  .trust .num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;line-height:1}
+  .trust .num span{color:var(--gold-soft)}
+  .trust .cap{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#8294aa;margin-top:6px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:88px 0}
+  .sec-head{text-align:center;max-width:44em;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);margin-bottom:14px}
+  .sec-head p{color:var(--slate);font-size:1.05rem}
+  .rule{width:54px;height:2px;background:var(--gold);margin:0 auto 22px}
+
+  /* domaines */
+  #domaines{background:var(--cream)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 12px 34px -26px rgba(23,42,69,.45);
+    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));opacity:0;transition:opacity .2s}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card:hover::before{opacity:1}
+  .card .ic{
+    width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#f0ece3,#fff);font-size:1.45rem;margin-bottom:16px;
+    border:1px solid var(--line);
+  }
+  .card h3{font-size:1.45rem;color:var(--navy);margin-bottom:6px}
+  .card p.desc{font-size:.94rem;color:var(--slate);margin-bottom:14px;flex:1}
+  .card .feat{font-size:.82rem;color:var(--gold);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .badge-spec{
+    position:absolute;top:14px;right:14px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--navy);color:#e7d3a8;padding:4px 10px;border-radius:999px;font-weight:600;
+  }
+
+  /* cabinet / bio */
+  #cabinet .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+  #cabinet h2{font-size:clamp(2rem,4vw,2.7rem);margin-bottom:18px;color:var(--navy)}
+  #cabinet p{color:var(--slate);margin-bottom:16px}
+  .bio-photo{
+    position:relative;border-radius:var(--radius);overflow:hidden;height:460px;
+    display:flex;align-items:flex-end;justify-content:center;color:#fff;text-align:center;
+    box-shadow:var(--shadow);background:linear-gradient(160deg,#2a3f60,#16263f);
+    border:1px solid rgba(184,146,74,.25);
+  }
+  .bio-photo .crest{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);font-size:3.2rem;opacity:.45}
+  .creds{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 22px}
+  .creds span{font-size:.82rem;color:var(--navy);background:var(--cream);border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+  .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.45rem;color:var(--gold);margin-top:6px}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:20px;margin:0 24px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-deep));color:#fff;
+    padding:64px 40px;text-align:center;box-shadow:var(--shadow);
+    border:1px solid rgba(184,146,74,.25);}
+  .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% 10%,rgba(184,146,74,.18),transparent 60%)}
+  .cta-band > *{position:relative;z-index:1}
+  .cta-band h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px;color:#fff}
+  .cta-band p{opacity:.92;max-width:38em;margin:0 auto 28px;font-size:1.06rem;color:#d4dce8}
+
+  /* consultation / honoraires */
+  #consultation{background:var(--cream)}
+  .consult-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+  .consult-card{background:#fff;border-radius:var(--radius);padding:36px;border:1px solid var(--line);box-shadow:0 12px 34px -26px rgba(23,42,69,.45);display:flex;flex-direction:column}
+  .consult-card h3{font-size:1.7rem;color:var(--navy);margin-bottom:8px}
+  .consult-card .price{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--gold);line-height:1.1;margin:6px 0 4px}
+  .consult-card .price small{font-size:.95rem;color:var(--slate);font-family:'Inter',sans-serif}
+  .consult-card ul{list-style:none;margin:18px 0 22px}
+  .consult-card li{padding:8px 0;border-bottom:1px solid var(--line);color:var(--slate);font-size:.96rem;display:flex;gap:10px;align-items:flex-start}
+  .consult-card li:last-child{border-bottom:none}
+  .consult-card li::before{content:"✓";color:var(--gold);font-weight:700;flex:none}
+  .consult-card .foot{margin-top:auto}
+  .note{
+    text-align:center;margin-top:30px;font-size:.86rem;color:var(--slate);
+    background:#fff;border:1px dashed var(--gold);border-radius:10px;
+    padding:14px 20px;max-width:50em;margin-left:auto;margin-right:auto;
+  }
+
+  /* avis */
+  #avis{background:var(--navy);color:#fff}
+  #avis .sec-head h2{color:#fff}
+  #avis .sec-head p{color:#c2cddc}
+  #avis .rule{background:var(--gold)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .review{background:rgba(255,255,255,.05);border-radius:var(--radius);padding:28px;border:1px solid rgba(184,146,74,.22)}
+  .stars{color:var(--gold-soft);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
+  .review p{font-style:italic;color:#eef2f7;font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.5;margin-bottom:14px}
+  .review .who{font-size:.84rem;color:#9fb0c4;font-weight:500}
+  .avis-note{text-align:center;margin-top:30px;font-size:.84rem;color:#aebccd;background:rgba(255,255,255,.04);border:1px dashed rgba(184,146,74,.4);border-radius:10px;padding:14px 20px;max-width:52em;margin-left:auto;margin-right:auto}
+  .avis-note b{color:#fff}
+
+  /* infos / contact */
+  #contact{background:#fff}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+  .info-card{background:var(--cream);border-radius:var(--radius);padding:36px;border:1px solid var(--line)}
+  .info-card h3{font-size:1.6rem;margin-bottom:18px;color:var(--navy)}
+  .info-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--gold);font-weight:500}
+  .hours-line{display:flex;justify-content:space-between;font-size:.96rem;padding:8px 0;border-bottom:1px dotted var(--line)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--slate)}
+  .hours-line .h{color:var(--navy);font-weight:500}
+  .map-ph{position:relative;border-radius:var(--radius);overflow:hidden;min-height:340px;height:100%;
+    display:flex;align-items:flex-end;justify-content:center;color:#fff;text-align:center;
+    background:linear-gradient(160deg,#2a3f60,#16263f);border:1px solid rgba(184,146,74,.25);box-shadow:var(--shadow)}
+  .map-ph .crest{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);font-size:3rem;opacity:.4}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;color:var(--navy);transition:.15s}
+  .socials a:hover{background:var(--navy);color:var(--gold-soft);border-color:var(--navy)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);color:#9fb0c4;padding:56px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand .txt b{color:#fff}
+  footer .brand .txt span{color:#8294aa}
+  footer h4{color:#e7eaf0;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#9fb0c4;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7;margin-top:14px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#6f819a}
+  .foot-bottom a{display:inline;color:#8294aa}
+
+  /* floating mobile cta */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    .hero-grid,#cabinet .about-grid,.info-grid,.consult-grid{grid-template-columns:1fr}
+    .hero-portrait{height:320px;order:-1}
+    .bio-photo{height:300px}
+    .cards,.reviews-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--line);padding:18px 24px;gap:16px;align-items:flex-start;box-shadow:var(--shadow);
+    }
+    .nav-links.open .nav-cta{width:100%;justify-content:center}
+  }
+  @media(max-width:600px){
+    section{padding:62px 0}
+    .cards,.reviews-grid,.foot-grid{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{margin:0 16px;padding:48px 24px}
+    .float-cta{
+      display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;
+    }
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(184,146,74,.95)}
+    body{padding-bottom:84px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">K</span>
+      <span class="txt">
+        <b>Cabinet KOY</b>
+        <span>Avocat · Perpignan (66)</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#domaines">Domaines</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#consultation">Honoraires</a>
+      <a href="#contact">Accès</a>
+      <a href="#rdv" class="btn btn-primary nav-cta">Prendre rendez-vous</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Barreau des Pyrénées-Orientales</p>
+      <h1>Votre avocat à Perpignan, pour un <em>meilleur accès à la justice</em>.</h1>
+      <p class="lead">Maître Eric KOY conseille, accompagne et défend particuliers, entreprises et syndics. Spécialiste du droit immobilier, de la construction et de la copropriété, et des domaines de la vie quotidienne.</p>
+      <div class="hero-actions">
+        <a href="#rdv" class="btn btn-primary">Prendre rendez-vous →</a>
+        <a href="tel:+33468569353" class="btn btn-light">☎ 04 68 56 93 53</a>
+      </div>
+      <p class="hero-note">✦ <b>Centre-ville de Perpignan</b>, à proximité immédiate du Palais de justice · locaux accessibles PMR</p>
+    </div>
+    <div class="hero-portrait">
+      <span class="ph-tag">photo à fournir</span>
+      <span class="crest">⚖</span>
+      <span class="ph-lbl">Portrait de Maître Eric KOY</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num">10 <span>ans+</span></div><div class="cap">d'expérience au barreau</div></div>
+    <div><div class="num"><span>Docteur</span> en droit</div><div class="cap">CAPA · serment 2009</div></div>
+    <div><div class="num"><span>Immobilier</span></div><div class="cap">construction · copropriété</div></div>
+    <div><div class="num">Occitanie</div><div class="cap">défense dans toute la France</div></div>
+  </div>
+</div>
+
+<!-- DOMAINES -->
+<section id="domaines">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Domaines d'intervention</p>
+      <div class="rule"></div>
+      <h2>Les compétences du cabinet</h2>
+      <p>Une activité ancrée dans le droit immobilier, complétée par une pratique généraliste couvrant les aspects juridiques de la vie quotidienne.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge-spec">Spécialité</span>
+        <div class="ic">🏛️</div>
+        <h3>Droit immobilier &amp; construction</h3>
+        <p class="desc">Copropriété, baux d'habitation, loyers impayés, garanties décennale, dommages-ouvrage, parfait achèvement et livraison. Pour particuliers, syndics et professionnels.</p>
+        <span class="feat">Le cœur de métier du cabinet</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">📜</div>
+        <h3>Droit civil &amp; vices cachés</h3>
+        <p class="desc">Contentieux des contrats, garantie des vices cachés du vendeur, troubles anormaux et conflits de voisinage. Conseil et défense.</p>
+        <span class="feat">Contrats · responsabilité</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h3>Droit des assurances</h3>
+        <p class="desc">Mobilisation des garanties liées à la construction et au logement, contentieux assurantiel souvent indissociable des litiges immobiliers.</p>
+        <span class="feat">Garanties &amp; sinistres</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">🚗</div>
+        <h3>Droit routier &amp; permis</h3>
+        <p class="desc">Défense du permis de conduire, infractions routières et procédures associées. Réactivité face aux délais courts.</p>
+        <span class="feat">Permis de conduire</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">🏢</div>
+        <h3>Droit public &amp; urbanisme</h3>
+        <p class="desc">Contentieux administratif, urbanisme et droit public, en lien fréquent avec les projets immobiliers et de construction.</p>
+        <span class="feat">Contentieux administratif</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">👨‍👩‍👧</div>
+        <h3>Divorce &amp; droit de la famille</h3>
+        <p class="desc">Accompagnement des procédures de divorce et des questions familiales, avec écoute et discrétion à chaque étape.</p>
+        <span class="feat">Famille · séparation</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LE CABINET / BIO -->
+<section id="cabinet">
+  <div class="wrap about-grid">
+    <div class="bio-photo">
+      <span class="ph-tag">photo à fournir</span>
+      <span class="crest">⚖</span>
+      <span class="ph-lbl">Maître Eric KOY · le cabinet</span>
+    </div>
+    <div>
+      <p class="eyebrow">Le cabinet</p>
+      <h2>Maître Eric KOY, avocat au barreau des Pyrénées-Orientales</h2>
+      <p>Titulaire du CAPA (Certificat d'Aptitude à la Profession d'Avocat) et d'un doctorat en droit, Maître Eric KOY a prêté serment devant la Cour d'appel de Montpellier en 2009. Fort de plus d'une décennie d'expérience, il accompagne entreprises, syndics et particuliers, avec une spécialisation marquée en droit immobilier, de la construction et de la copropriété.</p>
+      <p>Le cabinet assure la défense de ses clients devant toutes les juridictions françaises, et plus particulièrement en région Occitanie — Perpignan, Narbonne, Montpellier, Carcassonne et Toulouse — devant la Cour d'appel de Montpellier et le Tribunal Judiciaire de Perpignan.</p>
+      <div class="creds">
+        <span>Doctorat en droit</span>
+        <span>CAPA</span>
+        <span>Serment 2009 · CA Montpellier</span>
+        <span>Locaux accessibles PMR</span>
+      </div>
+      <p>Disponibilité, transparence des honoraires, rigueur dans le suivi des procédures et respect de la déontologie : le cabinet privilégie le conseil et l'issue amiable, et engage, avec votre accord, toute action judiciaire utile à la réussite de vos projets.</p>
+      <p class="sig">« Notre engagement ? Vous accompagner pour un meilleur accès à la justice. »</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="rdv">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:var(--gold-soft)">Prise de rendez-vous</p>
+    <h2>Exposez-nous votre situation</h2>
+    <p>Décrivez votre dossier en quelques mots et choisissez un créneau : le cabinet vous recontacte pour fixer votre rendez-vous, au cabinet ou par téléphone.</p>
+    <a href="#rdv" class="btn btn-primary" onclick="alert('Maquette de démonstration — ici se branche le module de prise de rendez-vous en ligne (agenda du cabinet ou formulaire de contact qualifié).');return false;">Demander un rendez-vous →</a>
+    <p style="margin-top:18px;font-size:.86rem;color:#aebccd">ou par téléphone au <a href="tel:+33468569353" style="color:#fff;text-decoration:underline">04 68 56 93 53</a> · du lundi au vendredi, 8h30–19h30</p>
+  </div>
+</section>
+
+<!-- CONSULTATION / HONORAIRES -->
+<section id="consultation">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Honoraires</p>
+      <div class="rule"></div>
+      <h2>Première consultation</h2>
+      <p>Transparence dans la fixation des honoraires : un principe du cabinet. La première consultation permet d'évaluer votre dossier et de définir une stratégie claire.</p>
+    </div>
+    <div class="consult-grid">
+
+      <div class="consult-card">
+        <h3>Consultation initiale</h3>
+        <div class="price">120 € <small>TTC — tarif indicatif</small></div>
+        <ul>
+          <li>Analyse de votre situation et des pièces du dossier</li>
+          <li>Premier avis juridique et orientation</li>
+          <li>Estimation des suites possibles (amiable / judiciaire)</li>
+          <li>Présentation transparente des honoraires de suivi</li>
+        </ul>
+        <div class="foot">
+          <a href="#rdv" class="btn btn-primary">Réserver ma consultation →</a>
+        </div>
+      </div>
+
+      <div class="consult-card">
+        <h3>Suivi de votre dossier</h3>
+        <div class="price">Sur devis <small>convention d'honoraires</small></div>
+        <ul>
+          <li>Honoraires définis par convention écrite et signée</li>
+          <li>Forfait, taux horaire ou honoraire de résultat selon le dossier</li>
+          <li>Information régulière sur l'avancement et les coûts</li>
+          <li>Aide juridictionnelle étudiée selon votre situation</li>
+        </ul>
+        <div class="foot">
+          <a href="#contact" class="btn btn-ghost">Nous contacter →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="note">💡 <b>Tarif indicatif — à confirmer avec le cabinet.</b> Les montants ci-dessus sont des exemples destinés à la maquette ; les honoraires réels seront précisés par Maître KOY et formalisés dans une convention d'honoraires avant tout engagement.</p>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ils nous ont fait confiance</p>
+      <div class="rule"></div>
+      <h2>L'avis des clients</h2>
+      <p>Le cabinet est noté 4,7/5 sur Google.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Un avocat à l'écoute, qui explique clairement chaque étape de la procédure. »</p>
+        <div class="who">— Avis à connecter (Google / fiche d'établissement)</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Rigueur et disponibilité sur un dossier de copropriété complexe. Je recommande. »</p>
+        <div class="who">— Avis à connecter (Google / fiche d'établissement)</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Conseil de qualité et honoraires annoncés avec transparence dès le départ. »</p>
+        <div class="who">— Avis à connecter (Google / fiche d'établissement)</div>
+      </div>
+    </div>
+    <p class="avis-note">⚠ <b>Texte de démonstration.</b> Ces avis sont des exemples de mise en page : à remplacer par les <b>vrais avis vérifiés</b> de la fiche Google (4,7/5 · 148 avis) une fois le widget connecté.</p>
+  </div>
+</section>
+
+<!-- INFOS / CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Accès &amp; contact</p>
+      <div class="rule"></div>
+      <h2>Venir au cabinet</h2>
+    </div>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Coordonnées</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>19 Espace Méditerranée, 66000 Perpignan<br><a href="https://www.google.com/maps/search/?api=1&query=19+Espace+M%C3%A9diterran%C3%A9e+66000+Perpignan" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+        <div class="info-row"><span class="k">☎</span><span class="v"><b>Téléphone</b><a href="tel:+33468569353">04 68 56 93 53</a></span></div>
+        <div class="info-row"><span class="k">✉</span><span class="v"><b>E-mail</b><a href="mailto:contact@koyavocat.fr">contact@koyavocat.fr</a></span></div>
+        <div class="info-row"><span class="k">🅿️</span><span class="v"><b>Stationnement &amp; transports</b>Parking Clémenceau à proximité immédiate · desservi par la gare routière Méditerranée</span></div>
+
+        <h3 style="margin-top:30px">Horaires</h3>
+        <div class="hours-line"><span class="d">Lundi</span><span class="h">8h30 – 19h30</span></div>
+        <div class="hours-line"><span class="d">Mardi</span><span class="h">8h30 – 19h30</span></div>
+        <div class="hours-line"><span class="d">Mercredi</span><span class="h">8h30 – 19h30</span></div>
+        <div class="hours-line"><span class="d">Jeudi</span><span class="h">8h30 – 19h30</span></div>
+        <div class="hours-line"><span class="d">Vendredi</span><span class="h">8h30 – 19h30</span></div>
+        <div class="hours-line"><span class="d">Samedi · Dimanche</span><span class="h">Fermé</span></div>
+        <div class="socials">
+          <a href="https://www.facebook.com/koy.avocat.perpignan" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://twitter.com/Eric_Koy" target="_blank" rel="noopener" aria-label="X / Twitter">𝕏</a>
+          <a href="https://fr.linkedin.com/in/eric-koy-avocat-perpignan-106b1a74" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+
+      <div class="map-ph">
+        <span class="ph-tag">plan / Google Maps à intégrer</span>
+        <span class="crest">📍</span>
+        <span class="ph-lbl">19 Espace Méditerranée · Perpignan centre</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <span class="mark">K</span>
+          <span class="txt"><b>Cabinet KOY</b><span>Maître Eric KOY · Avocat</span></span>
+        </div>
+        <p class="fp">Avocat au barreau des Pyrénées-Orientales (66). Droit immobilier, construction et copropriété, vices cachés, assurances, droit routier, droit public et divorce. Défense dans toute la France.</p>
+      </div>
+      <div>
+        <h4>Domaines</h4>
+        <a href="#domaines">Immobilier &amp; construction</a>
+        <a href="#domaines">Droit civil &amp; vices cachés</a>
+        <a href="#domaines">Droit des assurances</a>
+        <a href="#domaines">Droit routier &amp; permis</a>
+        <a href="#domaines">Divorce &amp; famille</a>
+      </div>
+      <div>
+        <h4>Le cabinet</h4>
+        <a href="#cabinet">Maître Eric KOY</a>
+        <a href="#consultation">Honoraires</a>
+        <a href="#contact">Accès &amp; horaires</a>
+        <a href="tel:+33468569353">04 68 56 93 53</a>
+        <a href="#rdv">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Cabinet KOY — Maître Eric KOY · 19 Espace Méditerranée, 66000 Perpignan</span>
+      <span>Maquette de présentation · Mentions légales à intégrer</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile cta -->
+<div class="float-cta">
+  <a href="#rdv" class="btn btn-primary">Prendre rendez-vous →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- maquette de prospection, non officielle -->
+</body>
+</html>

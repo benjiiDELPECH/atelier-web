@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le Bistrot Dumas — Cuisine bistronomique · Champel, Genève · Bib Gourmand 2025</title>
+<meta name="description" content="Le Bistrot Dumas, restaurant bistronomique à Champel, Genève. Cuisine française traditionnelle, 100 % faite maison. Bib Gourmand — Guide Michelin 2025. Réservez votre table.">
+<!-- maquette de prospection, non officielle — variante « douce » (évolution respectueuse de l'identité) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#f8f5ef; --sand:#efe9dd; --line:#e2d9c8;
+  --ink:#2a2521; --mid:#6b6155; --white:#fffdf8;
+  --gold:#9e7e3e; --gold-d:#806434; --wine:#6a2b38;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.68;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--gold-d);color:var(--white);text-decoration:none;
+  font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;transition:background .15s}
+.btn:hover{background:var(--ink)}
+.btn-ghost{background:transparent;color:var(--gold-d);border:1px solid var(--gold)}
+.btn-ghost:hover{background:var(--sand);color:var(--ink)}
+
+/* ENTÊTE — discret, classique */
+.head{background:rgba(248,245,239,.93);backdrop-filter:blur(6px);position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line)}
+.head-in{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1060px;margin:0 auto}
+.brand{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:.5px;color:var(--ink);text-decoration:none;line-height:1}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{font-size:13px;font-weight:400;letter-spacing:.4px;text-decoration:none;color:var(--mid);transition:color .12s}
+.nav a:hover{color:var(--ink)}
+.nav .btn{padding:11px 22px;font-size:11.5px}
+@media(max-width:820px){.nav a:not(.btn){display:none}}
+
+/* HÉRO — calme, ses vrais mots, action élégante */
+.hero{text-align:center;padding:78px 28px 56px;position:relative}
+.hero-kick{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,6vw,58px);font-weight:500;line-height:1.07;color:var(--ink);max-width:760px;margin:0 auto 22px}
+.hero p{max-width:620px;margin:0 auto 30px;color:var(--mid);font-size:16.5px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* RUBAN Bib Gourmand — sobre mais mis en valeur */
+.bib{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
+.bib-in{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;padding:24px 28px;max-width:1060px;margin:0 auto;text-align:center}
+.bib-medal{flex:none;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#cda861,#806434 72%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fffdf8;box-shadow:0 0 0 3px rgba(158,126,62,.18)}
+.bib-medal .m1{font-size:1.25rem;line-height:1}
+.bib-medal .m2{font-family:var(--serif);font-weight:600;font-size:.6rem;letter-spacing:.06em;margin-top:1px}
+.bib-txt{text-align:left;max-width:34em}
+.bib-txt b{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--gold-d);display:block;letter-spacing:.3px}
+.bib-txt span{font-size:13.5px;color:var(--mid)}
+@media(max-width:620px){.bib-txt{text-align:center}}
+
+/* SECTIONS */
+.sec{padding:64px 0}
+.sec-kick{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:8px}
+.sec-h{font-family:var(--serif);font-size:38px;font-weight:500;text-align:center;color:var(--ink);margin-bottom:14px}
+.lead{max-width:680px;margin:0 auto;text-align:center;color:var(--mid);font-size:16.5px}
+
+/* LA MAISON — son ADN, préservé */
+.inst{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
+.inst-ph{aspect-ratio:4/3;background:linear-gradient(135deg,var(--sand),#e6dcc7);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);text-align:center;padding:20px}
+.inst h3{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--ink);margin-bottom:14px}
+.inst p{color:var(--mid);margin-bottom:14px}
+.inst .sig{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--gold-d)}
+@media(max-width:760px){.inst{grid-template-columns:1fr;gap:24px}}
+
+/* LA CARTE — avec prix réels (le manque comblé, en douceur) */
+.carte{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.carte-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:36px}
+.carte-block h4{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0}
+.line .n{color:var(--ink);font-size:15px;font-weight:400}
+.line .n small{display:block;color:var(--mid);font-size:13px;font-weight:300}
+.line .p{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--gold-d);flex:none}
+.carte-foot{text-align:center;margin-top:34px}
+.carte-note{text-align:center;font-size:12.5px;color:var(--mid);margin-top:16px;font-style:italic}
+@media(max-width:760px){.carte-cols{grid-template-columns:1fr;gap:30px}}
+
+/* CAVE — bande sobre */
+.cave{background:var(--sand);text-align:center;padding:58px 28px}
+.cave h2{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.cave p{color:var(--mid);max-width:600px;margin:0 auto 10px}
+
+/* CTA bandeau — élégant, pas agressif */
+.cta{background:var(--ink);text-align:center;padding:58px 28px;color:var(--white)}
+.cta h2{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--white);margin-bottom:12px}
+.cta p{color:rgba(255,253,248,.72);max-width:560px;margin:0 auto 24px;font-weight:300}
+.cta .btn{background:var(--gold-d)}
+.cta .btn:hover{background:var(--gold)}
+.cta .mini{margin-top:16px;font-size:13px;color:rgba(255,253,248,.6)}
+.cta .mini a{color:#d7be84;text-decoration:none}
+
+/* INFOS / contact */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+.info h4{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin-bottom:16px}
+.info-row{display:flex;gap:12px;margin-bottom:12px;font-size:15px;color:var(--mid)}
+.info-row b{color:var(--ink);font-weight:500;min-width:96px}
+.info a{color:var(--gold-d);text-decoration:none;font-weight:500}
+.hours{font-size:14.5px;color:var(--mid)}
+.hours div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dotted var(--line)}
+.hours div:last-child{border-bottom:none}
+.hours .d{color:var(--mid)} .hours .h{color:var(--ink);font-weight:400}
+.map{aspect-ratio:16/11;background:linear-gradient(135deg,#e6dcc7,var(--sand));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:760px){.info{grid-template-columns:1fr;gap:26px}}
+
+footer{background:var(--ink);color:rgba(255,253,248,.65);text-align:center;padding:32px 28px;font-size:13px}
+footer a{color:var(--white);text-decoration:none}
+footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px}
+
+/* bouton réserver flottant mobile — discret */
+.float{display:none}
+@media(max-width:820px){
+  .float{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:50;justify-content:center;
+    background:var(--gold-d);color:var(--white);text-decoration:none;padding:15px;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 6px 22px rgba(42,37,33,.32)}
+}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="head-in">
+    <a href="#" class="brand">Le Bistrot Dumas<small>Bistronomie · Champel, Genève</small></a>
+    <nav class="nav">
+      <a href="#maison">La maison</a>
+      <a href="#carte">La carte</a>
+      <a href="#cave">La cave</a>
+      <a href="#infos">Contact</a>
+      <a href="#reserver" class="btn" onclick="resa(event)">Réserver</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HÉRO : ses vrais mots, une action élégante -->
+<section class="hero">
+  <div class="hero-kick">Cuisine bistronomique · 100 % fait maison</div>
+  <h1>Une cuisine française sincère, au cœur de Champel</h1>
+  <p>Produits frais et de saison, pain pétri et cuit sur place, glaces et sorbets élaborés à la minute — dans un décor Art nouveau chaleureux, à Genève.</p>
+  <div class="hero-cta">
+    <a href="#reserver" class="btn" onclick="resa(event)">Réserver une table</a>
+    <a href="#carte" class="btn btn-ghost">Découvrir la carte</a>
+  </div>
+</section>
+
+<!-- BIB GOURMAND — sobre mais mis en valeur -->
+<div class="bib">
+  <div class="bib-in">
+    <div class="bib-medal"><span class="m1">★</span><span class="m2">BIB</span></div>
+    <div class="bib-txt">
+      <b>Bib Gourmand — Guide Michelin 2025</b>
+      <span>Distinction décernée pour notre qualité culinaire et notre rapport qualité-prix.</span>
+    </div>
+    <a href="https://guide.michelin.com/ch/fr/geneve-region/geneve/restaurant/bistrot-dumas" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:11px">Voir sur le Guide Michelin</a>
+  </div>
+</div>
+
+<!-- LA MAISON — son ADN, préservé -->
+<section class="sec wrap" id="maison">
+  <div class="inst">
+    <div class="inst-ph">Photo — le chef / la salle<br>(à fournir)</div>
+    <div>
+      <div class="sec-kick" style="text-align:left">La maison</div>
+      <h3>Tout est fait maison</h3>
+      <p>Le Bistrot Dumas s'est imposé comme une adresse bistronomique appréciée pour sa cuisine française traditionnelle, entièrement faite maison. Le pain est pétri chaque jour avec de la farine genevoise puis cuit sur place.</p>
+      <p>Les glaces et sorbets sont élaborés à partir de produits frais et de saison. La carte évolue au fil des saisons et des arrivages, dans un décor Art nouveau chaleureux et soigné.</p>
+      <p class="sig">« Ici, tout est fait maison. »</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE — avec prix réels (le manque comblé, sobrement) -->
+<section class="carte" id="carte">
+  <div class="sec wrap">
+    <div class="sec-kick">La carte de saison</div>
+    <div class="sec-h">La carte</div>
+    <p class="lead">Une sélection de notre carte actuelle, qui évolue au fil des saisons et des arrivages.</p>
+
+    <div class="carte-cols">
+      <div class="carte-block">
+        <h4>Entrées</h4>
+        <div class="line"><div class="n">Gravlax de saumon aux agrumes<small>Fenouil, pamplemousse rose</small></div><div class="p">19.–</div></div>
+        <div class="line"><div class="n">Poulpe grillé, pain perdu d'aubergines<small>Framboises-harissa</small></div><div class="p">21.–</div></div>
+        <div class="line"><div class="n">Gyozas d'omble chevalier &amp; crabe<small>Beurre blanc au safran</small></div><div class="p">21.–</div></div>
+        <div class="line"><div class="n">Os à moelle, fleur de sel et toasts</div><div class="p">17.–</div></div>
+        <div class="line"><div class="n">Mille-feuille d'aubergines, ricotta, poivron</div><div class="p">19.–</div></div>
+      </div>
+
+      <div class="carte-block">
+        <h4>Plats</h4>
+        <div class="line"><div class="n">Entrecôte de bœuf, beurre Dumas<small>Frites allumettes</small></div><div class="p">41.–</div></div>
+        <div class="line"><div class="n">Ris de veau poêlé<small>Moutarde de Meaux, artichaut, gratin</small></div><div class="p">43.–</div></div>
+        <div class="line"><div class="n">Filet de bar, huile vierge au citron<small>Asperges, arancini</small></div><div class="p">40.–</div></div>
+        <div class="line"><div class="n">Tartare à l'ancienne, pommes allumettes</div><div class="p">39.–</div></div>
+        <div class="line"><div class="n">Sole meunière sur arêtes <i>(le soir)</i></div><div class="p">52.–</div></div>
+      </div>
+
+      <div class="carte-block">
+        <h4>Douceurs</h4>
+        <div class="line"><div class="n">Moelleux au chocolat, sorbet coco</div><div class="p">13.–</div></div>
+        <div class="line"><div class="n">Tartelette au citron, gelée mojito</div><div class="p">13.–</div></div>
+        <div class="line"><div class="n">Baba, café, orgeat &amp; whisky</div><div class="p">15.–</div></div>
+        <div class="line"><div class="n">Île flottante, crème anglaise, pralines roses</div><div class="p">10.–</div></div>
+        <div class="line"><div class="n">Glaces ou sorbets maison<small>La boule</small></div><div class="p">4.50</div></div>
+      </div>
+
+      <div class="carte-block">
+        <h4>Label Fait Maison</h4>
+        <p style="color:var(--mid);font-size:14.5px;margin-bottom:12px">Les plats sont entièrement élaborés sur place, à partir de produits bruts et traditionnels, conformément aux critères du label <b style="color:var(--gold-d)">Fait Maison</b> (FRC, GastroSuisse, Semaine du Goût, Slow Food).</p>
+        <p style="color:var(--mid);font-size:14.5px">Pain pétri et cuit sur place avec de la farine genevoise. Glaces et sorbets élaborés à partir de produits frais de saison.</p>
+      </div>
+    </div>
+
+    <div class="carte-foot">
+      <a href="https://www.lebistrotdumas.ch/menu-de-la-semaine/" target="_blank" rel="noopener" class="btn btn-ghost">Voir le menu de la semaine</a>
+    </div>
+    <p class="carte-note">Prix tirés de la carte actuelle (CHF) — tarifs indicatifs, à confirmer auprès du restaurant.</p>
+  </div>
+</section>
+
+<!-- LA CAVE -->
+<section class="cave" id="cave">
+  <div class="sec-kick">La cave à vin</div>
+  <h2>Vins français &amp; genevois, naturels et vivants</h2>
+  <p>Une cave de plusieurs centaines de bouteilles, rigoureusement sélectionnées. Références de terroir, vins naturels et vivants, pensés pour sublimer nos plats.</p>
+  <p>Prenez le temps de parcourir la cave et de choisir directement votre bouteille, pour une expérience plus personnelle et plus gourmande.</p>
+</section>
+
+<!-- CTA — élégant, pas agressif -->
+<section class="cta" id="reserver">
+  <h2>Réservez votre table</h2>
+  <p>Choisissez votre date, votre horaire et le nombre de convives en quelques instants — à toute heure, même lorsque le restaurant est fermé.</p>
+  <a href="#" class="btn" onclick="resa(event)">Réserver en ligne</a>
+  <div class="mini">ou par téléphone au <a href="tel:+41223477422">+41 22 347 74 22</a> · <a href="mailto:contact@lebistrotdumas.ch">contact@lebistrotdumas.ch</a></div>
+</section>
+
+<!-- INFOS -->
+<section class="sec wrap" id="infos">
+  <div class="info">
+    <div>
+      <div class="sec-kick" style="text-align:left">Informations &amp; contact</div>
+      <h4>Le Bistrot Dumas</h4>
+      <div class="info-row"><b>Adresse</b><span><a href="https://www.google.com/maps/search/?api=1&query=Avenue+Dumas+7+1206+Gen%C3%A8ve" target="_blank" rel="noopener">Avenue Dumas 7 · 1206 Genève (Champel)</a></span></div>
+      <div class="info-row"><b>Téléphone</b><span><a href="tel:+41223477422">+41 22 347 74 22</a></span></div>
+      <div class="info-row"><b>E-mail</b><span><a href="mailto:contact@lebistrotdumas.ch">contact@lebistrotdumas.ch</a></span></div>
+      <div class="hours" style="margin-top:6px">
+        <div><span class="d">Lundi – Vendredi</span><span class="h">Midi dès 11h30 · Soir dès 19h00</span></div>
+        <div><span class="d">Samedi</span><span class="h">Soir dès 19h00 (midi fermé)</span></div>
+        <div><span class="d">Dimanche</span><span class="h">Fermé</span></div>
+      </div>
+      <div style="margin-top:18px"><a href="#reserver" class="btn" onclick="resa(event)">Réserver une table</a></div>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&query=Avenue+Dumas+7+1206+Gen%C3%A8ve" target="_blank" rel="noopener" class="map">Plan — Champel, Genève</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Le Bistrot Dumas</div>
+  © 2026 Le Bistrot Dumas · Avenue Dumas 7, 1206 Genève · <a href="tel:+41223477422">+41 22 347 74 22</a><br>
+  Bib Gourmand — Guide Michelin 2025 · Midi dès 11h30 · Soir dès 19h00
+</footer>
+
+<a href="#reserver" class="float" onclick="resa(event)">Réserver une table</a>
+
+<script>
+function resa(e){ e&&e.preventDefault();
+  alert("Démo — ici se brancherait un vrai système de réservation en ligne (TheFork / Zenchef / OpenTable), pour réserver 24h/24.");
+}
+</script>
+</body>
+</html>

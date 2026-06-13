@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELARL Philae — Mandataires Judiciaires · Bordeaux &amp; Pau</title>
+<meta name="description" content="SELARL Philae, mandataires judiciaires à Bordeaux et Pau. Sauvegarde, redressement et liquidation judiciaire, mandat ad hoc, conciliation. Espaces dédiés créanciers, dirigeants, magistrats et salariés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2540;          /* bleu nuit institutionnel */
+    --navy-deep:#0a1a30;
+    --navy-soft:#1c3a5e;
+    --steel:#3f5d7d;
+    --slate:#5b6b7d;
+    --line:#dfe5ec;
+    --paper:#f6f8fb;
+    --paper-2:#eef2f7;
+    --ink:#172033;
+    --ink-soft:#54627a;
+    --gold:#b08a3e;          /* accent sobre, sérieux */
+    --gold-soft:#c9a45c;
+    --white:#ffffff;
+    --shadow:0 20px 55px -28px rgba(15,37,64,.45);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:6px;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+    cursor:pointer;border:none;font-family:'Libre Franklin',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{background:var(--gold);color:#1a1304;box-shadow:0 12px 26px -14px rgba(176,138,62,.9)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--gold-soft)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy-soft)}
+  .btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.4)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn-outline{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-outline:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- TOP STRIP ---------- */
+  .topbar{background:var(--navy-deep);color:#c4d2e4;font-size:.82rem}
+  .topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:8px 24px;max-width:1140px;margin:0 auto;flex-wrap:wrap}
+  .topbar a{color:#dbe6f3}
+  .topbar a:hover{color:#fff}
+  .topbar .tb-right{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand .mark{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,var(--navy),var(--steel));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Lora',serif;font-weight:600;font-size:1.25rem;letter-spacing:.5px}
+  .brand .txt{line-height:1.05}
+  .brand .txt b{font-family:'Lora',serif;font-size:1.32rem;font-weight:600;color:var(--navy);display:block}
+  .brand .txt span{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+  .nav-links.open{display:flex}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;color:#eaf0f8;
+    background:
+      radial-gradient(700px 380px at 82% 12%,rgba(63,93,125,.55),transparent 62%),
+      linear-gradient(160deg,var(--navy),var(--navy-deep));
+    padding:84px 0 92px}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(10,26,48,.35));pointer-events:none}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem);line-height:1.1;margin:8px 0 20px;color:#fff}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero p.lead{font-size:1.12rem;color:#c3d2e6;max-width:33em;margin-bottom:28px}
+  .hero-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#a9bdd6;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#e7eefa}
+
+  .ph{position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow)}
+  .ph .tag{position:absolute;top:12px;left:12px;
+    background:rgba(15,37,64,.7);color:#fff;
+    font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 11px;border-radius:5px;backdrop-filter:blur(3px)}
+  .ph .lbl{padding:0 16px 18px;font-size:1.02rem;opacity:.94;font-style:italic;font-family:'Lora',serif}
+  .ph-1{background:linear-gradient(150deg,#28456a,#13294a 60%,#0c1c34)}
+  .ph-2{background:linear-gradient(150deg,#3a5878,#22405f)}
+  .ph-3{background:linear-gradient(150deg,#46607e,#2c4a6c)}
+  .ph-4{background:linear-gradient(150deg,#2f4d70,#1a3457)}
+  .hero-photo{height:430px}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--paper-2);border-bottom:1px solid var(--line);padding:30px 0}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center}
+  .trust .num{font-family:'Lora',serif;font-size:1.95rem;color:var(--navy);line-height:1;font-weight:600}
+  .trust .cap{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:7px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:46em;margin:0 0 48px}
+  .sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head h2{font-size:clamp(1.85rem,3.6vw,2.6rem);color:var(--navy);margin-bottom:14px;line-height:1.15}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* missions */
+  #missions{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border-radius:var(--radius);padding:28px 26px;
+    border:1px solid var(--line);box-shadow:0 14px 36px -30px rgba(15,37,64,.5);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s;display:flex;flex-direction:column;border-top:3px solid var(--navy)}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-top-color:var(--gold)}
+  .card .ic{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper-2);font-size:1.35rem;margin-bottom:15px;border:1px solid var(--line)}
+  .card h3{font-size:1.28rem;color:var(--navy);margin-bottom:7px}
+  .card p.desc{font-size:.94rem;color:var(--ink-soft);margin-bottom:0;flex:1}
+  .card .tagline{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+
+  /* cabinet */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+  .about h2{font-size:clamp(1.85rem,3.6vw,2.5rem);margin-bottom:18px;color:var(--navy)}
+  .about p{color:var(--ink-soft);margin-bottom:15px}
+  .about-photo{height:430px}
+  .assoc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  .assoc .a{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+  .assoc .a b{font-family:'Lora',serif;color:var(--navy);font-size:1.06rem;display:block}
+  .assoc .a span{font-size:.84rem;color:var(--slate)}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .badge{font-size:.8rem;background:var(--navy);color:#dfe9f6;padding:7px 14px;border-radius:999px}
+
+  /* implantations */
+  #implantations{background:var(--navy);color:#dde7f3}
+  #implantations .sec-head h2{color:#fff}
+  #implantations .sec-head p{color:#b6c7dd}
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .loc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:30px 28px;backdrop-filter:blur(2px)}
+  .loc h3{font-size:1.5rem;color:#fff;margin-bottom:4px}
+  .loc .city-cap{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:16px}
+  .loc .row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.1);align-items:flex-start;font-size:.95rem;color:#cfdcec}
+  .loc .row:last-child{border-bottom:none}
+  .loc .row .k{width:22px;flex:none;text-align:center;color:var(--gold-soft)}
+  .loc .row a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .loc .row a:hover{color:var(--gold-soft)}
+
+  /* espaces (accès dédiés) */
+  #espaces{background:var(--paper)}
+  .esp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .esp{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;text-align:center;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column;align-items:center}
+  .esp:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .esp .ic{width:54px;height:54px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px}
+  .esp h3{font-size:1.14rem;color:var(--navy);margin-bottom:6px}
+  .esp p{font-size:.87rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
+  .esp a.lk{font-size:.85rem;font-weight:600;color:var(--gold)}
+  .tools-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .tool-pill{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--navy);font-weight:500}
+  .tool-pill .e{font-size:1.15rem}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:14px;margin:0 24px;
+    background:linear-gradient(135deg,var(--navy-soft),var(--navy));color:#fff;
+    padding:58px 40px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
+  .cta-band h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:13px;color:#fff}
+  .cta-band p{color:#c3d2e6;max-width:40em;margin:0 auto 26px;font-size:1.05rem}
+  .cta-actions{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+  /* contact */
+  #contact{background:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .contact-card{background:var(--paper);border-radius:var(--radius);padding:34px;border:1px solid var(--line)}
+  .contact-card h3{font-size:1.45rem;margin-bottom:18px;color:var(--navy)}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.15rem;width:26px;flex:none;text-align:center;color:var(--gold)}
+  .info-row .v{font-size:.97rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--navy);font-weight:600}
+  .info-row a:hover{color:var(--gold)}
+  .hours-line{display:flex;justify-content:space-between;font-size:.94rem;padding:6px 0;border-bottom:1px dotted var(--line)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--ink-soft)}
+  .hours-line .h{color:var(--ink);font-weight:500}
+
+  /* form */
+  form .field{margin-bottom:16px}
+  form label{display:block;font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.02em}
+  form input,form select,form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:7px;font-family:'Libre Franklin',sans-serif;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s,box-shadow .15s}
+  form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(63,93,125,.15)}
+  form textarea{resize:vertical;min-height:120px}
+  .form-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-note{font-size:.82rem;color:var(--ink-soft);margin-top:10px}
+  .disclaimer{background:#fbf6ea;border:1px dashed var(--gold);border-radius:9px;padding:13px 18px;font-size:.85rem;color:#6a531f;margin-top:18px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);color:#9fb2c9;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .brand .txt b{color:#fff}
+  footer h4{color:#e7eefa;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:15px}
+  footer a{color:#9fb2c9;display:block;padding:4px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.9rem;line-height:1.7;margin-top:12px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#7d92ac}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-photo{height:300px;order:-1}
+    .about-photo{height:300px}
+    .cards,.esp-grid{grid-template-columns:1fr 1fr}
+    .loc-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:18px 24px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.esp-grid,.foot-grid,.form-2,.assoc{grid-template-columns:1fr}
+    .cta-band{margin:0 16px;padding:44px 22px}
+    .topbar .tb-right{gap:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>SELARL Philae · Mandataires Judiciaires · Bordeaux &amp; Pau</span>
+    <div class="tb-right">
+      <a href="tel:+33556791658">📞 05 56 79 16 58</a>
+      <a href="mailto:contact@philaemj.fr">✉ contact@philaemj.fr</a>
+      <a href="#espaces">🔒 Accès espaces sécurisés</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">Φ</span>
+      <span class="txt">
+        <b>SELARL Philae</b>
+        <span>Mandataires Judiciaires</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#missions">Nos missions</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#implantations">Implantations</a>
+      <a href="#espaces">Vos espaces</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-navy nav-cta">Nous contacter</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Étude de mandataires judiciaires · Bordeaux &amp; Pau</p>
+      <h1>Accompagner les entreprises en difficulté, <em>protéger les droits de chacun</em>.</h1>
+      <p class="lead">La SELARL Philae intervient au service des entreprises, de leurs créanciers, de leurs dirigeants et de leurs salariés, sous l'autorité des juridictions. Sauvegarde, redressement, liquidation : une équipe expérimentée et organisée par pôles de compétence.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Prendre contact →</a>
+        <a href="#espaces" class="btn btn-ghost">Accéder à mon espace</a>
+      </div>
+      <p class="hero-note">✦ <b>Réception sur rendez-vous</b> · du lundi au vendredi · 08h30–12h30 / 13h30–17h00</p>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Façade de l'étude / salle de réunion</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num">2 sites</div><div class="cap">Bordeaux · Pau</div></div>
+    <div><div class="num">8 personnes</div><div class="cap">au service des entreprises</div></div>
+    <div><div class="num">2 mandataires</div><div class="cap">judiciaires associées</div></div>
+    <div><div class="num">Membres IFPPC</div><div class="cap">formation continue</div></div>
+  </div>
+</div>
+
+<!-- MISSIONS -->
+<section id="missions">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos domaines d'intervention</p>
+      <h2>Les missions de l'étude</h2>
+      <p>Désignée par les tribunaux, l'étude exerce l'ensemble des mandats liés à la prévention et au traitement des difficultés des entreprises, ainsi que des missions civiles confiées par justice.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">🤝</div>
+        <h3>Mandat ad hoc</h3>
+        <p class="desc">Mesure préventive et confidentielle : un mandataire ad hoc assiste le dirigeant pour négocier avec ses principaux partenaires avant la cessation des paiements.</p>
+        <div class="tagline">Prévention</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">⚖️</div>
+        <h3>Conciliation</h3>
+        <p class="desc">Procédure amiable destinée à trouver, sous l'égide d'un conciliateur, un accord avec les créanciers afin de mettre fin aux difficultés de l'entreprise.</p>
+        <div class="tagline">Prévention</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h3>Sauvegarde</h3>
+        <p class="desc">Procédure ouverte à l'entreprise qui n'est pas en cessation des paiements, afin de réorganiser son activité et d'apurer son passif via un plan.</p>
+        <div class="tagline">Traitement judiciaire</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🔧</div>
+        <h3>Redressement judiciaire</h3>
+        <p class="desc">Maintien de l'activité, de l'emploi et apurement du passif : le mandataire judiciaire représente l'intérêt collectif des créanciers tout au long de la procédure.</p>
+        <div class="tagline">Traitement judiciaire</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">📂</div>
+        <h3>Liquidation judiciaire</h3>
+        <p class="desc">Réalisation des actifs, vérification du passif et répartition au profit des créanciers, dans le respect des droits des salariés et de la procédure.</p>
+        <div class="tagline">Traitement judiciaire</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🏛️</div>
+        <h3>Missions civiles &amp; techniques</h3>
+        <p class="desc">Administrateur provisoire, séquestre, commissaire au plan de cession ou de continuation, expertise et consultation : l'étude répond aux désignations de justice.</p>
+        <div class="tagline">Mandats de justice</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LE CABINET -->
+<section id="cabinet" class="about">
+  <div class="wrap about-grid">
+    <div class="ph about-photo ph-2">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Caroline Cachau-Lagoutte &amp; Laetitia Lucas-Dabadie</span>
+    </div>
+    <div>
+      <p class="eyebrow">Le cabinet</p>
+      <h2>Une équipe expérimentée et organisée</h2>
+      <p>L'étude réunit huit personnes au service des entreprises en difficulté. Outre une solide formation initiale, chaque collaborateur a acquis de nombreuses années d'expérience au sein de l'étude, ses connaissances étant actualisées par des actions de formation internes et externes permanentes.</p>
+      <p>Organisée par pôles de compétence autonomes et complémentaires, l'étude assure le suivi régulier et quotidien des prestations, pour satisfaire l'exigence des créanciers et des débiteurs — ses principaux interlocuteurs — comme celle des tribunaux et de ses correspondants.</p>
+      <div class="assoc">
+        <div class="a"><b>Caroline Cachau-Lagoutte</b><span>Mandataire judiciaire associée</span></div>
+        <div class="a"><b>Laetitia Lucas-Dabadie</b><span>Mandataire judiciaire associée</span></div>
+      </div>
+      <div class="badges">
+        <span class="badge">Pôles de compétence autonomes</span>
+        <span class="badge">Formations régionales IFPPC</span>
+        <span class="badge">Suivi quotidien des dossiers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLANTATIONS -->
+<section id="implantations">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos implantations</p>
+      <h2>Deux sites au plus près des juridictions</h2>
+      <p>L'étude intervient depuis Bordeaux et Pau, à proximité des tribunaux et des entreprises qu'elle accompagne en Nouvelle-Aquitaine.</p>
+    </div>
+    <div class="loc-grid">
+
+      <div class="loc">
+        <h3>Bordeaux</h3>
+        <p class="city-cap">Siège de l'étude</p>
+        <div class="row"><span class="k">📍</span><span>23 rue Margaux, 33000 Bordeaux<br><a href="https://www.openstreetmap.org/?mlat=44.84033&mlon=-0.57539#map=17/44.84033/-0.57539" target="_blank" rel="noopener">Voir le plan →</a></span></div>
+        <div class="row"><span class="k">🚊</span><span>Tram A — arrêt Hôtel de Ville</span></div>
+        <div class="row"><span class="k">📞</span><span><a href="tel:+33556791658">05 56 79 16 58</a></span></div>
+        <div class="row"><span class="k">🕑</span><span>Réception sur RDV · lun.–ven. · 08h30–12h30 / 13h30–17h00</span></div>
+      </div>
+
+      <div class="loc">
+        <h3>Pau</h3>
+        <p class="city-cap">Bureau secondaire</p>
+        <div class="row"><span class="k">📍</span><span>Adresse à confirmer — bureau de Pau<br><em style="color:#9fb2c9">coordonnées précises à fournir</em></span></div>
+        <div class="row"><span class="k">⚖️</span><span>Dossiers du ressort du tribunal de Pau (ex. polyclinique de Pau)</span></div>
+        <div class="row"><span class="k">📞</span><span><a href="tel:+33556791658">05 56 79 16 58</a> · standard de l'étude</span></div>
+        <div class="row"><span class="k">🕑</span><span>Réception sur RDV · lun.–ven. · 08h30–12h30 / 13h30–17h00</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VOS ESPACES -->
+<section id="espaces">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Accès dédiés</p>
+      <h2>Un espace pour chaque interlocuteur</h2>
+      <p>Créanciers, dirigeants, magistrats et salariés disposent d'un accès dédié pour suivre leur dossier, transmettre des pièces et déclarer leur créance en ligne, en toute sécurité.</p>
+    </div>
+    <div class="esp-grid">
+
+      <div class="esp">
+        <div class="ic">💼</div>
+        <h3>Espace créancier</h3>
+        <p>Vous êtes créancier d'une entreprise en difficulté : déclarez votre créance et suivez son traitement.</p>
+        <a href="#contact" class="lk">Déclarer une créance →</a>
+      </div>
+
+      <div class="esp">
+        <div class="ic">🧭</div>
+        <h3>Espace dirigeant</h3>
+        <p>Vous dirigez une entreprise en difficulté : accédez aux informations relatives à votre procédure.</p>
+        <a href="#contact" class="lk">Accéder à mon dossier →</a>
+      </div>
+
+      <div class="esp">
+        <div class="ic">⚖️</div>
+        <h3>Espace magistrat</h3>
+        <p>Vous êtes magistrat d'une affaire : consultez les pièces et l'avancement des mandats confiés.</p>
+        <a href="#contact" class="lk">Accès magistrats →</a>
+      </div>
+
+      <div class="esp">
+        <div class="ic">👤</div>
+        <h3>Espace salarié</h3>
+        <p>Vous êtes salarié d'une entreprise en difficulté : retrouvez les informations sur vos droits.</p>
+        <a href="#contact" class="lk">Accès salariés →</a>
+      </div>
+
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-pill"><span class="e">🔍</span> Rechercher une entreprise sous mandat</span>
+      <span class="tool-pill"><span class="e">🏷️</span> Consulter les biens &amp; actifs à vendre</span>
+      <span class="tool-pill"><span class="e">📝</span> Déclaration de créance en ligne</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding:60px 0">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:var(--gold-soft)">Une situation à traiter</p>
+    <h2>Anticiper vaut mieux que subir</h2>
+    <p>Dirigeant, créancier ou conseil : plus la difficulté est traitée tôt, plus les marges de manœuvre sont importantes. Contactez l'étude pour échanger sur votre situation, en toute confidentialité.</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn btn-primary">Demander un rendez-vous →</a>
+      <a href="tel:+33556791658" class="btn btn-ghost">📞 05 56 79 16 58</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Nous contacter</p>
+      <h2>Joindre l'étude</h2>
+      <p>Une question, une demande de rendez-vous, une pièce à transmettre : utilisez le formulaire ou nos coordonnées directes.</p>
+    </div>
+    <div class="contact-grid">
+
+      <!-- coordonnées + horaires -->
+      <div class="contact-card">
+        <h3>Coordonnées</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Bordeaux (siège)</b>23 rue Margaux, 33000 Bordeaux<br>Tram A — arrêt Hôtel de Ville</span></div>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Pau (bureau secondaire)</b>Adresse à confirmer — coordonnées à fournir</span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+33556791658">05 56 79 16 58</a></span></div>
+        <div class="info-row"><span class="k">✉</span><span class="v"><b>E-mail</b><a href="mailto:contact@philaemj.fr">contact@philaemj.fr</a></span></div>
+        <div class="info-row"><span class="k">in</span><span class="v"><b>LinkedIn</b><a href="https://fr.linkedin.com/in/philae-mandataires-judiciaires-1b787715a" target="_blank" rel="noopener">Philae — Mandataires Judiciaires</a></span></div>
+
+        <h3 style="margin-top:28px">Horaires de réception</h3>
+        <div class="hours-line"><span class="d">Lundi</span><span class="h">08h30–12h30 · 13h30–17h00</span></div>
+        <div class="hours-line"><span class="d">Mardi</span><span class="h">08h30–12h30 · 13h30–17h00</span></div>
+        <div class="hours-line"><span class="d">Mercredi</span><span class="h">08h30–12h30 · 13h30–17h00</span></div>
+        <div class="hours-line"><span class="d">Jeudi</span><span class="h">08h30–12h30 · 13h30–17h00</span></div>
+        <div class="hours-line"><span class="d">Vendredi</span><span class="h">08h30–12h30 · 13h30–17h00</span></div>
+        <div class="hours-line"><span class="d">Samedi · Dimanche</span><span class="h">Fermé</span></div>
+        <p class="form-note">Réception uniquement sur rendez-vous.</p>
+      </div>
+
+      <!-- formulaire factice -->
+      <div class="contact-card">
+        <h3>Formulaire de contact</h3>
+        <form onsubmit="alert('Maquette de démonstration — ce formulaire n\'envoie pas de message. Il sera relié à la messagerie de l\'étude lors de la mise en ligne.');return false;">
+          <div class="form-2">
+            <div class="field"><label for="nom">Nom &amp; prénom</label><input id="nom" type="text" placeholder="Votre nom" required></div>
+            <div class="field"><label for="qualite">Vous êtes</label>
+              <select id="qualite">
+                <option>Créancier</option>
+                <option>Dirigeant</option>
+                <option>Magistrat</option>
+                <option>Salarié</option>
+                <option>Avocat / conseil</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-2">
+            <div class="field"><label for="email">E-mail</label><input id="email" type="email" placeholder="vous@exemple.fr" required></div>
+            <div class="field"><label for="tel">Téléphone</label><input id="tel" type="tel" placeholder="06 00 00 00 00"></div>
+          </div>
+          <div class="field"><label for="dossier">Référence dossier (le cas échéant)</label><input id="dossier" type="text" placeholder="N° de mandat ou nom de l'entreprise"></div>
+          <div class="field"><label for="msg">Votre message</label><textarea id="msg" placeholder="Décrivez votre demande…"></textarea></div>
+          <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Envoyer ma demande</button>
+        </form>
+        <div class="disclaimer">⚠️ Formulaire de démonstration (maquette). Aucune donnée n'est transmise ; le module sera connecté à la messagerie sécurisée de l'étude lors de la mise en production.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand">
+          <span class="mark">Φ</span>
+          <span class="txt"><b style="font-size:1.3rem">SELARL Philae</b><span style="color:#9fb2c9">Mandataires Judiciaires</span></span>
+        </a>
+        <p class="fp">Étude de mandataires judiciaires à Bordeaux et Pau, au service des entreprises en difficulté, de leurs créanciers, dirigeants et salariés.</p>
+      </div>
+      <div>
+        <h4>Missions</h4>
+        <a href="#missions">Mandat ad hoc</a>
+        <a href="#missions">Conciliation</a>
+        <a href="#missions">Sauvegarde</a>
+        <a href="#missions">Redressement judiciaire</a>
+        <a href="#missions">Liquidation judiciaire</a>
+      </div>
+      <div>
+        <h4>Vos espaces</h4>
+        <a href="#espaces">Espace créancier</a>
+        <a href="#espaces">Espace dirigeant</a>
+        <a href="#espaces">Espace magistrat</a>
+        <a href="#espaces">Espace salarié</a>
+        <a href="#espaces">Biens &amp; actifs à vendre</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+33556791658">05 56 79 16 58</a>
+        <a href="mailto:contact@philaemj.fr">contact@philaemj.fr</a>
+        <a href="#implantations">Bordeaux · Pau</a>
+        <a href="https://fr.linkedin.com/in/philae-mandataires-judiciaires-1b787715a" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> SELARL Philae — Mandataires Judiciaires · 23 rue Margaux, 33000 Bordeaux</span>
+      <span>Mentions légales · Données personnelles · Réception sur rendez-vous</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- maquette de prospection Atelier Web — non officielle, contenu basé sur philaemj.fr -->
+</body>
+</html>

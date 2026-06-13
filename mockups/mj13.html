@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Étude Eric Verrecchia — Mandataire judiciaire · Salon-de-Provence & Aix-en-Provence</title>
+<meta name="description" content="Étude de Maître Eric Verrecchia, mandataire judiciaire à Salon-de-Provence et Aix-en-Provence. Sauvegarde, redressement et liquidation judiciaires, mandat ad hoc, conciliation. Accompagnement des entreprises en difficulté, des dirigeants, salariés et créanciers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13233f;          /* bleu nuit institutionnel */
+    --navy-deep:#0c172b;
+    --steel:#2f4868;
+    --slate:#5a6b80;
+    --line:#dfe4ea;
+    --paper:#f6f8fb;
+    --cream:#fbfcfe;
+    --ink:#1c2433;
+    --ink-soft:#566173;
+    --gold:#a8884e;          /* accent sobre, juridique */
+    --shadow:0 18px 50px -24px rgba(19,35,63,.32);
+    --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:8px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Libre Franklin',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{
+    background:var(--navy);color:#fff;
+    box-shadow:0 14px 30px -14px rgba(19,35,63,.7);
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--navy-deep);box-shadow:0 20px 38px -14px rgba(19,35,63,.8)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{transform:translateY(-2px);background:#967640}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,252,254,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.1}
+  .brand b{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--navy)}
+  .brand span{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--slate);margin-top:2px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--ink-soft);transition:color .15s;font-weight:500}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+  .nav-links.open{display:flex}
+
+  /* ---------- TOP UTILITY BAR ---------- */
+  .util{background:var(--navy-deep);color:#cdd6e4;font-size:.8rem}
+  .util-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 24px;max-width:1140px;margin:0 auto;flex-wrap:wrap}
+  .util a{color:#cdd6e4;transition:color .15s}
+  .util a:hover{color:#fff}
+  .util .right{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:74px 0 84px;color:#fff;
+    background:
+      radial-gradient(900px 520px at 80% 10%,rgba(168,136,78,.16),transparent 60%),
+      linear-gradient(160deg,#15294a,#0c172b 70%);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem);line-height:1.1;margin:8px 0 18px;color:#fff}
+  .hero h1 em{font-style:italic;color:#d8be8c}
+  .hero p.lead{font-size:1.12rem;color:#c5cedd;max-width:34em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.85rem;color:#aab6c8;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#fff}
+  .hero-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:30px;backdrop-filter:blur(4px);
+  }
+  .hero-card h3{color:#fff;font-size:1.35rem;margin-bottom:6px}
+  .hero-card p{color:#bcc6d6;font-size:.92rem;margin-bottom:20px}
+  .access-list{display:flex;flex-direction:column;gap:10px}
+  .access-item{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:8px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    transition:background .15s,transform .15s;
+  }
+  .access-item:hover{background:rgba(255,255,255,.12);transform:translateX(3px)}
+  .access-item .ic{font-size:1.3rem;width:24px;text-align:center}
+  .access-item .t b{display:block;color:#fff;font-size:.98rem;font-weight:600}
+  .access-item .t span{font-size:.8rem;color:#aab6c8}
+  .access-item .arr{margin-left:auto;color:#d8be8c}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--paper);border-bottom:1px solid var(--line);padding:28px 0}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center}
+  .trust .num{font-family:'Lora',serif;font-size:1.7rem;color:var(--navy);line-height:1.1}
+  .trust .cap{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:6px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:46em;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);color:var(--navy);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:1.04rem}
+
+  /* missions */
+  #missions{background:var(--cream)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 10px 30px -24px rgba(19,35,63,.5);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c9d2de}
+  .card .ic{
+    width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper);font-size:1.3rem;margin-bottom:16px;
+    border:1px solid var(--line);color:var(--navy);
+  }
+  .card h3{font-size:1.22rem;color:var(--navy);margin-bottom:8px}
+  .card p.desc{font-size:.93rem;color:var(--ink-soft);margin-bottom:0;flex:1}
+  .card .tagline{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  /* étude */
+  #etude{background:var(--paper)}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+  .about h2{font-size:clamp(1.9rem,3.6vw,2.5rem);margin-bottom:18px;color:var(--navy)}
+  .about p{color:var(--ink-soft);margin-bottom:16px}
+  .oath{
+    margin-top:24px;padding:22px 26px;background:#fff;border-left:4px solid var(--gold);
+    border-radius:6px;box-shadow:0 10px 30px -26px rgba(19,35,63,.5);
+  }
+  .oath p{font-family:'Lora',serif;font-style:italic;font-size:1.12rem;color:var(--navy);margin-bottom:8px}
+  .oath span{font-size:.82rem;color:var(--slate);text-transform:uppercase;letter-spacing:.1em}
+  .about-photo{height:440px}
+
+  /* photo placeholders */
+  .ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow);
+  }
+  .ph .tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(12,23,43,.66);color:#fff;
+    font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 11px;border-radius:6px;backdrop-filter:blur(3px);
+  }
+  .ph .lbl{padding:0 0 18px;font-style:italic;font-family:'Lora',serif;font-size:1.05rem}
+  .ph-1{background:linear-gradient(150deg,#1c3055,#13233f 60%,#0c172b)}
+  .ph-2{background:linear-gradient(150deg,#2a3f5e,#16294a)}
+  .ph-3{background:linear-gradient(150deg,#34465f,#1c2c47)}
+
+  /* zone d'intervention */
+  #zones{background:var(--cream)}
+  .office-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .office{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px;box-shadow:0 10px 30px -26px rgba(19,35,63,.5);
+  }
+  .office .badge{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+  .office h3{font-size:1.45rem;color:var(--navy);margin-bottom:12px}
+  .office .addr{color:var(--ink-soft);font-size:.98rem;margin-bottom:18px}
+  .office .maplink{color:var(--navy);font-weight:600;font-size:.92rem;border-bottom:1px solid var(--gold);padding-bottom:1px}
+  .zone-note{text-align:center;margin-top:30px;color:var(--ink-soft);font-size:.95rem}
+
+  /* accès créanciers / débiteurs */
+  #espace{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  #espace::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 12% 90%,rgba(168,136,78,.14),transparent 60%)}
+  #espace .sec-head h2{color:#fff}
+  #espace .sec-head p{color:#c5cedd}
+  .portal-wrap{position:relative;z-index:1}
+  .portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:30px}
+  .portal{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:30px 26px;text-align:left;
+    transition:background .18s,transform .18s;display:flex;flex-direction:column;
+  }
+  .portal:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+  .portal .ic{font-size:1.7rem;margin-bottom:14px}
+  .portal h3{color:#fff;font-size:1.2rem;margin-bottom:8px}
+  .portal p{color:#bcc6d6;font-size:.9rem;margin-bottom:18px;flex:1}
+  .portal .btn{align-self:flex-start;font-size:.88rem;padding:11px 20px}
+  .login-strip{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:22px 26px;display:flex;justify-content:space-between;
+    align-items:center;gap:18px;flex-wrap:wrap;
+  }
+  .login-strip .lt b{display:block;color:#fff;font-size:1.05rem}
+  .login-strip .lt span{color:#aab6c8;font-size:.9rem}
+
+  /* CONTACT */
+  #contact{background:var(--paper)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .contact-info{display:flex;flex-direction:column;gap:0}
+  .info-card{background:#fff;border-radius:var(--radius);padding:32px;border:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(19,35,63,.5)}
+  .info-card h3{font-size:1.4rem;margin-bottom:18px;color:var(--navy)}
+  .info-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.15rem;width:26px;flex:none;text-align:center;color:var(--gold)}
+  .info-row .v{font-size:.97rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:2px}
+  .info-row a{color:var(--navy);font-weight:600}
+  .info-row a:hover{color:var(--gold)}
+
+  /* formulaire factice */
+  .form-card{background:#fff;border-radius:var(--radius);padding:32px;border:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(19,35,63,.5)}
+  .form-card h3{font-size:1.4rem;margin-bottom:6px;color:var(--navy)}
+  .form-card .sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--steel);margin-bottom:6px;letter-spacing:.02em}
+  .field input,.field select,.field textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+    font-family:'Libre Franklin',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream);
+    transition:border-color .15s,box-shadow .15s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(47,72,104,.12);
+  }
+  .field textarea{resize:vertical;min-height:110px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-note{font-size:.78rem;color:var(--slate);margin-top:14px}
+  .demo-banner{
+    background:#fff8ec;border:1px dashed var(--gold);border-radius:8px;
+    padding:12px 16px;font-size:.84rem;color:#7a5e26;margin-bottom:22px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);color:#aeb9c9;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff;font-size:1.4rem;font-family:'Lora',serif}
+  footer h4{color:#e7ecf4;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#aeb9c9;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.9rem;line-height:1.7;margin-top:12px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#7d8aa0}
+  .foot-bottom a{display:inline;color:#7d8aa0;text-decoration:underline}
+
+  /* floating mobile contact */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-card{order:2}
+    .about-photo{height:300px;order:-1}
+    .cards,.portal-grid{grid-template-columns:1fr 1fr}
+    .office-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 0}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 24px;width:100%}
+    .nav-cta{margin:8px 24px;width:auto}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.portal-grid,.foot-grid,.form-row{grid-template-columns:1fr}
+    .util-inner{justify-content:center;text-align:center}
+    .cta-line{display:none}
+    .float-cta{
+      display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;
+    }
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(19,35,63,.85)}
+    body{padding-bottom:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="util">
+  <div class="util-inner">
+    <span>Étude de Maître Eric Verrecchia · Mandataire judiciaire</span>
+    <div class="right">
+      <a href="#contact">📍 Salon-de-Provence &amp; Aix-en-Provence</a>
+      <a href="#glossaire">Glossaire</a>
+      <a href="#espace">Espace client</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <b>Eric Verrecchia</b>
+      <span>Mandataire judiciaire</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#missions">Missions</a>
+      <a href="#etude">L'étude</a>
+      <a href="#zones">Zone d'intervention</a>
+      <a href="#espace">Espace client</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Salon-de-Provence · Aix-en-Provence</p>
+      <h1>Accompagner les entreprises en difficulté, <em>avec rigueur et humanité</em>.</h1>
+      <p class="lead">L'étude de Maître Eric Verrecchia met ses compétences de droit et d'économie au service du traitement des difficultés des entreprises — des plus grandes aux TPE — ainsi que de leurs dirigeants, salariés et créanciers.</p>
+      <div class="hero-actions">
+        <a href="#missions" class="btn btn-gold">Découvrir nos missions →</a>
+        <a href="#contact" class="btn btn-ghost">📞 Nous contacter</a>
+      </div>
+      <p class="hero-note">⚖️ <b>Profession réglementée</b> · honneur, dignité, indépendance et probité</p>
+    </div>
+
+    <div class="hero-card">
+      <h3>Vous êtes concerné ?</h3>
+      <p>Accédez directement à l'espace qui vous correspond.</p>
+      <div class="access-list">
+        <a href="#espace" class="access-item">
+          <span class="ic">🏢</span>
+          <span class="t"><b>Dirigeant</b><span>Entreprise en difficulté</span></span>
+          <span class="arr">→</span>
+        </a>
+        <a href="#espace" class="access-item">
+          <span class="ic">👥</span>
+          <span class="t"><b>Salarié</b><span>D'une entreprise concernée</span></span>
+          <span class="arr">→</span>
+        </a>
+        <a href="#espace" class="access-item">
+          <span class="ic">📄</span>
+          <span class="t"><b>Créancier</b><span>Déclaration &amp; suivi de créance</span></span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num">2 études</div><div class="cap">Salon-de-Provence · Aix</div></div>
+    <div><div class="num">Profession réglementée</div><div class="cap">Mandataire de justice</div></div>
+    <div><div class="num">Entreprises &amp; particuliers</div><div class="cap">Grands groupes · PME · TPE</div></div>
+    <div><div class="num">Confidentialité</div><div class="cap">Indépendance &amp; probité</div></div>
+  </div>
+</div>
+
+<!-- MISSIONS -->
+<section id="missions">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos domaines d'intervention</p>
+      <h2>Les missions de l'étude</h2>
+      <p>Mandataires de justice, professionnels du droit et de l'économie, nous intervenons dans le traitement amiable et judiciaire des difficultés des entreprises, ainsi que dans des missions civiles de séquestre, d'administration provisoire et de liquidation amiable.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h3>Procédure de sauvegarde</h3>
+        <p class="desc">Mesure préventive ouverte à une entreprise qui, sans être en cessation des paiements, rencontre des difficultés qu'elle ne peut surmonter seule. L'objectif : réorganiser pour permettre la poursuite de l'activité.</p>
+        <div class="tagline">Prévention</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🔄</div>
+        <h3>Redressement judiciaire</h3>
+        <p class="desc">Ouvert à l'entreprise en cessation des paiements dont le redressement est encore possible. Période d'observation, bilan économique et social, puis plan de continuation ou de cession.</p>
+        <div class="tagline">Continuité d'activité</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">⚖️</div>
+        <h3>Liquidation judiciaire</h3>
+        <p class="desc">Lorsque le redressement est manifestement impossible. Réalisation des actifs et apurement du passif, dans le respect des droits des salariés et des créanciers. Procédure simplifiée pour les plus petites structures.</p>
+        <div class="tagline">Réalisation des actifs</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🤝</div>
+        <h3>Mandat ad hoc &amp; conciliation</h3>
+        <p class="desc">Cadre amiable et confidentiel pour négocier avec les principaux créanciers et partenaires, en amont des difficultés, sous l'égide d'un mandataire désigné par le président du tribunal.</p>
+        <div class="tagline">Traitement amiable</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">🏛️</div>
+        <h3>Administrateur provisoire &amp; séquestre</h3>
+        <p class="desc">Administration provisoire de sociétés, de fonds de commerce, d'ensembles de copropriété ou d'indivisions successorales, et missions de séquestre confiées par la justice.</p>
+        <div class="tagline">Missions civiles</div>
+      </div>
+
+      <div class="card">
+        <div class="ic">📋</div>
+        <h3>Représentant des créanciers &amp; liquidateur amiable</h3>
+        <p class="desc">Défense de l'intérêt collectif des créanciers, vérification des créances, et conduite de liquidations amiables. Conseil et expertise auprès des entreprises et des juridictions.</p>
+        <div class="tagline">Conseil &amp; expertise</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- L'ÉTUDE -->
+<section id="etude" class="about">
+  <div class="wrap about-grid">
+    <div class="ph about-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Portrait de Maître Verrecchia / façade de l'étude</span>
+    </div>
+    <div>
+      <p class="eyebrow">L'étude</p>
+      <h2>Une étude au service du réemploi des ressources humaines et économiques</h2>
+      <p>Les mandataires de justice mettent leurs compétences au service du traitement des difficultés de toutes les entreprises, les plus grandes comme les PME ou les TPE. Ils exercent leurs missions avec loyauté et humanisme, et contribuent au réemploi rapide des ressources humaines et économiques dont ils ont la charge.</p>
+      <p>Au-delà des procédures collectives, l'étude exerce des missions utiles aux entreprises : conseil, administrateur provisoire de sociétés, de fonds de commerce, d'ensembles de copropriété, d'indivisions successorales, séquestre et liquidation amiable.</p>
+      <div class="oath">
+        <p>« Je jure d'exercer mes fonctions avec honneur, dignité, indépendance et probité, et de me conformer en toute occasion aux lois et règlements de ma profession. »</p>
+        <span>Serment des administrateurs et mandataires judiciaires</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE D'INTERVENTION -->
+<section id="zones">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos implantations</p>
+      <h2>Zone d'intervention</h2>
+      <p>Deux études dans les Bouches-du-Rhône pour un accueil de proximité, à Salon-de-Provence et à Aix-en-Provence.</p>
+    </div>
+    <div class="office-grid">
+
+      <div class="office">
+        <span class="badge">Étude principale</span>
+        <h3>Salon-de-Provence</h3>
+        <p class="addr">214 Boulevard Georges Clemenceau<br>13300 Salon-de-Provence</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=214+Boulevard+Georges+Clemenceau+13300+Salon-de-Provence" target="_blank" rel="noopener">Voir sur Google Maps →</a>
+      </div>
+
+      <div class="office">
+        <span class="badge">Étude secondaire</span>
+        <h3>Aix-en-Provence</h3>
+        <p class="addr">47 Bis A Boulevard Carnot — Bâtiment D<br>Résidence La Nativité — 13100 Aix-en-Provence</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=47+Bis+A+Boulevard+Carnot+13100+Aix-en-Provence" target="_blank" rel="noopener">Voir sur Google Maps →</a>
+      </div>
+
+    </div>
+    <p class="zone-note">L'étude intervient principalement dans le ressort des juridictions des Bouches-du-Rhône et de la région Provence-Alpes-Côte d'Azur.</p>
+  </div>
+</section>
+
+<!-- ESPACE CLIENT / CRÉANCIERS DÉBITEURS -->
+<section id="espace">
+  <div class="wrap portal-wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Accès dédié</p>
+      <h2>Créanciers, dirigeants, salariés</h2>
+      <p>Chaque partie prenante d'une procédure dispose d'un accès et d'informations spécifiques, mis à jour régulièrement. Munissez-vous de l'identifiant et du mot de passe transmis par l'étude.</p>
+    </div>
+
+    <div class="portal-grid">
+      <div class="portal">
+        <div class="ic">🏢</div>
+        <h3>Espace dirigeant</h3>
+        <p>Vous dirigez une entreprise en difficulté : retrouvez les pièces de votre dossier, les échéances et le suivi de votre procédure.</p>
+        <a href="#contact" class="btn btn-gold">Accéder / demander un accès</a>
+      </div>
+      <div class="portal">
+        <div class="ic">👥</div>
+        <h3>Espace salarié</h3>
+        <p>Salarié d'une entreprise concernée : informations sur vos droits, le relevé de créances salariales et l'avancement du dossier.</p>
+        <a href="#contact" class="btn btn-gold">Accéder / demander un accès</a>
+      </div>
+      <div class="portal">
+        <div class="ic">📄</div>
+        <h3>Espace créancier</h3>
+        <p>Déclarez votre créance, consultez l'état de la procédure et accédez à la recherche de mandats et d'actifs en ligne.</p>
+        <a href="#contact" class="btn btn-gold">Accéder / déclarer une créance</a>
+      </div>
+    </div>
+
+    <div class="login-strip">
+      <div class="lt">
+        <b>Vous disposez déjà d'un identifiant ?</b>
+        <span>Connectez-vous à votre espace sécurisé pour accéder aux informations de votre dossier.</span>
+      </div>
+      <a href="#contact" class="btn btn-ghost" onclick="alert('Maquette de démonstration — ici se branche l\'espace sécurisé existant (Gemarcur / portail mandataire).');return false;">Se connecter →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous joindre</p>
+      <h2>Contacter l'étude</h2>
+      <p>Une question sur une procédure, une créance ou un dossier en cours ? L'étude vous répond.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Coordonnées</h3>
+          <div class="info-row">
+            <span class="k">📍</span>
+            <span class="v"><b>Salon-de-Provence — étude principale</b>214 Boulevard Georges Clemenceau, 13300 Salon-de-Provence</span>
+          </div>
+          <div class="info-row">
+            <span class="k">📍</span>
+            <span class="v"><b>Aix-en-Provence — étude secondaire</b>47 Bis A Boulevard Carnot, Bâtiment D, Résidence La Nativité, 13100 Aix-en-Provence</span>
+          </div>
+          <div class="info-row">
+            <span class="k">📞</span>
+            <span class="v"><b>Téléphone</b><a href="#contact" title="numéro à fournir">À fournir par l'étude</a></span>
+          </div>
+          <div class="info-row">
+            <span class="k">✉️</span>
+            <span class="v"><b>Email</b><a href="#contact" title="email à fournir">À fournir par l'étude</a></span>
+          </div>
+          <div class="info-row">
+            <span class="k">🕘</span>
+            <span class="v"><b>Horaires</b>Du lundi au vendredi — horaires à confirmer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Formulaire de contact</h3>
+        <p class="sub">Réponse dans les meilleurs délais. Pour toute déclaration de créance, précisez le nom du dossier concerné.</p>
+        <div class="demo-banner">ℹ️ Maquette de démonstration — ce formulaire est factice et n'envoie aucun message. Il sera connecté à la messagerie de l'étude lors de la mise en ligne.</div>
+        <form onsubmit="alert('Maquette de démonstration — le formulaire n\'est pas actif. Il sera relié à la boîte de réception de l\'étude.');return false;">
+          <div class="form-row">
+            <div class="field">
+              <label for="nom">Nom &amp; prénom</label>
+              <input type="text" id="nom" placeholder="Votre nom">
+            </div>
+            <div class="field">
+              <label for="qualite">Vous êtes</label>
+              <select id="qualite">
+                <option>Dirigeant</option>
+                <option>Salarié</option>
+                <option>Créancier</option>
+                <option>Avocat / partenaire</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="vous@exemple.fr">
+            </div>
+            <div class="field">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" placeholder="06 00 00 00 00">
+            </div>
+          </div>
+          <div class="field">
+            <label for="dossier">Dossier concerné (facultatif)</label>
+            <input type="text" id="dossier" placeholder="Nom de l'entreprise / référence du mandat">
+          </div>
+          <div class="field">
+            <label for="msg">Votre message</label>
+            <textarea id="msg" placeholder="Décrivez votre demande..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Envoyer ma demande</button>
+          <p class="form-note">Les informations transmises sont traitées de manière confidentielle, dans le respect du secret professionnel et du RGPD.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b>Eric Verrecchia</b></div>
+        <p class="fp">Étude de mandataire judiciaire à Salon-de-Provence et Aix-en-Provence.<br>Traitement des difficultés des entreprises — sauvegarde, redressement, liquidation, mandat ad hoc et conciliation.</p>
+      </div>
+      <div>
+        <h4>Missions</h4>
+        <a href="#missions">Procédure de sauvegarde</a>
+        <a href="#missions">Redressement judiciaire</a>
+        <a href="#missions">Liquidation judiciaire</a>
+        <a href="#missions">Mandat ad hoc &amp; conciliation</a>
+        <a href="#missions">Administration provisoire &amp; séquestre</a>
+      </div>
+      <div>
+        <h4>L'étude</h4>
+        <a href="#etude">Présentation de l'étude</a>
+        <a href="#zones">Zone d'intervention</a>
+        <a href="#espace">Espace client</a>
+        <a href="#glossaire">Glossaire</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Étude Eric Verrecchia · Mandataire judiciaire · Salon-de-Provence &amp; Aix-en-Provence</span>
+      <span><a href="#contact">Mentions légales</a> · <a href="#contact">Données personnelles (RGPD)</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile contact -->
+<div class="float-cta">
+  <a href="#contact" class="btn btn-primary">Contacter l'étude →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // ferme le menu mobile après clic sur une ancre
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){ document.querySelector('.nav-links').classList.remove('open'); });
+  });
+</script>
+
+<!-- maquette de prospection Atelier Web — proposition de refonte, non officielle -->
+</body>
+</html>

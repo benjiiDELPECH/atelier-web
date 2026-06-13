@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opticent — Opticien &amp; Acousticien à Champel, Genève</title>
+<meta name="description" content="Opticent, votre opticien-acousticien à Champel, Genève, depuis 1990. Examen de vue, lunettes sur-mesure, lentilles, bilan auditif et appareils auditifs invisibles. Prenez rendez-vous en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1f5f8b;          /* bleu optique */
+    --blue-deep:#15425f;
+    --teal:#2c9aa0;          /* accent audition */
+    --sky:#dcebf3;
+    --cream:#f7fafc;
+    --ink:#172b36;
+    --ink-soft:#5b6e78;
+    --gold:#d8a44b;
+    --shadow:0 18px 50px -22px rgba(23,43,54,.35);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--blue);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;letter-spacing:.02em;
+    padding:15px 30px;border-radius:999px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Manrope',sans-serif;font-size:1rem;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue-deep),var(--blue));
+    color:#fff;box-shadow:0 14px 30px -12px rgba(31,95,139,.85);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(31,95,139,.95)}
+  .btn-teal{background:linear-gradient(135deg,var(--teal),#3bb6bd);color:#fff;box-shadow:0 14px 30px -12px rgba(44,154,160,.8)}
+  .btn-teal:hover{transform:translateY(-2px)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--sky)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,250,252,.88);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(31,95,139,.16);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1120px;margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.05}
+  .brand b{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--blue-deep)}
+  .brand span{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);transition:color .15s;font-weight:500}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{padding:11px 22px;font-size:.9rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:74px 0 84px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(780px 420px at 80% 16%,rgba(44,154,160,.22),transparent 60%),
+      radial-gradient(620px 380px at 6% 90%,rgba(31,95,139,.16),transparent 60%),
+      linear-gradient(180deg,#f9fcfd,#e7f1f7);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.05;margin:8px 0 18px;color:var(--ink)}
+  .hero h1 em{font-style:italic;color:var(--blue)}
+  .hero p.lead{font-size:1.14rem;color:var(--ink-soft);max-width:31em;margin-bottom:28px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:var(--ink-soft);margin-top:20px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:var(--ink)}
+
+  /* photo placeholders */
+  .ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow);
+  }
+  .ph .tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(23,43,54,.6);color:#fff;
+    font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);
+  }
+  .ph .lbl{padding:0 0 18px;font-size:1.05rem;opacity:.94;font-style:italic;font-family:'Fraunces',serif}
+  .ph-1{background:linear-gradient(150deg,#3a7fa8,#1f5f8b 55%,#15425f)}
+  .ph-2{background:linear-gradient(150deg,#bfe0e3,#2c9aa0)}
+  .ph-3{background:linear-gradient(150deg,#a9c9db,#3a7fa8)}
+  .ph-4{background:linear-gradient(150deg,#cfe3ee,#5b9bc4)}
+  .ph-5{background:linear-gradient(150deg,#bfdfe1,#3bb6bd)}
+  .hero-photo{height:470px}
+  .hero-photo .lbl{font-size:1.15rem}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:var(--ink);color:#dcebf3;padding:26px 0}
+  .trust-inner{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;text-align:center}
+  .trust .num{font-family:'Fraunces',serif;font-size:2.1rem;color:#fff;line-height:1}
+  .trust .cap{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#9fc2d4;margin-top:6px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:80px 0}
+  .sec-head{text-align:center;max-width:42em;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--ink);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* services */
+  #prestations{background:linear-gradient(180deg,#fff,#eef5f9)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid rgba(31,95,139,.14);box-shadow:0 12px 34px -24px rgba(23,43,54,.4);
+    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card .ic{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--sky),#fff);font-size:1.5rem;margin-bottom:16px;
+    border:1px solid rgba(31,95,139,.22);
+  }
+  .card.audio .ic{background:linear-gradient(135deg,#d4f0f1,#fff);border-color:rgba(44,154,160,.3)}
+  .card h3{font-size:1.45rem;color:var(--ink);margin-bottom:6px}
+  .card p.desc{font-size:.94rem;color:var(--ink-soft);margin-bottom:18px;flex:1}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed rgba(31,95,139,.35);padding-top:10px;margin-top:auto}
+  .price-row .from{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .price-row .val{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--blue)}
+  .card .mini-cta{font-size:.86rem;font-weight:600;color:var(--blue);margin-top:14px}
+  .card.audio .mini-cta,.card.audio .price-row .val{color:var(--teal)}
+  .tarif-note{
+    text-align:center;margin-top:34px;font-size:.86rem;color:var(--ink-soft);
+    background:#fff;border:1px dashed var(--blue);border-radius:12px;
+    padding:14px 20px;max-width:48em;margin-left:auto;margin-right:auto;
+  }
+
+  /* dual CTA */
+  .dual{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  .dual .pane{
+    border-radius:var(--radius);padding:38px 32px;color:#fff;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .dual .pane.vue{background:linear-gradient(135deg,var(--blue-deep),var(--blue))}
+  .dual .pane.audi{background:linear-gradient(135deg,#1f7a80,var(--teal))}
+  .dual .pane h3{font-size:1.7rem;margin-bottom:8px}
+  .dual .pane p{opacity:.94;margin-bottom:22px;font-size:1rem}
+  .dual .pane .btn-ghost{background:#fff}
+  .dual .pane.vue .btn-ghost{color:var(--blue-deep)}
+  .dual .pane.audi .btn-ghost{color:#1f7a80}
+
+  /* offers */
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .offer{
+    background:#fff;border-radius:var(--radius);padding:28px;text-align:center;
+    border:1px solid rgba(31,95,139,.14);box-shadow:0 12px 34px -26px rgba(23,43,54,.4);position:relative;
+  }
+  .offer .flag{
+    display:inline-block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+    color:var(--blue);background:var(--sky);padding:5px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .offer .big{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--ink);margin-bottom:6px;line-height:1.1}
+  .offer p{font-size:.92rem;color:var(--ink-soft)}
+
+  /* brands */
+  .brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .brand-logo{
+    background:#fff;border:1px solid rgba(31,95,139,.14);border-radius:14px;height:96px;
+    display:flex;align-items:center;justify-content:center;color:var(--ink-soft);
+    font-weight:600;letter-spacing:.05em;font-size:1.05rem;position:relative;
+  }
+  .brand-logo .tag{position:absolute;top:8px;left:8px;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:#9fb3bf}
+
+  /* reviews */
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:0 12px 34px -26px rgba(23,43,54,.4);border:1px solid rgba(31,95,139,.12)}
+  .stars{color:var(--gold);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
+  .review p{font-style:italic;color:var(--ink);font-family:'Fraunces',serif;font-size:1.12rem;line-height:1.5;margin-bottom:14px}
+  .review .who{font-size:.86rem;color:var(--ink-soft);font-weight:600}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:16px}
+  .gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gallery .ph:nth-child(4){grid-column:span 2}
+
+  /* infos / contact */
+  #infos{background:#fff}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info-card{background:var(--cream);border-radius:var(--radius);padding:34px;border:1px solid rgba(31,95,139,.16)}
+  .info-card h3{font-size:1.6rem;margin-bottom:18px;color:var(--ink)}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(31,95,139,.14);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--ink);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--blue);font-weight:600}
+  .hours-line{display:flex;justify-content:space-between;font-size:.96rem;padding:7px 0;border-bottom:1px dotted rgba(31,95,139,.22)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--ink-soft)}
+  .hours-line .h{color:var(--ink);font-weight:600}
+  .hours-flag{font-size:.82rem;color:var(--ink-soft);margin-top:12px;background:#fff;border:1px dashed var(--blue);border-radius:10px;padding:10px 14px}
+  .map-ph{height:100%;min-height:320px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#9fc2d4;padding:54px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer h4{color:#dcebf3;font-family:'Manrope',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#9fc2d4;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7e9aab}
+  .socials{display:flex;gap:12px;margin-top:14px}
+  .socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:1.05rem;padding:0}
+  .socials a:hover{background:var(--blue);color:#fff}
+
+  /* floating mobile reserve */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid,.info-grid,.dual{grid-template-columns:1fr}
+    .hero-photo{height:330px;order:-1}
+    .cards,.reviews-grid,.offers{grid-template-columns:1fr 1fr}
+    .brand-grid{grid-template-columns:repeat(3,1fr)}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.reviews-grid,.offers,.foot-grid{grid-template-columns:1fr}
+    .brand-grid{grid-template-columns:1fr 1fr}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+    .gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 1}
+    .gallery .ph:nth-child(4){grid-column:span 2}
+    .nav-cta{display:none}
+    .float-cta{
+      display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;
+    }
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(31,95,139,.95)}
+    body{padding-bottom:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <b>Opticent</b>
+      <span>Opticien · Acousticien · Champel</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#prestations">Prestations</a>
+      <a href="#offres">Nos offres</a>
+      <a href="#marques">Marques</a>
+      <a href="#magasin">Le magasin</a>
+      <a href="#infos">Horaires &amp; accès</a>
+      <a href="#reserver" class="btn btn-primary nav-cta">Prendre RDV</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">35 ans d'excellence à Genève · depuis 1990</p>
+      <h1>L'excellence <em>optique &amp; auditive</em>, au cœur de Genève.</h1>
+      <p class="lead">Opticien-acousticien indépendant à Champel. Expertise, conseil personnalisé et technologies de pointe pour votre confort visuel et auditif — un seul lieu pour mieux voir et mieux entendre.</p>
+      <div class="hero-actions">
+        <a href="#reserver" class="btn btn-primary">Prendre rendez-vous en ligne →</a>
+        <a href="tel:+41223473610" class="btn btn-ghost">📞 022 347 36 10</a>
+      </div>
+      <p class="hero-note">✦ <b>Avenue de Champel 8C</b> · 1206 Genève · examen de vue &amp; bilan auditif sur rendez-vous</p>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Façade / intérieur de la boutique Opticent</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div><div class="num">35+ ans</div><div class="cap">d'expertise · depuis 1990</div></div>
+    <div><div class="num">10 000+</div><div class="cap">clients accompagnés</div></div>
+    <div><div class="num">100 %</div><div class="cap">qualité suisse</div></div>
+    <div><div class="num">Champel</div><div class="cap">Avenue de Champel 8C</div></div>
+  </div>
+</div>
+
+<!-- PRESTATIONS -->
+<section id="prestations">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Optique &amp; audition</p>
+      <h2>Nos prestations</h2>
+      <p>De l'examen de vue à l'appareillage auditif, un accompagnement complet et personnalisé sous le même toit.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">👁️</div>
+        <h3>Examen de vue</h3>
+        <p class="desc">Bilan visuel complet réalisé en magasin pour déterminer la correction la mieux adaptée à votre confort au quotidien.</p>
+        <div class="price-row"><span class="from">Test permis de conduire</span><span class="val">dès CHF 20.–</span></div>
+        <a href="#reserver" class="mini-cta">Prendre RDV vue →</a>
+      </div>
+
+      <div class="card">
+        <div class="ic">🕶️</div>
+        <h3>Lunettes &amp; montures</h3>
+        <p class="desc">Lunettes sur-mesure et verres progressifs dernière génération. Large choix de montures sélectionnées pour le style et la qualité.</p>
+        <div class="price-row"><span class="from">conseil</span><span class="val">offert</span></div>
+        <a href="#reserver" class="mini-cta">Essayer en magasin →</a>
+      </div>
+
+      <div class="card">
+        <div class="ic">⭕</div>
+        <h3>Lentilles de contact</h3>
+        <p class="desc">Adaptation de lentilles de contact adaptées à votre vue et à votre rythme de vie, avec suivi personnalisé.</p>
+        <div class="price-row"><span class="from">sur</span><span class="val">rendez-vous</span></div>
+        <a href="#reserver" class="mini-cta">Prendre RDV →</a>
+      </div>
+
+      <div class="card audio">
+        <div class="ic">👂</div>
+        <h3>Bilan auditif</h3>
+        <p class="desc">Test auditif précis pour évaluer votre audition et vous orienter vers la meilleure solution, en toute transparence.</p>
+        <div class="price-row"><span class="from">bilan</span><span class="val">sur RDV</span></div>
+        <a href="#reserver" class="mini-cta">Tester mon audition →</a>
+      </div>
+
+      <div class="card audio">
+        <div class="ic">🎧</div>
+        <h3>Appareils auditifs</h3>
+        <p class="desc">Appareils auditifs invisibles sur-mesure des plus grandes marques, pour retrouver le plaisir d'entendre, avec essai et réglage.</p>
+        <div class="price-row"><span class="from">essai &amp; réglage</span><span class="val">inclus</span></div>
+        <a href="#reserver" class="mini-cta">Demander un essai →</a>
+      </div>
+
+      <div class="card audio">
+        <div class="ic">🔧</div>
+        <h3>Suivi &amp; entretien</h3>
+        <p class="desc">Réglages, entretien et suivi personnalisé de vos lunettes et de vos appareils auditifs, dans la durée.</p>
+        <div class="price-row"><span class="from">suivi</span><span class="val">personnalisé</span></div>
+        <a href="#reserver" class="mini-cta">Nous contacter →</a>
+      </div>
+
+    </div>
+    <p class="tarif-note">💡 <b>Tarifs indicatifs — à confirmer</b> avec le magasin. Les prix exacts (verres, montures, appareils) seront intégrés à la mise en ligne ; chaque prise en charge débute par un conseil personnalisé.</p>
+  </div>
+</section>
+
+<!-- DOUBLE CTA RDV -->
+<section id="reserver">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Réservation en ligne</p>
+      <h2>Prenez rendez-vous en 30 secondes</h2>
+      <p>Choisissez votre rendez-vous vue ou audition et votre créneau — confirmation immédiate, 24h/24, même quand le magasin est fermé.</p>
+    </div>
+    <div class="dual">
+      <div class="pane vue">
+        <h3>👁️ Rendez-vous vue</h3>
+        <p>Examen de vue, lunettes, lentilles. Réservez votre créneau avec un opticien.</p>
+        <a href="#reserver" class="btn btn-ghost" onclick="resa(event)">Prendre RDV vue →</a>
+      </div>
+      <div class="pane audi">
+        <h3>👂 Rendez-vous audition</h3>
+        <p>Bilan auditif, essai et réglage d'appareils. Réservez avec un acousticien.</p>
+        <a href="#reserver" class="btn btn-ghost" onclick="resa(event)">Prendre RDV audition →</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:22px;font-size:.9rem;color:var(--ink-soft)">ou par téléphone au <a href="tel:+41223473610" style="color:var(--blue);font-weight:600">022 347 36 10</a></p>
+  </div>
+</section>
+
+<!-- OFFRES -->
+<section id="offres" style="background:linear-gradient(180deg,#eef5f9,#fff)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Offres spéciales</p>
+      <h2>Profitez de nos promotions</h2>
+      <p>Des avantages concrets sur l'optique et l'audition.</p>
+    </div>
+    <div class="offers">
+      <div class="offer">
+        <span class="flag">Populaire</span>
+        <div class="big">2ème paire de verres offerte</div>
+        <p>Sur une sélection de montures.</p>
+      </div>
+      <div class="offer">
+        <span class="flag" style="color:var(--teal);background:#d4f0f1">Exclusif</span>
+        <div class="big">– 500 CHF</div>
+        <p>Sur votre deuxième appareil auditif.</p>
+      </div>
+      <div class="offer">
+        <span class="flag">Nouveau</span>
+        <div class="big">CHF 20.–</div>
+        <p>Test de vue permis de conduire.</p>
+      </div>
+    </div>
+    <p class="tarif-note">💡 Offres reprises du site actuel — <b>conditions et validité à confirmer</b> avec le magasin avant mise en ligne.</p>
+  </div>
+</section>
+
+<!-- MARQUES -->
+<section id="marques">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Marques &amp; partenaires</p>
+      <h2>Nos références</h2>
+      <p>Une sélection des grandes marques de l'optique et de l'audition que nous travaillons.</p>
+    </div>
+    <div class="brand-grid">
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Chroma</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Morel</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Optiswiss</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Signia</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Phonak</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Oticon</div>
+      <div class="brand-logo"><span class="tag">logo à fournir</span>Widex</div>
+      <div class="brand-logo" style="background:linear-gradient(135deg,var(--sky),#fff);color:var(--blue)">+ autres marques</div>
+    </div>
+    <p class="tarif-note">💡 Logos officiels <b>à fournir en haute définition</b> — placeholders en attendant les fichiers fournisseurs.</p>
+  </div>
+</section>
+
+<!-- LE MAGASIN -->
+<section id="magasin" style="background:linear-gradient(180deg,#fff,#eef5f9)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Le magasin</p>
+      <h2>Découvrez notre boutique à Champel</h2>
+      <p>Un espace dédié à votre confort visuel et auditif, au cœur de Genève.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph ph-1"><span class="tag">photo à fournir</span><span class="lbl">Vue d'ensemble du magasin</span></div>
+      <div class="ph ph-3"><span class="tag">photo à fournir</span><span class="lbl">Espace montures</span></div>
+      <div class="ph ph-2"><span class="tag">photo à fournir</span><span class="lbl">Cabine examen de vue</span></div>
+      <div class="ph ph-5"><span class="tag">photo à fournir</span><span class="lbl">Espace audition</span></div>
+      <div class="ph ph-4"><span class="tag">photo à fournir</span><span class="lbl">Accueil &amp; conseil</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Témoignages</p>
+      <h2>Ce que disent nos clients</h2>
+      <p>L'expérience Opticent, vue par celles et ceux qui nous font confiance.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Emplacement à remplir — placez ici un véritable avis client vérifié. »</p>
+        <div class="who">— Avis à recueillir</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Emplacement à remplir — placez ici un véritable avis client vérifié. »</p>
+        <div class="who">— Avis à recueillir</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Emplacement à remplir — placez ici un véritable avis client vérifié. »</p>
+        <div class="who">— Avis à recueillir</div>
+      </div>
+    </div>
+    <p class="tarif-note">⚠️ <b>Bandeau à remplacer par de vrais avis</b> — le site actuel affiche un faux témoignage en « Lorem ipsum » signé « Jean Dupont ». À connecter aux vrais avis Google / Facebook avant mise en ligne.</p>
+  </div>
+</section>
+
+<!-- INFOS / CONTACT -->
+<section id="infos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Horaires &amp; accès</p>
+      <h2>Venir au magasin</h2>
+    </div>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Horaires</h3>
+        <div class="hours-line"><span class="d">Lundi</span><span class="h">À confirmer</span></div>
+        <div class="hours-line"><span class="d">Mardi</span><span class="h">9h00 – 17h00</span></div>
+        <div class="hours-line"><span class="d">Mercredi</span><span class="h">9h00 – 17h00</span></div>
+        <div class="hours-line"><span class="d">Jeudi</span><span class="h">9h00 – 17h00</span></div>
+        <div class="hours-line"><span class="d">Vendredi</span><span class="h">À confirmer</span></div>
+        <div class="hours-line"><span class="d">Samedi</span><span class="h">À confirmer</span></div>
+        <div class="hours-line"><span class="d">Dimanche</span><span class="h">Fermé</span></div>
+        <p class="hours-flag">💡 Seuls les horaires <b>mardi–jeudi 9h–17h</b> figurent sur le site actuel. Horaires complets à confirmer avec le magasin.</p>
+
+        <h3 style="margin-top:30px">Contact</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>Avenue de Champel 8C, 1206 Genève (Suisse)<br><a href="https://www.google.com/maps/search/?api=1&query=Avenue+de+Champel+8C+1206+Gen%C3%A8ve" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+41223473610">022 347 36 10</a></span></div>
+        <div class="info-row"><span class="k">✉️</span><span class="v"><b>E-mail</b><a href="mailto:info@opticent.ch">info@opticent.ch</a></span></div>
+        <div class="socials">
+          <a href="https://www.facebook.com/opticent/?locale=fr_FR" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=Avenue+de+Champel+8C+1206+Gen%C3%A8ve" target="_blank" rel="noopener" class="ph map-ph ph-4">
+        <span class="tag">plan / Google Maps</span>
+        <span class="lbl">Avenue de Champel 8C · Champel, Genève</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b style="font-size:1.5rem;font-family:'Fraunces',serif">Opticent</b></div>
+        <p class="fp" style="margin-top:12px">Votre expert vision et audition depuis plus de 35 ans, au cœur de Genève.<br>Opticien-acousticien à Champel.</p>
+      </div>
+      <div>
+        <h4>Prestations</h4>
+        <a href="#prestations">Examen de vue</a>
+        <a href="#prestations">Lunettes &amp; montures</a>
+        <a href="#prestations">Lentilles de contact</a>
+        <a href="#prestations">Bilan auditif</a>
+        <a href="#prestations">Appareils auditifs</a>
+      </div>
+      <div>
+        <h4>Le magasin</h4>
+        <a href="#offres">Nos offres</a>
+        <a href="#marques">Marques &amp; partenaires</a>
+        <a href="#infos">Horaires &amp; accès</a>
+        <a href="tel:+41223473610">022 347 36 10</a>
+        <a href="#reserver">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Opticent · Avenue de Champel 8C, 1206 Genève · info@opticent.ch</span>
+      <span>Opticien &amp; acousticien · sur rendez-vous</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile reserve button -->
+<div class="float-cta">
+  <a href="#reserver" class="btn btn-primary">Prendre rendez-vous →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  function resa(e){ e&&e.preventDefault();
+    alert("Maquette de démonstration — ici se branche un vrai module de prise de rendez-vous en ligne (vue / audition), disponible 24h/24.");
+  }
+</script>
+
+<!-- maquette de prospection, non officielle — Atelier Web -->
+</body>
+</html>

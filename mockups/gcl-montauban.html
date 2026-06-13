@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCL Montauban — David Barthe, expert en gestion &amp; expertise comptable</title>
+<meta name="description" content="Cabinet GCL Montauban — David Barthe, expert en gestion d'entreprise et expertise comptable. Accompagnement des dirigeants de TPE/PME : pilotage, rentabilité, trésorerie. 1er rendez-vous gratuit. Montauban (82).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0e2a47;          /* bleu profond */
+    --navy-2:#143a61;
+    --navy-soft:#42597a;
+    --gold:#c2a25a;          /* doré discret */
+    --gold-deep:#a9893f;
+    --teal:#1f7a6b;          /* vert conseil */
+    --paper:#f6f8fb;
+    --ink:#1a2530;
+    --ink-soft:#54627180;
+    --muted:#5a6876;
+    --line:#e2e8f1;
+    --shadow:0 20px 56px -28px rgba(14,42,71,.40);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);background:#fff;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;letter-spacing:.01em;font-size:1rem;
+    padding:14px 28px;border-radius:10px;cursor:pointer;border:none;
+    font-family:'Inter',sans-serif;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1a1406;
+    box-shadow:0 14px 30px -12px rgba(169,137,63,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(169,137,63,.85)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy-2)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.1)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:.02em}
+  .brand .txt{display:flex;flex-direction:column;line-height:1.1}
+  .brand .txt b{font-family:'Fraunces',serif;font-size:1.16rem;font-weight:600;color:var(--navy)}
+  .brand .txt span{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--muted);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.9rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+  .nav-links.open{display:flex}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:84px 0 92px;color:#fff;
+    background:radial-gradient(900px 480px at 82% 8%,rgba(194,162,90,.18),transparent 60%),
+      linear-gradient(160deg,#0e2a47 0%,#0c2540 55%,#0a1f37 100%)}
+  .hero::after{content:"";position:absolute;inset:0;opacity:.5;z-index:0;
+    background:radial-gradient(520px 320px at 12% 92%,rgba(31,122,107,.22),transparent 60%)}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{font-size:clamp(2.5rem,5vw,3.9rem);line-height:1.05;margin:8px 0 20px;color:#fff;font-weight:500}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{font-size:1.14rem;color:#c8d4e3;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.88rem;color:#aebfd3;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#fff}
+
+  /* photo placeholders */
+  .ph{position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow)}
+  .ph .tag{position:absolute;top:12px;left:12px;
+    background:rgba(14,42,71,.62);color:#fff;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px)}
+  .ph .lbl{padding:0 0 18px;font-size:1.02rem;opacity:.95;font-style:italic;font-family:'Fraunces',serif}
+  .ph-1{background:linear-gradient(150deg,#1c3f63,#0e2a47 60%,#091d33)}
+  .ph-2{background:linear-gradient(150deg,#234a6f,#143a61)}
+  .ph-3{background:linear-gradient(150deg,#2a5a52,#1f7a6b 70%,#175b4f)}
+  .ph-4{background:linear-gradient(150deg,#b6973f,#c2a25a)}
+  .hero-photo{height:440px}
+  .hero-photo .lbl{font-size:1.1rem}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{background:#fff;border-bottom:1px solid var(--line)}
+  .trust-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;text-align:center;padding:30px 0}
+  .trust .item{flex:1;min-width:150px}
+  .trust .num{font-family:'Fraunces',serif;font-size:2rem;color:var(--navy);line-height:1;font-weight:600}
+  .trust .cap{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:88px 0}
+  .sec-head{text-align:center;max-width:46em;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);margin-bottom:14px;font-weight:500}
+  .sec-head p{color:var(--muted);font-size:1.06rem}
+
+  /* services */
+  #services{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 12px 34px -26px rgba(14,42,71,.4);
+    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d3deec}
+  .card .ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eef3f9,#fff);font-size:1.45rem;margin-bottom:18px;border:1px solid var(--line)}
+  .card h3{font-size:1.4rem;color:var(--navy);margin-bottom:8px;font-weight:600}
+  .card p.desc{font-size:.95rem;color:var(--muted);flex:1}
+  .card .lk{margin-top:16px;font-size:.86rem;font-weight:600;color:var(--gold-deep);letter-spacing:.02em}
+
+  /* method / positioning */
+  #methode{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  #methode::before{content:"";position:absolute;inset:0;opacity:.6;
+    background:radial-gradient(640px 380px at 88% 12%,rgba(194,162,90,.16),transparent 60%),
+      radial-gradient(540px 320px at 6% 92%,rgba(31,122,107,.18),transparent 60%)}
+  #methode .wrap{position:relative;z-index:1}
+  #methode .sec-head h2{color:#fff}
+  #methode .sec-head p{color:#c8d4e3}
+  #methode .eyebrow{color:var(--gold)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+  .step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px}
+  .step .n{font-family:'Fraunces',serif;font-size:2.4rem;color:var(--gold);line-height:1;font-weight:600;margin-bottom:12px}
+  .step h3{font-size:1.32rem;color:#fff;margin-bottom:8px;font-weight:600}
+  .step p{color:#bccbdd;font-size:.95rem}
+  .promises{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;margin-top:46px;max-width:50em;margin-left:auto;margin-right:auto}
+  .promise{display:flex;gap:12px;align-items:flex-start;font-size:1rem;color:#dbe5f1}
+  .promise .chk{color:var(--gold);font-weight:700;flex:none}
+
+  /* about / David */
+  #cabinet{background:#fff}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
+  .about h2{font-size:clamp(2rem,4vw,2.7rem);margin-bottom:18px;color:var(--navy);font-weight:500}
+  .about p{color:var(--muted);margin-bottom:16px}
+  .about .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--navy);margin-top:10px;border-left:3px solid var(--gold);padding-left:18px}
+  .about-photo{height:440px}
+  .credline{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+  .credline .name{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--navy);font-weight:600}
+  .credline .role{font-size:.9rem;color:var(--muted)}
+
+  /* network strip */
+  #reseau{background:var(--paper)}
+  .net-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .net{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;transition:transform .18s,box-shadow .18s}
+  .net:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .net .ic{font-size:1.6rem;margin-bottom:10px}
+  .net h4{font-size:1rem;color:var(--navy);font-weight:600;font-family:'Inter',sans-serif;margin-bottom:4px}
+  .net p{font-size:.82rem;color:var(--muted);line-height:1.45}
+
+  /* testimonials */
+  #avis{background:#fff}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review{background:var(--paper);border-radius:var(--radius);padding:28px;border:1px solid var(--line)}
+  .stars{color:var(--gold);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
+  .review p{font-style:italic;color:var(--ink);font-family:'Fraunces',serif;font-size:1.12rem;line-height:1.55;margin-bottom:16px}
+  .review .who{font-size:.88rem;color:var(--muted);font-weight:600}
+  .verified-band{text-align:center;margin-top:30px;font-size:.86rem;color:var(--muted);
+    background:#fff;border:1px dashed var(--gold);border-radius:12px;padding:14px 20px;max-width:50em;margin-left:auto;margin-right:auto}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:24px;margin:0 24px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;
+    padding:62px 40px;text-align:center;box-shadow:var(--shadow)}
+  .cta-band::after{content:"";position:absolute;inset:0;opacity:.5;
+    background:radial-gradient(480px 280px at 85% 15%,rgba(194,162,90,.22),transparent 60%)}
+  .cta-band>*{position:relative;z-index:1}
+  .cta-band h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px;font-weight:500}
+  .cta-band p{opacity:.92;max-width:40em;margin:0 auto 26px;font-size:1.08rem;color:#d6e0ee}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* contact */
+  #contact{background:var(--paper)}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info-card{background:#fff;border-radius:var(--radius);padding:34px;border:1px solid var(--line)}
+  .info-card h3{font-size:1.55rem;margin-bottom:18px;color:var(--navy);font-weight:600}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--gold-deep);font-weight:600}
+  .map-ph{height:100%;min-height:340px}
+  .form-row{margin-bottom:16px}
+  .form-row label{display:block;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.02em}
+  .form-row input,.form-row textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+    font-family:'Inter',sans-serif;font-size:.96rem;background:var(--paper);color:var(--ink)}
+  .form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+  .form-note{font-size:.78rem;color:var(--muted);margin-top:8px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#a9bace;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand .mark{background:rgba(255,255,255,.08)}
+  footer .brand .txt b{color:#fff}
+  footer h4{color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#a9bace;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7;margin-top:14px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7d92a9}
+
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    .hero-grid,.about-grid,.info-grid{grid-template-columns:1fr}
+    .hero-photo{height:320px;order:-1}
+    .about-photo{height:320px}
+    .cards,.reviews-grid,.steps{grid-template-columns:1fr 1fr}
+    .net-grid{grid-template-columns:repeat(3,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:62px 0}
+    .cards,.reviews-grid,.steps,.foot-grid,.promises,.net-grid{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{margin:0 16px;padding:48px 24px}
+    .float-cta{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center}
+    .float-cta .btn{width:100%;justify-content:center;box-shadow:0 16px 34px -10px rgba(169,137,63,.85)}
+    body{padding-bottom:82px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">GCL</span>
+      <span class="txt"><b>GCL Montauban</b><span>David Barthe · Expert</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Expertises</a>
+      <a href="#methode">La méthode</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#avis">Témoignages</a>
+      <a href="#contact" class="btn btn-primary nav-cta">1er RDV gratuit</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Cabinet GCL · Montauban (82)</p>
+      <h1>Pilotez votre entreprise <em>en toute sérénité</em>.</h1>
+      <p class="lead">Expertise comptable et conseil en gestion pour les dirigeants de TPE et PME. Chaque mois, sachez où vous en êtes de votre chiffre d'affaires, de votre marge, de votre trésorerie — et concentrez-vous sur votre métier.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
+        <a href="tel:+33675531067" class="btn btn-outline-light">📞 06 75 53 10 67</a>
+      </div>
+      <p class="hero-note">✦ <b>1<sup>er</sup> rendez-vous gratuit</b> · diagnostic d'entreprise sans engagement · membre du réseau national GCL</p>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Portrait de David Barthe / cabinet de Montauban</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="item"><div class="num">TPE &amp; PME</div><div class="cap">artisans · commerçants · libéraux</div></div>
+    <div class="item"><div class="num">Suivi mensuel</div><div class="cap">vos indicateurs en temps réel</div></div>
+    <div class="item"><div class="num">Montauban</div><div class="cap">22 rue Georges Brassens · 82000</div></div>
+    <div class="item"><div class="num">Réseau GCL</div><div class="cap">expertise nationale, proximité locale</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nos expertises</p>
+      <h2>Un accompagnement complet pour votre entreprise</h2>
+      <p>Du pilotage de gestion à la comptabilité, du social au juridique : un interlocuteur unique à Montauban, adossé à l'expertise du réseau national GCL.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic">📊</div>
+        <h3>Conseil en gestion</h3>
+        <p class="desc">Le cœur du métier de David Barthe : analyse de la rentabilité de chaque devis et chantier, suivi des marges et des impayés, objectifs chiffrés et outils de pilotage opérationnels.</p>
+        <span class="lk">Notre spécialité →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">🧾</div>
+        <h3>Expertise comptable</h3>
+        <p class="desc">Tenue, révision et établissement de vos comptes annuels. Une comptabilité fiable et lisible, qui devient un véritable outil de décision au service de votre activité.</p>
+        <span class="lk">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">👥</div>
+        <h3>Social &amp; paie</h3>
+        <p class="desc">Gestion de la paie, déclarations sociales et accompagnement RH. On sécurise l'administratif pour que vous puissiez vous concentrer sur vos équipes.</p>
+        <span class="lk">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">⚖️</div>
+        <h3>Juridique &amp; fiscal</h3>
+        <p class="desc">Optimisation fiscale, choix de statut, obligations déclaratives et sécurisation juridique de vos décisions, en lien avec les experts du réseau GCL.</p>
+        <span class="lk">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">🚀</div>
+        <h3>Création d'entreprise</h3>
+        <p class="desc">De l'idée au lancement : choix de la structure, business plan, prévisionnel et premiers outils de gestion pour démarrer sur des bases solides.</p>
+        <span class="lk">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic">💡</div>
+        <h3>Consulting &amp; conformité</h3>
+        <p class="desc">Conseil sur-mesure, organisation des équipes et accompagnement à la mise en conformité (dont la facturation électronique Factur-X) pour anticiper les évolutions réglementaires.</p>
+        <span class="lk">En savoir plus →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MÉTHODE / POSITIONNEMENT -->
+<section id="methode">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">La méthode David Barthe</p>
+      <h2>Un accompagnement de proximité, en trois étapes</h2>
+      <p>Plus qu'un comptable : un partenaire de gestion qui s'inscrit dans la durée pour vous aider à développer votre activité et votre rentabilité.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Diagnostic</h3>
+        <p>On analyse votre entreprise en profondeur : activité, marges, trésorerie, organisation. On identifie ensemble vos vrais leviers de performance.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Plan d'action</h3>
+        <p>Un plan concret bâti sur-mesure, avec des objectifs clairs et chiffrés. Des outils de gestion opérationnels sont mis en place pour les suivre.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Pilotage mensuel</h3>
+        <p>Chaque mois, on fait le point sur les réalisations. Vous avez une vision précise de votre activité en temps réel et pilotez vos indicateurs clés.</p>
+      </div>
+    </div>
+
+    <div class="promises">
+      <div class="promise"><span class="chk">✓</span><span>Savoir, chaque jour, où vous en êtes de votre CA, vos marges et vos impayés</span></div>
+      <div class="promise"><span class="chk">✓</span><span>Anticiper les variations de trésorerie et sécuriser vos décisions d'investissement</span></div>
+      <div class="promise"><span class="chk">✓</span><span>Connaître la rentabilité réelle de chaque devis, chaque chantier, chaque vente</span></div>
+      <div class="promise"><span class="chk">✓</span><span>Mieux vous rémunérer et gagner en qualité de vie, l'esprit libéré de l'administratif</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LE CABINET / DAVID BARTHE -->
+<section id="cabinet" class="about">
+  <div class="wrap about-grid">
+    <div class="ph about-photo ph-2">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">David Barthe — portrait professionnel</span>
+    </div>
+    <div>
+      <p class="eyebrow">Le cabinet</p>
+      <h2>David Barthe, votre expert en gestion à Montauban</h2>
+      <p>« Mon métier est d'accompagner les patrons de TPE pour qu'ils sachent chaque jour où ils en sont de leur CA, leur marge, leur résultat, leurs impayés. Ensemble, nous fixons les objectifs à atteindre. »</p>
+      <p>Paysagiste, garagiste, menuisier, restaurateur, commerçant, profession libérale… David Barthe apporte à chaque dirigeant la sérénité qui lui permet de se concentrer sur son cœur de métier, grâce à une méthode éprouvée et des outils de gestion concrets.</p>
+      <p class="sig">« J'apporte à mes clients la sérénité qui leur permet de se focaliser sur leur métier. »</p>
+      <div class="credline">
+        <div>
+          <div class="name">David Barthe</div>
+          <div class="role">Expertise en gestion d'entreprise · Cabinet GCL Montauban</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSEAU GCL -->
+<section id="reseau">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Pourquoi GCL ?</p>
+      <h2>La force d'un réseau national, la proximité d'un cabinet local</h2>
+      <p>Votre interlocuteur à Montauban s'appuie sur l'ensemble des expertises du réseau GCL.</p>
+    </div>
+    <div class="net-grid">
+      <div class="net"><div class="ic">🧾</div><h4>Comptable</h4><p>Comptes fiables et lisibles</p></div>
+      <div class="net"><div class="ic">📊</div><h4>Gestion</h4><p>Pilotage &amp; rentabilité</p></div>
+      <div class="net"><div class="ic">⚖️</div><h4>Juridique &amp; fiscal</h4><p>Sécurisation &amp; optimisation</p></div>
+      <div class="net"><div class="ic">👥</div><h4>Social &amp; paie</h4><p>Paie &amp; déclarations</p></div>
+      <div class="net"><div class="ic">🔍</div><h4>Consulting</h4><p>Conseil sur-mesure</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ils nous font confiance</p>
+      <h2>La parole à nos clients</h2>
+      <p>Ce que disent les dirigeants accompagnés par le cabinet.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Le contact avec David Barthe est simple et direct, il apporte de très bons conseils pour la gestion de l'entreprise. Son analyse est juste, son expérience et ses outils permettent de planifier et d'ajuster des sujets importants, surtout lors de la création d'une nouvelle activité. »</p>
+        <div class="who">— Laurent Blazy, client du cabinet</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Emplacement réservé — un second témoignage client vérifié viendra ici une fois la collecte d'avis activée (Google, formulaire de témoignage du cabinet). »</p>
+        <div class="who">— Témoignage à recueillir</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Emplacement réservé — troisième témoignage client vérifié. Le formulaire « Rédiger un témoignage » du site actuel peut alimenter directement cette section. »</p>
+        <div class="who">— Témoignage à recueillir</div>
+      </div>
+    </div>
+    <p class="verified-band">ℹ️ Seul le premier témoignage est <b>réel</b> (Laurent Blazy, repris du site actuel). Les deux autres sont des emplacements réservés — <b>à remplacer par de vrais avis vérifiés</b> avant mise en ligne.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding-top:0">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:var(--gold)">1<sup>er</sup> rendez-vous offert</p>
+    <h2>Faisons le diagnostic de votre entreprise</h2>
+    <p>Un premier échange gratuit et sans engagement pour identifier vos leviers de performance. Vous repartez avec une vision claire — la décision vous appartient.</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
+      <a href="#contact" class="btn btn-outline-light">Accéder à l'espace client</a>
+    </div>
+    <p style="margin-top:18px;font-size:.85rem;opacity:.85">ou par téléphone au <a href="tel:+33675531067" style="color:#fff;text-decoration:underline">06 75 53 10 67</a></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous contacter</p>
+      <h2>Parlons de votre projet</h2>
+      <p>Pour un audit gratuit ou un simple renseignement, appelez-nous ou remplissez le formulaire.</p>
+    </div>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Demande de rendez-vous</h3>
+        <form onsubmit="alert('Maquette de démonstration — ici se branche l\'envoi du formulaire (e-mail, CRM ou prise de RDV en ligne).');return false;">
+          <div class="form-row"><label for="nom">Nom &amp; prénom</label><input id="nom" type="text" placeholder="Votre nom"></div>
+          <div class="form-row"><label for="ste">Société &amp; activité</label><input id="ste" type="text" placeholder="Nom de votre entreprise"></div>
+          <div class="form-row"><label for="tel">Téléphone</label><input id="tel" type="tel" placeholder="06 .. .. .. .."></div>
+          <div class="form-row"><label for="msg">Votre demande</label><textarea id="msg" rows="3" placeholder="En quelques mots, votre besoin…"></textarea></div>
+          <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Envoyer ma demande</button>
+          <p class="form-note">En soumettant ce formulaire, vous acceptez que vos données soient utilisées dans le cadre de votre demande de contact. Aucune donnée n'est transmise depuis cette maquette.</p>
+        </form>
+
+        <div style="margin-top:26px">
+          <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>22 Rue Georges Brassens, 82000 Montauban<br><a href="https://www.google.com/maps/search/?api=1&query=22+Rue+Georges+Brassens+82000+Montauban" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+          <div class="info-row"><span class="k">📞</span><span class="v"><b>David Barthe</b><a href="tel:+33675531067">06 75 53 10 67</a></span></div>
+          <div class="info-row"><span class="k">💼</span><span class="v"><b>Réseau</b>Cabinet membre du réseau national GCL</div>
+        </div>
+      </div>
+
+      <div class="ph map-ph ph-3">
+        <span class="tag">plan / Google Maps</span>
+        <span class="lbl">22 rue Georges Brassens · Montauban</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <span class="mark">GCL</span>
+          <span class="txt"><b>GCL Montauban</b><span style="color:#a9bace">David Barthe · Expert</span></span>
+        </div>
+        <p class="fp">Expertise comptable et conseil en gestion pour les dirigeants de TPE et PME à Montauban et dans le Tarn-et-Garonne. L'innovation dans l'accompagnement des entreprises.</p>
+      </div>
+      <div>
+        <h4>Expertises</h4>
+        <a href="#services">Conseil en gestion</a>
+        <a href="#services">Expertise comptable</a>
+        <a href="#services">Social &amp; paie</a>
+        <a href="#services">Juridique &amp; fiscal</a>
+        <a href="#services">Création d'entreprise</a>
+      </div>
+      <div>
+        <h4>Le cabinet</h4>
+        <a href="#methode">La méthode</a>
+        <a href="#cabinet">David Barthe</a>
+        <a href="#avis">Témoignages</a>
+        <a href="tel:+33675531067">06 75 53 10 67</a>
+        <a href="#contact">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Cabinet GCL Montauban — David Barthe · 22 rue Georges Brassens, 82000 Montauban</span>
+      <span>Membre du réseau national GCL · 1<sup>er</sup> rendez-vous gratuit</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating mobile CTA -->
+<div class="float-cta">
+  <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- maquette de prospection Atelier Web, non officielle -->
+</body>
+</html>
