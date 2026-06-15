@@ -200,6 +200,14 @@ PROSPECTS = [
        ville="Saint-Céré", cp="46400", adresse="182 avenue Gaston Monnerville", tel="05 65 38 09 53",
        telhref="+33565380953", email="decaux@notaires.fr",
        intro="À Saint-Céré, dans le Lot, l'Étude Decaux & Fargues vous conseille en droit immobilier, droit de la famille et transmission patrimoniale."),
+  dict(slug="brouard-fontaine-dieval-spt3c", etude="Office Notarial Brouard, Fontaine, Dieval & Associés", brand="Brouard, Fontaine & Dieval",
+       ville="Saint-Paul-Trois-Châteaux", cp="26131", adresse="5 Le Courreau", tel="04 75 04 72 71",
+       telhref="+33475047271", email="office.26062@26062.notaires.fr",
+       intro="Dans la Drôme provençale, l'Office Brouard, Fontaine, Dieval & Associés vous accompagne en droit immobilier, droit de la famille et transmission patrimoniale."),
+  dict(slug="1661-notaires-paris", etude="1661 Notaires", brand="1661 Notaires",
+       ville="Paris 3ᵉ", cp="75003", adresse="65 rue de Turbigo", tel="01 42 78 30 60",
+       telhref="+33142783060", email="notaires@1661.notaires.fr",
+       intro="Au cœur du Marais, l'Étude 1661 Notaires perpétue une longue tradition notariale et vous accompagne dans vos projets immobiliers, familiaux et patrimoniaux."),
 ]
 
 for p in PROSPECTS:
