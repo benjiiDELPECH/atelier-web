@@ -208,6 +208,14 @@ PROSPECTS = [
        ville="Paris 3ᵉ", cp="75003", adresse="65 rue de Turbigo", tel="01 42 78 30 60",
        telhref="+33142783060", email="notaires@1661.notaires.fr",
        intro="Au cœur du Marais, l'Étude 1661 Notaires perpétue une longue tradition notariale et vous accompagne dans vos projets immobiliers, familiaux et patrimoniaux."),
+  dict(slug="familia-chalonnes", etude="Familia Notaires Conseils", brand="Familia Notaires",
+       ville="Chalonnes-sur-Loire", cp="49290", adresse="8 allée des Treilles", tel="02 41 78 22 33",
+       telhref="+33241782233", email="familianotairesconseils@49016.notaires.fr",
+       intro="En Maine-et-Loire, l'Étude Familia Notaires Conseils vous accompagne en droit immobilier, droit de la famille et transmission patrimoniale."),
+  dict(slug="notaires-etang-berre", etude="Les Notaires de l'Étang — Roussel, Minacori & Girandola", brand="Les Notaires de l'Étang",
+       ville="Berre-l'Étang", cp="13130", adresse="Berre-l'Étang", tel="04 69 00 15 62",
+       telhref="+33469001562", email="contact@roussel-minacori.notaires.fr",
+       intro="À Berre-l'Étang, Les Notaires de l'Étang vous conseillent en droit immobilier, droit de la famille et droit rural.", skip_tel=True),
 ]
 
 for p in PROSPECTS:

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Familia Notaires Conseils — Notaire à Chalonnes-sur-Loire</title>
+<meta name="description" content="Familia Notaires Conseils, notaire à Chalonnes-sur-Loire. Droit immobilier, droit de la famille, droit des sociétés et gestion de patrimoine. Prise de rendez-vous, estimation et annonces en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2740;          /* bleu nuit */
+    --navy-deep:#0a1c2e;
+    --navy-soft:#1d3a59;
+    --slate:#4a5b6e;
+    --steel:#e3e9f0;
+    --paper:#f6f8fb;
+    --ink:#16222e;
+    --ink-soft:#56657a;
+    --amber:#c79a4b;         /* accent chaud, or */
+    --amber-deep:#a87d31;
+    --shadow:0 22px 60px -28px rgba(15,39,64,.45);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--amber-deep);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:8px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    cursor:pointer;border:none;font-family:'Inter',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--amber),var(--amber-deep));
+    color:#fff;box-shadow:0 14px 30px -14px rgba(168,125,49,.9);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -14px rgba(168,125,49,.95)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--steel)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-light{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.32)}
+  .btn-light:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(15,39,64,.1);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.05}
+  .brand b{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--navy)}
+  .brand span{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--amber-deep);font-weight:600}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--slate);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:11px 20px;font-size:.9rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;padding:18px 24px;gap:16px;border-bottom:1px solid var(--steel);box-shadow:var(--shadow)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:84px 0 92px;background:var(--navy-deep);color:#fff}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(820px 460px at 80% 12%,rgba(199,154,75,.22),transparent 60%),
+      radial-gradient(620px 420px at 4% 92%,rgba(29,58,89,.85),transparent 62%),
+      linear-gradient(160deg,#0f2740,#0a1c2e);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.06;margin:8px 0 18px;color:#fff}
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero p.lead{font-size:1.14rem;color:#c8d3e0;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#9fb1c6;margin-top:22px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:#fff}
+
+  /* photo placeholders */
+  .ph{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;box-shadow:var(--shadow);
+  }
+  .ph .tag{
+    position:absolute;top:12px;left:12px;
+    background:rgba(15,39,64,.62);color:#fff;
+    font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);
+  }
+  .ph .lbl{padding:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-style:italic;opacity:.94}
+  .ph-1{background:linear-gradient(150deg,#1d3a59,#0f2740 60%,#081827)}
+  .ph-2{background:linear-gradient(150deg,#26456a,#16304c)}
+  .ph-3{background:linear-gradient(150deg,#2c4a6e,#1a3450)}
+  .ph-4{background:linear-gradient(150deg,#33506f,#1d3a59)}
+  .hero-photo{height:480px}
+  .hero-photo .lbl{font-size:1.2rem}
+
+  /* ---------- PILIERS EN LIGNE ---------- */
+  .pillars{margin-top:-58px;position:relative;z-index:5}
+  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pillar{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid rgba(15,39,64,.08);box-shadow:var(--shadow);
+    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;
+  }
+  .pillar:hover{transform:translateY(-5px)}
+  .pillar .ic{
+    width:54px;height:54px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:var(--amber);font-size:1.5rem;margin-bottom:16px;
+  }
+  .pillar h3{font-size:1.4rem;color:var(--navy);margin-bottom:6px}
+  .pillar p{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px;flex:1}
+  .pillar .new{display:inline-flex;align-self:flex-start;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep);background:rgba(199,154,75,.12);padding:3px 9px;border-radius:999px;margin-bottom:12px;font-weight:600}
+  .pillar a.lk{font-size:.9rem;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+  .pillar a.lk:hover{color:var(--amber-deep)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:44em;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--navy);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* about étude */
+  #etude{background:var(--paper)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .about h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:18px;color:var(--navy)}
+  .about p{color:var(--ink-soft);margin-bottom:16px}
+  .about .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--navy);margin-top:8px}
+  .about-photo{height:430px}
+
+  /* domaines d'expertise */
+  .domains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .domain{
+    background:#fff;border-radius:var(--radius);padding:32px 28px;
+    border:1px solid rgba(15,39,64,.1);box-shadow:0 12px 34px -26px rgba(15,39,64,.5);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .domain:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(199,154,75,.4)}
+  .domain .ic{
+    width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--steel);color:var(--navy);font-size:1.4rem;margin-bottom:16px;
+  }
+  .domain h3{font-size:1.5rem;color:var(--navy);margin-bottom:10px}
+  .domain ul{list-style:none;margin-top:6px}
+  .domain li{font-size:.92rem;color:var(--ink-soft);padding:5px 0 5px 20px;position:relative}
+  .domain li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+
+  /* avis */
+  #avis{background:var(--navy-deep);color:#fff}
+  #avis .sec-head h2{color:#fff}
+  #avis .sec-head p{color:#a8b9cc}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review{background:rgba(255,255,255,.05);border-radius:var(--radius);padding:28px;border:1px solid rgba(255,255,255,.1)}
+  .stars{color:var(--amber);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
+  .review p{color:#dde6f0;font-size:1rem;line-height:1.6;margin-bottom:14px}
+  .review .who{font-size:.86rem;color:#9fb1c6;font-weight:600}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:22px;margin:0 24px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;
+    padding:60px 40px;text-align:center;box-shadow:var(--shadow)}
+  .cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 10%,rgba(199,154,75,.22),transparent 60%);pointer-events:none}
+  .cta-band > *{position:relative;z-index:1}
+  .cta-band h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px}
+  .cta-band p{opacity:.92;max-width:38em;margin:0 auto 26px;font-size:1.06rem}
+
+  /* tarifs */
+  #tarif{background:var(--paper)}
+  .tarif-card{max-width:46em;margin:0 auto;background:#fff;border-radius:var(--radius);padding:38px;border:1px solid rgba(15,39,64,.1);box-shadow:var(--shadow);text-align:center}
+  .tarif-card h3{font-size:1.7rem;color:var(--navy);margin-bottom:12px}
+  .tarif-card p{color:var(--ink-soft);margin-bottom:22px}
+  .note{
+    text-align:center;margin-top:30px;font-size:.86rem;color:var(--ink-soft);
+    background:#fff;border:1px dashed var(--amber);border-radius:12px;
+    padding:14px 20px;max-width:48em;margin-left:auto;margin-right:auto;
+  }
+
+  /* infos / contact */
+  #contact{background:#fff}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info-card{background:var(--paper);border-radius:var(--radius);padding:34px;border:1px solid rgba(15,39,64,.1)}
+  .info-card h3{font-size:1.7rem;margin-bottom:18px;color:var(--navy)}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(15,39,64,.1);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
+  .info-row .v{font-size:.98rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--amber-deep);font-weight:600}
+  .hours-line{display:flex;justify-content:space-between;font-size:.96rem;padding:7px 0;border-bottom:1px dotted rgba(15,39,64,.15)}
+  .hours-line:last-child{border-bottom:none}
+  .hours-line .d{color:var(--ink-soft)}
+  .hours-line .h{color:var(--navy);font-weight:600}
+  .map-ph{height:100%;min-height:320px}
+  .form-field{margin-bottom:14px}
+  .form-field label{display:block;font-size:.82rem;font-weight:600;color:var(--slate);margin-bottom:5px}
+  .form-field input,.form-field select,.form-field textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--steel);border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);background:#fff;
+  }
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(199,154,75,.15)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);color:#a8b9cc;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer h4{color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#a8b9cc;display:block;padding:5px 0;transition:color .15s}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7b8ca0}
+  .socials{display:flex;gap:12px;margin-top:14px}
+  .socials a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:.95rem;padding:0;font-weight:600}
+  .socials a:hover{background:var(--amber-deep);color:#fff}
+
+  /* floating mobile cta */
+  .float-cta{display:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.info-grid{grid-template-columns:1fr}
+    .hero-photo{height:320px;order:-1}
+    .about-photo{height:300px}
+    .pillars-grid,.domains-grid,.reviews-grid{grid-template-columns:1fr}
+    .pillars{margin-top:40px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:600px){
+    section{padding:60px 0}
+    .foot-grid{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{margin:0 16px;padding:46px 24px}
+    .float-cta{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center}
+    .float-cta .btn{width:100%;justify-content:center}
+    body{padding-bottom:80px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><b>Familia Notaires</b><span>Office Notarial · Chalonnes-sur-Loire</span></a>
+    <nav class="nav-links">
+      <a href="#etude">L'Étude</a>
+      <a href="#expertise">Domaines d'expertise</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Prendre rendez-vous</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Notaires à votre service · Chalonnes-sur-Loire</p>
+      <h1>Familia Notaires vous accompagne dans <em>vos projets de vie</em>.</h1>
+      <p class="lead">En Maine-et-Loire, l'Étude Familia Notaires Conseils vous accompagne en droit immobilier, droit de la famille et transmission patrimoniale.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
+        <a href="tel:+33241782233" class="btn btn-light">📞 02 41 78 22 33</a>
+      </div>
+      <p class="hero-note">✦ <b>Sur rendez-vous</b> · 8 allée des Treilles, 49290 Chalonnes-sur-Loire</p>
+    </div>
+    <div class="ph hero-photo ph-1">
+      <span class="tag">photo à fournir</span>
+      <span class="lbl">Façade de l'Étude / portrait des notaires</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap pillars">
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="ic">📅</div><span class="new">Nouveau</span>
+      <h3>Prise de rendez-vous</h3>
+      <p>Réservez votre rendez-vous en quelques clics, 24h/24, sans appeler. Choisissez le motif, le créneau, et recevez une confirmation immédiate.</p>
+      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche le module de prise de rendez-vous en ligne (agenda de l\'Étude).');return false;">Réserver un créneau →</a>
+    </div>
+    <div class="pillar">
+      <div class="ic">📈</div><span class="new">Nouveau</span>
+      <h3>Estimation en ligne</h3>
+      <p>Offrez à vos clients une première estimation de leur bien à partir des références notariales du marché, puis affinez-la avec un notaire.</p>
+      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche l\'outil d\'estimation immobilière en ligne.');return false;">Estimer un bien →</a>
+    </div>
+    <div class="pillar">
+      <div class="ic">🏠</div><span class="new">Nouveau</span>
+      <h3>Annonces immobilières</h3>
+      <p>Mettez en avant les biens à vendre de l'Étude. Une vente sécurisée, du compromis à l'acte authentique, avec le même interlocuteur.</p>
+      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche le flux d\'annonces immo-notaires.');return false;">Voir les annonces →</a>
+    </div>
+  </div>
+  <p class="note">💡 <b>Exemple — à connecter.</b> Ces trois services en ligne (rendez-vous, estimation, annonces) sont les briques modernes absentes du site actuel. Ils seront raccordés aux outils réels de l'Étude lors de la mise en ligne.</p>
+</div>
+
+<section id="etude">
+  <div class="wrap about-grid about">
+    <div class="ph about-photo ph-2"><span class="tag">photo à fournir</span><span class="lbl">Accueil / salle de signature de l'Étude</span></div>
+    <div>
+      <p class="eyebrow">L'Étude</p>
+      <h2>Une équipe à votre écoute, au service de vos projets</h2>
+      <p>L'Étude accompagne particuliers, professionnels et institutions à chaque étape de leur vie et de leurs projets immobiliers et patrimoniaux, avec rigueur et pédagogie.</p>
+      <p>De la première question à la signature de l'acte authentique, vous gardez le même interlocuteur, à Chalonnes-sur-Loire.</p>
+      <p class="sig">« Le notaire est la pierre angulaire de vos transactions. »</p>
+      <a href="#contact" class="btn btn-primary" style="margin-top:12px">Contactez l'Étude →</a>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Nos compétences</p><h2>Domaines d'expertise</h2>
+      <p>De l'immobilier à la transmission patrimoniale, l'Étude vous conseille sur les plans juridique et fiscal.</p></div>
+    <div class="domains-grid">
+      <div class="domain" id="immobilier"><div class="ic">🏛️</div><h3>Droit immobilier</h3>
+        <ul><li>Vente, avant-contrat, conseils patrimoniaux</li><li>Baux d'habitation ou commerciaux</li><li>Copropriété, prêts authentiques, sûretés</li><li>Promotion immobilière (VEFA)</li></ul></div>
+      <div class="domain"><div class="ic">👨‍👩‍👧</div><h3>Droit de la famille</h3>
+        <ul><li>PACS, mariage, divorce, adoption</li><li>Contrat de mariage, régime matrimonial</li><li>Testament, succession, donation</li><li>Protection du conjoint survivant</li></ul></div>
+      <div class="domain"><div class="ic">🏢</div><h3>Droit des sociétés</h3>
+        <ul><li>Constitution de société, création de SCI</li><li>Baux commerciaux</li><li>Secrétariat juridique</li><li>Transmission d'entreprise</li></ul></div>
+      <div class="domain"><div class="ic">💼</div><h3>Gestion de patrimoine</h3>
+        <ul><li>Stratégie patrimoniale sur mesure</li><li>Organisation de la transmission</li><li>Optimisation juridique et fiscale</li><li>Accompagnement des particuliers et pros</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="cta-band">
+    <p class="eyebrow" style="color:var(--amber)">Prise de rendez-vous</p>
+    <h2>Prenez rendez-vous en quelques clics</h2>
+    <p>Réservez votre créneau en ligne 24h/24, ou contactez-nous directement. Un notaire vous rappelle pour préparer votre dossier.</p>
+    <a href="#contact" class="btn btn-primary" onclick="alert('Maquette de démonstration — ici se branche le module de prise de rendez-vous en ligne.');return false;">Choisir un créneau →</a>
+    <p style="margin-top:18px;font-size:.85rem;opacity:.85">ou par téléphone au <a href="tel:+33241782233" style="color:#fff;text-decoration:underline">02 41 78 22 33</a></p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Nous trouver</p><h2>Contactez votre Office Notarial à Chalonnes-sur-Loire</h2>
+      <p>L'Étude vous accueille sur rendez-vous. Prenez rendez-vous ou écrivez-nous.</p></div>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Coordonnées</h3>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>8 allée des Treilles, 49290 Chalonnes-sur-Loire<br><a href="https://www.google.com/maps/search/?api=1&query=8%20all%C3%A9e%20des%20Treilles%2049290%20Chalonnes-sur-Loire" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+33241782233">02 41 78 22 33</a></span></div>
+        <div class="info-row"><span class="k">✉️</span><span class="v"><b>Email</b><a href="mailto:familianotairesconseils@49016.notaires.fr">familianotairesconseils@49016.notaires.fr</a></span></div>
+        <div class="info-row"><span class="k">🕑</span><span class="v"><b>Horaires</b>Du lundi au vendredi, sur rendez-vous <span style="color:var(--ink-soft)">(à confirmer)</span></span></div>
+      </div>
+      <div class="info-card">
+        <h3>Demande de rendez-vous</h3>
+        <form onsubmit="alert('Maquette de démonstration — le formulaire sera connecté à la messagerie de l\'Étude.');return false;">
+          <div class="form-field"><label>Nom &amp; prénom</label><input type="text" placeholder="Votre nom"></div>
+          <div class="form-field"><label>Email</label><input type="email" placeholder="vous@exemple.fr"></div>
+          <div class="form-field"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+          <div class="form-field"><label>Sujet</label><select><option>Prise de rendez-vous</option><option>Droit immobilier</option><option>Droit de la famille</option><option>Droit des sociétés</option><option>Autre</option></select></div>
+          <div class="form-field"><label>Message</label><textarea rows="3" placeholder="Décrivez votre demande"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="brand"><b style="font-size:1.6rem;font-family:'Cormorant Garamond',serif">Familia Notaires</b></div>
+        <p class="fp" style="margin-top:12px">Office Notarial à Chalonnes-sur-Loire.<br>Au service de vos projets immobiliers, familiaux et patrimoniaux.</p></div>
+      <div><h4>Expertise</h4><a href="#immobilier">Droit immobilier</a><a href="#expertise">Droit de la famille</a><a href="#expertise">Droit des sociétés</a><a href="#expertise">Gestion de patrimoine</a></div>
+      <div><h4>L'Étude</h4><a href="#etude">Notre équipe</a><a href="#contact">Prendre rendez-vous</a><a href="tel:+33241782233">02 41 78 22 33</a><a href="mailto:familianotairesconseils@49016.notaires.fr">familianotairesconseils@49016.notaires.fr</a></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Familia Notaires Conseils · 8 allée des Treilles, 49290 Chalonnes-sur-Loire</span><span>Sur rendez-vous</span></div>
+  </div>
+</footer>
+
+<div class="float-cta"><a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a></div>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<!-- maquette de prospection Atelier Web — non officielle -->
+</body>
+</html>
