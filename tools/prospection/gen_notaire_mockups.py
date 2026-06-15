@@ -188,6 +188,18 @@ PROSPECTS = [
        telhref="+33160606060", email="accueil@77103.notaires.fr",
        intro="À Combs-la-Ville, Maîtres François-Xavier Petit et Claire Thiriet vous accompagnent en droit immobilier, droit de la famille et transmission patrimoniale.",
        skip_tel=True),
+  dict(slug="boiron-montoux-dermaut-gresy", etude="SCP Boiron-Montoux & Dermaut", brand="Boiron-Montoux & Dermaut",
+       ville="Grésy-sur-Isère", cp="73460", adresse="107 rue de la Lauzière", tel="04 79 37 90 08",
+       telhref="+33479379008", email="accueil@1712.notaires.fr",
+       intro="En Savoie, l'Étude Boiron-Montoux & Dermaut vous conseille en droit immobilier, droit de la famille, droit des sociétés et gestion de patrimoine."),
+  dict(slug="poirier-associes-les-ulis", etude="Poirier & Associés", brand="Poirier & Associés",
+       ville="Les Ulis", cp="91940", adresse="Immeuble le Trigone, route de Gometz", tel="01 64 86 55 80",
+       telhref="+33164865580", email="accueil@poirieretassocies.notaires.fr",
+       intro="Aux Ulis, l'Étude Poirier & Associés vous accompagne dans vos projets immobiliers, familiaux et patrimoniaux."),
+  dict(slug="decaux-fargues-saint-cere", etude="Decaux, Fargues & Associés", brand="Decaux & Fargues",
+       ville="Saint-Céré", cp="46400", adresse="182 avenue Gaston Monnerville", tel="05 65 38 09 53",
+       telhref="+33565380953", email="decaux@notaires.fr",
+       intro="À Saint-Céré, dans le Lot, l'Étude Decaux & Fargues vous conseille en droit immobilier, droit de la famille et transmission patrimoniale."),
 ]
 
 for p in PROSPECTS:
