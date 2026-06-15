@@ -3,266 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Not'r 1 Pact — Petit & Thiriet — Notaire à Combs-la-Ville</title>
-<meta name="description" content="Not'r 1 Pact — Petit & Thiriet, notaire à Combs-la-Ville. Droit immobilier, droit de la famille, droit des sociétés et gestion de patrimoine. Prise de rendez-vous, estimation et annonces en ligne.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Not'r 1 Pact — Petit &amp; Thiriet, notaires à Combs-la-Ville</title>
+<meta name="description" content="Not'r 1 Pact — Maîtres Petit & Thiriet, notaires à Combs-la-Ville (77). Immobilier, famille & succession, entreprise, estimation. Prise de rendez-vous et accompagnement sur mesure.">
 <style>
   :root{
-    --navy:#0f2740;          /* bleu nuit */
-    --navy-deep:#0a1c2e;
-    --navy-soft:#1d3a59;
-    --slate:#4a5b6e;
-    --steel:#e3e9f0;
-    --paper:#f6f8fb;
-    --ink:#16222e;
-    --ink-soft:#56657a;
-    --amber:#c79a4b;         /* accent chaud, or */
-    --amber-deep:#a87d31;
-    --shadow:0 22px 60px -28px rgba(15,39,64,.45);
-    --radius:16px;
+    --ink:#16202c;          /* texte */
+    --ink-soft:#5a6776;     /* secondaire */
+    --line:#e4e8ee;         /* filets */
+    --surface:#f7f8fa;      /* fond doux */
+    --accent:#1e3a5f;       /* bleu nuit notaire */
+    --accent-soft:#33557f;
+    --white:#ffffff;
+    --shadow:0 1px 2px rgba(22,32,44,.04), 0 12px 32px -18px rgba(22,32,44,.22);
+    --shadow-sm:0 1px 2px rgba(22,32,44,.05), 0 6px 18px -14px rgba(22,32,44,.18);
+    --radius:12px;
+    --max:1080px;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    font-family:'Inter',system-ui,sans-serif;
-    color:var(--ink);
-    background:#fff;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
+    font-family:var(--sans);color:var(--ink);background:var(--white);
+    line-height:1.65;-webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.18;letter-spacing:-.01em}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  ul{list-style:none}
+  img,svg{display:block}
+  .ico{width:24px;height:24px;flex:none}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
   .eyebrow{
-    font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;
-    color:var(--amber-deep);font-weight:600;margin-bottom:14px;
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent-soft);font-weight:600;margin-bottom:14px;
   }
+  section{padding:clamp(3.5rem,8vw,6rem) 0}
+
+  /* ---------- BUTTONS ---------- */
   .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    font-weight:600;letter-spacing:.02em;
-    padding:14px 28px;border-radius:8px;
-    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
-    cursor:pointer;border:none;font-family:'Inter',sans-serif;font-size:.98rem;
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--sans);font-weight:600;font-size:.96rem;letter-spacing:.01em;
+    padding:13px 24px;border-radius:9px;border:1px solid transparent;cursor:pointer;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease,border-color .16s ease;
   }
-  .btn-primary{
-    background:linear-gradient(135deg,var(--amber),var(--amber-deep));
-    color:#fff;box-shadow:0 14px 30px -14px rgba(168,125,49,.9);
-  }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -14px rgba(168,125,49,.95)}
-  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--steel)}
-  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-  .btn-light{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.32)}
-  .btn-light:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+  .btn .ico{width:18px;height:18px}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#16304f;transform:translateY(-1px);box-shadow:0 14px 26px -14px rgba(30,58,95,.7)}
+  .btn-ghost{background:#fff;color:var(--accent);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent-soft);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .btn-light{background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.32)}
+  .btn-light:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
 
   /* ---------- HEADER ---------- */
   header.nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(15,39,64,.1);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1140px;margin:0 auto}
-  .brand{display:flex;flex-direction:column;line-height:1.05}
-  .brand b{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--navy)}
-  .brand span{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--amber-deep);font-weight:600}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{font-size:.92rem;color:var(--slate);font-weight:500;transition:color .15s}
-  .nav-links a:hover{color:var(--navy)}
-  .nav-cta{padding:11px 20px;font-size:.9rem}
-  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;padding:18px 24px;gap:16px;border-bottom:1px solid var(--steel);box-shadow:var(--shadow)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px;max-width:var(--max);margin:0 auto}
+  .brand{display:flex;flex-direction:column;line-height:1.1}
+  .brand b{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--accent)}
+  .brand span{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-top:2px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-cta{padding:10px 18px;font-size:.9rem}
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--accent);cursor:pointer}
+  #nav-toggle{display:none}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;overflow:hidden;padding:84px 0 92px;background:var(--navy-deep);color:#fff}
-  .hero::before{
-    content:"";position:absolute;inset:0;z-index:0;
+  .hero{position:relative;background:var(--surface);border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding:clamp(3.5rem,7vw,5.5rem) 0}
+  .hero h1{font-size:clamp(2rem,5vw,3.25rem);margin:6px 0 18px;color:var(--ink)}
+  .hero p.lead{font-size:1.12rem;color:var(--ink-soft);max-width:30em;margin-bottom:28px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.88rem;color:var(--ink-soft);margin-top:22px;display:flex;align-items:center;gap:9px}
+  .hero-note .ico{width:18px;height:18px;color:var(--accent-soft)}
+  .hero-note b{color:var(--ink);font-weight:600}
+
+  /* hero visual panel — degrade + SVG monogram, pas d'image cassee */
+  .hero-visual{
+    position:relative;height:420px;border-radius:16px;overflow:hidden;
+    background:linear-gradient(150deg,#24426a 0%,#1e3a5f 55%,#162a44 100%);
+    box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;
+  }
+  .hero-visual::before{
+    content:"";position:absolute;inset:0;
     background:
-      radial-gradient(820px 460px at 80% 12%,rgba(199,154,75,.22),transparent 60%),
-      radial-gradient(620px 420px at 4% 92%,rgba(29,58,89,.85),transparent 62%),
-      linear-gradient(160deg,#0f2740,#0a1c2e);
+      radial-gradient(520px 360px at 82% 8%,rgba(255,255,255,.10),transparent 60%),
+      radial-gradient(460px 340px at 6% 100%,rgba(255,255,255,.06),transparent 62%);
   }
-  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.06;margin:8px 0 18px;color:#fff}
-  .hero h1 em{font-style:italic;color:var(--amber)}
-  .hero p.lead{font-size:1.14rem;color:#c8d3e0;max-width:32em;margin-bottom:30px}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .hero-note{font-size:.86rem;color:#9fb1c6;margin-top:22px;display:flex;align-items:center;gap:8px}
-  .hero-note b{color:#fff}
+  .crest{position:relative;z-index:1;text-align:center;color:#fff;padding:24px}
+  .crest .ring{width:104px;height:104px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .crest .ring .ico{width:46px;height:46px;color:#fff;stroke-width:1.5}
+  .crest .mono{font-family:var(--serif);font-size:1.7rem;letter-spacing:.02em}
+  .crest .sub{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px}
+  .crest .rule{width:46px;height:1px;background:rgba(255,255,255,.4);margin:16px auto}
 
-  /* photo placeholders */
-  .ph{
-    position:relative;border-radius:var(--radius);overflow:hidden;
-    display:flex;align-items:flex-end;justify-content:center;
-    color:#fff;text-align:center;box-shadow:var(--shadow);
-  }
-  .ph .tag{
-    position:absolute;top:12px;left:12px;
-    background:rgba(15,39,64,.62);color:#fff;
-    font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
-    padding:5px 11px;border-radius:999px;backdrop-filter:blur(3px);
-  }
-  .ph .lbl{padding:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-style:italic;opacity:.94}
-  .ph-1{background:linear-gradient(150deg,#1d3a59,#0f2740 60%,#081827)}
-  .ph-2{background:linear-gradient(150deg,#26456a,#16304c)}
-  .ph-3{background:linear-gradient(150deg,#2c4a6e,#1a3450)}
-  .ph-4{background:linear-gradient(150deg,#33506f,#1d3a59)}
-  .hero-photo{height:480px}
-  .hero-photo .lbl{font-size:1.2rem}
-
-  /* ---------- PILIERS EN LIGNE ---------- */
-  .pillars{margin-top:-58px;position:relative;z-index:5}
-  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .pillar{
-    background:#fff;border-radius:var(--radius);padding:30px 26px;
-    border:1px solid rgba(15,39,64,.08);box-shadow:var(--shadow);
-    transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;
-  }
-  .pillar:hover{transform:translateY(-5px)}
-  .pillar .ic{
-    width:54px;height:54px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:var(--amber);font-size:1.5rem;margin-bottom:16px;
-  }
-  .pillar h3{font-size:1.4rem;color:var(--navy);margin-bottom:6px}
-  .pillar p{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px;flex:1}
-  .pillar .new{display:inline-flex;align-self:flex-start;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep);background:rgba(199,154,75,.12);padding:3px 9px;border-radius:999px;margin-bottom:12px;font-weight:600}
-  .pillar a.lk{font-size:.9rem;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:6px}
-  .pillar a.lk:hover{color:var(--amber-deep)}
-
-  /* ---------- SECTIONS ---------- */
-  section{padding:84px 0}
-  .sec-head{text-align:center;max-width:44em;margin:0 auto 52px}
-  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--navy);margin-bottom:14px}
+  /* ---------- SERVICES ---------- */
+  .sec-head{max-width:42em;margin:0 auto clamp(2.5rem,5vw,3.5rem)}
+  .sec-head.center{text-align:center}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.5rem);color:var(--ink);margin-bottom:12px}
   .sec-head p{color:var(--ink-soft);font-size:1.05rem}
 
-  /* about étude */
-  #etude{background:var(--paper)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-  .about h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:18px;color:var(--navy)}
-  .about p{color:var(--ink-soft);margin-bottom:16px}
-  .about .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--navy);margin-top:8px}
-  .about-photo{height:430px}
-
-  /* domaines d'expertise */
-  .domains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .domain{
-    background:#fff;border-radius:var(--radius);padding:32px 28px;
-    border:1px solid rgba(15,39,64,.1);box-shadow:0 12px 34px -26px rgba(15,39,64,.5);
-    transition:transform .2s ease,box-shadow .2s ease;
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;box-shadow:var(--shadow-sm);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
   }
-  .domain:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(199,154,75,.4)}
-  .domain .ic{
-    width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    background:var(--steel);color:var(--navy);font-size:1.4rem;margin-bottom:16px;
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cfd8e4}
+  .card .ic{
+    width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:var(--surface);border:1px solid var(--line);color:var(--accent);margin-bottom:16px;
   }
-  .domain h3{font-size:1.5rem;color:var(--navy);margin-bottom:10px}
-  .domain ul{list-style:none;margin-top:6px}
-  .domain li{font-size:.92rem;color:var(--ink-soft);padding:5px 0 5px 20px;position:relative}
-  .domain li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+  .card h3{font-size:1.18rem;color:var(--ink);margin-bottom:7px}
+  .card p{font-size:.93rem;color:var(--ink-soft)}
 
-  /* avis */
-  #avis{background:var(--navy-deep);color:#fff}
-  #avis .sec-head h2{color:#fff}
-  #avis .sec-head p{color:#a8b9cc}
-  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .review{background:rgba(255,255,255,.05);border-radius:var(--radius);padding:28px;border:1px solid rgba(255,255,255,.1)}
-  .stars{color:var(--amber);letter-spacing:2px;margin-bottom:12px;font-size:1.05rem}
-  .review p{color:#dde6f0;font-size:1rem;line-height:1.6;margin-bottom:14px}
-  .review .who{font-size:.86rem;color:#9fb1c6;font-weight:600}
+  /* ---------- ETUDE / QUI ---------- */
+  #etude{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
+  .about p{color:var(--ink-soft);margin-bottom:16px;max-width:34em}
+  .about .quote{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--accent);margin:6px 0 22px;line-height:1.45}
 
-  /* CTA band */
-  .cta-band{position:relative;overflow:hidden;border-radius:22px;margin:0 24px;
-    background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;
-    padding:60px 40px;text-align:center;box-shadow:var(--shadow)}
-  .cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 10%,rgba(199,154,75,.22),transparent 60%);pointer-events:none}
-  .cta-band > *{position:relative;z-index:1}
-  .cta-band h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px}
-  .cta-band p{opacity:.92;max-width:38em;margin:0 auto 26px;font-size:1.06rem}
-
-  /* tarifs */
-  #tarif{background:var(--paper)}
-  .tarif-card{max-width:46em;margin:0 auto;background:#fff;border-radius:var(--radius);padding:38px;border:1px solid rgba(15,39,64,.1);box-shadow:var(--shadow);text-align:center}
-  .tarif-card h3{font-size:1.7rem;color:var(--navy);margin-bottom:12px}
-  .tarif-card p{color:var(--ink-soft);margin-bottom:22px}
-  .note{
-    text-align:center;margin-top:30px;font-size:.86rem;color:var(--ink-soft);
-    background:#fff;border:1px dashed var(--amber);border-radius:12px;
-    padding:14px 20px;max-width:48em;margin-left:auto;margin-right:auto;
+  .team-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:var(--shadow);
   }
+  .avatar-row{display:flex;gap:18px;margin-bottom:22px}
+  .avatar{flex:none;width:64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.35rem;letter-spacing:.02em}
+  .avatar.alt{background:var(--accent-soft)}
+  .avatar-row .who b{display:block;font-family:var(--serif);font-size:1.12rem;color:var(--ink)}
+  .avatar-row .who span{font-size:.86rem;color:var(--ink-soft)}
+  .cred-list{border-top:1px solid var(--line);padding-top:18px}
+  .cred-list li{display:flex;gap:11px;align-items:flex-start;padding:7px 0;font-size:.92rem;color:var(--ink)}
+  .cred-list li .ico{width:19px;height:19px;color:var(--accent-soft);margin-top:3px}
+  .cred-list li span{color:var(--ink-soft)}
+  .cred-list li b{font-weight:600;color:var(--ink)}
+  .placeholder-tag{color:var(--accent-soft);font-weight:600}
 
-  /* infos / contact */
-  #contact{background:#fff}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
-  .info-card{background:var(--paper);border-radius:var(--radius);padding:34px;border:1px solid rgba(15,39,64,.1)}
-  .info-card h3{font-size:1.7rem;margin-bottom:18px;color:var(--navy)}
-  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(15,39,64,.1);align-items:flex-start}
-  .info-row:last-child{border-bottom:none}
-  .info-row .k{font-size:1.2rem;width:26px;flex:none;text-align:center}
-  .info-row .v{font-size:.98rem;color:var(--ink)}
-  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
-  .info-row a{color:var(--amber-deep);font-weight:600}
-  .hours-line{display:flex;justify-content:space-between;font-size:.96rem;padding:7px 0;border-bottom:1px dotted rgba(15,39,64,.15)}
-  .hours-line:last-child{border-bottom:none}
-  .hours-line .d{color:var(--ink-soft)}
-  .hours-line .h{color:var(--navy);font-weight:600}
-  .map-ph{height:100%;min-height:320px}
-  .form-field{margin-bottom:14px}
-  .form-field label{display:block;font-size:.82rem;font-weight:600;color:var(--slate);margin-bottom:5px}
-  .form-field input,.form-field select,.form-field textarea{
-    width:100%;padding:11px 13px;border:1px solid var(--steel);border-radius:8px;
-    font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);background:#fff;
-  }
-  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(199,154,75,.15)}
+  /* ---------- REASSURANCE BAND ---------- */
+  .reassure{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .reassure .item{display:flex;gap:13px;align-items:flex-start}
+  .reassure .item .ic{flex:none;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);color:var(--accent)}
+  .reassure .item .ic .ico{width:21px;height:21px}
+  .reassure .item b{display:block;font-size:.97rem;color:var(--ink);margin-bottom:2px}
+  .reassure .item span{font-size:.86rem;color:var(--ink-soft)}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta{background:var(--accent);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 80% 0%,rgba(255,255,255,.10),transparent 60%)}
+  .cta .wrap{position:relative;z-index:1}
+  .cta h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin-bottom:14px;color:#fff}
+  .cta p{color:rgba(255,255,255,.85);max-width:36em;margin:0 auto 28px;font-size:1.06rem}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--navy-deep);color:#a8b9cc;padding:54px 0 28px}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
-  footer .brand b{color:#fff}
-  footer h4{color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
-  footer a{color:#a8b9cc;display:block;padding:5px 0;transition:color .15s}
-  footer a:hover{color:#fff}
-  footer p.fp{font-size:.92rem;line-height:1.7}
-  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7b8ca0}
-  .socials{display:flex;gap:12px;margin-top:14px}
-  .socials a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:.95rem;padding:0;font-weight:600}
-  .socials a:hover{background:var(--amber-deep);color:#fff}
-
-  /* floating mobile cta */
-  .float-cta{display:none}
+  footer{background:#13202f;color:#aab6c4;padding:54px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  footer .brand b{color:#fff;font-size:1.4rem}
+  footer .brand span{color:#8595a6}
+  footer h4{color:#fff;font-family:var(--sans);font-weight:600;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  footer .fcol a,footer .fcol p{color:#aab6c4;display:block;padding:4px 0;font-size:.92rem;transition:color .15s}
+  footer .fcol a:hover{color:#fff}
+  footer .fcol .row{display:flex;gap:9px;align-items:flex-start}
+  footer .fcol .row .ico{width:17px;height:17px;color:#7d8da0;margin-top:5px;flex:none}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:#7d8da0}
+  .foot-bottom a{color:#7d8da0}
+  .foot-bottom a:hover{color:#fff}
 
   /* ---------- RESPONSIVE ---------- */
-  @media(max-width:900px){
-    .hero-grid,.about-grid,.info-grid{grid-template-columns:1fr}
-    .hero-photo{height:320px;order:-1}
-    .about-photo{height:300px}
-    .pillars-grid,.domains-grid,.reviews-grid{grid-template-columns:1fr}
-    .pillars{margin-top:40px}
+  @media(max-width:880px){
+    .hero-grid,.about-grid{grid-template-columns:1fr;gap:38px}
+    .hero-visual{height:300px;order:-1}
+    .cards{grid-template-columns:1fr 1fr}
+    .reassure{grid-template-columns:1fr 1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
-    .nav-links{display:none}
-    .burger{display:block}
   }
-  @media(max-width:600px){
-    section{padding:60px 0}
-    .foot-grid{grid-template-columns:1fr}
-    .nav-cta{display:none}
-    .cta-band{margin:0 16px;padding:46px 24px}
-    .float-cta{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center}
-    .float-cta .btn{width:100%;justify-content:center}
-    body{padding-bottom:80px}
+  @media(max-width:560px){
+    .nav-links{
+      display:none;position:absolute;top:60px;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:6px;
+      background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;box-shadow:var(--shadow);
+    }
+    #nav-toggle:checked ~ .nav-links{display:flex}
+    .nav-links a{padding:8px 0}
+    .nav-cta{padding:12px 18px;text-align:center;justify-content:center}
+    .burger{display:flex}
+    .cards,.reassure,.foot-grid{grid-template-columns:1fr}
+    .hero-actions .btn,.cta-actions .btn{flex:1;justify-content:center;min-width:200px}
   }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+  :focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="#top" class="brand"><b>Not'r 1 Pact</b><span>Office Notarial · Combs-la-Ville</span></a>
+    <a href="#top" class="brand"><b>Not'r 1 Pact</b><span>Petit &amp; Thiriet · Notaires</span></a>
+    <input type="checkbox" id="nav-toggle">
+    <label class="burger" for="nav-toggle" aria-label="Ouvrir le menu">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </label>
     <nav class="nav-links">
-      <a href="#etude">L'Étude</a>
-      <a href="#expertise">Domaines d'expertise</a>
-      <a href="#contact" class="btn btn-primary nav-cta">Prendre rendez-vous</a>
+      <a href="#services">Domaines</a>
+      <a href="#etude">L'étude</a>
+      <a href="#confiance">Garanties</a>
+      <a href="#rendez-vous" class="btn btn-primary nav-cta">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Nous appeler
+      </a>
     </nav>
-    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
   </div>
 </header>
 
@@ -270,128 +225,186 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Notaires à votre service · Combs-la-Ville</p>
-      <h1>Not'r 1 Pact vous accompagne dans <em>vos projets de vie</em>.</h1>
-      <p class="lead">À Combs-la-Ville, Maîtres François-Xavier Petit et Claire Thiriet vous accompagnent en droit immobilier, droit de la famille et transmission patrimoniale.</p>
+      <p class="eyebrow">Office notarial · Combs-la-Ville (77)</p>
+      <h1>Sécuriser vos décisions immobilières, familiales et patrimoniales.</h1>
+      <p class="lead">Maîtres Petit &amp; Thiriet vous accompagnent, du premier conseil à la signature de l'acte authentique, avec le même interlocuteur.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
-        <a href="tel:+33160606060" class="btn btn-light">📞 01 60 60 60 60</a>
+        <a href="#rendez-vous" class="btn btn-primary">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Prendre rendez-vous
+        </a>
+        <a href="#rendez-vous" class="btn btn-ghost">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Nous appeler
+        </a>
       </div>
-      <p class="hero-note">✦ <b>Sur rendez-vous</b> · Combs-la-Ville, 77380 Combs-la-Ville</p>
+      <p class="hero-note">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><b>Sur rendez-vous</b> — Combs-la-Ville, 77380</span>
+      </p>
     </div>
-    <div class="ph hero-photo ph-1">
-      <span class="tag">photo à fournir</span>
-      <span class="lbl">Façade de l'Étude / portrait des notaires</span>
+    <div class="hero-visual" role="img" aria-label="Emblème de l'étude Not'r 1 Pact">
+      <div class="crest">
+        <div class="ring">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 6a4 4 0 0 0 8 0L7 7"/><path d="M19 7l-3 6a4 4 0 0 0 8 0l-2.8-6"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="mono">Not'r 1 Pact</div>
+        <div class="rule"></div>
+        <div class="sub">Notaires · Combs-la-Ville</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="wrap pillars">
-  <div class="pillars-grid">
-    <div class="pillar">
-      <div class="ic">📅</div><span class="new">Nouveau</span>
-      <h3>Prise de rendez-vous</h3>
-      <p>Réservez votre rendez-vous en quelques clics, 24h/24, sans appeler. Choisissez le motif, le créneau, et recevez une confirmation immédiate.</p>
-      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche le module de prise de rendez-vous en ligne (agenda de l\'Étude).');return false;">Réserver un créneau →</a>
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Nos domaines</p>
+      <h2>Un conseil juridique et fiscal, à chaque étape</h2>
+      <p>De l'immobilier à la transmission, l'étude vous conseille avec rigueur et pédagogie.</p>
     </div>
-    <div class="pillar">
-      <div class="ic">📈</div><span class="new">Nouveau</span>
-      <h3>Estimation en ligne</h3>
-      <p>Offrez à vos clients une première estimation de leur bien à partir des références notariales du marché, puis affinez-la avec un notaire.</p>
-      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche l\'outil d\'estimation immobilière en ligne.');return false;">Estimer un bien →</a>
-    </div>
-    <div class="pillar">
-      <div class="ic">🏠</div><span class="new">Nouveau</span>
-      <h3>Annonces immobilières</h3>
-      <p>Mettez en avant les biens à vendre de l'Étude. Une vente sécurisée, du compromis à l'acte authentique, avec le même interlocuteur.</p>
-      <a href="#contact" class="lk" onclick="alert('Maquette de démonstration — ici se branche le flux d\'annonces immo-notaires.');return false;">Voir les annonces →</a>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Immobilier</h3>
+        <p>Vente, avant-contrat, copropriété, VEFA, prêts et sûretés.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Famille &amp; succession</h3>
+        <p>Mariage, PACS, donation, testament, succession et transmission.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01"/></svg></div>
+        <h3>Entreprise</h3>
+        <p>Création de société, SCI, baux commerciaux, transmission.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg></div>
+        <h3>Estimation en ligne</h3>
+        <p>Première estimation de votre bien, affinée avec un notaire.</p>
+      </div>
     </div>
   </div>
-  <p class="note">💡 <b>Exemple — à connecter.</b> Ces trois services en ligne (rendez-vous, estimation, annonces) sont les briques modernes absentes du site actuel. Ils seront raccordés aux outils réels de l'Étude lors de la mise en ligne.</p>
-</div>
+</section>
 
 <section id="etude">
   <div class="wrap about-grid about">
-    <div class="ph about-photo ph-2"><span class="tag">photo à fournir</span><span class="lbl">Accueil / salle de signature de l'Étude</span></div>
     <div>
-      <p class="eyebrow">L'Étude</p>
-      <h2>Une équipe à votre écoute, au service de vos projets</h2>
-      <p>L'Étude accompagne particuliers, professionnels et institutions à chaque étape de leur vie et de leurs projets immobiliers et patrimoniaux, avec rigueur et pédagogie.</p>
-      <p>De la première question à la signature de l'acte authentique, vous gardez le même interlocuteur, à Combs-la-Ville.</p>
-      <p class="sig">« Le notaire est la pierre angulaire de vos transactions. »</p>
-      <a href="#contact" class="btn btn-primary" style="margin-top:12px">Contactez l'Étude →</a>
+      <p class="eyebrow">L'étude</p>
+      <h2>Qui est derrière Not'r 1 Pact</h2>
+      <p>L'étude accompagne particuliers, professionnels et institutions à chaque étape de leurs projets immobiliers, familiaux et patrimoniaux.</p>
+      <p class="quote">« Le notaire est la pierre angulaire de vos transactions. »</p>
+      <a href="#rendez-vous" class="btn btn-primary">Contacter l'étude</a>
     </div>
-  </div>
-</section>
-
-<section id="expertise">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Nos compétences</p><h2>Domaines d'expertise</h2>
-      <p>De l'immobilier à la transmission patrimoniale, l'Étude vous conseille sur les plans juridique et fiscal.</p></div>
-    <div class="domains-grid">
-      <div class="domain" id="immobilier"><div class="ic">🏛️</div><h3>Droit immobilier</h3>
-        <ul><li>Vente, avant-contrat, conseils patrimoniaux</li><li>Baux d'habitation ou commerciaux</li><li>Copropriété, prêts authentiques, sûretés</li><li>Promotion immobilière (VEFA)</li></ul></div>
-      <div class="domain"><div class="ic">👨‍👩‍👧</div><h3>Droit de la famille</h3>
-        <ul><li>PACS, mariage, divorce, adoption</li><li>Contrat de mariage, régime matrimonial</li><li>Testament, succession, donation</li><li>Protection du conjoint survivant</li></ul></div>
-      <div class="domain"><div class="ic">🏢</div><h3>Droit des sociétés</h3>
-        <ul><li>Constitution de société, création de SCI</li><li>Baux commerciaux</li><li>Secrétariat juridique</li><li>Transmission d'entreprise</li></ul></div>
-      <div class="domain"><div class="ic">💼</div><h3>Gestion de patrimoine</h3>
-        <ul><li>Stratégie patrimoniale sur mesure</li><li>Organisation de la transmission</li><li>Optimisation juridique et fiscale</li><li>Accompagnement des particuliers et pros</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="cta-band">
-    <p class="eyebrow" style="color:var(--amber)">Prise de rendez-vous</p>
-    <h2>Prenez rendez-vous en quelques clics</h2>
-    <p>Réservez votre créneau en ligne 24h/24, ou contactez-nous directement. Un notaire vous rappelle pour préparer votre dossier.</p>
-    <a href="#contact" class="btn btn-primary" onclick="alert('Maquette de démonstration — ici se branche le module de prise de rendez-vous en ligne.');return false;">Choisir un créneau →</a>
-    <p style="margin-top:18px;font-size:.85rem;opacity:.85">ou par téléphone au <a href="tel:+33160606060" style="color:#fff;text-decoration:underline">01 60 60 60 60</a></p>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Nous trouver</p><h2>Contactez votre Office Notarial à Combs-la-Ville</h2>
-      <p>L'Étude vous accueille sur rendez-vous. Prenez rendez-vous ou écrivez-nous.</p></div>
-    <div class="info-grid">
-      <div class="info-card">
-        <h3>Coordonnées</h3>
-        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>Combs-la-Ville, 77380 Combs-la-Ville<br><a href="https://www.google.com/maps/search/?api=1&query=Combs-la-Ville%2077380%20Combs-la-Ville" target="_blank" rel="noopener">Voir sur Google Maps →</a></span></div>
-        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+33160606060">01 60 60 60 60</a></span></div>
-        <div class="info-row"><span class="k">✉️</span><span class="v"><b>Email</b><a href="mailto:accueil@77103.notaires.fr">accueil@77103.notaires.fr</a></span></div>
-        <div class="info-row"><span class="k">🕑</span><span class="v"><b>Horaires</b>Du lundi au vendredi, sur rendez-vous <span style="color:var(--ink-soft)">(à confirmer)</span></span></div>
+    <div class="team-card">
+      <div class="avatar-row">
+        <div class="avatar">FP</div>
+        <div class="who">
+          <b>Maître François-Xavier Petit</b>
+          <span>Notaire associé</span>
+        </div>
       </div>
-      <div class="info-card">
-        <h3>Demande de rendez-vous</h3>
-        <form onsubmit="alert('Maquette de démonstration — le formulaire sera connecté à la messagerie de l\'Étude.');return false;">
-          <div class="form-field"><label>Nom &amp; prénom</label><input type="text" placeholder="Votre nom"></div>
-          <div class="form-field"><label>Email</label><input type="email" placeholder="vous@exemple.fr"></div>
-          <div class="form-field"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
-          <div class="form-field"><label>Sujet</label><select><option>Prise de rendez-vous</option><option>Droit immobilier</option><option>Droit de la famille</option><option>Droit des sociétés</option><option>Autre</option></select></div>
-          <div class="form-field"><label>Message</label><textarea rows="3" placeholder="Décrivez votre demande"></textarea></div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Envoyer ma demande</button>
-        </form>
+      <div class="avatar-row">
+        <div class="avatar alt">CT</div>
+        <div class="who">
+          <b>Maître Claire Thiriet</b>
+          <span>Notaire associée</span>
+        </div>
+      </div>
+      <ul class="cred-list">
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Membres de la <b>Chambre des notaires</b> de Seine-et-Marne</span>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/></svg>
+          <span>Étude établie à Combs-la-Ville — <span class="placeholder-tag">[ancienneté à confirmer]</span></span>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          <span>N° d'inscription / CRPCEN&nbsp;: <span class="placeholder-tag">[à compléter]</span></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="confiance">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Vos garanties</p>
+      <h2>Un cadre de confiance, encadré par la loi</h2>
+    </div>
+    <div class="reassure">
+      <div class="item">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><b>Chambre des notaires</b><span>Officiers publics, soumis à déontologie</span></div>
+      </div>
+      <div class="item">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/></svg></div>
+        <div><b>RDV sans engagement</b><span>Un premier échange pour cadrer votre projet</span></div>
+      </div>
+      <div class="item">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div><b>Confidentialité &amp; RGPD</b><span>Secret professionnel, données protégées</span></div>
+      </div>
+      <div class="item">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><b>Estimation 24h/24</b><span>Une première estimation à tout moment</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="rendez-vous" class="cta">
+  <div class="wrap">
+    <p class="eyebrow" style="color:rgba(255,255,255,.7)">Prendre rendez-vous</p>
+    <h2>Parlons de votre projet</h2>
+    <p>Réservez un créneau ou demandez une estimation. Un notaire vous recontacte pour préparer votre dossier.</p>
+    <div class="cta-actions">
+      <a href="#rendez-vous" class="btn btn-light">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Prendre rendez-vous
+      </a>
+      <a href="mailto:accueil@77103.notaires.fr" class="btn btn-light">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Demander une estimation
+      </a>
+    </div>
+    <p style="margin-top:18px;font-size:.85rem;color:rgba(255,255,255,.7)">ou par téléphone <span class="placeholder-tag" style="color:#fff">[numéro de l'étude]</span></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div><div class="brand"><b style="font-size:1.6rem;font-family:'Cormorant Garamond',serif">Not'r 1 Pact</b></div>
-        <p class="fp" style="margin-top:12px">Office Notarial à Combs-la-Ville.<br>Au service de vos projets immobiliers, familiaux et patrimoniaux.</p></div>
-      <div><h4>Expertise</h4><a href="#immobilier">Droit immobilier</a><a href="#expertise">Droit de la famille</a><a href="#expertise">Droit des sociétés</a><a href="#expertise">Gestion de patrimoine</a></div>
-      <div><h4>L'Étude</h4><a href="#etude">Notre équipe</a><a href="#contact">Prendre rendez-vous</a><a href="tel:+33160606060">01 60 60 60 60</a><a href="mailto:accueil@77103.notaires.fr">accueil@77103.notaires.fr</a></div>
+      <div class="fcol">
+        <div class="brand"><b style="font-family:var(--serif)">Not'r 1 Pact</b><span style="display:block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;margin-top:4px">Petit &amp; Thiriet · Notaires</span></div>
+        <p style="margin-top:12px">Office notarial à Combs-la-Ville.<br>Au service de vos projets immobiliers, familiaux et patrimoniaux.</p>
+      </div>
+      <div class="fcol">
+        <h4>Coordonnées</h4>
+        <p class="row"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Combs-la-Ville, 77380</p>
+        <p class="row"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="placeholder-tag" style="color:#aab6c4">[numéro à compléter]</span></p>
+        <a class="row" href="mailto:accueil@77103.notaires.fr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>accueil@77103.notaires.fr</a>
+      </div>
+      <div class="fcol">
+        <h4>L'étude</h4>
+        <a href="#services">Nos domaines</a>
+        <a href="#etude">L'équipe</a>
+        <a href="#confiance">Vos garanties</a>
+        <a href="#rendez-vous">Prendre rendez-vous</a>
+      </div>
     </div>
-    <div class="foot-bottom"><span>© <span id="yr"></span> Not'r 1 Pact — Petit & Thiriet · Combs-la-Ville, 77380 Combs-la-Ville</span><span>Sur rendez-vous</span></div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Not'r 1 Pact — Petit &amp; Thiriet · Combs-la-Ville (77380)</span>
+      <span><a href="#top">Mentions légales</a> · <a href="#top">Politique de confidentialité (RGPD)</a></span>
+    </div>
   </div>
 </footer>
 
-<div class="float-cta"><a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a></div>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<!-- maquette de prospection Atelier Web — non officielle -->
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<!-- Maquette de prospection Atelier Web — non officielle. Données non vérifiées neutralisées en placeholders. -->
 </body>
 </html>
