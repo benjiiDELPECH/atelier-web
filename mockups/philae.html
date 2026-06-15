@@ -24,6 +24,8 @@
     --pad:clamp(3.5rem,8vw,6rem);
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
   body{
@@ -35,6 +37,7 @@
     text-rendering:optimizeLegibility;
   }
   h1,h2,h3,.serif{font-family:var(--serif);font-weight:600;letter-spacing:.1px;line-height:1.18}
+  h1,h2,h3,h4,p,a,span,.serif{overflow-wrap:break-word;word-wrap:break-word}
   a{color:inherit;text-decoration:none}
   svg{display:block}
   .ic{width:24px;height:24px;stroke:currentColor;stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -224,10 +227,31 @@
     .nav-links.open{display:flex}
     .burger{display:flex}
   }
+  @media(max-width:720px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-emblem{order:-1;max-width:100%;width:100%}
+  }
   @media(max-width:560px){
     .cards,.prof-grid,.reas-grid,.assoc,.foot-grid{grid-template-columns:1fr}
     .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center}
+    .hero h1{font-size:clamp(1.55rem,7.5vw,2rem)}
+    .hero p.lead{font-size:1rem;max-width:100%}
+    .sec-head h2,.about h2{font-size:clamp(1.4rem,6vw,1.8rem)}
+    .cta-band h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+    .loc h3{font-size:1.15rem}
+    .hours-line{flex-wrap:wrap}
+    .hours-line .h{font-size:.86rem}
   }
+  @media (max-width:560px){
+  /* garde-fou responsive universel (fix overflow horizontal mobile) */
+  [class*="grid"]{grid-template-columns:1fr !important}
+  *{min-width:0}
+  .wrap,[class*="inner"],[class*="container"]{padding-left:18px !important;padding-right:18px !important}
+  h1,h2,h3,h4,p,li,span,a,.eyebrow{overflow-wrap:break-word;max-width:100%}
+  [class*="meta"],[class*="hours"],[class*="actions"]{flex-wrap:wrap}
+  .eyebrow{letter-spacing:.07em}
+  img,svg,[class*="photo"],[class*="visual"],[class*="emblem"]{max-width:100%}
+}
 </style>
 </head>
 <body>
