@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La Comète — Paysagiste à Genève | Jardins, terrasses, entretien</title>
+<meta name="description" content="La Comète, paysagiste à Genève. Création et aménagement de jardins, terrasses, entretien et arrosage. Demandez votre devis gratuit." />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  :root{
+    --vert:#5a8a4a;        /* vert nature */
+    --vert-fonce:#3d6634;
+    --vert-clair:#eaf2e4;  /* fond vert très clair */
+    --encre:#23291f;       /* encre */
+    --encre-doux:#4d5546;
+    --creme:#faf7f0;       /* crème */
+    --accent:#e8804f;      /* accent terre / chaleureux */
+    --accent-fonce:#cf6634;
+    --bord:#e2ddcf;
+    --radius:16px;
+    --shadow:0 6px 24px rgba(35,41,31,.08);
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    color:var(--encre);
+    background:var(--creme);
+    line-height:1.6;
+    font-size:17px;
+  }
+  h1,h2,h3{line-height:1.2;margin:0;overflow-wrap:break-word;word-wrap:break-word}
+  h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.01em}
+  h3{font-size:1.2rem;font-weight:700}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  svg{flex:none}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--vert-fonce);background:var(--vert-clair);
+    padding:7px 14px;border-radius:999px;
+  }
+
+  /* ---- Buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-weight:700;font-size:1rem;
+    padding:14px 24px;border-radius:999px;
+    border:2px solid transparent;cursor:pointer;
+    transition:transform .12s ease,background .15s ease,box-shadow .15s ease;
+    text-align:center;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-fonce)}
+  .btn-secondary{background:#fff;color:var(--encre);border-color:var(--bord)}
+  .btn-secondary:hover{border-color:var(--vert);color:var(--vert-fonce)}
+  .btn:focus-visible{outline:3px solid var(--vert-fonce);outline-offset:3px}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  a:focus-visible,button:focus-visible{outline:3px solid var(--vert-fonce);outline-offset:3px;border-radius:6px}
+
+  /* ---- Header ---- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,240,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--bord);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1120px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.18rem;letter-spacing:-.01em}
+  .brand .mark{
+    width:38px;height:38px;border-radius:50%;flex:none;
+    background:var(--vert);display:grid;place-items:center;color:#fff;
+  }
+  .brand small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--encre-doux)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a.lnk{font-weight:600;font-size:.97rem;color:var(--encre-doux)}
+  .nav-links a.lnk:hover{color:var(--vert-fonce)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-tel{display:inline-flex;align-items:center;gap:7px;font-weight:700;color:var(--vert-fonce);font-size:.95rem}
+
+  /* ---- Hero ---- */
+  .hero{padding:56px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero h1{margin:18px 0 0}
+  .hero .lead{margin-top:18px;font-size:1.18rem;color:var(--encre-doux);max-width:34ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px}
+  .hero-trust span{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;font-weight:600;color:var(--encre-doux)}
+  .hero-trust svg{color:var(--vert)}
+  .ph{
+    background:
+      linear-gradient(135deg,rgba(90,138,74,.14),rgba(232,128,79,.12)),
+      repeating-linear-gradient(45deg,var(--vert-clair),var(--vert-clair) 18px,#f2f6ec 18px,#f2f6ec 36px);
+    border:1px dashed #c4cdb6;
+    display:grid;place-items:center;color:var(--vert-fonce);
+    border-radius:var(--radius);position:relative;overflow:hidden;
+  }
+  .ph .ph-label{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.85);padding:8px 14px;border-radius:999px;
+    font-size:.82rem;font-weight:700;color:var(--encre-doux);
+  }
+  .hero-photo{aspect-ratio:4/3;min-height:280px}
+
+  /* ---- Sections ---- */
+  section{padding:62px 0}
+  .sec-head{max-width:62ch;margin-bottom:38px}
+  .sec-head h2{margin-top:12px}
+  .sec-head p{margin-top:14px;color:var(--encre-doux);font-size:1.08rem}
+  .alt{background:var(--vert-clair)}
+
+  /* ---- Avant / Après ---- */
+  .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ba-card{background:#fff;border:1px solid var(--bord);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .ba-pair{display:grid;grid-template-columns:1fr 1fr}
+  .ba-pair .ph{border-radius:0;border:none;border-right:1px dashed #c4cdb6;aspect-ratio:1/1;min-height:140px}
+  .ba-pair .ph:last-child{border-right:none}
+  .ba-tag{position:absolute;top:10px;left:10px;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--encre);color:#fff;padding:4px 10px;border-radius:999px}
+  .ba-tag.after{background:var(--accent)}
+  .ba-card .ba-body{padding:16px 18px}
+  .ba-card .ba-body h3{font-size:1.05rem}
+  .ba-card .ba-body p{font-size:.92rem;color:var(--encre-doux);margin-top:4px}
+
+  /* ---- Prestations ---- */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{
+    background:#fff;border:1px solid var(--bord);border-radius:var(--radius);
+    padding:26px 22px;display:flex;flex-direction:column;gap:12px;
+    transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--vert)}
+  .card .ic{
+    width:52px;height:52px;border-radius:13px;flex:none;
+    background:var(--vert-clair);color:var(--vert-fonce);
+    display:grid;place-items:center;
+  }
+  .card h3{font-size:1.12rem}
+  .card p{font-size:.95rem;color:var(--encre-doux)}
+
+  /* ---- Réalisations ---- */
+  .real-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .real{aspect-ratio:4/3;min-height:170px}
+  .real .geo{
+    position:absolute;left:12px;bottom:12px;
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.9);padding:6px 12px;border-radius:999px;
+    font-size:.82rem;font-weight:700;color:var(--vert-fonce);
+  }
+
+  /* ---- Réassurance ---- */
+  .reassure{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .reassure .item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--bord);border-radius:var(--radius);padding:22px}
+  .reassure .ic{width:46px;height:46px;border-radius:50%;background:var(--vert-clair);color:var(--vert-fonce);display:grid;place-items:center;flex:none}
+  .reassure h3{font-size:1.05rem}
+  .reassure p{font-size:.92rem;color:var(--encre-doux);margin-top:3px}
+
+  /* ---- Contact CTA ---- */
+  .cta{
+    background:var(--vert-fonce);color:#fff;border-radius:24px;
+    padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+  }
+  .cta h2{color:#fff}
+  .cta p{color:#dce8d4;margin-top:14px;font-size:1.06rem}
+  .cta .contact-list{margin-top:24px;display:flex;flex-direction:column;gap:14px}
+  .cta .contact-list a,.cta .contact-list span{display:inline-flex;align-items:center;gap:11px;font-weight:600}
+  .cta .contact-list svg{color:#bcd9ac;flex:none}
+  .cta-card{background:#fff;border-radius:var(--radius);padding:26px;color:var(--encre)}
+  .cta-card h3{font-size:1.2rem}
+  .cta-card p{color:var(--encre-doux);margin-top:6px;font-size:.95rem}
+  .field{margin-top:14px}
+  .field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px}
+  .field input,.field textarea{
+    width:100%;max-width:100%;padding:12px 14px;border:1px solid var(--bord);border-radius:11px;
+    font:inherit;font-size:.97rem;background:var(--creme);color:var(--encre);
+  }
+  .field input:focus,.field textarea:focus{outline:3px solid var(--vert);outline-offset:1px;border-color:var(--vert)}
+  .cta-card .btn{width:100%;margin-top:18px}
+
+  /* ---- Footer ---- */
+  footer{background:var(--encre);color:#cfd6c5;padding:46px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  footer .brand{color:#fff}
+  footer .brand small{color:#9fa893}
+  footer h4{color:#fff;font-size:.95rem;margin:0 0 12px;letter-spacing:.04em}
+  footer a:hover{color:#fff}
+  .foot-col p,.foot-col a{font-size:.92rem;display:block;margin-bottom:8px;color:#cfd6c5}
+  .foot-bottom{border-top:1px solid #3a4133;margin-top:34px;padding-top:18px;font-size:.84rem;color:#9fa893;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* ---- Responsive ---- */
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .ba-grid{grid-template-columns:1fr 1fr}
+    .reassure{grid-template-columns:1fr}
+    .cta{grid-template-columns:1fr;padding:36px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media(max-width:560px){
+    *{min-width:0}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .nav{padding:12px 18px}
+    .nav-tel span{display:none}
+    section{padding:46px 0}
+    .hero{padding:36px 0 28px}
+    .cards{grid-template-columns:1fr}
+    .ba-grid{grid-template-columns:1fr}
+    .ba-pair{grid-template-columns:1fr 1fr}
+    .real-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-actions .btn{width:100%}
+    .cta{padding:26px}
+    .cta-card{padding:20px}
+    .foot-bottom{flex-direction:column}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="#top" aria-label="La Comète, accueil">
+      <span class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M12 22v-2"/><path d="M12 14a4 4 0 0 0 4-4 4 4 0 0 0-4-4 4 4 0 0 0-4 4 4 4 0 0 0 4 4z"/><path d="M5 19l2-3"/><path d="M19 19l-2-3"/></svg>
+      </span>
+      <span>La Comète<small>Paysagiste · Genève</small></span>
+    </a>
+    <div class="nav-links">
+      <a class="lnk" href="#prestations">Prestations</a>
+      <a class="lnk" href="#avant-apres">Avant / Après</a>
+      <a class="lnk" href="#realisations">Réalisations</a>
+      <a class="lnk" href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="nav-tel" href="tel:+41223140091" aria-label="Appeler le 022 314 00 91">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>022 314 00 91</span>
+      </a>
+      <a class="btn btn-primary" href="#contact">Devis gratuit</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Paysagiste à Genève
+      </span>
+      <h1>Un jardin qui vous ressemble, à deux pas de chez vous</h1>
+      <p class="lead">Création, aménagement et entretien d'espaces verts dans le canton de Genève. On vous écoute, on vous conseille, on s'occupe de tout.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h2"/></svg>
+          Demande de devis gratuit
+        </a>
+        <a class="btn btn-secondary" href="#prestations">Voir nos prestations</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Devis gratuit et sans engagement</span>
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Intervention dans tout le canton</span>
+      </div>
+    </div>
+    <div class="ph hero-photo" role="img" aria-label="Emplacement réservé à une photo de jardin réalisé">
+      <span class="ph-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L6 21"/></svg>
+        Photo de jardin à insérer
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AVANT / APRÈS ===== -->
+<section id="avant-apres" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+        La transformation
+      </span>
+      <h2>Avant / après : voyez la différence</h2>
+      <p>Le meilleur moyen de se projeter. Glissez ici vos plus belles transformations — un terrain en friche qui devient un jardin où l'on a envie de vivre.</p>
+    </div>
+    <div class="ba-grid">
+      <article class="ba-card">
+        <div class="ba-pair">
+          <div class="ph"><span class="ba-tag">Avant</span></div>
+          <div class="ph"><span class="ba-tag after">Après</span></div>
+        </div>
+        <div class="ba-body"><h3>Jardin de villa</h3><p>Aménagement complet : massifs, allée et gazon.</p></div>
+      </article>
+      <article class="ba-card">
+        <div class="ba-pair">
+          <div class="ph"><span class="ba-tag">Avant</span></div>
+          <div class="ph"><span class="ba-tag after">Après</span></div>
+        </div>
+        <div class="ba-body"><h3>Terrasse extérieure</h3><p>Création d'un coin détente en bois et plantations.</p></div>
+      </article>
+      <article class="ba-card">
+        <div class="ba-pair">
+          <div class="ph"><span class="ba-tag">Avant</span></div>
+          <div class="ph"><span class="ba-tag after">Après</span></div>
+        </div>
+        <div class="ba-body"><h3>Cour urbaine</h3><p>Verdissement d'un espace minéral en cœur de ville.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRESTATIONS ===== -->
+<section id="prestations">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg>
+        Ce que nous faisons
+      </span>
+      <h2>Nos prestations</h2>
+      <p>De l'idée à l'entretien, on accompagne votre jardin à chaque étape.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M12 20v-9"/><path d="M12 11c0-3 2-5 6-5 0 4-2 6-6 6z"/><path d="M12 13c0-2.5-1.8-4.5-5-4.5 0 3.5 2 5 5 5z"/></svg></span>
+        <h3>Création de jardins</h3>
+        <p>Conception et réalisation sur mesure : plantations, massifs, gazon et allées pensés pour votre terrain.</p>
+      </article>
+      <article class="card">
+        <span class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 21V10l9-5 9 5v11"/><path d="M3 14h18"/><path d="M9 21v-7"/><path d="M15 21v-7"/></svg></span>
+        <h3>Terrasses & extérieurs</h3>
+        <p>Terrasses en bois ou en pierre, pas japonais, coins détente — des espaces de vie à ciel ouvert.</p>
+      </article>
+      <article class="card">
+        <span class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11"/><path d="M3 12h7"/><path d="m14 4 6 4-6 4"/><path d="M3 18h13"/></svg></span>
+        <h3>Entretien d'espaces verts</h3>
+        <p>Tonte, taille, désherbage et soin des plantations, ponctuel ou à l'année, pour un jardin toujours net.</p>
+      </article>
+      <article class="card">
+        <span class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-4-3-6l-4-7-4 7c-2 2-3 4-3 6a7 7 0 0 0 7 7z"/></svg></span>
+        <h3>Arrosage automatique</h3>
+        <p>Installation de systèmes d'arrosage économes en eau, programmés pour des plantes en pleine forme.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉALISATIONS ===== -->
+<section id="realisations" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Nos chantiers
+      </span>
+      <h2>Réalisations dans le canton de Genève</h2>
+      <p>Quelques chantiers menés près de chez vous. Ajoutez ici vos projets avec leur commune — la preuve locale rassure.</p>
+    </div>
+    <div class="real-grid">
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Carouge, GE</span></div>
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Vernier, GE</span></div>
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Onex, GE</span></div>
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Versoix, GE</span></div>
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Meyrin, GE</span></div>
+      <div class="ph real"><span class="geo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Genthod, GE</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉASSURANCE ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Travailler avec nous, simplement</h2>
+      <p>Pas de jargon, pas de surprise. On avance ensemble, étape par étape.</p>
+    </div>
+    <div class="reassure">
+      <div class="item">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span>
+        <div><h3>Devis gratuit</h3><p>On vient voir votre terrain, on vous écoute et on vous remet une proposition claire, sans engagement.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div><h3>Proches de chez vous</h3><p>Basés à Genève, nous intervenons dans tout le canton. Un interlocuteur de confiance, à proximité.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18a4 4 0 0 0-8 0"/><circle cx="12" cy="11" r="3"/><path d="M12 2a9 9 0 0 0-9 9c0 4 3 7 9 11 6-4 9-7 9-11a9 9 0 0 0-9-9z"/></svg></span>
+        <div><h3>À votre écoute</h3><p>Votre jardin, vos envies, votre budget. On adapte chaque projet à ce qui compte pour vous.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / CTA ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>Parlons de votre jardin</h2>
+        <p>Décrivez-nous votre projet en quelques mots. On vous recontacte rapidement pour un devis gratuit et sans engagement.</p>
+        <div class="contact-list">
+          <a href="tel:+41223140091"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 022 314 00 91</a>
+          <a href="mailto:contact@la-comete.ch"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> contact@la-comete.ch</a>
+          <span><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Rue Alcide-Jentzer 9, 1205 Genève</span>
+        </div>
+      </div>
+      <form class="cta-card" onsubmit="return false">
+        <h3>Demande de devis gratuit</h3>
+        <p>On revient vers vous sous 48 h ouvrées.</p>
+        <div class="field">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" placeholder="Prénom et nom" />
+        </div>
+        <div class="field">
+          <label for="contact-coord">Téléphone ou e-mail</label>
+          <input id="contact-coord" name="contact" type="text" autocomplete="email" placeholder="Pour vous recontacter" />
+        </div>
+        <div class="field">
+          <label for="projet">Votre projet</label>
+          <textarea id="projet" name="projet" rows="3" placeholder="Création de jardin, terrasse, entretien…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Envoyer ma demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M12 22v-2"/><path d="M12 14a4 4 0 0 0 4-4 4 4 0 0 0-4-4 4 4 0 0 0-4 4 4 4 0 0 0 4 4z"/><path d="M5 19l2-3"/><path d="M19 19l-2-3"/></svg>
+          </span>
+          <span>La Comète<small>Paysagiste · Genève</small></span>
+        </a>
+        <p style="margin-top:14px;max-width:34ch">Création, aménagement et entretien de jardins et d'espaces verts dans le canton de Genève.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Prestations</h4>
+        <a href="#prestations">Création de jardins</a>
+        <a href="#prestations">Terrasses & extérieurs</a>
+        <a href="#prestations">Entretien</a>
+        <a href="#prestations">Arrosage automatique</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+41223140091">022 314 00 91</a>
+        <a href="mailto:contact@la-comete.ch">contact@la-comete.ch</a>
+        <p>Rue Alcide-Jentzer 9<br>1205 Genève</p>
+        <a class="btn btn-primary" href="#contact" style="margin-top:8px">Devis gratuit</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 La Comète — Paysagiste à Genève</span>
+      <span>Mentions légales · Confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

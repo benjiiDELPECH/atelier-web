@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détail — Architecture d'intérieur · Genève</title>
+<meta name="description" content="Détail — studio d'architecture d'intérieur et de décoration à Genève. Conception d'espaces résidentiels, agencement sur mesure, suivi de chantier.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  :root{
+    --ink:#1a1815;       /* encre quasi-noir */
+    --paper:#f7f5f1;     /* blanc cassé */
+    --white:#ffffff;
+    --accent:#9a7b4f;    /* laiton discret */
+    --line:#e2ddd4;
+    --muted:#6f6a62;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:400;
+    letter-spacing:-0.01em;
+    line-height:1.12;
+    margin:0;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+  }
+  p{margin:0 0 1em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 1.1rem;
+    font-weight:600;
+  }
+  .icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,241,.86);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;min-height:70px;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-size:1.5rem;letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .wordmark span{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);transition:color .2s;
+  }
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--sans);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:.72rem 1.25rem;border:1px solid var(--ink);
+    background:var(--ink);color:var(--paper);
+    transition:background .2s,color .2s;cursor:pointer;font-weight:500;
+  }
+  .btn:hover,.btn:focus-visible{background:transparent;color:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background:var(--ink);color:var(--paper)}
+  .nav-cta{flex:none}
+
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* ---------- Hero (portfolio-forward) ---------- */
+  .hero{padding:46px 0 64px}
+  .hero-img{
+    position:relative;width:100%;
+    aspect-ratio:16/9;
+    background:
+      linear-gradient(135deg,#e9e4db 0%,#ddd6ca 48%,#cfc6b6 100%);
+    border:1px solid var(--line);
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .ph-label{
+    font-family:var(--sans);font-size:.78rem;letter-spacing:.05em;
+    color:#7c7468;background:rgba(247,245,241,.75);
+    padding:.45rem .8rem;margin:18px;
+    border:1px dashed #b4a98f;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:28px;margin-top:34px;
+  }
+  .hero-meta h1{
+    font-size:clamp(2.3rem,6vw,4.1rem);
+    max-width:14ch;
+  }
+  .hero-lede{
+    max-width:34ch;color:var(--muted);font-size:1.05rem;margin:0;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+  /* ---------- Projects grid ---------- */
+  section{padding:72px 0}
+  .section-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:24px;margin-bottom:40px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  .section-head p{color:var(--muted);max-width:40ch;margin:0}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px 30px;
+  }
+  .project{display:block;group:project}
+  .project .frame{
+    position:relative;width:100%;aspect-ratio:4/3;
+    border:1px solid var(--line);overflow:hidden;
+    display:flex;align-items:flex-end;
+    transition:transform .35s ease;
+  }
+  .project:hover .frame,.project:focus-visible .frame{transform:translateY(-4px)}
+  .frame.a{background:linear-gradient(140deg,#e7e1d6,#d3cabb)}
+  .frame.b{background:linear-gradient(140deg,#e3ddd2,#c9c0b1)}
+  .frame.c{background:linear-gradient(140deg,#ece7dd,#d8d0c2)}
+  .frame.d{background:linear-gradient(140deg,#e0d9cd,#cdc3b3)}
+  .frame.e{background:linear-gradient(140deg,#e9e3d8,#d1c8b9)}
+  .frame.f{background:linear-gradient(140deg,#e5dfd4,#cbc2b3)}
+  .project-cap{margin-top:16px}
+  .project-cap h3{font-size:1.35rem;margin-bottom:.25rem}
+  .project-cap .meta{
+    font-size:.82rem;letter-spacing:.04em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:.55rem;
+  }
+  .project-cap p{color:var(--muted);font-size:.96rem;margin:0;max-width:46ch}
+
+  /* ---------- Services strip ---------- */
+  .services{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
+  .svc h3{font-family:var(--sans);font-size:1.02rem;font-weight:600;letter-spacing:.01em;margin:.9rem 0 .5rem;display:flex;align-items:center;gap:.6rem}
+  .svc p{color:var(--muted);font-size:.95rem;margin:0}
+  .svc .icon{color:var(--accent);width:22px;height:22px}
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;
+  }
+  .portrait{
+    aspect-ratio:3/4;width:100%;
+    background:linear-gradient(160deg,#ded7cb,#c6bcab);
+    border:1px solid var(--line);
+    display:flex;align-items:flex-end;
+  }
+  .about-text h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:1.2rem}
+  .about-text .sig{
+    font-family:var(--serif);font-style:italic;color:var(--ink);
+    font-size:1.15rem;margin-top:1.4rem;
+  }
+
+  /* ---------- Press ---------- */
+  .press{background:var(--ink);color:var(--paper);text-align:center}
+  .press .eyebrow{color:#c9b48f}
+  .press h2{color:var(--paper);font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:2.4rem;max-width:24ch;margin-left:auto;margin-right:auto}
+  .logos{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .logo-ph{
+    border:1px dashed #4a463f;color:#9a9389;
+    padding:1.4rem .6rem;font-size:.78rem;letter-spacing:.06em;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    min-height:78px;
+  }
+  .press-note{color:#8d8779;font-size:.82rem;margin-top:1.8rem}
+
+  /* ---------- Final CTA ---------- */
+  .final{text-align:center;padding:96px 0}
+  .final h2{font-size:clamp(2rem,5vw,3.2rem);max-width:18ch;margin:0 auto 1.2rem}
+  .final p{color:var(--muted);max-width:40ch;margin:0 auto 2rem}
+  .final .btn{padding:.9rem 1.7rem;font-size:.85rem}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--white);border-top:1px solid var(--line);padding:54px 0 40px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+  .foot h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem;font-weight:600}
+  .foot a,.foot p{color:var(--ink);font-size:.92rem;margin:0 0 .45rem}
+  .foot a:hover{color:var(--accent)}
+  .foot .wordmark{margin-bottom:1rem;display:inline-block}
+  .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    margin-top:42px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:.8rem;color:var(--muted);
+  }
+  .ph-tag{font-style:normal;color:var(--accent)}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr;gap:34px}
+    .portrait{max-width:380px}
+    .svc-grid{grid-template-columns:1fr 1fr;gap:30px}
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    .grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .hero-meta{flex-direction:column;align-items:flex-start;gap:16px}
+  }
+  @media (max-width:560px){
+    *{min-width:0}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    section{padding:54px 0}
+    .svc-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column}
+    .hero-img{aspect-ratio:4/3}
+    .nav-cta .btn{padding:.6rem .9rem;font-size:.72rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="wordmark" aria-label="Détail — accueil">Détai<span>l</span></a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#projets">Projets</a>
+      <a href="#studio">Le studio</a>
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn nav-cta">Démarrer un projet</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO — portfolio-forward -->
+  <section class="hero" aria-label="Présentation">
+    <div class="wrap">
+      <p class="eyebrow">Architecture d'intérieur · Genève</p>
+      <div class="hero-img" role="img" aria-label="Photographie de projet à intégrer">
+        <span class="ph-label">[Projet phare — grande photo plein cadre à fournir]</span>
+      </div>
+      <div class="hero-meta">
+        <h1>Des intérieurs qui se vivent dans le détail.</h1>
+        <p class="hero-lede">Studio d'architecture d'intérieur et de décoration. Nous concevons des lieux justes — résidentiels et privés — du parti-pris au dernier réglage de chantier.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Démarrer un projet</a>
+        <a href="#projets" class="btn btn-ghost">Voir les projets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section id="projets" aria-label="Projets">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Sélection</p>
+          <h2>Projets récents</h2>
+        </div>
+        <p>Une sélection d'aménagements résidentiels et d'espaces sur mesure. Chaque lieu, son parti-pris.</p>
+      </div>
+      <div class="grid">
+
+        <a class="project" href="#contact">
+          <div class="frame a" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Genève · 180 m² · [Année]</p>
+            <h3>Appartement Vieille Ville</h3>
+            <p>Rénovation complète d'un appartement d'époque. Matières franches, lumière préservée, agencement épuré.</p>
+          </div>
+        </a>
+
+        <a class="project" href="#contact">
+          <div class="frame b" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Rive · 95 m² · [Année]</p>
+            <h3>Duplex contemporain</h3>
+            <p>Conception d'un duplex ouvert. Mobilier sur mesure, palette minérale, circulation fluide.</p>
+          </div>
+        </a>
+
+        <a class="project" href="#contact">
+          <div class="frame c" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Cologny · Villa · [Année]</p>
+            <h3>Maison familiale</h3>
+            <p>Réagencement d'une villa lacustre. Volumes redessinés autour de la vue, matériaux naturels.</p>
+          </div>
+        </a>
+
+        <a class="project" href="#contact">
+          <div class="frame d" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Genève · Cabinet · [Année]</p>
+            <h3>Espace professionnel</h3>
+            <p>Aménagement d'un cabinet privé. Accueil chaleureux, détails de menuiserie, identité maîtrisée.</p>
+          </div>
+        </a>
+
+        <a class="project" href="#contact">
+          <div class="frame e" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Verbier · Chalet · [Année]</p>
+            <h3>Chalet d'altitude</h3>
+            <p>Intérieur de montagne réinterprété. Bois patiné, textiles épais, confort sobre.</p>
+          </div>
+        </a>
+
+        <a class="project" href="#contact">
+          <div class="frame f" role="img" aria-label="Photo de projet à intégrer">
+            <span class="ph-label">[Projet — photo]</span>
+          </div>
+          <div class="project-cap">
+            <p class="meta">Genève · 120 m² · [Année]</p>
+            <h3>Pied-à-terre</h3>
+            <p>Petite surface optimisée. Rangements intégrés, couleurs douces, pièces de design choisies.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES / SAVOIR-FAIRE -->
+  <section id="savoir-faire" class="services" aria-label="Savoir-faire">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Savoir-faire</p>
+          <h2>De l'idée au dernier détail</h2>
+        </div>
+        <p>Un accompagnement continu, de la première esquisse à la livraison.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Conception &amp; parti-pris
+          </h3>
+          <p>Définition de l'intention, plans, palettes de matières et d'ambiances. La vision avant le détail.</p>
+        </div>
+        <div class="svc">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3-3a2.83 2.83 0 0 1 4 4l-3 3"/><path d="m18 13 1.5 1.5"/></svg>
+            Agencement &amp; sur-mesure
+          </h3>
+          <p>Mobilier dessiné pour le lieu, menuiseries, sélection de pièces design et rééditions du 20ᵉ.</p>
+        </div>
+        <div class="svc">
+          <h3>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M11 4h9"/><path d="M11 12h9"/><path d="M11 20h9"/><path d="M3 7l2 2 3-3"/><path d="m3 18 2 2 3-3"/></svg>
+            Suivi de chantier
+          </h3>
+          <p>Coordination des artisans, contrôle des finitions, livraison clé en main. Présents jusqu'au dernier réglage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / LE STUDIO -->
+  <section id="studio" aria-label="Le studio">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="portrait" role="img" aria-label="Portrait à intégrer">
+          <span class="ph-label">[Portrait — fondateur·rice à fournir]</span>
+        </div>
+        <div class="about-text">
+          <p class="eyebrow">Le studio</p>
+          <h2>Détail, depuis la Vieille Ville de Genève</h2>
+          <p>Notre conviction : un bel intérieur ne s'impose pas, il se révèle. Nous travaillons la lumière, les proportions et la matière jusqu'à ce que chaque pièce trouve sa justesse — sans excès, sans effet de mode.</p>
+          <p>Chaque projet commence par une écoute : votre manière de vivre, vos objets, votre rapport à l'espace. Le reste — agencement, mobilier contemporain, design — vient servir cette intention, jamais l'inverse.</p>
+          <p class="sig">« Le luxe, c'est le détail tenu jusqu'au bout. »</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS / DISTINCTIONS -->
+  <section class="press" aria-label="Presse et distinctions">
+    <div class="wrap">
+      <p class="eyebrow">Presse &amp; distinctions</p>
+      <h2>Ils ont parlé de notre travail</h2>
+      <div class="logos">
+        <div class="logo-ph">[Logo presse à fournir]</div>
+        <div class="logo-ph">[Logo presse à fournir]</div>
+        <div class="logo-ph">[Logo presse à fournir]</div>
+        <div class="logo-ph">[Logo presse à fournir]</div>
+      </div>
+      <p class="press-note">Emplacements réservés — parutions, prix et publications à renseigner par le studio.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contact" class="final" aria-label="Contact">
+    <div class="wrap">
+      <p class="eyebrow">Démarrer un projet</p>
+      <h2>Parlons de votre intérieur.</h2>
+      <p>Un premier échange, sans engagement, pour comprendre votre lieu et votre envie. Nous vous disons franchement si nous sommes le bon studio pour vous.</p>
+      <a href="mailto:[contact@detail-geneve.ch]" class="btn">Prendre contact</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot">
+        <a href="#top" class="wordmark">Détai<span>l</span></a>
+        <p>Architecture d'intérieur, mobilier<br>et design contemporains.</p>
+      </div>
+      <div class="foot">
+        <h4>Atelier</h4>
+        <p>16, rue Étienne-Dumont</p>
+        <p>CH-1204 Genève</p>
+        <p>Vieille Ville</p>
+      </div>
+      <div class="foot">
+        <h4>Contact</h4>
+        <p><a href="mailto:[contact@detail-geneve.ch]"><span class="ph-tag">[email à fournir]</span></a></p>
+        <p><a href="tel:[+41]"><span class="ph-tag">[téléphone à fournir]</span></a></p>
+        <p><span class="ph-tag">[Instagram à fournir]</span></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Détail Sàrl — Genève</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

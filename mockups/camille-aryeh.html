@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camille Aryeh Studio — Architecture d'intérieur à Genève</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  :root{
+    --ink:#2b2b2e;          /* texte principal */
+    --soft:#5e5e66;         /* texte secondaire */
+    --bg:#fbfaf7;           /* fond crème clair */
+    --panel:#ffffff;        /* cartes */
+    --line:#e9e6df;         /* bordures douces */
+    --accent:#c2703d;       /* terracotta chaleureux */
+    --accent-soft:#f4e7dd;  /* fond accent doux */
+    --radius:16px;
+    --shadow:0 6px 22px rgba(43,43,46,.07);
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0 0 .4em;
+    letter-spacing:-.01em;
+    overflow-wrap:break-word;
+  }
+  p{margin:0 0 1em;overflow-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-block;font-family:"Inter",sans-serif;font-size:.8rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+    font-weight:600;margin-bottom:.7rem;
+  }
+
+  /* ---------- Boutons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:"Inter",sans-serif;font-weight:600;font-size:1rem;
+    padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
+    cursor:pointer;transition:transform .15s ease,background .2s ease,box-shadow .2s ease;
+    line-height:1;text-align:center;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(194,112,61,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(194,112,61,.34)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-light{background:#fff;color:var(--accent);box-shadow:var(--shadow)}
+  .btn-light:hover{transform:translateY(-2px)}
+  a.btn:focus-visible,a:focus-visible,button:focus-visible{
+    outline:3px solid var(--accent);outline-offset:3px;border-radius:6px;
+  }
+
+  /* ---------- Header sticky ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,247,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 24px;max-width:1140px;margin:0 auto}
+  .brand{font-family:"Fraunces",serif;font-weight:600;font-size:1.18rem;letter-spacing:.01em;white-space:nowrap}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a.lnk{font-size:.95rem;color:var(--soft);font-weight:500}
+  .nav-links a.lnk:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:.8rem}
+  .menu-links{display:flex;gap:1.6rem}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 56px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.4rem)}
+  .hero .lead{font-size:1.18rem;color:var(--soft);max-width:34ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.6rem}
+  .hero-trust{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:2rem;color:var(--soft);font-size:.92rem}
+  .hero-trust span{display:inline-flex;align-items:center;gap:.45rem}
+  .hero-trust svg{color:var(--accent)}
+  .hero-media{
+    border-radius:var(--radius);overflow:hidden;background:var(--accent-soft);
+    box-shadow:var(--shadow);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+  }
+  .ph{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:.5rem;color:var(--soft);text-align:center;padding:1.5rem;width:100%;height:100%;
+    background:repeating-linear-gradient(135deg,rgba(194,112,61,.05) 0 14px,transparent 14px 28px);
+  }
+  .ph svg{color:var(--accent);opacity:.7}
+  .ph small{font-size:.82rem;letter-spacing:.02em}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0}
+  .sec-head{max-width:42rem;margin:0 0 2.4rem}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+  .sec-head p{color:var(--soft);font-size:1.08rem}
+
+  /* ---------- Services ---------- */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;box-shadow:var(--shadow);transition:transform .15s ease,border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .card .ic{
+    width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--accent-soft);color:var(--accent);margin-bottom:1rem;
+  }
+  .card h3{font-size:1.18rem;margin-bottom:.35em}
+  .card p{font-size:.96rem;color:var(--soft);margin:0}
+
+  /* ---------- Réalisations ---------- */
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .work{
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+    background:var(--panel);box-shadow:var(--shadow);
+  }
+  .work .thumb{aspect-ratio:16/11;background:var(--accent-soft)}
+  .work .meta{padding:18px 20px}
+  .work .meta h3{font-size:1.12rem;margin-bottom:.15em}
+  .work .meta span{font-size:.9rem;color:var(--soft)}
+
+  /* ---------- À propos ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
+  .about-portrait{border-radius:var(--radius);overflow:hidden;background:var(--accent-soft);aspect-ratio:1/1;box-shadow:var(--shadow)}
+  .about h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+  .about p{color:var(--soft);font-size:1.08rem}
+
+  /* ---------- Témoignages ---------- */
+  .quotes{background:var(--accent-soft)}
+  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .quote{
+    background:var(--panel);border-radius:var(--radius);padding:26px 24px;
+    border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .quote .stars{display:flex;gap:3px;color:var(--accent);margin-bottom:.8rem}
+  .quote p{font-size:1rem;color:var(--ink);font-style:italic}
+  .quote .who{margin-top:auto;font-size:.9rem;color:var(--soft);padding-top:.6rem}
+  .quote .who strong{color:var(--ink);font-style:normal}
+
+  /* ---------- CTA contact ---------- */
+  .cta{
+    background:var(--ink);color:#fff;border-radius:24px;
+    padding:54px 40px;text-align:center;margin:0 auto;max-width:1140px;
+  }
+  .cta h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem)}
+  .cta p{color:#cfcdd2;max-width:46ch;margin:0 auto 1.6rem}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+  .cta .note{margin-top:1.3rem;font-size:.88rem;color:#a8a6ad}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:46px 0 30px;background:var(--panel)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+  .foot-grid h4{font-family:"Inter",sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 .9rem}
+  .foot-grid a,.foot-grid p{display:block;color:var(--soft);font-size:.95rem;margin:0 0 .5rem}
+  .foot-grid a:hover{color:var(--accent)}
+  .foot-brand{font-family:"Fraunces",serif;font-size:1.2rem;color:var(--ink);margin-bottom:.6rem}
+  .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem;color:var(--soft)}
+  .foot-bottom a{color:var(--soft)}
+  .foot-bottom a:hover{color:var(--accent)}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-media{aspect-ratio:16/12;max-width:480px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .quote-grid{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr;gap:30px}
+    .about-portrait{max-width:340px;aspect-ratio:4/3}
+    .menu-links{display:none}
+  }
+  @media(max-width:720px){
+    .work-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:26px}
+  }
+  @media(max-width:560px){
+    *{min-width:0}
+    body{font-size:16px}
+    .nav-links a.lnk{display:none}
+    .cards{grid-template-columns:1fr}
+    .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center}
+    .cta{padding:40px 22px;border-radius:18px}
+    .hero-trust{gap:.8rem 1.2rem}
+    section{padding:48px 0}
+    .nav{padding:.75rem 18px}
+    .wrap{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="#top">Camille Aryeh <span>Studio</span></a>
+    <div class="nav-links">
+      <div class="menu-links">
+        <a class="lnk" href="#services">Services</a>
+        <a class="lnk" href="#realisations">Réalisations</a>
+        <a class="lnk" href="#apropos">À propos</a>
+      </div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#contact">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.17L4 17.17V4z"/></svg>
+        Prendre contact
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Architecture d'intérieur · Genève</span>
+        <h1>Des intérieurs pensés pour la vie que vous menez.</h1>
+        <p class="lead">Du premier croquis à la remise des clés, nous concevons et réalisons votre rénovation à Genève — un projet, une équipe, zéro coordination à gérer de votre côté.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Démarrer un projet
+          </a>
+          <a class="btn btn-ghost" href="#realisations">Voir nos réalisations</a>
+        </div>
+        <div class="hero-trust">
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Conception &amp; chantier suivis</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Résidentiel &amp; commercial</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg> Démarches &amp; autorisations gérées</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="ph">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+          <strong>[ Projet — photo d'intérieur ]</strong>
+          <small>Votre plus belle réalisation ira ici</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ce que nous faisons</span>
+      <h2>Un accompagnement clair, du concept à la dernière finition.</h2>
+      <p>Quatre métiers, une seule équipe. Vous parlez à un interlocuteur unique tout au long du projet.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M21 7v5h-5"/><path d="M3 21h18"/></svg></div>
+        <h3>Conception</h3>
+        <p>Plans, ambiances et matières. Nous traduisons votre mode de vie en un projet d'intérieur sur mesure, résidentiel comme commercial.</p>
+      </article>
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Agencement</h3>
+        <p>Mobilier, luminaires, tissus et papiers peints sélectionnés dans notre galerie genevoise pour donner sa signature à chaque pièce.</p>
+      </article>
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7 6 15"/><path d="m9 4 3 3"/><path d="m3 21 3.5-1 11-11a2.8 2.8 0 0 0-4-4l-11 11z"/></svg></div>
+        <h3>Rénovation</h3>
+        <p>Transformations architecturales et rénovations structurelles. Nous repensons et réorganisons l'espace, pas seulement la décoration.</p>
+      </article>
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Suivi &amp; démarches</h3>
+        <p>Autorisations, permis et coordination des artisans. Nous pilotons chaque détail du chantier jusqu'à la remise des clés.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RÉALISATIONS -->
+<section id="realisations">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Nos réalisations</span>
+      <h2>Des projets à Genève et alentours.</h2>
+      <p>Un aperçu de nos chantiers récents. Les photos de vos projets viendront illustrer cette grille.</p>
+    </div>
+    <div class="work-grid">
+      <article class="work">
+        <div class="thumb ph"><div class="ph"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><small>[ Projet — photo ]</small></div></div>
+        <div class="meta"><h3>Lakeview Villa</h3><span>Résidentiel · Cologny</span></div>
+      </article>
+      <article class="work">
+        <div class="thumb ph"><div class="ph"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><small>[ Projet — photo ]</small></div></div>
+        <div class="meta"><h3>Rive Gauche</h3><span>Résidentiel · Genève</span></div>
+      </article>
+      <article class="work">
+        <div class="thumb ph"><div class="ph"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><small>[ Projet — photo ]</small></div></div>
+        <div class="meta"><h3>Église Russe</h3><span>Résidentiel · Genève</span></div>
+      </article>
+      <article class="work">
+        <div class="thumb ph"><div class="ph"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><small>[ Projet — photo ]</small></div></div>
+        <div class="meta"><h3>Champel Townhouse</h3><span>Résidentiel · Genève</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos" class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-portrait ph">
+        <div class="ph">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          <small>[ Portrait ]</small>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">À propos</span>
+        <h2>Le studio Camille Aryeh, à Genève.</h2>
+        <p>Nous sommes un atelier d'architecture d'intérieur basé à Genève, spécialisé dans la rénovation, la transformation architecturale et l'agencement haut de gamme — pour des espaces résidentiels et commerciaux.</p>
+        <p>Notre approche est simple : un seul interlocuteur, un projet maîtrisé de bout en bout, et le souci du détail à chaque étape, de la conception aux autorisations jusqu'à la pose finale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="quotes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ce qu'en disent nos clients</span>
+      <h2>La confiance se construit projet après projet.</h2>
+      <p>Emplacements prêts à accueillir vos vrais témoignages — il suffit de remplacer le texte.</p>
+    </div>
+    <div class="quote-grid">
+      <figure class="quote">
+        <div class="stars" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+        </div>
+        <p>[ Témoignage client — quelques lignes sur le déroulé du projet et le résultat. ]</p>
+        <figcaption class="who"><strong>[ Nom du client ]</strong> · [ Type de projet ]</figcaption>
+      </figure>
+      <figure class="quote">
+        <div class="stars" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+        </div>
+        <p>[ Témoignage client — ce qui a fait la différence : écoute, suivi de chantier, respect des délais. ]</p>
+        <figcaption class="who"><strong>[ Nom du client ]</strong> · [ Type de projet ]</figcaption>
+      </figure>
+      <figure class="quote">
+        <div class="stars" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg>
+        </div>
+        <p>[ Témoignage client — le ressenti dans l'espace fini, vivre dedans au quotidien. ]</p>
+        <figcaption class="who"><strong>[ Nom du client ]</strong> · [ Type de projet ]</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact">
+  <div class="cta">
+    <span class="eyebrow" style="color:#e9b894">Démarrons</span>
+    <h2>Un projet en tête ? Parlons-en.</h2>
+    <p>Décrivez-nous votre espace et vos envies. Nous vous répondons sous 48 h pour caler un premier échange, sans engagement.</p>
+    <div class="cta-actions">
+      <a class="btn btn-light" href="mailto:info@aryeharchitecture.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        info@aryeharchitecture.com
+      </a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="tel:+41000000000">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        [ Téléphone à compléter ]
+      </a>
+    </div>
+    <p class="note">Réponse sous 48 h · Premier échange sans engagement · Genève et région</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Camille Aryeh Studio</div>
+        <p>Architecture d'intérieur, rénovation et agencement haut de gamme à Genève. Résidentiel et commercial.</p>
+        <p>Genève, Suisse</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:info@aryeharchitecture.com">info@aryeharchitecture.com</a>
+        <p>[ Téléphone à compléter ]</p>
+        <p>[ Adresse de la galerie à compléter ]</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Camille Aryeh Studio · Genève</span>
+      <span>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">Confidentialité</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

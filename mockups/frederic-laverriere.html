@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frédéric Laverrière — Photographe · Genève</title>
+<meta name="description" content="Frédéric Laverrière, photographe à Genève. Mariage, couple, portrait et corporate. Un regard, une lumière, le même soin du début à la fin. Vérifiez vos disponibilités.">
+<style>
+  :root{
+    --ink:#101012;          /* noir photographique */
+    --ink-soft:#3a3a3e;
+    --ink-mute:#8a8a90;
+    --line:#e7e7e9;
+    --line-soft:#f1f1f2;
+    --paper:#f6f5f3;        /* blanc cassé chaud */
+    --white:#ffffff;
+    --accent:#9a7b52;       /* unique accent : laiton discret */
+    --black:#0c0c0d;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,"Helvetica Neue","Segoe UI",system-ui,Roboto,Arial,sans-serif;
+    --pad:clamp(3.5rem,8vw,7rem);
+    --shadow:0 30px 70px -40px rgba(16,16,18,.55);
+  }
+  *{margin:0;padding:0}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    font-size:16px;
+  }
+  h1,h2,h3,.serif{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:.2px}
+  h1,h2,h3,h4,p,a,span,li,.serif{overflow-wrap:break-word;word-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  svg{display:block}
+  .ic{width:22px;height:22px;stroke:currentColor;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:760px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--ink-mute);font-weight:600;font-family:var(--sans);
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:15px 30px;cursor:pointer;border:1px solid var(--ink);
+    background:var(--ink);color:#fff;
+    transition:background .25s ease,color .25s ease,border-color .25s ease;
+  }
+  .btn .ic{width:16px;height:16px;stroke-width:1.6}
+  .btn:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn-ondark{background:#fff;color:var(--ink);border-color:#fff}
+  .btn-ondark:hover{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-ondark-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+  .btn-ondark-ghost:hover{background:#fff;color:var(--ink)}
+
+  /* photo placeholder — pas d'image inventée, juste un cadre soigné */
+  .ph{
+    position:relative;background:
+      repeating-linear-gradient(135deg,#1a1a1c 0 2px,transparent 2px 22px),
+      linear-gradient(160deg,#232326,#121214);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;color:#cfcfd2;
+  }
+  .ph.light{background:
+      repeating-linear-gradient(135deg,#e7e5e1 0 2px,transparent 2px 22px),
+      linear-gradient(160deg,#efedea,#e2dfda);color:#9a948b}
+  .ph .ph-tag{
+    position:relative;z-index:2;font-family:var(--sans);font-size:.7rem;letter-spacing:.24em;
+    text-transform:uppercase;display:flex;align-items:center;gap:9px;
+    padding:9px 16px;border:1px solid currentColor;border-radius:2px;
+  }
+  .ph .ph-tag .ic{width:15px;height:15px;stroke-width:1.5}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(255,255,255,.86);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;
+    max-width:1180px;margin:0 auto;padding:16px 28px}
+  .brand{display:flex;flex-direction:column;line-height:1.05}
+  .brand b{font-family:var(--serif);font-size:1.32rem;font-weight:500;letter-spacing:.5px;color:var(--ink)}
+  .brand span{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-mute);margin-top:3px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a.lnk{font-size:.73rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;transition:color .2s}
+  .nav-links a.lnk:hover{color:var(--accent)}
+  .nav-cta{padding:11px 22px;font-size:.68rem}
+  .nav-cta .ic{width:14px;height:14px}
+  .burger{display:none;background:none;border:1px solid var(--line);padding:9px;color:var(--ink);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:calc(100vh - 60px);min-height:560px;max-height:920px;
+    background:
+      repeating-linear-gradient(135deg,#171719 0 2px,transparent 2px 26px),
+      linear-gradient(165deg,#252528 0%,#0e0e10 70%);
+    display:flex;align-items:flex-end;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(8,8,9,.78) 0%,rgba(8,8,9,.18) 42%,rgba(8,8,9,.34) 100%);z-index:1}
+  .hero-sig{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);z-index:1;
+    font-family:var(--sans);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5);
+    display:flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(255,255,255,.3);border-radius:2px}
+  .hero-sig .ic{width:15px;height:15px;stroke:rgba(255,255,255,.6)}
+  .hero-content{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 28px clamp(2.5rem,6vw,5rem)}
+  .hero .eyebrow{color:rgba(255,255,255,.62);margin-bottom:18px}
+  .hero h1{font-size:clamp(2.6rem,7vw,5.2rem);color:#fff;margin-bottom:20px;font-weight:400}
+  .hero p.lead{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.82);max-width:30em;
+    margin-bottom:34px;font-family:var(--serif);font-style:italic;line-height:1.5}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.55)}
+  .scroll-cue .ic{width:24px;height:24px;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:var(--pad) 0;text-align:center}
+  .intro .eyebrow{color:var(--accent);margin-bottom:22px;display:block}
+  .intro h2{font-size:clamp(1.7rem,4vw,2.7rem);font-weight:400;max-width:18em;margin:0 auto 22px;color:var(--ink)}
+  .intro p{color:var(--ink-soft);font-size:1.06rem;max-width:42em;margin:0 auto}
+
+  /* ---------- GALLERIES ---------- */
+  section.galleries{padding-bottom:var(--pad)}
+  .sec-head{max-width:1180px;margin:0 auto;padding:0 28px clamp(2rem,4vw,3rem)}
+  .sec-head .eyebrow{color:var(--accent);display:block;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:400;color:var(--ink)}
+  .gal-block{margin-bottom:clamp(3rem,6vw,5rem)}
+  .gal-head{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:18px}
+  .gal-head h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:400;color:var(--ink)}
+  .gal-head span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);flex:none}
+  .gal-grid{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;gap:14px}
+  .gal-grid.g-mariage{grid-template-columns:2fr 1fr;grid-template-rows:240px 240px}
+  .gal-grid.g-mariage .ph:nth-child(1){grid-row:1 / span 2}
+  .gal-grid.g-couple{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:300px}
+  .gal-grid.g-portrait{grid-template-columns:1fr 1fr 1fr 1fr;grid-auto-rows:260px}
+  .gal-grid .ph{min-height:200px;border-radius:2px}
+
+  /* ---------- STORY (un mariage complet) ---------- */
+  .story{background:var(--black);color:#f3f1ee;padding:var(--pad) 0}
+  .story .eyebrow{color:rgba(255,255,255,.5);display:block;text-align:center;margin-bottom:18px}
+  .story h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:#fff;max-width:16em;margin:0 auto clamp(2.5rem,5vw,4rem)}
+  .story-steps{max-width:1000px;margin:0 auto;padding:0 28px;display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4.5rem)}
+  .story-step{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.5rem);align-items:center}
+  .story-step:nth-child(even){direction:rtl}
+  .story-step:nth-child(even) > *{direction:ltr}
+  .story-step .ph{aspect-ratio:4/3;border-radius:2px}
+  .story-step .moment{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .story-step h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:400;color:#fff;margin-bottom:14px}
+  .story-step p{color:rgba(243,241,238,.72);font-size:1.02rem}
+
+  /* ---------- FORMULES ---------- */
+  .formules{padding:var(--pad) 0;background:var(--paper)}
+  .formules .sec-head{text-align:center;margin-left:auto;margin-right:auto}
+  .formules .sec-head h2{margin:0 auto}
+  .form-grid{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .form-card{background:#fff;border:1px solid var(--line);padding:38px 32px;display:flex;flex-direction:column;border-radius:2px}
+  .form-card.feat{border-color:var(--ink);box-shadow:var(--shadow)}
+  .form-card .tier{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+  .form-card h3{font-size:1.7rem;font-weight:500;color:var(--ink);margin-bottom:6px}
+  .form-card .from{font-size:.84rem;color:var(--ink-mute);margin-bottom:24px;font-style:italic;font-family:var(--serif)}
+  .form-card .price{font-family:var(--serif);font-size:2.1rem;color:var(--ink);margin-bottom:2px;line-height:1}
+  .form-card .price small{font-size:.78rem;letter-spacing:.04em;color:var(--ink-mute);font-family:var(--sans);font-style:normal}
+  .form-card ul{list-style:none;margin:26px 0 30px;display:flex;flex-direction:column;gap:13px}
+  .form-card li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--ink-soft)}
+  .form-card li .ic{width:17px;height:17px;color:var(--accent);flex:none;margin-top:4px}
+  .form-card .btn{margin-top:auto;width:100%}
+  .form-note{max-width:1180px;margin:26px auto 0;padding:0 28px;text-align:center;font-size:.86rem;color:var(--ink-mute);font-style:italic;font-family:var(--serif)}
+
+  /* ---------- RESERVATION ---------- */
+  .book{padding:var(--pad) 0}
+  .book-grid{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
+  .book-intro .eyebrow{color:var(--accent);display:block;margin-bottom:16px}
+  .book-intro h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;color:var(--ink);margin-bottom:18px}
+  .book-intro p{color:var(--ink-soft);font-size:1.04rem;margin-bottom:28px}
+  .book-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .book-list li{display:flex;gap:13px;align-items:flex-start;font-size:.96rem;color:var(--ink-soft)}
+  .book-list li .ic{width:19px;height:19px;color:var(--accent);flex:none;margin-top:3px}
+  .book-list li b{color:var(--ink);font-weight:600}
+  form{display:grid;gap:16px}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+  .field input,.field select,.field textarea{
+    font-family:var(--sans);font-size:.96rem;color:var(--ink);
+    padding:13px 15px;border:1px solid var(--line);background:#fff;border-radius:2px;width:100%;
+    transition:border-color .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+  .field textarea{resize:vertical;min-height:110px}
+  form .btn{margin-top:6px;justify-self:start}
+  .form-priv{font-size:.8rem;color:var(--ink-mute);display:flex;align-items:center;gap:8px;margin-top:2px}
+  .form-priv .ic{width:15px;height:15px;flex:none}
+
+  /* ---------- TEMOIGNAGES ---------- */
+  .testi{padding:var(--pad) 0;background:var(--black);color:#f3f1ee}
+  .testi .eyebrow{color:rgba(255,255,255,.5);display:block;text-align:center;margin-bottom:16px}
+  .testi h2{text-align:center;font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:400;color:#fff;margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+  .testi-grid{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .testi-card{border:1px solid rgba(255,255,255,.14);padding:32px 28px;border-radius:2px;display:flex;flex-direction:column}
+  .testi-card .qmark{font-family:var(--serif);font-size:2.6rem;line-height:.6;color:var(--accent);margin-bottom:14px}
+  .testi-card p{color:rgba(243,241,238,.8);font-family:var(--serif);font-style:italic;font-size:1.08rem;margin-bottom:22px;flex:1}
+  .testi-card .who{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  .testi-card .who b{color:#fff;font-weight:600;display:block;letter-spacing:.04em;text-transform:none;font-size:.95rem;margin-bottom:2px;font-family:var(--serif)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#fff;padding:clamp(3rem,6vw,4.5rem) 0 2rem}
+  .foot-top{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+  .foot-brand b{font-family:var(--serif);font-size:1.5rem;font-weight:500;display:block;margin-bottom:6px}
+  .foot-brand span{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+  .foot-brand p{color:rgba(255,255,255,.55);font-size:.92rem;margin-top:16px;max-width:26em}
+  .foot-col h4{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px}
+  .foot-col a,.foot-col p{display:block;color:rgba(255,255,255,.8);font-size:.92rem;margin-bottom:10px;transition:color .2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-col .row{display:flex;align-items:center;gap:9px}
+  .foot-col .ic{width:16px;height:16px;color:rgba(255,255,255,.55);flex:none}
+  .foot-bottom{max-width:1180px;margin:34px auto 0;padding:24px 28px 0;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot-bottom p{font-size:.8rem;color:rgba(255,255,255,.45)}
+  .foot-bottom .socials{display:flex;gap:14px}
+  .foot-bottom .socials a{color:rgba(255,255,255,.6)}
+  .foot-bottom .socials a:hover{color:#fff}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .nav-links a.lnk{display:none}
+    .burger{display:inline-flex}
+    .hero{height:auto;min-height:0;max-height:none;padding:clamp(7rem,18vw,11rem) 0 0}
+    .gal-grid.g-portrait{grid-template-columns:1fr 1fr;grid-auto-rows:230px}
+    .form-grid{grid-template-columns:1fr;max-width:480px}
+    .form-card.feat{order:-1}
+    .book-grid{grid-template-columns:1fr;gap:2.5rem}
+    .testi-grid{grid-template-columns:1fr;max-width:520px}
+    .foot-top{grid-template-columns:1fr;gap:30px}
+  }
+  @media (max-width:680px){
+    .gal-grid.g-mariage{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:240px}
+    .gal-grid.g-mariage .ph:nth-child(1){grid-row:auto}
+    .gal-grid.g-couple{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+    .story-step{grid-template-columns:1fr;direction:ltr}
+    .story-step:nth-child(even){direction:ltr}
+  }
+  @media (max-width:560px){
+    *{min-width:0}
+    .wrap,.narrow,.nav-inner,.hero-content,.sec-head,.gal-head,.gal-grid,
+    .story-steps,.form-grid,.form-note,.book-grid,.testi-grid,.foot-top,.foot-bottom{padding-left:20px;padding-right:20px}
+    .gal-grid.g-portrait,.gal-grid.g-couple{grid-template-columns:1fr;grid-auto-rows:240px}
+    .f-row{grid-template-columns:1fr}
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .hero-actions .btn{width:100%}
+    .gal-head{flex-direction:column;align-items:flex-start;gap:4px}
+    .foot-bottom{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Frédéric Laverrière, accueil">
+      <b>Frédéric Laverrière</b>
+      <span>Photographe · Genève</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a class="lnk" href="#galeries">Galeries</a>
+      <a class="lnk" href="#reportage">Un mariage complet</a>
+      <a class="lnk" href="#formules">Formules</a>
+      <a class="lnk" href="#temoignages">Témoignages</a>
+      <a class="btn nav-cta" href="#reservation">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+        Disponibilités
+      </a>
+    </nav>
+    <button class="burger" aria-label="Menu">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-sig">
+    <svg class="ic" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="4"/></svg>
+    [ Photo signature — plein écran ]
+  </div>
+  <div class="hero-content">
+    <span class="eyebrow">Mariage · Couple · Portrait · Corporate — Genève</span>
+    <h1>Le souvenir,<br>tel que vous l'avez vécu.</h1>
+    <p class="lead">Un regard, une lumière, le même soin du premier au dernier cliché — pas un best-of disparate, un récit cohérent.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ondark" href="#reservation">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+        Vérifier mes disponibilités
+      </a>
+      <a class="btn btn-ondark-ghost" href="#galeries">Voir les galeries</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#intro" aria-label="Défiler vers le bas">
+    <svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </a>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="intro narrow" id="intro">
+  <span class="eyebrow">Photographe indépendant · Genève</span>
+  <h2>Photographier, c'est d'abord savoir attendre le bon instant.</h2>
+  <p>Basé à Genève, je photographie les mariages, les couples et les portraits avec la même exigence que les marques qui me font confiance depuis des années. Une seule signature visuelle, tenue d'un bout à l'autre : c'est ce qui fait la différence entre des belles photos et un reportage qui vous ressemble.</p>
+</section>
+
+<!-- ===== GALERIES ===== -->
+<section class="galleries" id="galeries">
+  <div class="sec-head">
+    <span class="eyebrow">Galeries</span>
+    <h2>Quatre univers, une même lumière.</h2>
+  </div>
+
+  <!-- Mariage -->
+  <div class="gal-block">
+    <div class="gal-head">
+      <h3>Mariage</h3>
+      <span>Reportage · pleine journée</span>
+    </div>
+    <div class="gal-grid g-mariage">
+      <div class="ph"><span class="ph-tag"><svg class="ic" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="4"/></svg>Galerie mariage</span></div>
+      <div class="ph"><span class="ph-tag">Cérémonie</span></div>
+      <div class="ph"><span class="ph-tag">Soirée</span></div>
+    </div>
+  </div>
+
+  <!-- Couple -->
+  <div class="gal-block">
+    <div class="gal-head">
+      <h3>Couple</h3>
+      <span>Séance · extérieur ou studio</span>
+    </div>
+    <div class="gal-grid g-couple">
+      <div class="ph"><span class="ph-tag">Couple 01</span></div>
+      <div class="ph"><span class="ph-tag">Couple 02</span></div>
+      <div class="ph"><span class="ph-tag">Couple 03</span></div>
+    </div>
+  </div>
+
+  <!-- Portrait -->
+  <div class="gal-block">
+    <div class="gal-head">
+      <h3>Portrait &amp; Corporate</h3>
+      <span>Studio · sur site</span>
+    </div>
+    <div class="gal-grid g-portrait">
+      <div class="ph"><span class="ph-tag">Portrait 01</span></div>
+      <div class="ph"><span class="ph-tag">Portrait 02</span></div>
+      <div class="ph"><span class="ph-tag">Corporate 01</span></div>
+      <div class="ph"><span class="ph-tag">Corporate 02</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UN MARIAGE COMPLET ===== -->
+<section class="story" id="reportage">
+  <span class="eyebrow">Storytelling</span>
+  <h2>Un mariage complet, du matin au soir.</h2>
+  <div class="story-steps">
+    <div class="story-step">
+      <div class="ph"><span class="ph-tag">[ Préparatifs ]</span></div>
+      <div>
+        <div class="moment">8h00 — Les préparatifs</div>
+        <h3>Le calme avant la journée</h3>
+        <p>[Placeholder récit] Les derniers gestes, la lumière du matin, les regards qui se cherchent. C'est ici que commence le fil narratif — le même que l'on suivra jusqu'à la dernière danse.</p>
+      </div>
+    </div>
+    <div class="story-step">
+      <div class="ph"><span class="ph-tag">[ Cérémonie ]</span></div>
+      <div>
+        <div class="moment">14h30 — La cérémonie</div>
+        <h3>L'instant, sans le déranger</h3>
+        <p>[Placeholder récit] Discret, à distance juste, pour capter l'émotion réelle plutôt que de la mettre en scène. Les invités oublient l'appareil — c'est exactement le but.</p>
+      </div>
+    </div>
+    <div class="story-step">
+      <div class="ph"><span class="ph-tag">[ Soirée ]</span></div>
+      <div>
+        <div class="moment">21h00 — La fête</div>
+        <h3>Jusqu'à la dernière lumière</h3>
+        <p>[Placeholder récit] La piste, les rires, les détails de fin de soirée. Une colorimétrie tenue du matin au soir, pour un album qui se lit comme une seule histoire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMULES ===== -->
+<section class="formules" id="formules">
+  <div class="sec-head center">
+    <span class="eyebrow">Formules</span>
+    <h2>Un cadre clair, dès le départ.</h2>
+  </div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="tier">Séance</div>
+      <h3>Portrait &amp; Couple</h3>
+      <div class="from">Studio ou extérieur</div>
+      <div class="price">à partir de [montant]<small> CHF</small></div>
+      <ul>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Séance de [durée]</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>[nombre] photos retouchées</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Galerie privée en ligne</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fichiers haute définition</li>
+      </ul>
+      <a class="btn btn-ghost" href="#reservation">Demander un devis</a>
+    </div>
+
+    <div class="form-card feat">
+      <div class="tier">Le plus demandé</div>
+      <h3>Mariage — Journée</h3>
+      <div class="from">Reportage complet</div>
+      <div class="price">à partir de [montant]<small> CHF</small></div>
+      <ul>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Couverture [durée] (préparatifs → soirée)</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>[nombre] photos livrées, editing homogène</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Galerie privée + téléchargement HD</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Rendez-vous de préparation inclus</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Option album imprimé</li>
+      </ul>
+      <a class="btn" href="#reservation">Vérifier ma date</a>
+    </div>
+
+    <div class="form-card">
+      <div class="tier">Professionnel</div>
+      <h3>Corporate</h3>
+      <div class="from">Portraits, événement, marque</div>
+      <div class="price">sur devis<small> </small></div>
+      <ul>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Portraits collaborateurs / dirigeants</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Couverture d'événement</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Direction artistique de marque</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Licence d'usage adaptée</li>
+      </ul>
+      <a class="btn btn-ghost" href="#reservation">Parlons de votre projet</a>
+    </div>
+  </div>
+  <p class="form-note">Tarifs indicatifs « à partir de » — chaque projet fait l'objet d'un devis personnalisé selon la durée, le lieu et le nombre de photos.</p>
+</section>
+
+<!-- ===== RESERVATION ===== -->
+<section class="book" id="reservation">
+  <div class="book-grid">
+    <div class="book-intro">
+      <span class="eyebrow">Réservation</span>
+      <h2>Vérifions votre date ensemble.</h2>
+      <p>Une seule date par jour : la disponibilité se vérifie d'abord. Donnez-moi la date et le lieu de votre événement, je reviens vers vous rapidement avec un créneau et un devis.</p>
+      <ul class="book-list">
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg><span><b>Réponse sous [délai]</b> — vous savez vite si la date est libre.</span></li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Genève et alentours</b> — déplacement Suisse romande, devis sur demande au-delà.</span></li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4M5 9h14l1 11H4L5 9Z"/></svg><span><b>Sans engagement</b> — la demande de disponibilité ne vous engage à rien.</span></li>
+      </ul>
+    </div>
+    <form aria-label="Vérifier les disponibilités">
+      <div class="f-row">
+        <div class="field">
+          <label for="nom">Nom</label>
+          <input id="nom" name="nom" type="text" placeholder="Votre nom" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="vous@exemple.com" autocomplete="email">
+        </div>
+      </div>
+      <div class="f-row">
+        <div class="field">
+          <label for="date">Date de l'événement</label>
+          <input id="date" name="date" type="date">
+        </div>
+        <div class="field">
+          <label for="lieu">Lieu</label>
+          <input id="lieu" name="lieu" type="text" placeholder="Ville / domaine">
+        </div>
+      </div>
+      <div class="field">
+        <label for="type">Type de prestation</label>
+        <select id="type" name="type">
+          <option value="">Choisir…</option>
+          <option>Mariage — journée</option>
+          <option>Séance couple</option>
+          <option>Portrait</option>
+          <option>Corporate / événement</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Votre projet (optionnel)</label>
+        <textarea id="message" name="message" placeholder="Quelques mots sur votre journée, vos envies, le déroulé…"></textarea>
+      </div>
+      <button class="btn" type="submit">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+        Vérifier ma disponibilité
+      </button>
+      <p class="form-priv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        Vos informations restent confidentielles — aucune revente, conformité RGPD.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== TEMOIGNAGES ===== -->
+<section class="testi" id="temoignages">
+  <span class="eyebrow">Témoignages</span>
+  <h2>Ce que disent les mariés et les marques.</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="qmark">&ldquo;</div>
+      <p>[Témoignage client — à insérer par Frédéric. Quelques lignes sur l'expérience, le résultat, le ressenti.]</p>
+      <div class="who"><b>[Prénom &amp; initiale]</b>Mariage · [lieu, année]</div>
+    </div>
+    <div class="testi-card">
+      <div class="qmark">&ldquo;</div>
+      <p>[Témoignage client — à insérer par Frédéric. Placeholder honnête, à remplacer par un vrai retour.]</p>
+      <div class="who"><b>[Prénom &amp; initiale]</b>Séance couple · [lieu, année]</div>
+    </div>
+    <div class="testi-card">
+      <div class="qmark">&ldquo;</div>
+      <p>[Témoignage professionnel — à insérer par Frédéric. Retour d'une marque ou d'une entreprise cliente.]</p>
+      <div class="who"><b>[Entreprise]</b>Corporate · [année]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <b>Frédéric Laverrière</b>
+      <span>Photographe · Genève</span>
+      <p>Mariage, couple, portrait et corporate. Une lumière, une signature — du premier au dernier cliché.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explorer</h4>
+      <a href="#galeries">Galeries</a>
+      <a href="#reportage">Un mariage complet</a>
+      <a href="#formules">Formules &amp; tarifs</a>
+      <a href="#temoignages">Témoignages</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a class="row" href="mailto:laverriere.frederic@gmail.com">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m2 7 10 6 10-6"/></svg>
+        laverriere.frederic@gmail.com
+      </a>
+      <p class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Genève, Suisse</p>
+      <a class="row" href="#reservation">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+        Vérifier une date
+      </a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© <span id="yr"></span> Frédéric Laverrière — Tous droits réservés. Maquette de démonstration.</p>
+    <div class="socials">
+      <a href="#" aria-label="Instagram"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+      <a href="mailto:laverriere.frederic@gmail.com" aria-label="Email"><svg class="ic" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m2 7 10 6 10-6"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

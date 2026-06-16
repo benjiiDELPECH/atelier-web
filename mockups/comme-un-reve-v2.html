@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
 :root{
   --cream:#f6f3ed; --sand:#ebe6db; --sage:#9aaa93; --sage-d:#74866d;
   --ink:#363430; --mid:#6c685f; --line:#e0dace; --white:#fffdf8;
@@ -113,6 +114,26 @@ footer a{color:var(--white);text-decoration:none}
   .float{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:50;justify-content:center;
     background:var(--sage-d);color:var(--white);text-decoration:none;padding:15px;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 6px 22px rgba(54,52,48,.3)}
 }
+
+/* RESPONSIVE — garde-fous anti-débordement (~390px) */
+@media(max-width:720px){
+  .soins-grid{grid-template-columns:1fr}
+  .avis{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  *{min-width:0}
+  .wrap{padding:0 18px}
+  .head-in{padding:14px 18px}
+  .hero{padding:56px 18px 48px}
+  .hero h1,.sec-h,.inst h3,.maman h3,.cta h2,.info h4,.brand{overflow-wrap:break-word;word-break:break-word}
+  .hero h1{font-size:30px}
+  .sec-h{font-size:28px}
+  .inst h3,.maman h3{font-size:25px}
+  .cta h2{font-size:27px}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center;width:100%}
+  .trust-in{gap:26px}
+}
 </style>
 </head>
 <body>
@@ -143,10 +164,10 @@ footer a{color:var(--white);text-decoration:none}
 
 <div class="trust">
   <div class="trust-in">
-    <div class="trust-i"><div class="n">5,0 ★</div><div class="l">avis Google</div></div>
+    <div class="trust-i"><div class="n">[note] ★</div><div class="l">avis Google · à connecter</div></div>
     <div class="trust-i"><div class="n">Champel</div><div class="l">cœur de Genève</div></div>
-    <div class="trust-i"><div class="n">Certifié</div><div class="l">ASCA (à confirmer)</div></div>
-    <div class="trust-i"><div class="n">Parking</div><div class="l">gratuit</div></div>
+    <div class="trust-i"><div class="n">[label]</div><div class="l">certif. à confirmer</div></div>
+    <div class="trust-i"><div class="n">Parking</div><div class="l">[à confirmer]</div></div>
   </div>
 </div>
 
@@ -206,26 +227,26 @@ footer a{color:var(--white);text-decoration:none}
 <!-- AVIS — sobre, honnête -->
 <section class="sec wrap">
   <div class="sec-kick">Avis</div>
-  <div class="sec-h">Noté 5,0 ★ sur Google</div>
-  <p class="lead">Extraits réels d'avis publiés sur Google.</p>
+  <div class="sec-h">Ce qu'en disent les clientes</div>
+  <p class="lead">Emplacement avis — à brancher sur la fiche Google de l'institut pour un affichage automatique et vérifié.</p>
   <div class="avis">
     <div class="avis-c">
       <div class="st">★★★★★</div>
-      <p>« Fidèle à cet institut depuis des années, je ne peux que le recommander ! »</p>
-      <div class="w">— Avis Google</div>
+      <p>« [Avis client — à reprendre depuis la fiche Google] »</p>
+      <div class="w">— [Prénom], avis Google · à connecter</div>
     </div>
     <div class="avis-c">
       <div class="st">★★★★★</div>
-      <p>« Magnifique cabinet de bien-être : professionnalisme, accueil humain et qualité des soins. »</p>
-      <div class="w">— Avis Google</div>
+      <p>« [Avis client — à reprendre depuis la fiche Google] »</p>
+      <div class="w">— [Prénom], avis Google · à connecter</div>
     </div>
     <div class="avis-c">
       <div class="st">★★★★★</div>
-      <p>« Un petit havre de paix, le temps d'une vraie parenthèse enchanteresse. »</p>
-      <div class="w">— Avis Google</div>
+      <p>« [Avis client — à reprendre depuis la fiche Google] »</p>
+      <div class="w">— [Prénom], avis Google · à connecter</div>
     </div>
   </div>
-  <p class="avis-note">Extraits réels d'avis Google — à connecter à la fiche Google pour un affichage automatique et vérifié.</p>
+  <p class="avis-note">Placeholders — à connecter à la fiche Google pour un affichage automatique et vérifié.</p>
 </section>
 
 <!-- CTA — élégant, pas agressif -->
@@ -244,7 +265,7 @@ footer a{color:var(--white);text-decoration:none}
       <div class="info-row"><b>Adresse</b><span><a href="https://www.google.com/maps/search/?api=1&query=Chemin+des+Clochettes+4+1206+Gen%C3%A8ve" target="_blank" rel="noopener">Chemin des Clochettes 4 · Champel, 1206 Genève</a></span></div>
       <div class="info-row"><b>Tél. / WhatsApp</b><span><a href="tel:+41788467778">078 846 77 78</a></span></div>
       <div class="info-row"><b>Horaires</b><span>Lundi – Vendredi · 9h – 19h</span></div>
-      <div class="info-row"><b>Accès</b><span>Parking gratuit · certifié ASCA (à confirmer)</span></div>
+      <div class="info-row"><b>Accès</b><span>Parking [à confirmer] · certification [à confirmer]</span></div>
       <div style="margin-top:18px"><a href="https://salonkee.ch/salon/comme-un-reve" target="_blank" rel="noopener" class="btn">Réserver un soin</a></div>
     </div>
     <a href="https://www.google.com/maps/search/?api=1&query=Chemin+des+Clochettes+4+1206+Gen%C3%A8ve" target="_blank" rel="noopener" class="map">Plan — Champel, Genève</a>

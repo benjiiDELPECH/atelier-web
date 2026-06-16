@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
 :root{
   --cream:#f7f3ec; --sand:#efe7da; --taupe:#a99275; --taupe-d:#8a7558;
   --ink:#3a342c; --mid:#6f675b; --line:#e3d9c8; --white:#fffdf9;
@@ -92,6 +93,28 @@ footer a{color:var(--white);text-decoration:none}
   .float{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:50;justify-content:center;
     background:var(--taupe-d);color:var(--white);text-decoration:none;padding:15px;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 6px 22px rgba(58,52,44,.3)}
 }
+
+/* RESPONSIVE — anti-débordement < 720px / < 560px */
+@media(max-width:720px){
+  .inst,.info{grid-template-columns:1fr}
+  .soins-grid{grid-template-columns:1fr}
+  .trust-in{gap:24px 36px}
+}
+@media(max-width:560px){
+  *{min-width:0}
+  .wrap{padding:0 18px}
+  .head-in{padding:14px 18px}
+  .brand{font-size:22px}
+  h1,.hero h1,.sec-h,.inst h3,.cta h2,.info h4{overflow-wrap:break-word;word-break:break-word}
+  .hero{padding:54px 18px 46px}
+  .hero h1{font-size:clamp(28px,8vw,38px)}
+  .sec-h{font-size:30px}
+  .cta h2{font-size:28px}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center}
+  .trust-in{gap:20px 30px;padding:20px 18px}
+  .cta{padding:48px 18px}
+}
 </style>
 </head>
 <body>
@@ -122,7 +145,7 @@ footer a{color:var(--white);text-decoration:none}
 <div class="trust">
   <div class="trust-in">
     <div class="trust-i"><div class="n">40 ans</div><div class="l">de savoir-faire</div></div>
-    <div class="trust-i"><div class="n">100 %</div><div class="l">produits naturels</div></div>
+    <div class="trust-i"><div class="n">Soins</div><div class="l">visage · corps · massages</div></div>
     <div class="trust-i"><div class="n">Champel</div><div class="l">cœur de Genève</div></div>
     <div class="trust-i"><div class="n">6j / 7</div><div class="l">&amp; à domicile</div></div>
   </div>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrey ART Studio — Photographe & vidéaste à Genève</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  :root{
+    --bg:#fbf9f6;        /* neutre chaleureux clair */
+    --surface:#ffffff;
+    --ink:#26221d;       /* texte principal */
+    --muted:#6b6359;     /* texte secondaire */
+    --line:#e7e0d6;      /* bordures douces */
+    --accent:#c2703d;    /* terracotta — unique accent */
+    --accent-ink:#a85c2c;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(38,34,29,.04),0 8px 24px rgba(38,34,29,.06);
+    --maxw:1120px;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{line-height:1.18;margin:0;letter-spacing:-.01em;overflow-wrap:break-word;word-break:break-word}
+  h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700}
+  h2{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700}
+  h3{font-size:1.15rem;font-weight:650}
+  p{margin:0;overflow-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+  .eyebrow{font-size:.8rem;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+  .muted{color:var(--muted)}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-weight:600;font-size:1rem;
+    padding:.85rem 1.4rem;border-radius:999px;
+    border:1.5px solid transparent;cursor:pointer;
+    transition:transform .12s ease,background .15s ease,box-shadow .15s ease;
+    text-align:center;line-height:1.1;
+  }
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(194,112,61,.28)}
+  .btn-primary:hover{background:var(--accent-ink)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-ink)}
+  .btn:focus-visible{outline:3px solid rgba(194,112,61,.45);outline-offset:2px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:3px solid rgba(194,112,61,.45);outline-offset:2px;border-radius:6px
+  }
+
+  /* Header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,249,246,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem;letter-spacing:.02em}
+  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:#fff;flex:none}
+  .brand .mark svg{width:19px;height:19px}
+  .brand small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .nav-links{display:flex;align-items:center;gap:1.4rem;font-size:.95rem;font-weight:500}
+  .nav-links a{color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:.7rem}
+
+  /* Hero */
+  .hero{padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(2rem,5vw,3.5rem)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+  .hero-copy .eyebrow{margin-bottom:1rem;display:inline-block}
+  .hero-copy h1{margin-bottom:1rem}
+  .hero-copy p.lead{font-size:1.15rem;color:var(--muted);margin-bottom:1.6rem;max-width:38ch}
+  .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .trust{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+  .trust .pill{display:flex;align-items:center;gap:.4rem}
+  .trust svg{width:17px;height:17px;color:var(--accent);flex:none}
+  .hero-photo{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(135deg,#efe7dc,#e5d8c8);
+    box-shadow:var(--shadow);aspect-ratio:4/5;min-height:320px;
+    display:grid;place-items:center;border:1px solid var(--line);
+  }
+  .placeholder{display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--muted);text-align:center;padding:1rem}
+  .placeholder svg{width:40px;height:40px;color:var(--accent);opacity:.7}
+  .placeholder span{font-size:.85rem;font-weight:500}
+
+  /* Logos / réassurance clients */
+  .clients{padding:1.5rem 0 0}
+  .clients p{text-align:center;font-size:.82rem;letter-spacing:.05em;color:var(--muted);margin-bottom:.8rem}
+  .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.6rem;color:var(--muted);font-weight:600;font-size:.95rem}
+  .logos span{opacity:.7}
+
+  /* Section shell */
+  section{padding:clamp(2.6rem,6vw,4.2rem) 0}
+  .sec-head{max-width:62ch;margin-bottom:2rem}
+  .sec-head .eyebrow{margin-bottom:.7rem;display:inline-block}
+  .sec-head p{color:var(--muted);margin-top:.6rem}
+
+  /* Galleries */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .gcard{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+    transition:transform .14s ease,box-shadow .14s ease;
+  }
+  .gcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(38,34,29,.10)}
+  .gthumb{aspect-ratio:4/3;background:linear-gradient(135deg,#efe7dc,#e6dccd);display:grid;place-items:center;border-bottom:1px solid var(--line)}
+  .gbody{padding:1.1rem 1.2rem 1.3rem}
+  .gbody h3{margin-bottom:.3rem}
+  .gbody p{font-size:.92rem;color:var(--muted)}
+
+  /* Formules / pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;align-items:stretch}
+  .pcard{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.6rem 1.5rem;display:flex;flex-direction:column;gap:.9rem;box-shadow:var(--shadow);
+  }
+  .pcard.featured{border-color:var(--accent);box-shadow:0 10px 28px rgba(194,112,61,.16);position:relative}
+  .pcard .tag{position:absolute;top:-12px;left:1.5rem;background:var(--accent);color:#fff;font-size:.7rem;font-weight:650;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px}
+  .pcard h3{font-size:1.2rem}
+  .pcard .from{font-size:.85rem;color:var(--muted)}
+  .pcard .amount{font-size:1.6rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .pcard .amount em{font-style:normal;font-size:.9rem;font-weight:500;color:var(--muted)}
+  .pcard ul{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.95rem}
+  .pcard li{display:flex;align-items:flex-start;gap:.55rem;color:var(--ink)}
+  .pcard li svg{width:18px;height:18px;color:var(--accent);flex:none;margin-top:2px}
+  .pcard .btn{margin-top:auto;justify-content:center;width:100%}
+  .price-note{margin-top:1.3rem;font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+  .price-note svg{width:17px;height:17px;color:var(--accent);flex:none}
+
+  /* About */
+  .about{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+  .about-photo{aspect-ratio:1/1;border-radius:var(--radius);background:linear-gradient(135deg,#ece3d6,#e2d4c2);display:grid;place-items:center;border:1px solid var(--line);box-shadow:var(--shadow);min-height:240px}
+  .about-copy h2{margin-bottom:1rem}
+  .about-copy p+p{margin-top:.9rem}
+  .about-stats{display:flex;gap:2rem;margin-top:1.4rem;flex-wrap:wrap}
+  .about-stats .n{font-size:1.5rem;font-weight:700;color:var(--accent-ink)}
+  .about-stats .l{font-size:.82rem;color:var(--muted)}
+
+  /* Testimonials */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .tcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:.9rem}
+  .stars{display:flex;gap:.15rem;color:var(--accent)}
+  .stars svg{width:17px;height:17px}
+  .tcard p.quote{font-size:.97rem;color:var(--ink)}
+  .tcard .who{font-size:.88rem;font-weight:600;color:var(--muted);margin-top:auto}
+
+  /* Booking / contact */
+  .book{background:linear-gradient(180deg,#fbf9f6,#f4ede3)}
+  .book-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+  .book-copy h2{margin-bottom:.9rem}
+  .book-copy ul{list-style:none;padding:0;margin:1.3rem 0 0;display:flex;flex-direction:column;gap:.9rem}
+  .book-copy li{display:flex;align-items:flex-start;gap:.7rem;font-size:.97rem}
+  .book-copy li svg{width:20px;height:20px;color:var(--accent);flex:none;margin-top:1px}
+  .book-copy .contact-line{margin-top:1.6rem;font-size:.95rem;color:var(--muted)}
+  .book-copy .contact-line a{color:var(--accent-ink);font-weight:600}
+  form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow)}
+  .field{margin-bottom:1rem}
+  .field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  input,select,textarea{
+    width:100%;font:inherit;font-size:.97rem;color:var(--ink);
+    background:var(--bg);border:1.5px solid var(--line);border-radius:10px;
+    padding:.7rem .8rem;
+  }
+  input:hover,select:hover,textarea:hover{border-color:#d6cbbb}
+  textarea{resize:vertical;min-height:96px}
+  form .btn{width:100%;justify-content:center;margin-top:.4rem}
+  form .reassure{font-size:.8rem;color:var(--muted);text-align:center;margin-top:.8rem;display:flex;align-items:center;justify-content:center;gap:.4rem}
+  form .reassure svg{width:15px;height:15px;color:var(--accent);flex:none}
+
+  /* Footer */
+  footer.site{background:var(--ink);color:#e9e2d8;padding:2.6rem 0 2rem}
+  .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem;color:#fff}
+  .foot-brand .mark{width:32px;height:32px;border-radius:9px;background:var(--accent);display:grid;place-items:center;flex:none}
+  .foot-brand .mark svg{width:18px;height:18px}
+  footer.site p{color:#b9b0a3;font-size:.9rem;margin-top:.7rem;max-width:34ch}
+  .foot-col h4{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#9b9285;margin:0 0 .8rem}
+  .foot-col a,.foot-col span{display:block;color:#cfc7ba;font-size:.92rem;margin-bottom:.5rem}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid #3a342c;margin-top:2rem;padding-top:1.3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:#8d8478}
+
+  /* ---- Responsive ---- */
+  @media (max-width:900px){
+    .hero-grid,.about-grid,.book-grid{grid-template-columns:1fr}
+    .gallery-grid,.price-grid,.tgrid{grid-template-columns:repeat(2,1fr)}
+    .hero-photo{aspect-ratio:16/10;min-height:260px;order:-1}
+    .about-photo{max-width:360px}
+  }
+  @media (max-width:560px){
+    *{min-width:0}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .nav-links{display:none}
+    .nav{min-height:60px}
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .hero-actions .btn{width:100%;justify-content:center}
+    .gallery-grid,.price-grid,.tgrid{grid-template-columns:1fr}
+    .row2{grid-template-columns:1fr}
+    .trust{gap:.7rem 1rem}
+    .foot-grid{flex-direction:column}
+    .about-stats{gap:1.4rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Andrey ART Studio, accueil">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+      </span>
+      <span>Andrey ART<small>Studio · Genève</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#galeries">Galeries</a>
+      <a href="#formules">Formules &amp; tarifs</a>
+      <a href="#apropos">À propos</a>
+      <a href="#avis">Avis</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#reserver">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Réserver une séance
+      </a>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Photographe &amp; vidéaste · Genève</span>
+      <h1>Vos moments, capturés avec justesse.</h1>
+      <p class="lead">Mariages, événements d'entreprise, portraits et reportages à Genève. 15 ans d'expérience au service de l'instant présent — réservez votre séance en quelques clics.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#reserver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Réserver une séance
+        </a>
+        <a class="btn btn-ghost" href="#galeries">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+          Voir les galeries
+        </a>
+      </div>
+      <div class="trust">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 15 ans d'expérience</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Devis gratuit &amp; sans engagement</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Basé à Genève</span>
+      </div>
+    </div>
+    <div class="hero-photo" role="img" aria-label="Emplacement d'une photo de mise en avant">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="3"/><circle cx="12" cy="12" r="3.5"/><path d="M7.5 7.5h.01"/></svg>
+        <span>Photo de mise en avant<br>(à remplacer par votre cliché)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Réassurance clients (réels) -->
+  <div class="wrap clients">
+    <p>Ils m'ont fait confiance à Genève et en Suisse</p>
+    <div class="logos" aria-label="Clients de référence">
+      <span>Ville de Genève</span><span>Nations Unies</span><span>L'Oréal</span><span>CERN</span><span>UNIGE</span><span>Vacheron Constantin</span><span>Mandarin Oriental</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIES ================= -->
+<section id="galeries">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Galeries</span>
+      <h2>Une spécialité pour chaque occasion</h2>
+      <p>Sélectionnez le type de prestation qui vous intéresse. Chaque galerie sera remplie avec vos plus belles réalisations.</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- card template -->
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Mariages — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Mariages</h3><p>Reportage complet de votre journée, de la préparation à la fête.</p></div>
+      </article>
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Événements & corporate — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Événements &amp; corporate</h3><p>Conférences, soirées d'entreprise, congrès et événementiel.</p></div>
+      </article>
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Portraits — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Portraits &amp; corporate</h3><p>Portraits professionnels, books et photos d'équipe en studio.</p></div>
+      </article>
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Familles & enfants — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 11h6M19 8v6"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Familles &amp; enfants</h3><p>Séances familles, nouveau-nés et grossesse, en studio ou en extérieur.</p></div>
+      </article>
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Vidéo & reportage — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Vidéo &amp; reportage</h3><p>Interviews, clips, captation et prises de vue par drone.</p></div>
+      </article>
+      <article class="gcard">
+        <div class="gthumb" role="img" aria-label="Galerie Immobilier — emplacement photo"><div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5Z"/><path d="M9 22v-7h6v7"/></svg><span>Photo à venir</span></div></div>
+        <div class="gbody"><h3>Immobilier</h3><p>Mise en valeur de biens et d'espaces pour vendre ou louer plus vite.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMULES / TARIFS ================= -->
+<section id="formules" class="about" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Formules &amp; tarifs</span>
+      <h2>Des formules claires, sans surprise</h2>
+      <p>Chaque prestation est adaptée à votre besoin. Les tarifs ci-dessous sont des points de départ — un devis précis vous est envoyé gratuitement après échange.</p>
+    </div>
+    <div class="price-grid">
+      <article class="pcard">
+        <h3>Portrait &amp; studio</h3>
+        <div><span class="from">à partir de</span><div class="amount">[montant] <em>CHF</em></div></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Séance en studio ou extérieur</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Photos retouchées en haute définition</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Galerie en ligne privée</li>
+        </ul>
+        <a class="btn btn-ghost" href="#reserver">Demander un devis</a>
+      </article>
+      <article class="pcard featured">
+        <span class="tag">Le plus demandé</span>
+        <h3>Événement &amp; corporate</h3>
+        <div><span class="from">à partir de</span><div class="amount">[montant] <em>CHF</em></div></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Couverture complète de l'événement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Livraison rapide, format web &amp; print</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Option vidéo &amp; mise en ligne directe</li>
+        </ul>
+        <a class="btn btn-primary" href="#reserver">Demander un devis</a>
+      </article>
+      <article class="pcard">
+        <h3>Mariage</h3>
+        <div><span class="from">à partir de</span><div class="amount">[montant] <em>CHF</em></div></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Reportage de la journée complète</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Photos &amp; vidéo possibles</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Album et tirages en option</li>
+        </ul>
+        <a class="btn btn-ghost" href="#reserver">Demander un devis</a>
+      </article>
+    </div>
+    <p class="price-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Tarifs indicatifs à compléter. Familles, immobilier et anniversaires disponibles — demandez votre devis personnalisé.</p>
+  </div>
+</section>
+
+<!-- ================= À PROPOS ================= -->
+<section id="apropos" class="about">
+  <div class="wrap about-grid">
+    <div class="about-photo" role="img" aria-label="Portrait d'Andrey — emplacement photo">
+      <div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Votre portrait</span></div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">À propos</span>
+      <h2>Bonjour, je suis Andrey</h2>
+      <p>Photographe et vidéaste à Genève depuis plus de 15 ans, j'accompagne particuliers et entreprises sur tous types d'événements : mariages, conférences, portraits, reportages corporate et familiaux.</p>
+      <p>Ce qui me passionne, c'est de capturer l'instant présent — saisir la beauté d'un geste, l'expression d'une émotion, et garder la mémoire d'un moment. À l'aise derrière l'objectif comme derrière la caméra, je m'adapte à chaque situation avec discrétion.</p>
+      <div class="about-stats">
+        <div><div class="n">15+</div><div class="l">années d'expérience</div></div>
+        <div><div class="n">Photo &amp; vidéo</div><div class="l">reportage complet</div></div>
+        <div><div class="n">Genève</div><div class="l">&amp; toute la Suisse</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TÉMOIGNAGES ================= -->
+<section id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Avis clients</span>
+      <h2>Ce qu'en disent mes clients</h2>
+    </div>
+    <div class="tgrid">
+      <article class="tcard">
+        <div class="stars" aria-label="5 sur 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg>
+        </div>
+        <p class="quote">« Un photographe exceptionnel et passionné par son métier. Très à l'écoute de ses clients et discret. Je le recommande à 100 %. »</p>
+        <p class="who">— Brigitte P.</p>
+      </article>
+      <article class="tcard">
+        <div class="stars" aria-label="5 sur 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg>
+        </div>
+        <p class="quote">« Il s'investit pleinement dans son travail, il est partout à la fois et ne rate aucun moment important. À l'aise autant derrière l'objectif que la caméra. »</p>
+        <p class="who">— Thomas</p>
+      </article>
+      <article class="tcard">
+        <div class="stars" aria-label="5 sur 5">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.8L12 2z"/></svg>
+        </div>
+        <p class="quote">« Andrey est un photographe doué, avec cette vision des photos parfaites que d'autres ne remarquent même pas. Nous sommes reconnaissants pour les magnifiques photos de notre mariage. »</p>
+        <p class="who">— Tetyana</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RÉSERVATION / CONTACT ================= -->
+<section id="reserver" class="book">
+  <div class="wrap book-grid">
+    <div class="book-copy">
+      <span class="eyebrow">Réservation</span>
+      <h2>Réservons votre séance</h2>
+      <p class="muted">Dites-moi la date et le type de prestation : je vous réponds rapidement avec un devis gratuit et sans engagement.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Réponse rapide par e-mail ou téléphone</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Devis 100 % gratuit et sans engagement</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Offres sur mesure, particuliers &amp; entreprises</li>
+      </ul>
+      <p class="contact-line">
+        Vous préférez écrire ou appeler ?<br>
+        <a href="mailto:info@andreyart.ch">info@andreyart.ch</a> · <a href="tel:0041787085877">078 708 58 77</a>
+      </p>
+    </div>
+
+    <form aria-label="Formulaire de réservation" onsubmit="return false">
+      <div class="row2">
+        <div class="field">
+          <label for="name">Votre nom</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Prénom et nom">
+        </div>
+        <div class="field">
+          <label for="email">Adresse e-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.ch">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="date">Date souhaitée</label>
+          <input id="date" name="date" type="date">
+        </div>
+        <div class="field">
+          <label for="type">Type de prestation</label>
+          <select id="type" name="type">
+            <option value="">Choisir…</option>
+            <option>Mariage</option>
+            <option>Événement / corporate</option>
+            <option>Conférence</option>
+            <option>Portrait / studio</option>
+            <option>Famille / enfants</option>
+            <option>Vidéo / reportage</option>
+            <option>Immobilier</option>
+            <option>Autre</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="msg">Votre message</label>
+        <textarea id="msg" name="msg" placeholder="Parlez-moi de votre projet : lieu, durée, nombre de personnes…"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
+        Envoyer ma demande
+      </button>
+      <p class="reassure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Vos coordonnées restent confidentielles. Aucun engagement.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+          Andrey ART Studio
+        </div>
+        <p>Photographe &amp; vidéaste professionnel à Genève. Mariages, événements, portraits et reportages, dans toute la Suisse.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Prestations</h4>
+        <a href="#galeries">Mariages</a>
+        <a href="#galeries">Événements &amp; corporate</a>
+        <a href="#galeries">Portraits</a>
+        <a href="#galeries">Familles</a>
+        <a href="#galeries">Vidéo &amp; immobilier</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@andreyart.ch">info@andreyart.ch</a>
+        <a href="tel:0041787085877">078 708 58 77</a>
+        <span>Genève, Suisse</span>
+        <a href="#reserver">Réserver une séance</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Andrey ART Studio — Genève, Suisse.</span>
+      <span>Maquette de présentation · Atelier Web de Benjamin Delpech</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

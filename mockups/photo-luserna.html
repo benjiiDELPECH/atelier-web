@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Luserna — Studio photo à Genève · Portrait, identité, entreprise</title>
+<meta name="description" content="Photo Luserna, studio photo de quartier à Genève (Avenue Luserna 13). Portraits, photos d'identité aux normes, séances entreprise et numérisation de vos souvenirs. Prise de rendez-vous simple.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{overflow-x:hidden;max-width:100%}
+  :root{
+    --ink:#26211c;        /* texte chaud quasi-noir */
+    --paper:#fbf8f3;      /* crème clair */
+    --white:#ffffff;
+    --soft:#f3ede3;       /* fond bloc doux */
+    --accent:#c9743f;     /* terracotta chaleureux */
+    --accent-dk:#a85c2c;
+    --line:#e7ded0;
+    --muted:#6c6359;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --radius:14px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.14;
+    margin:0;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+  }
+  p{margin:0 0 1em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 26px}
+  .eyebrow{
+    display:inline-block;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent-dk);font-weight:700;margin:0 0 .9rem;
+  }
+  .icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+  /* ---------- Boutons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.01em;
+    padding:.8rem 1.4rem;border-radius:999px;border:2px solid var(--accent);
+    background:var(--accent);color:#fff;
+    transition:background .18s,border-color .18s,color .18s,transform .18s;cursor:pointer;
+  }
+  .btn:hover,.btn:focus-visible{background:var(--accent-dk);border-color:var(--accent-dk)}
+  .btn-ghost{background:transparent;color:var(--accent-dk);border-color:var(--line)}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background:var(--soft);border-color:var(--accent);color:var(--accent-dk)}
+  a:focus-visible,.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:3px solid var(--accent);outline-offset:2px
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,248,243,.92);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+  .wordmark{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.25rem;letter-spacing:-0.01em}
+  .wordmark .dot{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+  .wordmark .dot .icon{width:18px;height:18px;stroke-width:2}
+  .wordmark span{color:var(--accent-dk)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.95rem;font-weight:500;color:var(--muted);transition:color .18s}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+  .nav-cta{flex:none}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:54px 0 60px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);max-width:15ch}
+  .hero .lede{font-size:1.12rem;color:var(--muted);max-width:42ch;margin:1.2rem 0 0}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.9rem}
+  .hero-trust{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:2rem;color:var(--muted);font-size:.92rem}
+  .hero-trust span{display:inline-flex;align-items:center;gap:.5rem}
+  .hero-trust .icon{color:var(--accent-dk);width:17px;height:17px}
+  .hero-img{
+    position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--radius);
+    background:linear-gradient(150deg,#efe6d7 0%,#e6d8c4 55%,#dcc9ad 100%);
+    border:1px solid var(--line);display:flex;align-items:flex-end;overflow:hidden;
+  }
+  .ph-label{
+    font-size:.78rem;letter-spacing:.02em;color:#7c7160;
+    background:rgba(251,248,243,.82);padding:.42rem .75rem;margin:16px;
+    border:1px dashed #bda984;border-radius:8px;
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:62px 0}
+  .section-head{max-width:54ch;margin:0 0 36px}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .section-head h2{font-size:clamp(1.6rem,3.6vw,2.4rem)}
+  .section-head p{color:var(--muted);margin:.7rem 0 0;font-size:1.05rem}
+
+  /* ---------- Galeries ---------- */
+  .gallery-block{margin-bottom:46px}
+  .gal-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+  .gal-head h3{font-size:1.25rem;display:flex;align-items:center;gap:.6rem}
+  .gal-head h3 .icon{color:var(--accent-dk);width:20px;height:20px}
+  .gal-head p{color:var(--muted);font-size:.95rem;margin:0;max-width:46ch}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tile{
+    aspect-ratio:1/1;border-radius:12px;border:1px solid var(--line);
+    background:linear-gradient(150deg,#efe6d7,#e3d4bf);
+    display:flex;align-items:flex-end;padding:10px;color:#8a7c66;
+    font-size:.72rem;letter-spacing:.02em;
+  }
+  .tile.tall{aspect-ratio:auto;grid-row:span 2}
+  .tile:nth-child(2){background:linear-gradient(150deg,#e9ddca,#dcc9ac)}
+  .tile:nth-child(3){background:linear-gradient(150deg,#f0e8da,#e6d6bd)}
+  .tile:nth-child(4){background:linear-gradient(150deg,#ece0cd,#dccdaf)}
+
+  /* ---------- Formules / tarifs ---------- */
+  #formules{background:var(--soft)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .price-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;display:flex;flex-direction:column;
+  }
+  .price-card.feature{border-color:var(--accent);box-shadow:0 10px 30px rgba(201,116,63,.12)}
+  .price-tag{
+    display:inline-block;align-self:flex-start;font-size:.72rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dk);
+    background:var(--soft);padding:.3rem .7rem;border-radius:999px;margin-bottom:14px;
+  }
+  .price-card.feature .price-tag{background:var(--accent);color:#fff}
+  .price-card h3{font-size:1.3rem;margin-bottom:.5rem}
+  .price-card .from{color:var(--muted);font-size:.9rem;margin:0}
+  .price-card .amount{font-size:2rem;font-weight:800;letter-spacing:-0.02em;margin:.2rem 0 1rem}
+  .price-card .amount small{font-size:.95rem;font-weight:600;color:var(--muted)}
+  .price-card ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:.7rem}
+  .price-card li{display:flex;gap:.6rem;align-items:flex-start;font-size:.96rem}
+  .price-card li .icon{color:var(--accent-dk);width:18px;height:18px;margin-top:.2rem}
+  .price-card .btn{margin-top:auto;width:100%}
+  .price-note{text-align:center;color:var(--muted);font-size:.92rem;margin:26px auto 0;max-width:60ch}
+
+  /* ---------- À propos ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:center}
+  .portrait{
+    width:100%;max-width:380px;aspect-ratio:4/5;border-radius:var(--radius);
+    background:linear-gradient(150deg,#ede3d2,#ddccb1);border:1px solid var(--line);
+    display:flex;align-items:flex-end;overflow:hidden;
+  }
+  .about-grid h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:.8rem}
+  .about-grid p{color:var(--muted)}
+  .about-grid p strong{color:var(--ink)}
+
+  /* ---------- Témoignages ---------- */
+  #avis{background:var(--soft)}
+  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .quote{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;display:flex;flex-direction:column;
+  }
+  .quote .stars{display:flex;gap:3px;color:var(--accent);margin-bottom:14px}
+  .quote .stars .icon{width:17px;height:17px;fill:currentColor;stroke:none}
+  .quote p{font-size:1rem;color:var(--ink);margin:0 0 16px}
+  .quote .who{color:var(--muted);font-size:.88rem;margin:0}
+  .quote .ph{color:#9c8e76;font-style:italic}
+
+  /* ---------- Réservation ---------- */
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .book-info h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:.7rem}
+  .book-info p{color:var(--muted)}
+  .info-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+  .info-list li{display:flex;gap:.85rem;align-items:flex-start}
+  .info-list .ic{width:38px;height:38px;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;flex:none;color:var(--accent-dk)}
+  .info-list b{display:block;font-size:.98rem}
+  .info-list span{color:var(--muted);font-size:.93rem}
+  form{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 28px;
+  }
+  .field{margin-bottom:16px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{display:block;font-size:.88rem;font-weight:600;margin-bottom:.4rem}
+  input,select,textarea{
+    width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+    padding:.7rem .85rem;border:1px solid var(--line);border-radius:10px;
+    background:var(--paper);transition:border-color .18s;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+  textarea{resize:vertical;min-height:96px}
+  .form-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px}
+  .form-foot .btn{flex:none}
+  .reassure{color:var(--muted);font-size:.84rem;margin:0;display:flex;align-items:center;gap:.4rem}
+  .reassure .icon{width:15px;height:15px;color:var(--accent-dk)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:#e9e1d5;padding:54px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+  .foot-grid .wordmark{color:#fff}
+  .foot-grid .wordmark span{color:#e2a173}
+  footer p{color:#b6aa99;font-size:.95rem}
+  .foot-col h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#cdbfa9;margin:0 0 14px}
+  .foot-col a,.foot-col span{display:block;color:#c9bda9;font-size:.95rem;margin-bottom:.5rem}
+  .foot-col a:hover,.foot-col a:focus-visible{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:40px;padding-top:22px;border-top:1px solid #423a30;color:#9b8f7d;font-size:.84rem}
+  .foot-bottom a{color:#9b8f7d}
+  .foot-bottom a:hover{color:#fff}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-img{aspect-ratio:4/3;max-width:520px}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+    .tile.tall{grid-row:auto;aspect-ratio:1/1}
+    .price-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+    .about-grid{grid-template-columns:1fr;gap:30px}
+    .portrait{max-width:340px}
+    .quote-grid{grid-template-columns:1fr;gap:18px}
+    .book-grid{grid-template-columns:1fr;gap:34px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none}
+  }
+  @media (max-width:560px){
+    *{min-width:0}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    section{padding:46px 0}
+    .hero{padding:38px 0 44px}
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .hero-actions .btn{width:100%}
+    .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .row2{grid-template-columns:1fr}
+    .form-foot{flex-direction:column;align-items:stretch}
+    .form-foot .btn{width:100%}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column}
+    .nav-cta .btn{padding:.62rem 1rem;font-size:.86rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="wordmark" aria-label="Photo Luserna — accueil">
+      <span class="dot" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.2"/></svg>
+      </span>
+      Photo <span>Luserna</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#galeries">Galeries</a>
+      <a href="#formules">Formules</a>
+      <a href="#apropos">À propos</a>
+      <a href="#avis">Avis</a>
+      <a href="#reserver">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#reserver" class="btn">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Prendre rendez-vous
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Studio photo · Genève</span>
+        <h1>Un studio de quartier pour vos portraits et vos photos d'identité</h1>
+        <p class="lede">Photo Luserna réalise vos portraits, vos photos d'identité aux normes officielles et vos séances entreprise — et numérise vos souvenirs. Atelier installé à Genève depuis plus de 40 ans.</p>
+        <div class="hero-actions">
+          <a href="#reserver" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Réserver une séance
+          </a>
+          <a href="#formules" class="btn btn-ghost">Voir les formules</a>
+        </div>
+        <div class="hero-trust">
+          <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Photos d'identité aux normes</span>
+          <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11Z"/></svg>Avenue Luserna 13, 1203 Genève</span>
+          <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Tirage express</span>
+        </div>
+      </div>
+      <div class="hero-img" aria-label="Emplacement pour une photo du studio">
+        <span class="ph-label">Photo à insérer — vitrine ou portrait studio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIES -->
+  <section id="galeries">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Nos réalisations</span>
+        <h2>Ce que nous photographions</h2>
+        <p>Quatre univers, un même soin du détail. Les visuels ci-dessous sont des emplacements : vous y placerez vos propres clichés.</p>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gal-head">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>Portrait</h3>
+          <p>Portraits en studio, lumière maîtrisée — pour vous, vos enfants ou un souvenir de famille.</p>
+        </div>
+        <div class="gal-grid">
+          <div class="tile">Portrait 01</div>
+          <div class="tile">Portrait 02</div>
+          <div class="tile">Portrait 03</div>
+          <div class="tile">Portrait 04</div>
+        </div>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gal-head">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M3 17l4-3 3 2 4-4 7 5"/></svg>Photo d'identité</h3>
+          <p>Carte d'identité, passeport, permis, visa — conformes aux normes suisses et internationales.</p>
+        </div>
+        <div class="gal-grid">
+          <div class="tile">Identité 01</div>
+          <div class="tile">Identité 02</div>
+          <div class="tile">Identité 03</div>
+          <div class="tile">Identité 04</div>
+        </div>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gal-head">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>Entreprise</h3>
+          <p>Portraits corporate, équipes, photos pour vos supports et réseaux professionnels.</p>
+        </div>
+        <div class="gal-grid">
+          <div class="tile">Entreprise 01</div>
+          <div class="tile">Entreprise 02</div>
+          <div class="tile">Entreprise 03</div>
+          <div class="tile">Entreprise 04</div>
+        </div>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gal-head">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H4z"/><path d="M2 20h20M9 8l3 3 3-4"/></svg>Numérisation des souvenirs</h3>
+          <p>Transfert de bobines 8mm, super 8, VHS, diapositives et photos vers un support numérique.</p>
+        </div>
+        <div class="gal-grid">
+          <div class="tile">Souvenir 01</div>
+          <div class="tile">Souvenir 02</div>
+          <div class="tile">Souvenir 03</div>
+          <div class="tile">Souvenir 04</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULES -->
+  <section id="formules">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Tarifs clairs</span>
+        <h2>Des formules simples, sans surprise</h2>
+        <p>Choisissez la prestation qui vous correspond. Les montants ci-dessous sont des emplacements à compléter avec vos tarifs réels.</p>
+      </div>
+      <div class="price-grid">
+
+        <div class="price-card">
+          <span class="price-tag">Express</span>
+          <h3>Photo d'identité</h3>
+          <p class="from">À partir de</p>
+          <p class="amount">[montant] <small>CHF</small></p>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Prise de vue en studio</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aux normes officielles</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tirage immédiat</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sans rendez-vous possible</li>
+          </ul>
+          <a href="#reserver" class="btn btn-ghost">Choisir</a>
+        </div>
+
+        <div class="price-card feature">
+          <span class="price-tag">Le plus demandé</span>
+          <h3>Séance portrait</h3>
+          <p class="from">À partir de</p>
+          <p class="amount">[montant] <small>CHF</small></p>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Séance en studio (~30 min)</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sélection des meilleures photos</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Retouche soignée</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tirages et fichiers numériques</li>
+          </ul>
+          <a href="#reserver" class="btn">Réserver</a>
+        </div>
+
+        <div class="price-card">
+          <span class="price-tag">Pro</span>
+          <h3>Entreprise</h3>
+          <p class="from">À partir de</p>
+          <p class="amount">[montant] <small>CHF</small></p>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Portraits individuels ou équipe</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Studio ou sur site</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fond uniforme et cohérent</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Devis sur demande</li>
+          </ul>
+          <a href="#reserver" class="btn btn-ghost">Demander un devis</a>
+        </div>
+
+      </div>
+      <p class="price-note">Numérisation de souvenirs, agrandissements et tirages d'art : tarifs sur devis selon le support et la quantité. Parlons-en lors de votre passage.</p>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <div class="wrap about-grid">
+      <div class="portrait" aria-label="Emplacement pour le portrait du photographe">
+        <span class="ph-label">Portrait à insérer</span>
+      </div>
+      <div>
+        <span class="eyebrow">Qui sommes-nous</span>
+        <h2>Le même studio, le même quartier, depuis plus de 40 ans</h2>
+        <p>Photo Luserna est un atelier de quartier au cœur de Genève, avenue Luserna. <strong>Depuis plus de quarante ans</strong>, nous accompagnons les habitants et les entreprises du coin : un portrait qui vous ressemble, une photo d'identité faite correctement du premier coup, et le soin de préserver vos souvenirs de famille.</p>
+        <p>On vous reçoit simplement, on prend le temps, et on vous explique. Pas de jargon, pas de mauvaise surprise — juste une photo dont vous serez content.</p>
+        <p style="font-style:italic;color:var(--muted)">Ce texte est un exemple : vous le remplacerez par votre histoire et le nom de votre équipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="avis">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Avis clients</span>
+        <h2>Ce qu'en disent nos clients</h2>
+        <p>Emplacements pour vos avis réels (Google, Facebook…). À compléter avec de vrais témoignages.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="quote">
+          <div class="stars" aria-label="5 étoiles">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+          </div>
+          <p class="ph">« Emplacement pour un avis client réel — accueil, qualité, rapidité. »</p>
+          <p class="who">— Prénom N., à compléter</p>
+        </div>
+        <div class="quote">
+          <div class="stars" aria-label="5 étoiles">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+          </div>
+          <p class="ph">« Emplacement pour un avis client réel — séance portrait ou photo de famille. »</p>
+          <p class="who">— Prénom N., à compléter</p>
+        </div>
+        <div class="quote">
+          <div class="stars" aria-label="5 étoiles">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg>
+          </div>
+          <p class="ph">« Emplacement pour un avis client réel — numérisation de souvenirs. »</p>
+          <p class="who">— Prénom N., à compléter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉSERVATION / CONTACT -->
+  <section id="reserver">
+    <div class="wrap book-grid">
+      <div class="book-info">
+        <span class="eyebrow">Prendre rendez-vous</span>
+        <h2>Réservez votre séance</h2>
+        <p>Dites-nous ce dont vous avez besoin et le créneau qui vous arrange. Nous vous recontactons rapidement pour confirmer.</p>
+        <ul class="info-list">
+          <li>
+            <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11Z"/></svg></span>
+            <span><b>Avenue Luserna 13, 1203 Genève</b><span>Au cœur du quartier de la Servette</span></span>
+          </li>
+          <li>
+            <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+            <span><b>022 345 36 17</b><span>info@photoluserna.ch</span></span>
+          </li>
+          <li>
+            <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span><b>Du mardi au vendredi</b><span>09:00–12:00 · 14:00–19:30 — Samedi 09:00–14:30 non-stop</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <form aria-label="Formulaire de prise de rendez-vous" onsubmit="return false">
+        <div class="row2">
+          <div class="field">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" type="text" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" type="text" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="tel">Téléphone</label>
+            <input id="tel" name="tel" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="type">Type de séance</label>
+            <select id="type" name="type">
+              <option value="">Choisir…</option>
+              <option>Photo d'identité</option>
+              <option>Portrait studio</option>
+              <option>Photo de famille</option>
+              <option>Entreprise / corporate</option>
+              <option>Numérisation de souvenirs</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Date souhaitée</label>
+            <input id="date" name="date" type="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Votre demande</label>
+          <textarea id="message" name="message" placeholder="Quelques mots sur votre projet…"></textarea>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Envoyer ma demande
+          </button>
+          <p class="reassure">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Sans engagement · réponse rapide
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="wordmark" aria-label="Photo Luserna — accueil">
+          <span class="dot" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.2"/></svg>
+          </span>
+          Photo <span>Luserna</span>
+        </a>
+        <p style="margin-top:14px;max-width:34ch">Studio photo de quartier à Genève. Portraits, photos d'identité, séances entreprise et numérisation de souvenirs.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <a href="#galeries">Galeries</a>
+        <a href="#formules">Formules &amp; tarifs</a>
+        <a href="#apropos">À propos</a>
+        <a href="#avis">Avis</a>
+      </div>
+      <div class="foot-col">
+        <h4>Nous trouver</h4>
+        <span>Avenue Luserna 13</span>
+        <span>1203 Genève</span>
+        <a href="tel:+41223453617">022 345 36 17</a>
+        <a href="mailto:info@photoluserna.ch">info@photoluserna.ch</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Photo Luserna — Genève</span>
+      <span>Maquette de démonstration · contenus et tarifs à compléter par le studio</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

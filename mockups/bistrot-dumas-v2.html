@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Le Bistrot Dumas — Cuisine bistronomique · Champel, Genève · Bib Gourmand 2025</title>
-<meta name="description" content="Le Bistrot Dumas, restaurant bistronomique à Champel, Genève. Cuisine française traditionnelle, 100 % faite maison. Bib Gourmand — Guide Michelin 2025. Réservez votre table.">
+<title>Le Bistrot Dumas — Cuisine bistronomique · Champel, Genève</title>
+<meta name="description" content="Le Bistrot Dumas, restaurant bistronomique à Champel, Genève. Cuisine française traditionnelle, 100 % faite maison. Réservez votre table.">
 <!-- maquette de prospection, non officielle — variante « douce » (évolution respectueuse de l'identité) -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
 :root{
   --paper:#f8f5ef; --sand:#efe9dd; --line:#e2d9c8;
   --ink:#2a2521; --mid:#6b6155; --white:#fffdf8;
@@ -43,7 +44,7 @@ a{color:inherit}
 .hero p{max-width:620px;margin:0 auto 30px;color:var(--mid);font-size:16.5px}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* RUBAN Bib Gourmand — sobre mais mis en valeur */
+/* RUBAN distinction — emplacement réservé, sobre mais mis en valeur */
 .bib{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
 .bib-in{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;padding:24px 28px;max-width:1060px;margin:0 auto;text-align:center}
 .bib-medal{flex:none;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#cda861,#806434 72%);
@@ -118,6 +119,26 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
   .float{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:50;justify-content:center;
     background:var(--gold-d);color:var(--white);text-decoration:none;padding:15px;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 6px 22px rgba(42,37,33,.32)}
 }
+
+/* RESPONSIVE — anti-débordement <=720px / <=560px */
+@media(max-width:720px){
+  .inst,.carte-cols,.info{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  *{min-width:0}
+  .wrap{padding:0 18px}
+  h1,h2,h3,h4,.sec-h,.hero h1,.cave h2,.cta h2,.inst h3{overflow-wrap:break-word;word-break:break-word}
+  .hero{padding:60px 18px 44px}
+  .hero h1{font-size:clamp(28px,8vw,38px)}
+  .sec-h{font-size:30px}
+  .cave h2,.cta h2{font-size:27px}
+  .inst h3{font-size:25px}
+  .brand{font-size:22px}
+  .hero-cta{flex-direction:column}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .bib-in,.cave,.cta,.float{padding-left:18px;padding-right:18px}
+  .line{flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
@@ -146,15 +167,15 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
   </div>
 </section>
 
-<!-- BIB GOURMAND — sobre mais mis en valeur -->
+<!-- DISTINCTION — emplacement réservé, à renseigner uniquement si vérifiable -->
 <div class="bib">
   <div class="bib-in">
-    <div class="bib-medal"><span class="m1">★</span><span class="m2">BIB</span></div>
+    <div class="bib-medal"><span class="m1">★</span><span class="m2">[…]</span></div>
     <div class="bib-txt">
-      <b>Bib Gourmand — Guide Michelin 2025</b>
-      <span>Distinction décernée pour notre qualité culinaire et notre rapport qualité-prix.</span>
+      <b>[Distinction / label — à renseigner]</b>
+      <span>Emplacement réservé à une distinction officielle vérifiable (avec lien source).</span>
     </div>
-    <a href="#" class="btn btn-ghost" style="font-size:11px">Voir sur le Guide Michelin</a>
+    <a href="#" class="btn btn-ghost" style="font-size:11px">[Lien source à fournir]</a>
   </div>
 </div>
 
@@ -165,7 +186,7 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
     <div>
       <div class="sec-kick" style="text-align:left">La maison</div>
       <h3>Tout est fait maison</h3>
-      <p>Le Bistrot Dumas s'est imposé comme une adresse bistronomique appréciée pour sa cuisine française traditionnelle, entièrement faite maison. Le pain est pétri chaque jour avec de la farine genevoise puis cuit sur place.</p>
+      <p>Le Bistrot Dumas propose une cuisine française traditionnelle, entièrement faite maison, au cœur de Champel. Le pain est pétri chaque jour avec de la farine genevoise puis cuit sur place.</p>
       <p>Les glaces et sorbets sont élaborés à partir de produits frais et de saison. La carte évolue au fil des saisons et des arrivages, dans un décor Art nouveau chaleureux et soigné.</p>
       <p class="sig">« Ici, tout est fait maison. »</p>
     </div>
@@ -208,9 +229,9 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
       </div>
 
       <div class="carte-block">
-        <h4>Label Fait Maison</h4>
-        <p style="color:var(--mid);font-size:14.5px;margin-bottom:12px">Les plats sont entièrement élaborés sur place, à partir de produits bruts et traditionnels, conformément aux critères du label <b style="color:var(--gold-d)">Fait Maison</b> (FRC, GastroSuisse, Semaine du Goût, Slow Food).</p>
-        <p style="color:var(--mid);font-size:14.5px">Pain pétri et cuit sur place avec de la farine genevoise. Glaces et sorbets élaborés à partir de produits frais de saison.</p>
+        <h4>Fait maison</h4>
+        <p style="color:var(--mid);font-size:14.5px;margin-bottom:12px">Les plats sont élaborés sur place, à partir de produits bruts et de saison.</p>
+        <p style="color:var(--mid);font-size:14.5px">Pain pétri et cuit sur place avec de la farine genevoise. Glaces et sorbets élaborés à partir de produits frais de saison. <span style="font-style:italic">[Labels / certifications officiels à mentionner ici uniquement si vérifiables.]</span></p>
       </div>
     </div>
 
@@ -225,7 +246,7 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
 <section class="cave" id="cave">
   <div class="sec-kick">La cave à vin</div>
   <h2>Vins français &amp; genevois, naturels et vivants</h2>
-  <p>Une cave de plusieurs centaines de bouteilles, rigoureusement sélectionnées. Références de terroir, vins naturels et vivants, pensés pour sublimer nos plats.</p>
+  <p>Une cave rigoureusement sélectionnée. Références de terroir, vins naturels et vivants, pensés pour sublimer nos plats.</p>
   <p>Prenez le temps de parcourir la cave et de choisir directement votre bouteille, pour une expérience plus personnelle et plus gourmande.</p>
 </section>
 
@@ -260,7 +281,7 @@ footer .fbrand{font-family:var(--serif);font-size:18px;color:var(--white);margin
 <footer>
   <div class="fbrand">Le Bistrot Dumas</div>
   © 2026 Le Bistrot Dumas · Avenue Dumas 7, 1206 Genève · <a href="tel:+41223477422">+41 22 347 74 22</a><br>
-  Bib Gourmand — Guide Michelin 2025 · Midi dès 11h30 · Soir dès 19h00
+  Midi dès 11h30 · Soir dès 19h00
 </footer>
 
 <a href="#reserver" class="float" onclick="resa(event)">Réserver une table</a>

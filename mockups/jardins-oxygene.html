@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jardins Oxygène — Paysagiste & entretien permacole · Genève</title>
+<meta name="description" content="Jardins Oxygène, paysagiste à Genève. Création de jardins, terrasses, entretien durable et permacole, arrosage. Étude personnalisée et devis gratuit sur tout le canton de Genève.">
+<!-- maquette de prospection, non officielle — Atelier Web · Benjamin Delpech. Modèle métier : terrassesdesoliviers.com / piscineetjardin.com / jardinsdejulien.com. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
+:root{
+  --forest:#1f3b2c;     /* vert profond */
+  --forest-d:#16291f;
+  --moss:#3f6b4d;
+  --ink:#22231f;
+  --mid:#5c6058;
+  --cream:#f5f2ea;
+  --sand:#e9e3d5;
+  --line:#ddd6c6;
+  --white:#fffdf7;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--forest);color:var(--white);text-decoration:none;
+  font-size:13px;font-weight:500;letter-spacing:1.3px;text-transform:uppercase;padding:15px 28px;border:1px solid var(--forest);transition:background .15s,color .15s}
+.btn:hover{background:var(--forest-d)}
+.btn svg{width:17px;height:17px;stroke-width:2}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.55)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-dark-ghost{background:transparent;color:var(--forest);border:1px solid var(--moss)}
+.btn-dark-ghost:hover{background:var(--sand)}
+
+/* HEADER sticky */
+.head{background:rgba(245,242,234,.93);backdrop-filter:blur(6px);position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line)}
+.head-in{display:flex;align-items:center;justify-content:space-between;padding:15px 28px;max-width:1080px;margin:0 auto;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);line-height:1}
+.brand .mark{width:34px;height:34px;flex:none;color:var(--moss)}
+.brand .mark svg{width:34px;height:34px;stroke-width:1.6}
+.brand .t{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:.3px}
+.brand .t small{display:block;font-family:var(--sans);font-size:9px;font-weight:500;letter-spacing:2.6px;text-transform:uppercase;color:var(--moss);margin-top:3px}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a{font-size:13px;font-weight:400;letter-spacing:.3px;text-decoration:none;color:var(--mid);transition:color .12s}
+.nav a:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:11px}
+@media(max-width:880px){.nav a:not(.btn){display:none}}
+
+/* HERO plein écran — photo jardin terminé */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+  background:linear-gradient(180deg,rgba(22,41,31,.18) 0%,rgba(22,41,31,.30) 45%,rgba(22,41,31,.82) 100%),
+    linear-gradient(135deg,#2f5238,#1f3b2c 55%,#16291f);
+  color:var(--white)}
+.hero-photo{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.22);font-size:12px;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:24px}
+.hero-in{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px 70px;width:100%}
+.hero-kick{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:20px}
+.hero-kick svg{width:15px;height:15px;stroke-width:2}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,6.4vw,62px);font-weight:600;line-height:1.04;max-width:760px;margin-bottom:20px}
+.hero p{max-width:560px;font-size:17px;font-weight:300;color:rgba(255,255,255,.9);margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* RUBAN positionnement honnête */
+.strip{background:var(--forest);color:var(--white);border-bottom:1px solid var(--forest-d)}
+.strip-in{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;padding:18px 28px;max-width:1080px;margin:0 auto}
+.strip-i{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(255,255,255,.92)}
+.strip-i svg{width:19px;height:19px;stroke-width:1.8;color:rgba(255,255,255,.75);flex:none}
+
+/* SECTIONS génériques */
+.sec{padding:74px 0}
+.sec-kick{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--moss);margin-bottom:10px}
+.sec-kick svg{width:15px;height:15px;stroke-width:2}
+.sec-h{font-family:var(--serif);font-size:clamp(28px,4.4vw,42px);font-weight:600;text-align:center;color:var(--ink);margin-bottom:14px;line-height:1.1}
+.lead{max-width:680px;margin:0 auto;text-align:center;color:var(--mid);font-size:16.5px}
+
+/* AVANT / APRÈS — le levier émotionnel n°1 */
+.ba{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ba-grid{display:flex;flex-direction:column;gap:30px;margin-top:40px}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--sand)}
+.ba-cell{aspect-ratio:4/3;position:relative;display:flex;align-items:flex-end;padding:16px;
+  font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--moss)}
+.ba-before{background:linear-gradient(135deg,#d9d2c0,#cfc8b4)}
+.ba-after{background:linear-gradient(135deg,#cfe0cf,#a9c6ad)}
+.ba-tag{position:absolute;top:14px;left:14px;background:var(--forest);color:var(--white);
+  font-size:10.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 12px}
+.ba-after .ba-tag{background:var(--moss)}
+.ba-cap{position:absolute;bottom:14px;left:14px;right:14px;color:var(--forest-d);font-weight:500}
+.ba-note{text-align:center;font-size:12.5px;color:var(--mid);margin-top:22px;font-style:italic}
+
+/* PRESTATIONS — 4 cartes SVG */
+.serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:42px}
+.serv{background:var(--white);border:1px solid var(--line);padding:32px 30px;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
+.serv:hover{border-color:var(--moss);transform:translateY(-2px)}
+.serv .ic{width:46px;height:46px;color:var(--moss);margin-bottom:18px}
+.serv .ic svg{width:46px;height:46px;stroke-width:1.5}
+.serv h3{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.serv p{font-size:14.5px;color:var(--mid);flex:1;margin-bottom:16px}
+.serv .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.serv .gal span{aspect-ratio:1;background:linear-gradient(135deg,var(--sand),#d8e0d2);
+  display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--moss);text-align:center;padding:4px}
+
+/* RÉALISATIONS géolocalisées */
+.realz{background:var(--forest);color:var(--white)}
+.realz .sec-kick{color:rgba(255,255,255,.78)}
+.realz .sec-h{color:var(--white)}
+.realz .lead{color:rgba(255,255,255,.82)}
+.realz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+.realz-c{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16)}
+.realz-ph{aspect-ratio:5/4;background:linear-gradient(135deg,#2e4d39,#24412f);display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center;padding:16px}
+.realz-b{padding:16px 18px 18px}
+.realz-loc{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:7px}
+.realz-loc svg{width:14px;height:14px;stroke-width:2;flex:none}
+.realz-c h4{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:4px}
+.realz-c p{font-size:13.5px;color:rgba(255,255,255,.7)}
+.realz-note{text-align:center;font-size:12.5px;color:rgba(255,255,255,.6);margin-top:24px;font-style:italic}
+
+/* RÉASSURANCE */
+.reass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:42px}
+.reass-c{text-align:center;padding:8px}
+.reass-c .ic{width:42px;height:42px;color:var(--moss);margin:0 auto 16px}
+.reass-c .ic svg{width:42px;height:42px;stroke-width:1.6}
+.reass-c h4{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.reass-c p{font-size:14.5px;color:var(--mid)}
+
+/* CTA devis — form mini */
+.devis{background:var(--forest);color:var(--white)}
+.devis-in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.devis h2{font-family:var(--serif);font-size:clamp(28px,4.4vw,40px);font-weight:600;line-height:1.08;margin-bottom:16px}
+.devis p{color:rgba(255,255,255,.86);font-size:16px;margin-bottom:20px;max-width:440px}
+.devis-list{list-style:none;display:grid;gap:12px}
+.devis-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;color:rgba(255,255,255,.9)}
+.devis-list svg{width:19px;height:19px;stroke-width:2;color:#a9c6ad;flex:none;margin-top:1px}
+.form{background:var(--white);color:var(--ink);padding:30px 28px;border:1px solid var(--forest-d)}
+.form h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:6px}
+.form .sub{font-size:13px;color:var(--mid);margin-bottom:20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--moss);margin-bottom:6px}
+.field input,.field select{width:100%;padding:12px 13px;border:1px solid var(--line);background:var(--cream);
+  font-family:inherit;font-size:14.5px;color:var(--ink);border-radius:0}
+.field input:focus,.field select:focus{outline:2px solid var(--moss);outline-offset:0;border-color:var(--moss)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.form-note{font-size:11.5px;color:var(--mid);margin-top:12px;text-align:center}
+
+/* CONTACT / footer info */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.info h4{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin-bottom:16px}
+.info-row{display:flex;gap:12px;margin-bottom:13px;font-size:15px;color:var(--mid)}
+.info-row svg{width:18px;height:18px;stroke-width:1.8;color:var(--moss);flex:none;margin-top:3px}
+.info-row b{color:var(--ink);font-weight:500}
+.info a{color:var(--moss);text-decoration:none;font-weight:500}
+.info a:hover{text-decoration:underline}
+.map{aspect-ratio:16/11;background:linear-gradient(135deg,#cfe0cf,#a9c6ad);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--forest);font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;text-align:center;padding:18px}
+
+footer{background:var(--forest-d);color:rgba(255,255,255,.7);text-align:center;padding:30px 28px;font-size:13px}
+footer a{color:var(--white);text-decoration:none}
+footer .fnote{font-size:11px;color:rgba(255,255,255,.45);margin-top:8px}
+
+/* bouton devis flottant mobile */
+.float{display:none}
+@media(max-width:880px){
+  .float{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:50;justify-content:center;align-items:center;gap:9px;
+    background:var(--forest);color:var(--white);text-decoration:none;padding:15px;font-size:13px;font-weight:500;letter-spacing:1.3px;text-transform:uppercase;box-shadow:0 6px 22px rgba(22,41,31,.4)}
+  .float svg{width:17px;height:17px;stroke-width:2}
+}
+
+/* RESPONSIVE — garde-fous anti-débordement */
+@media(max-width:720px){
+  .serv-grid{grid-template-columns:1fr}
+  .realz-grid{grid-template-columns:1fr}
+  .reass-grid{grid-template-columns:1fr;gap:34px}
+  .devis-in{grid-template-columns:1fr;gap:30px}
+  .info{grid-template-columns:1fr;gap:26px}
+}
+@media(max-width:560px){
+  *{min-width:0}
+  .wrap{padding:0 18px}
+  .head-in{padding:13px 18px}
+  .brand .t{font-size:18px}
+  .hero{min-height:82vh}
+  .hero-in{padding:0 18px 54px}
+  .hero h1,.sec-h,.serv h3,.devis h2,.info h4,.reass-c h4,.realz-c h4{overflow-wrap:break-word;word-break:break-word}
+  .hero h1{font-size:32px}
+  .hero p{font-size:15.5px}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center;width:100%}
+  .sec{padding:54px 0}
+  .ba-pair{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .strip-in{gap:12px 24px}
+}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="head-in">
+    <a href="#" class="brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>
+      <span class="t">Jardins Oxygène<small>Paysagiste · Genève</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#realisations">Avant / après</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#chantiers">Nos chantiers</a>
+      <a href="#contact">Contact</a>
+      <a href="#devis" class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h3"/></svg>Devis gratuit</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO plein écran : photo jardin terminé + positionnement permacole réel + CTA devis -->
+<section class="hero">
+  <div class="hero-photo">[ Photo plein écran — un jardin / une terrasse réalisée · ambiance Genève ]</div>
+  <div class="hero-in">
+    <span class="hero-kick">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+      Entretien permacole d'espaces biologiques · Genève
+    </span>
+    <h1>Des jardins vivants, durables et faits pour durer.</h1>
+    <p>Création de jardins, terrasses, entretien responsable et arrosage. Nous concrétisons vos désirs d'aménagement extérieur sur tout le canton de Genève — du conseil à la réalisation.</p>
+    <div class="hero-cta">
+      <a href="#devis" class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h3"/></svg>Demande de devis gratuit</a>
+      <a href="#realisations" class="btn btn-ghost">Voir les réalisations</a>
+    </div>
+  </div>
+</section>
+
+<!-- RUBAN positionnement (sans chiffres inventés) -->
+<div class="strip">
+  <div class="strip-in">
+    <span class="strip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Étude personnalisée &amp; devis gratuit</span>
+    <span class="strip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>Genève &amp; tout le canton</span>
+    <span class="strip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/></svg>Entretien durable &amp; outils silencieux</span>
+  </div>
+</div>
+
+<!-- AVANT / APRÈS — le levier émotionnel n°1, STRUCTURÉ -->
+<section class="ba" id="realisations">
+  <div class="wrap">
+    <div class="sec-kick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/><path d="m14 19 1.5-1.5a2 2 0 0 1 2.8 0L21 20"/><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/></svg>La transformation</div>
+    <h2 class="sec-h">Avant / après</h2>
+    <p class="lead">La meilleure preuve d'un paysagiste, c'est le contraste. Voici l'effet d'une intervention Jardins Oxygène — chaque chantier, du diagnostic à la réalisation.</p>
+    <div class="ba-grid">
+
+      <div class="ba-pair">
+        <div class="ba-cell ba-before"><span class="ba-tag">Avant</span><span class="ba-cap">[Réalisation — avant]</span></div>
+        <div class="ba-cell ba-after"><span class="ba-tag">Après</span><span class="ba-cap">[Réalisation — après]</span></div>
+      </div>
+
+      <div class="ba-pair">
+        <div class="ba-cell ba-before"><span class="ba-tag">Avant</span><span class="ba-cap">[Réalisation — avant]</span></div>
+        <div class="ba-cell ba-after"><span class="ba-tag">Après</span><span class="ba-cap">[Réalisation — après]</span></div>
+      </div>
+
+      <div class="ba-pair">
+        <div class="ba-cell ba-before"><span class="ba-tag">Avant</span><span class="ba-cap">[Réalisation — avant]</span></div>
+        <div class="ba-cell ba-after"><span class="ba-tag">Après</span><span class="ba-cap">[Réalisation — après]</span></div>
+      </div>
+
+    </div>
+    <p class="ba-note">Emplacements à remplir avec vos propres chantiers — c'est l'atout n°1 d'un site de paysagiste, à condition d'avoir des photos avant/après nettes et structurées (et non un fil d'images en vrac).</p>
+  </div>
+</section>
+
+<!-- PRESTATIONS — 4 cartes, chacune avec galerie -->
+<section class="sec wrap" id="prestations">
+  <div class="sec-kick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10M7 12h10M7 17h6"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>Ce que nous faisons</div>
+  <h2 class="sec-h">Nos prestations</h2>
+  <p class="lead">Du jardin à concevoir à l'entretien régulier — un accompagnement complet, de l'état des lieux à la maîtrise d'ouvrage.</p>
+  <div class="serv-grid">
+
+    <div class="serv">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>
+      <h3>Création de jardins</h3>
+      <p>Conception et réalisation d'espaces extérieurs : massifs, plantations, allées, jardins permacoles et autonomes. De l'étude au jardin vivant.</p>
+      <div class="gal"><span>[Photo]</span><span>[Photo]</span><span>[Photo]</span></div>
+    </div>
+
+    <div class="serv">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+      <h3>Terrasses &amp; aménagements</h3>
+      <p>Terrasses en bois ou pierre, dallages, bordures et petites maçonneries de jardin. Un espace de vie extérieur soigné et durable.</p>
+      <div class="gal"><span>[Photo]</span><span>[Photo]</span><span>[Photo]</span></div>
+    </div>
+
+    <div class="serv">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 21 10l-2 2-6.5-6.5z"/><path d="m18 7-8 8"/><path d="M9 13 3 19a2 2 0 0 0 0 3h0a2 2 0 0 0 3 0l6-6"/></svg></span>
+      <h3>Entretien permacole</h3>
+      <p>Entretien durable, agréable et responsable : tonte, taille, désherbage manuel, recyclage des déchets verts. Outils traditionnels et électriques silencieux.</p>
+      <div class="gal"><span>[Photo]</span><span>[Photo]</span><span>[Photo]</span></div>
+    </div>
+
+    <div class="serv">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/></svg></span>
+      <h3>Arrosage &amp; eau</h3>
+      <p>Conception et pose de systèmes d'arrosage économes, récupération d'eau et gestion raisonnée. Un jardin qui consomme moins et reste sain.</p>
+      <div class="gal"><span>[Photo]</span><span>[Photo]</span><span>[Photo]</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RÉALISATIONS géolocalisées — "nos chantiers dans votre région" -->
+<section class="realz" id="chantiers">
+  <div class="sec wrap">
+    <div class="sec-kick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>Près de chez vous</div>
+    <h2 class="sec-h">Nos chantiers dans le canton</h2>
+    <p class="lead">Voir un jardin transformé à deux pas de chez soi, ça rassure. Présentez ici vos réalisations par commune — Genève et alentours.</p>
+    <div class="realz-grid">
+
+      <div class="realz-c">
+        <div class="realz-ph">[Photo chantier]</div>
+        <div class="realz-b">
+          <div class="realz-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>[Commune — canton de Genève]</div>
+          <h4>[Titre du chantier]</h4>
+          <p>[Type de projet — ex. création de jardin permacole]</p>
+        </div>
+      </div>
+
+      <div class="realz-c">
+        <div class="realz-ph">[Photo chantier]</div>
+        <div class="realz-b">
+          <div class="realz-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>[Commune — canton de Genève]</div>
+          <h4>[Titre du chantier]</h4>
+          <p>[Type de projet — ex. terrasse &amp; aménagement]</p>
+        </div>
+      </div>
+
+      <div class="realz-c">
+        <div class="realz-ph">[Photo chantier]</div>
+        <div class="realz-b">
+          <div class="realz-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>[Commune — canton de Genève]</div>
+          <h4>[Titre du chantier]</h4>
+          <p>[Type de projet — ex. entretien régulier]</p>
+        </div>
+      </div>
+
+    </div>
+    <p class="realz-note">Emplacements à remplir — un chantier par commune crée un effet « ils sont déjà venus dans mon quartier ».</p>
+  </div>
+</section>
+
+<!-- RÉASSURANCE — sans chiffres inventés -->
+<section class="sec wrap">
+  <div class="sec-kick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>Travailler avec nous</div>
+  <h2 class="sec-h">Une démarche claire, sans surprise</h2>
+  <p class="lead">Avant tout chiffrage, on regarde votre extérieur ensemble. La confiance d'abord.</p>
+  <div class="reass-grid">
+
+    <div class="reass-c">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h3"/></svg></span>
+      <h4>Devis gratuit</h4>
+      <p>Une demande, une réponse claire et chiffrée. Sans engagement, sans pression.</p>
+    </div>
+
+    <div class="reass-c">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <h4>Étude personnalisée</h4>
+      <p>État des lieux, conseil et étude sur place. On part de vos besoins, pas d'un catalogue.</p>
+    </div>
+
+    <div class="reass-c">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <h4>Zone d'intervention</h4>
+      <p>Genève et tout le canton. De la ville aux communes alentour, on se déplace chez vous.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA DEVIS — mini-form -->
+<section class="devis" id="devis">
+  <div class="sec wrap devis-in">
+    <div>
+      <h2>Recevez votre étude personnalisée</h2>
+      <p>Décrivez votre projet en quelques mots. On revient vers vous avec un premier avis et un rendez-vous sur place.</p>
+      <ul class="devis-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Réponse rapide, devis gratuit et sans engagement</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Visite et conseil sur place dans le canton de Genève</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Une démarche durable, du diagnostic à la réalisation</li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="return false">
+      <h3>Demande de devis</h3>
+      <div class="sub">Maquette — formulaire à connecter (envoi vers contact@jardinsoxygene.ch).</div>
+      <div class="field">
+        <label for="f-type">Type de projet</label>
+        <select id="f-type">
+          <option>Création de jardin</option>
+          <option>Terrasse / aménagement</option>
+          <option>Entretien régulier</option>
+          <option>Arrosage</option>
+          <option>Autre / je ne sais pas encore</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-surf">Surface approx.</label>
+          <input id="f-surf" type="text" placeholder="ex. 120 m²">
+        </div>
+        <div class="field">
+          <label for="f-cp">Code postal</label>
+          <input id="f-cp" type="text" placeholder="ex. 1206">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-mail">Votre email</label>
+        <input id="f-mail" type="email" placeholder="vous@exemple.ch">
+      </div>
+      <a href="mailto:contact@jardinsoxygene.ch" class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Envoyer ma demande</a>
+      <div class="form-note">Vos informations servent uniquement à vous recontacter. Aucune donnée transmise à des tiers.</div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec wrap" id="contact">
+  <div class="info">
+    <div>
+      <div class="sec-kick" style="justify-content:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Contact</div>
+      <h4>Jardins Oxygène · Genève</h4>
+      <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><b>Email</b> · <a href="mailto:contact@jardinsoxygene.ch">contact@jardinsoxygene.ch</a></span></div>
+      <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2C20 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Zone</b> · Genève &amp; tout le canton</span></div>
+      <div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><b>Téléphone</b> · [à compléter]</span></div>
+      <div style="margin-top:18px"><a href="#devis" class="btn btn-dark-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h3"/></svg>Demander un devis</a></div>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&query=Gen%C3%A8ve" target="_blank" rel="noopener" class="map">Plan — zone d'intervention Genève &amp; canton</a>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> Jardins Oxygène · Paysagiste à Genève · <a href="mailto:contact@jardinsoxygene.ch">contact@jardinsoxygene.ch</a>
+  <div class="fnote">Maquette de présentation réalisée par l'Atelier Web (Benjamin Delpech) — non officielle. Photos, coordonnées et réalisations à fournir par Jardins Oxygène.</div>
+</footer>
+
+<a href="#devis" class="float"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h3"/></svg>Devis gratuit</a>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
