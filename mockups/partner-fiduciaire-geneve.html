@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner SA, Société Fiduciaire — Votre fiduciaire à Genève depuis 1992</title>
+<meta name="description" content="Partner SA, Société Fiduciaire à Genève (Champel). Comptabilité, fiscalité, gestion des salaires, TVA et conseil aux PME, indépendants et particuliers depuis 1992. Route de Florissant 47ter, 1206 Genève.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13294b;          /* bleu institutionnel profond */
+    --navy-soft:#1f3a5f;
+    --steel:#3d5a80;
+    --slate:#5b6b7d;
+    --line:#dde3ea;
+    --paper:#f6f8fb;
+    --paper-2:#eef2f7;
+    --ink:#1c2530;
+    --ink-soft:#4d5866;
+    --gold:#a07a37;          /* accent sobre, sérieux */
+    --white:#ffffff;
+    --shadow:0 18px 46px -26px rgba(19,41,75,.4);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:.1px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:6px;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+    cursor:pointer;border:none;font-family:'Libre Franklin',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -14px rgba(19,41,75,.8)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--navy-soft)}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--steel)}
+  .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.1)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;line-height:1.05}
+  .brand .mark{
+    width:42px;height:42px;border-radius:8px;flex:none;
+    background:linear-gradient(135deg,var(--navy),var(--steel));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Source Serif 4',serif;font-weight:600;font-size:1.3rem;
+  }
+  .brand b{font-family:'Source Serif 4',serif;font-size:1.4rem;font-weight:600;color:var(--navy);display:block}
+  .brand span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:84px 0 0}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(720px 420px at 82% 8%,rgba(61,90,128,.55),transparent 62%),
+      radial-gradient(560px 360px at 0% 96%,rgba(160,122,55,.18),transparent 60%),
+      linear-gradient(180deg,#13294b,#0f2240);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center;padding-bottom:84px}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.08;margin:6px 0 20px;color:#fff}
+  .hero h1 em{font-style:normal;color:#cdb98a}
+  .hero p.lead{font-size:1.12rem;color:#c4cedb;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#9fb0c4;margin-top:22px}
+
+  /* hero panel */
+  .net-panel{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;padding:34px 32px;backdrop-filter:blur(4px);
+  }
+  .net-panel h3{font-size:1.05rem;color:#fff;margin-bottom:4px}
+  .net-panel .sub{font-size:.84rem;color:#9fb0c4;margin-bottom:24px}
+  .panel-rows{display:flex;flex-direction:column;gap:2px}
+  .panel-row{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.92rem}
+  .panel-row:last-child{border-bottom:none}
+  .panel-row .k{color:#9fb0c4}
+  .panel-row .v{color:#e6edf6;font-weight:600;text-align:right}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .trust-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:18px 0}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-soft);font-weight:500}
+  .trust-item .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:46em;margin:0 0 48px}
+  .sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:14px;line-height:1.15}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* services */
+  #services{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(19,41,75,.5);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c7d2e0}
+  .card .ic{
+    width:50px;height:50px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper-2);color:var(--navy);margin-bottom:18px;
+  }
+  .card .ic svg{width:24px;height:24px}
+  .card h3{font-size:1.3rem;color:var(--navy);margin-bottom:8px}
+  .card p.desc{font-size:.95rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
+  .card .more{font-size:.88rem;color:var(--gold);font-weight:600}
+
+  /* à propos / le cabinet */
+  .net-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+  .net-intro h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:16px;line-height:1.15}
+  .net-intro p{color:var(--ink-soft);margin-bottom:14px}
+  .net-figures{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .figure{background:var(--navy);color:#fff;border-radius:var(--radius);padding:26px 24px}
+  .figure .n{font-family:'Source Serif 4',serif;font-size:2.6rem;line-height:1;color:#cdb98a}
+  .figure .c{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#9fb0c4;margin-top:8px}
+
+  /* approche */
+  #approche{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  #approche::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 360px at 88% 12%,rgba(61,90,128,.5),transparent 60%)}
+  .zone-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  #approche h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:16px}
+  #approche p{color:#c4cedb;margin-bottom:24px}
+  .pub-list{display:flex;flex-direction:column;gap:0}
+  .pub-list li{list-style:none;padding:14px 0;font-size:.98rem;color:#dbe3ee;
+                border-bottom:1px solid rgba(255,255,255,.12);display:flex;gap:13px;align-items:flex-start}
+  .pub-list li:last-child{border-bottom:none}
+  .pub-list li .chk{color:#cdb98a;flex:none;margin-top:2px}
+  .pub-list li b{color:#fff;font-weight:600}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:14px;
+    background:linear-gradient(135deg,var(--navy),var(--steel));color:#fff;
+    padding:58px 44px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.4fr auto;gap:30px;align-items:center}
+  .cta-band h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:12px;color:#fff}
+  .cta-band p{opacity:.92;max-width:40em;font-size:1.05rem}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* contact */
+  #contact{background:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  .contact-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+  .contact-card h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+  .contact-card .role{font-size:.9rem;color:var(--gold);font-weight:600;margin-bottom:20px}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{color:var(--gold);width:22px;flex:none;text-align:center;margin-top:2px}
+  .info-row .v{font-size:.96rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--steel);font-weight:600}
+  .map-link{display:inline-block;margin-top:18px;font-size:.9rem;color:var(--gold);font-weight:600}
+  form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form label{display:block;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin:14px 0 6px}
+  form input,form select,form textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:6px;
+    font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;
+  }
+  form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(61,90,128,.12)}
+  form textarea{resize:vertical;min-height:110px}
+  .form-note{font-size:.8rem;color:var(--slate);margin-top:14px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#a8b7c9;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer .brand span{color:#8497ad}
+  footer h4{color:#e6edf6;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#a8b7c9;display:block;padding:5px 0;transition:color .15s;font-size:.92rem}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7;margin-top:12px;color:#a8b7c9}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7e91a8}
+  .foot-bottom a{display:inline;color:#a8b7c9}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-grid,.net-intro,.zone-grid,.contact-grid,.cta-band{grid-template-columns:1fr}
+    .cta-band{text-align:center}
+    .cta-actions{justify-content:center}
+    .cards{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+    .net-panel{order:-1}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.net-figures,.foot-grid{grid-template-columns:1fr}
+    .contact-card{column-count:1}
+    form .frow{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{padding:42px 24px}
+  }
+  .nav-links.open{
+    display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;
+    background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 18px;box-shadow:var(--shadow);
+  }
+  .nav-links.open a{padding:11px 0;border-bottom:1px solid var(--line)}
+  .nav-links.open .nav-cta{margin-top:10px;justify-content:center;border-bottom:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">P</span>
+      <span>
+        <b>Partner SA</b>
+        <span>Société Fiduciaire · Genève</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Nos services</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#approche">Notre approche</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Nous contacter</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Société fiduciaire · Quartier de Champel</p>
+      <h1>Votre fiduciaire à <em>Genève</em> depuis 1992.</h1>
+      <p class="lead">Comptabilité, fiscalité, gestion des salaires, TVA et conseil aux PME, indépendants et particuliers. Un interlocuteur de proximité pour la gestion administrative et financière de votre activité.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-gold">Prendre contact →</a>
+        <a href="#services" class="btn btn-outline-light">Découvrir nos services</a>
+      </div>
+      <p class="hero-note">Route de Florissant 47ter, 1206 Genève · infos@partnerfid.ch</p>
+    </div>
+
+    <div class="net-panel">
+      <h3>Partner SA en bref</h3>
+      <p class="sub">Une fiduciaire genevoise établie de longue date.</p>
+      <div class="panel-rows">
+        <div class="panel-row"><span class="k">Fondée en</span><span class="v">1992</span></div>
+        <div class="panel-row"><span class="k">Quartier</span><span class="v">Champel · Florissant</span></div>
+        <div class="panel-row"><span class="k">Langues</span><span class="v">FR · EN · DE</span></div>
+        <div class="panel-row"><span class="k">Horaires</span><span class="v">Lun–Ven, 9h–12h / 14h–18h</span></div>
+        <div class="panel-row"><span class="k">IDE</span><span class="v">CHE-107.434.699</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><span class="dot"></span>Établie à Genève depuis 1992</div>
+    <div class="trust-item"><span class="dot"></span>Comptabilité · Fiscalité · Salaires</div>
+    <div class="trust-item"><span class="dot"></span>PME, indépendants &amp; particuliers</div>
+    <div class="trust-item"><span class="dot"></span>Français · Anglais · Allemand</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce que nous faisons</p>
+      <h2>Nos prestations</h2>
+      <p>De la tenue de votre comptabilité à vos déclarations fiscales, Partner SA accompagne les entreprises, les indépendants et les particuliers dans l'ensemble de leur gestion administrative, comptable et fiscale.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Comptabilité &amp; bouclement</h3>
+        <p class="desc">Tenue de la comptabilité, suivi des écritures et établissement des bouclements annuels. Des comptes à jour pour piloter votre activité en toute sérénité.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+        <h3>Fiscalité</h3>
+        <p class="desc">Déclarations fiscales des personnes physiques et morales, optimisation et suivi de vos obligations auprès de l'administration fiscale cantonale et fédérale.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Salaires &amp; charges sociales</h3>
+        <p class="desc">Gestion de la paie, décomptes AVS/AC, LPP et assurances sociales. Nous prenons en charge l'administration salariale de votre entreprise.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>TVA</h3>
+        <p class="desc">Établissement et suivi des décomptes TVA, assujettissement, méthodes de décompte et correspondance avec l'Administration fédérale des contributions.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>Conseil aux PME</h3>
+        <p class="desc">Accompagnement de gestion, budgets, analyse financière et soutien aux décisions des dirigeants de petites et moyennes entreprises.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></div>
+        <h3>Création &amp; domiciliation de société</h3>
+        <p class="desc">Accompagnement à la constitution de votre société, choix de la forme juridique et services de domiciliation à Genève.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+    </div>
+    <p style="color:var(--slate);font-size:.86rem;font-style:italic;margin-top:24px">Détail des prestations donné à titre indicatif — liste et descriptifs à valider avec le cabinet.</p>
+  </div>
+</section>
+
+<!-- LE CABINET / À PROPOS -->
+<section id="cabinet">
+  <div class="wrap">
+    <div class="net-intro">
+      <div>
+        <p class="eyebrow">Le cabinet</p>
+        <h2>Une fiduciaire genevoise de proximité</h2>
+        <p>Fondée en 1992, Partner SA, Société Fiduciaire est installée au cœur du quartier de Champel, route de Florissant. Depuis plus de trente ans, le cabinet accompagne entreprises, indépendants et particuliers de la région genevoise dans leur gestion comptable, fiscale et sociale.</p>
+        <p>Notre approche privilégie la relation directe et durable : un interlocuteur qui connaît votre dossier, répond en français, en anglais comme en allemand, et vous accompagne dans la durée.</p>
+        <p style="color:var(--slate);font-size:.86rem;font-style:italic">Présentation du cabinet et de l'équipe à compléter avec le client.</p>
+      </div>
+      <div class="net-figures">
+        <div class="figure"><div class="n">1992</div><div class="c">Année de fondation</div></div>
+        <div class="figure"><div class="n">30+</div><div class="c">Ans d'activité à Genève</div></div>
+        <div class="figure"><div class="n">3</div><div class="c">Langues de travail</div></div>
+        <div class="figure"><div class="n">Champel</div><div class="c">Route de Florissant</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTRE APPROCHE -->
+<section id="approche">
+  <div class="wrap zone-grid">
+    <div>
+      <p class="eyebrow" style="color:#cdb98a">Notre manière de travailler</p>
+      <h2>Rigueur, proximité, confidentialité</h2>
+      <p>Chaque dossier est traité avec le soin et la discrétion qu'exige la gestion de vos finances. Nous mettons l'accent sur la clarté de l'information et la disponibilité.</p>
+    </div>
+    <div>
+      <ul class="pub-list">
+        <li><span class="chk">✓</span><span><b>Un interlocuteur dédié.</b> Une personne qui suit votre dossier dans la durée, pas un numéro.</span></li>
+        <li><span class="chk">✓</span><span><b>Des comptes à jour.</b> Une comptabilité tenue avec régularité pour des décisions éclairées.</span></li>
+        <li><span class="chk">✓</span><span><b>Confidentialité.</b> Vos données financières traitées avec la plus grande discrétion.</span></li>
+        <li><span class="chk">✓</span><span><b>Trois langues.</b> Français, anglais et allemand pour vous accompagner sans barrière.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Confiez votre comptabilité à une fiduciaire genevoise établie.</h2>
+        <p>Entreprise, indépendant ou particulier : prenons le temps d'échanger sur vos besoins et la manière dont Partner SA peut vous accompagner.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-gold">Nous contacter →</a>
+        <a href="#services" class="btn btn-outline-light">Voir nos services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous contacter</p>
+      <h2>Parlons de votre dossier</h2>
+      <p>Contactez Partner SA, Société Fiduciaire pour un premier échange. Nous vous répondrons dans les meilleurs délais.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Partner SA, Société Fiduciaire</h3>
+        <p class="role">Genève — Quartier de Champel</p>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Adresse</b>Route de Florissant 47ter, 1206 Genève</span></div>
+        <div class="info-row"><span class="k">✉️</span><span class="v"><b>E-mail</b><a href="mailto:infos@partnerfid.ch">infos@partnerfid.ch</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><a href="tel:+41223122436">022 312 24 36</a></span></div>
+        <div class="info-row"><span class="k">📠</span><span class="v"><b>Fax</b>022 312 24 38</span></div>
+        <div class="info-row"><span class="k">🕘</span><span class="v"><b>Horaires</b>Lundi – vendredi, 9h00–12h00 / 14h00–18h00</span></div>
+        <div class="info-row"><span class="k">🏛️</span><span class="v"><b>IDE</b>CHE-107.434.699</span></div>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Route+de+Florissant+47ter+1206+Gen%C3%A8ve" target="_blank" rel="noopener">📍 Voir sur Google Maps →</a>
+        <p class="form-note">Coordonnées issues des annuaires publics (local.ch, search.ch, Moneyhouse) — à confirmer avec le cabinet avant mise en ligne.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Votre demande</h3>
+        <p class="role">Formulaire de contact (maquette)</p>
+        <form onsubmit="alert('Maquette de démonstration — ici se branche l\'envoi du formulaire (e-mail vers infos@partnerfid.ch ou outil de gestion des demandes).');return false;">
+          <div class="frow">
+            <div><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+            <div><label>Vous êtes</label>
+              <select>
+                <option>Une entreprise / PME</option>
+                <option>Un indépendant</option>
+                <option>Un particulier</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div><label>E-mail</label><input type="email" placeholder="vous@exemple.ch" required></div>
+            <div><label>Téléphone</label><input type="tel" placeholder="022 000 00 00"></div>
+          </div>
+          <label>Votre besoin</label>
+          <select>
+            <option>Tenue de comptabilité &amp; bouclement</option>
+            <option>Déclaration fiscale (personne physique)</option>
+            <option>Fiscalité d'entreprise (personne morale)</option>
+            <option>Gestion des salaires &amp; charges sociales</option>
+            <option>TVA</option>
+            <option>Conseil aux PME</option>
+            <option>Création / domiciliation de société</option>
+            <option>Autre — précisez ci-dessous</option>
+          </select>
+          <label>Votre message</label>
+          <textarea placeholder="Décrivez votre besoin en quelques lignes…"></textarea>
+          <button type="submit" class="btn btn-primary" style="margin-top:18px;width:100%;justify-content:center">Envoyer ma demande</button>
+          <p class="form-note">Vos données ne sont pas transmises dans cette maquette de démonstration.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="align-items:flex-start">
+          <span class="mark">P</span>
+          <span><b style="font-size:1.5rem;font-family:'Source Serif 4',serif">Partner SA</b>
+          <span>Société Fiduciaire · Genève</span></span>
+        </div>
+        <p class="fp">Société fiduciaire genevoise établie depuis 1992. Comptabilité, fiscalité, gestion des salaires, TVA et conseil aux PME, indépendants et particuliers, au cœur du quartier de Champel.</p>
+      </div>
+      <div>
+        <h4>Le cabinet</h4>
+        <a href="#services">Nos services</a>
+        <a href="#cabinet">Le cabinet</a>
+        <a href="#approche">Notre approche</a>
+        <a href="#contact">Nous contacter</a>
+      </div>
+      <div>
+        <h4>Prestations</h4>
+        <a href="#services">Comptabilité &amp; bouclement</a>
+        <a href="#services">Fiscalité</a>
+        <a href="#services">Salaires &amp; charges sociales</a>
+        <a href="#services">TVA</a>
+        <a href="#services">Conseil aux PME</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=Route+de+Florissant+47ter+1206+Gen%C3%A8ve" target="_blank" rel="noopener">Route de Florissant 47ter, 1206 Genève</a>
+        <a href="tel:+41223122436">022 312 24 36</a>
+        <a href="mailto:infos@partnerfid.ch">infos@partnerfid.ch</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Partner SA, Société Fiduciaire · Route de Florissant 47ter, 1206 Genève · IDE CHE-107.434.699</span>
+      <span><a href="#top">Mentions légales</a> · Maquette de démonstration — non officielle</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('open');});
+  });
+</script>
+
+<!-- maquette de prospection Atelier Web — non officielle -->
+</body>
+</html>

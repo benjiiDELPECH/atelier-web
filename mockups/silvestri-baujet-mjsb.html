@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP Silvestri-Baujet — Mandataires judiciaires à Bordeaux</title>
+<meta name="description" content="SCP Silvestri-Baujet, mandataires judiciaires à Bordeaux et Angoulême. Assistance aux entreprises en difficulté, représentation des créanciers, information des magistrats, accompagnement des dirigeants et des salariés. Accès dédiés sécurisés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13294b;          /* bleu institutionnel profond */
+    --navy-soft:#1f3a5f;
+    --steel:#3d5a80;
+    --slate:#5b6b7d;
+    --line:#dde3ea;
+    --paper:#f6f8fb;
+    --paper-2:#eef2f7;
+    --ink:#1c2530;
+    --ink-soft:#4d5866;
+    --gold:#a07a37;          /* accent sobre, sérieux */
+    --white:#ffffff;
+    --shadow:0 18px 46px -26px rgba(19,41,75,.4);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:.1px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;letter-spacing:.02em;
+    padding:14px 28px;border-radius:6px;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+    cursor:pointer;border:none;font-family:'Libre Franklin',sans-serif;font-size:.98rem;
+  }
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -14px rgba(19,41,75,.8)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--navy-soft)}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--steel)}
+  .btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.1)}
+
+  /* ---------- HEADER ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;line-height:1.05}
+  .brand .mark{
+    width:42px;height:42px;border-radius:8px;flex:none;
+    background:linear-gradient(135deg,var(--navy),var(--steel));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Source Serif 4',serif;font-weight:600;font-size:1.3rem;
+  }
+  .brand b{font-family:'Source Serif 4',serif;font-size:1.4rem;font-weight:600;color:var(--navy);display:block}
+  .brand span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:84px 0 0}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(720px 420px at 82% 8%,rgba(61,90,128,.55),transparent 62%),
+      radial-gradient(560px 360px at 0% 96%,rgba(160,122,55,.18),transparent 60%),
+      linear-gradient(180deg,#13294b,#0f2240);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center;padding-bottom:84px}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.08;margin:6px 0 20px;color:#fff}
+  .hero h1 em{font-style:normal;color:#cdb98a}
+  .hero p.lead{font-size:1.12rem;color:#c4cedb;max-width:32em;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.86rem;color:#9fb0c4;margin-top:22px}
+
+  /* hero network stats panel */
+  .net-panel{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;padding:34px 32px;backdrop-filter:blur(4px);
+  }
+  .net-panel h3{font-size:1.05rem;color:#fff;margin-bottom:4px}
+  .net-panel .sub{font-size:.84rem;color:#9fb0c4;margin-bottom:24px}
+  .net-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px}
+  .net-stat .n{font-family:'Source Serif 4',serif;font-size:2.5rem;line-height:1;color:#cdb98a}
+  .net-stat .c{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#9fb0c4;margin-top:6px}
+
+  /* hero offices panel (single cabinet) */
+  .office{display:flex;gap:13px;padding:14px 0;border-top:1px solid rgba(255,255,255,.12);align-items:flex-start}
+  .office:first-of-type{border-top:none;padding-top:4px}
+  .office .pin{color:#cdb98a;flex:none;width:18px;text-align:center}
+  .office .ad{font-size:.92rem;color:#c4cedb}
+  .office .ad b{display:block;color:#fff;font-weight:600;margin-bottom:1px}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .trust-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:18px 0}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-soft);font-weight:500}
+  .trust-item .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:46em;margin:0 0 48px}
+  .sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:14px;line-height:1.15}
+  .sec-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* missions */
+  #missions{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(19,41,75,.5);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c7d2e0}
+  .card .ic{
+    width:50px;height:50px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--paper-2);color:var(--navy);margin-bottom:18px;
+  }
+  .card .ic svg{width:24px;height:24px}
+  .card h3{font-size:1.3rem;color:var(--navy);margin-bottom:8px}
+  .card p.desc{font-size:.95rem;color:var(--ink-soft);margin-bottom:16px;flex:1}
+  .card .more{font-size:.88rem;color:var(--gold);font-weight:600}
+
+  /* le cabinet */
+  .net-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;margin-bottom:0}
+  .net-intro h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy);margin-bottom:16px;line-height:1.15}
+  .net-intro p{color:var(--ink-soft);margin-bottom:14px}
+  .net-figures{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .figure{background:var(--navy);color:#fff;border-radius:var(--radius);padding:26px 24px}
+  .figure .n{font-family:'Source Serif 4',serif;font-size:2.6rem;line-height:1;color:#cdb98a}
+  .figure .c{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#9fb0c4;margin-top:8px}
+
+  /* portraits associés */
+  .people{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+  .person{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:0 8px 26px -26px rgba(19,41,75,.5);align-items:center}
+  .person .photo{width:78px;height:78px;border-radius:50%;flex:none;
+    background:linear-gradient(150deg,#1f3a5f,#13294b);color:#9fb0c4;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;padding:6px;line-height:1.3}
+  .person h3{font-size:1.18rem;color:var(--navy);margin-bottom:2px}
+  .person .role{font-size:.86rem;color:var(--gold);font-weight:600}
+
+  /* accès dédiés */
+  #acces{background:var(--paper)}
+  .access-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .access{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;display:flex;flex-direction:column;
+    box-shadow:0 8px 26px -26px rgba(19,41,75,.5);transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .access:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c7d2e0}
+  .access .ic{width:46px;height:46px;border-radius:10px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .access .ic svg{width:22px;height:22px}
+  .access h3{font-size:1.18rem;color:var(--navy);margin-bottom:8px}
+  .access p{font-size:.9rem;color:var(--ink-soft);flex:1;margin-bottom:16px}
+  .access .lock{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--gold);font-weight:600}
+
+  /* CTA band */
+  .cta-band{position:relative;overflow:hidden;border-radius:14px;
+    background:linear-gradient(135deg,var(--navy),var(--steel));color:#fff;
+    padding:58px 44px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.4fr auto;gap:30px;align-items:center}
+  .cta-band h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:12px;color:#fff}
+  .cta-band p{opacity:.92;max-width:40em;font-size:1.05rem}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* contact */
+  #contact{background:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  .contact-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+  .contact-card h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+  .contact-card .role{font-size:.9rem;color:var(--gold);font-weight:600;margin-bottom:20px}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .k{color:var(--gold);width:22px;flex:none;text-align:center;margin-top:2px}
+  .info-row .v{font-size:.96rem;color:var(--ink)}
+  .info-row .v b{display:block;color:var(--navy);font-weight:600;margin-bottom:1px}
+  .info-row a{color:var(--steel);font-weight:600}
+  form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form label{display:block;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin:14px 0 6px}
+  form input,form select,form textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:6px;
+    font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;
+  }
+  form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(61,90,128,.12)}
+  form textarea{resize:vertical;min-height:110px}
+  .form-note{font-size:.8rem;color:var(--slate);margin-top:14px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#a8b7c9;padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .brand b{color:#fff}
+  footer .brand span{color:#8497ad}
+  footer h4{color:#e6edf6;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  footer a{color:#a8b7c9;display:block;padding:5px 0;transition:color .15s;font-size:.92rem}
+  footer a:hover{color:#fff}
+  footer p.fp{font-size:.92rem;line-height:1.7;margin-top:12px;color:#a8b7c9}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7e91a8}
+  .foot-bottom a{display:inline;color:#a8b7c9}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-grid,.net-intro,.zone-grid,.contact-grid,.cta-band{grid-template-columns:1fr}
+    .cta-band{text-align:center}
+    .cta-actions{justify-content:center}
+    .cards,.access-grid{grid-template-columns:1fr 1fr}
+    .people{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+    .net-panel{order:-1}
+  }
+  @media(max-width:600px){
+    section{padding:58px 0}
+    .cards,.access-grid,.net-figures,.foot-grid{grid-template-columns:1fr}
+    .net-stats{grid-template-columns:1fr 1fr}
+    .contact-card{column-count:1}
+    form .frow{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .cta-band{padding:42px 24px}
+  }
+  .nav-links.open{
+    display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;
+    background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 18px;box-shadow:var(--shadow);
+  }
+  .nav-links.open a{padding:11px 0;border-bottom:1px solid var(--line)}
+  .nav-links.open .nav-cta{margin-top:10px;justify-content:center;border-bottom:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">SB</span>
+      <span>
+        <b>Silvestri-Baujet</b>
+        <span>Mandataires judiciaires · Bordeaux</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#missions">Nos missions</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#acces">Accès dédiés</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Nous contacter</a>
+    </nav>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">SCP de mandataires judiciaires</p>
+      <h1>Au service de la justice commerciale, à <em>Bordeaux</em> et en Charente.</h1>
+      <p class="lead">La SCP Silvestri-Baujet exerce les mandats judiciaires confiés par les tribunaux : assistance aux entreprises en difficulté, représentation des créanciers, information des magistrats, accompagnement des dirigeants et des salariés.</p>
+      <div class="hero-actions">
+        <a href="#missions" class="btn btn-gold">Nos missions →</a>
+        <a href="#acces" class="btn btn-outline-light">Accès dédiés</a>
+      </div>
+      <p class="hero-note">Des interlocuteurs identifiés, des espaces réservés pour chaque partie au dossier.</p>
+    </div>
+
+    <div class="net-panel">
+      <h3>Le cabinet</h3>
+      <p class="sub">Deux implantations, un même interlocuteur.</p>
+      <div class="office">
+        <span class="pin">●</span>
+        <span class="ad"><b>Bordeaux</b>23, rue du Chai des Farines — 33000 Bordeaux</span>
+      </div>
+      <div class="office">
+        <span class="pin">●</span>
+        <span class="ad"><b>Angoulême</b>14, rue des Arceaux — BP 10104 — 16007 Angoulême Cedex</span>
+      </div>
+      <div class="office">
+        <span class="pin">✉</span>
+        <span class="ad"><b>E-mail</b><a href="mailto:pasilvestri@mjsb.fr" style="color:#cdb98a">pasilvestri@mjsb.fr</a></span>
+      </div>
+      <div class="office">
+        <span class="pin">☎</span>
+        <span class="ad"><b>Téléphone</b><span style="color:#9fb0c4">(à confirmer)</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><span class="dot"></span>Assistance aux entreprises en difficulté</div>
+    <div class="trust-item"><span class="dot"></span>Espaces réservés sécurisés</div>
+    <div class="trust-item"><span class="dot"></span>Représentation des créanciers</div>
+    <div class="trust-item"><span class="dot"></span>Suivi des salariés &amp; dirigeants</div>
+  </div>
+</div>
+
+<!-- MISSIONS -->
+<section id="missions">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce que nous faisons</p>
+      <h2>Nos missions</h2>
+      <p>Désigné par le tribunal, le mandataire judiciaire intervient à chaque étape des procédures collectives, dans le strict respect des décisions de justice. Le cabinet met à disposition de chaque partie une information claire et accessible.</p>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 4v6c0 5-3.5 7.5-9 8-5.5-.5-9-3-9-8V7l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Mandats judiciaires</h3>
+        <p class="desc">Exercice des mandats confiés par les tribunaux : sauvegarde, redressement et liquidation judiciaire, dans le respect des décisions rendues.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-14M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Représentation des créanciers</h3>
+        <p class="desc">Défense des intérêts collectifs des créanciers : déclaration et vérification des créances, répartition des fonds, suivi de l'avancement des dossiers.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Salariés &amp; reclassement</h3>
+        <p class="desc">Information des salariés sur leurs droits, suivi de leur situation et des créances salariales au sein des procédures en cours.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04M12 22V12"/></svg></div>
+        <h3>Actifs à céder</h3>
+        <p class="desc">Consultation des actifs proposés à la vente dans le cadre des procédures : fonds de commerce, matériels, immobilier.</p>
+        <span class="more">Consulter les actifs →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3>Information des magistrats</h3>
+        <p class="desc">Mise à disposition des rapports et documents nécessaires à une parfaite information de la juridiction avant décision.</p>
+        <span class="more">Accès magistrats →</span>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Accompagnement des dirigeants</h3>
+        <p class="desc">Interlocuteur identifié pour le dirigeant : transmission des documents utiles et information sur le déroulement de la procédure.</p>
+        <span class="more">En savoir plus →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LE CABINET -->
+<section id="cabinet">
+  <div class="wrap">
+    <div class="net-intro">
+      <div>
+        <p class="eyebrow">Le cabinet</p>
+        <h2>Une SCP de mandataires judiciaires implantée à Bordeaux et en Charente</h2>
+        <p>La SCP Silvestri-Baujet exerce la profession de mandataire judiciaire, missionnée par les juridictions commerciales et civiles pour assurer la représentation des créanciers et le suivi des procédures collectives.</p>
+        <p>Le cabinet accueille ses interlocuteurs sur deux sites — Bordeaux et Angoulême — et privilégie une information accessible et structurée pour chaque partie au dossier.</p>
+        <p style="color:var(--slate);font-size:.86rem;font-style:italic">Présentation à valider avec le cabinet avant mise en ligne.</p>
+      </div>
+      <div class="net-figures">
+        <div class="figure"><div class="n">SCP</div><div class="c">Société civile professionnelle</div></div>
+        <div class="figure"><div class="n">2</div><div class="c">Implantations</div></div>
+        <div class="figure"><div class="n">33<span style="font-size:1.4rem">·</span>16</div><div class="c">Gironde &amp; Charente</div></div>
+        <div class="figure"><div class="n">4</div><div class="c">Accès dédiés</div></div>
+      </div>
+    </div>
+
+    <div class="people">
+      <div class="person">
+        <div class="photo">Photo<br>à fournir</div>
+        <div>
+          <h3>M<sup>e</sup> Silvestri</h3>
+          <p class="role">Mandataire judiciaire associé · (prénom à confirmer)</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="photo">Photo<br>à fournir</div>
+        <div>
+          <h3>M<sup>e</sup> Baujet</h3>
+          <p class="role">Mandataire judiciaire associé · (prénom à confirmer)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCÈS DÉDIÉS -->
+<section id="acces">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Espaces réservés</p>
+      <h2>Un accès dédié pour chaque partie</h2>
+      <p>Selon votre situation, accédez aux informations et documents qui vous concernent, en toute confidentialité, à l'aide des identifiants communiqués par le mandataire judiciaire. Chacun trouve sa réponse en ligne, sans solliciter l'accueil du cabinet.</p>
+    </div>
+    <div class="access-grid">
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h3>Magistrats</h3>
+        <p>Rapports et documents par dossier, en accès réservé, pour une parfaite information avant de statuer.</p>
+        <a href="#contact" class="lock">🔒 Accès réservé</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-14M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Créanciers</h3>
+        <p>Déclarez votre créance et suivez l'avancement du dossier grâce aux identifiants transmis par le mandataire.</p>
+        <a href="#contact" class="lock">🔒 Espace créancier</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Dirigeants</h3>
+        <p>Retrouvez les documents et informations utiles de votre dossier, en toute transparence et sans délai.</p>
+        <a href="#contact" class="lock">🔒 Espace dirigeant</a>
+      </div>
+
+      <div class="access">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Salariés</h3>
+        <p>Information sur vos droits, les créances salariales et le suivi de votre situation dans les procédures en cours.</p>
+        <a href="#contact" class="lock">🔒 Espace salarié</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Une question sur un dossier en cours ?</h2>
+        <p>Créancier, salarié, dirigeant ou juridiction : identifiez l'espace qui vous concerne ou adressez votre demande au cabinet, qui vous orientera vers le bon interlocuteur.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-gold">Nous contacter →</a>
+        <a href="#acces" class="btn btn-outline-light">Mon accès dédié</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nous contacter</p>
+      <h2>Un interlocuteur, une réponse claire</h2>
+      <p>Adressez votre demande au cabinet en précisant votre qualité et la référence de votre dossier, le cas échéant, pour un traitement plus rapide.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>SCP Silvestri-Baujet</h3>
+        <p class="role">Mandataires judiciaires</p>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Bordeaux</b>23, rue du Chai des Farines, 33000 Bordeaux</span></div>
+        <div class="info-row"><span class="k">📍</span><span class="v"><b>Angoulême</b>14, rue des Arceaux, BP 10104, 16007 Angoulême Cedex</span></div>
+        <div class="info-row"><span class="k">✉️</span><span class="v"><b>E-mail</b><a href="mailto:pasilvestri@mjsb.fr">pasilvestri@mjsb.fr</a></span></div>
+        <div class="info-row"><span class="k">📞</span><span class="v"><b>Téléphone</b><span style="color:var(--slate)">(à confirmer)</span></span></div>
+        <div class="info-row"><span class="k">🖨️</span><span class="v"><b>Fax</b><span style="color:var(--slate)">(à confirmer)</span></span></div>
+        <p class="form-note">Coordonnées issues du site actuel — téléphone et fax à confirmer avec le cabinet avant mise en ligne.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Votre demande</h3>
+        <p class="role">Formulaire de contact (maquette)</p>
+        <form onsubmit="alert('Maquette de démonstration — ici se branche l\'envoi du formulaire (e-mail ou outil de gestion des demandes).');return false;">
+          <div class="frow">
+            <div><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+            <div><label>Votre qualité</label>
+              <select>
+                <option>Créancier</option>
+                <option>Salarié</option>
+                <option>Dirigeant d'entreprise</option>
+                <option>Magistrat / juridiction</option>
+                <option>Conseil / avocat</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div><label>E-mail</label><input type="email" placeholder="vous@exemple.fr" required></div>
+            <div><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+          </div>
+          <label>Référence du dossier (facultatif)</label>
+          <input type="text" placeholder="N° de dossier ou nom de l'entreprise concernée">
+          <label>Votre message</label>
+          <textarea placeholder="Décrivez votre demande en quelques lignes…"></textarea>
+          <button type="submit" class="btn btn-primary" style="margin-top:18px;width:100%;justify-content:center">Envoyer ma demande</button>
+          <p class="form-note">Vos données ne sont pas transmises dans cette maquette de démonstration.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="align-items:flex-start">
+          <span class="mark">SB</span>
+          <span><b style="font-size:1.5rem;font-family:'Source Serif 4',serif">Silvestri-Baujet</b>
+          <span>Mandataires judiciaires</span></span>
+        </div>
+        <p class="fp">SCP de mandataires judiciaires à Bordeaux et Angoulême. Assistance aux entreprises en difficulté, représentation des créanciers, information des magistrats, accompagnement des dirigeants et des salariés.</p>
+      </div>
+      <div>
+        <h4>Le cabinet</h4>
+        <a href="#missions">Nos missions</a>
+        <a href="#cabinet">Le cabinet</a>
+        <a href="#acces">Accès dédiés</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Accès dédiés</h4>
+        <a href="#acces">Magistrats</a>
+        <a href="#acces">Créanciers</a>
+        <a href="#acces">Dirigeants</a>
+        <a href="#acces">Salariés</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="#contact">Nous contacter</a>
+        <a href="mailto:pasilvestri@mjsb.fr">pasilvestri@mjsb.fr</a>
+        <span style="color:#7e91a8;font-size:.9rem;display:block;padding:5px 0">23, rue du Chai des Farines<br>33000 Bordeaux</span>
+        <span style="color:#7e91a8;font-size:.9rem;display:block;padding:5px 0">Tél. (à confirmer)</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> SCP Silvestri-Baujet · Mandataires judiciaires · Bordeaux &amp; Angoulême</span>
+      <span><a href="#top">Mentions légales</a> · Maquette de démonstration — non officielle</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('open');});
+  });
+</script>
+
+<!-- maquette de prospection Atelier Web, non officielle -->
+</body>
+</html>
