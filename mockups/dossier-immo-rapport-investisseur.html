@@ -42,6 +42,10 @@
   .legend-key{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--slate)}
   .legend-key span{display:inline-flex;align-items:center;gap:5px}
 
+
+  .scen{font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}
+  .scen.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .dpebadge{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:7px;color:#fff;font-weight:800;font-size:14px}
   /* ───────── ULTRA-RESPONSIVE ───────── */
   @media (max-width: 880px){
     .wrap{padding:0 13px}
@@ -256,17 +260,30 @@
         </div>
         <div class="src" style="margin-top:5px">+ audit énergétique obligatoire à la vente d'un bien F/G.</div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
-        <div class="kpi"><div class="lab">Coût énergie actuel (passoire)</div><div class="v warn" style="font-size:18px">~2 600 €/an</div><div class="src">→ ~1 400 €/an après F→E <b class="good">(−46 %)</b></div></div>
-        <div style="padding:12px 14px;border:1px solid #f1c9c9;border-radius:11px;background:var(--badbg)">
-          <div style="display:flex;justify-content:space-between;font-size:13px"><b class="bad">F → E</b> — sortir de passoire <span class="mono bad">10 – 14 k€</span></div>
-          <div class="src bad">VMC + menuiseries · <b>obligatoire 2028</b></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:7px;color:var(--good)"><span>− MaPrimeRénov + CEE + Éco-PTZ</span><span class="mono">−6 000 €</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;border-top:1px solid #f1c9c9;margin-top:5px;padding-top:5px"><span>= coût net</span><span class="mono">~6 000 €</span></div>
+      <div>
+        <div class="lab" style="margin-bottom:8px">Explorer les scénarios de rénovation <span class="src" style="font-weight:400">— optimiseur coût / valeur</span></div>
+        <div id="scenTabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+          <button class="scen" data-k="rien">Ne rien faire</button>
+          <button class="scen" data-k="legal">Min. légal F→E</button>
+          <button class="scen on" data-k="optimal">Optimal F→C ✦</button>
+          <button class="scen" data-k="confort">Confort F→B</button>
         </div>
-        <div style="padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fbfcfe">
-          <div style="display:flex;justify-content:space-between;font-size:13px"><span>E → C — opportunité</span><span class="mono src">+14 – 20 k€</span></div>
-          <div class="src">ITE complète · <b>optionnel</b> · gain de valeur + charges (décote déjà dans le prix)</div>
+        <div style="border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="dpebadge" style="background:#ef4444">F</span>
+              <span style="color:var(--dim)">→</span>
+              <span class="dpebadge" id="scenDpe" style="background:#86efac">C</span>
+            </div>
+            <span id="scenGestes" class="src" style="text-align:right">+ ITE complète</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+            <div class="kpi"><div class="lab">Coût net</div><div class="v" id="scenNet" style="font-size:16px">16 000 €</div><div class="src" id="scenBrut">brut 32k − 16k aides</div></div>
+            <div class="kpi"><div class="lab">Énergie</div><div class="v good" id="scenEner" style="font-size:16px">900 €/an</div><div class="src" id="scenEnerDelta">−1 700 €/an</div></div>
+            <div class="kpi"><div class="lab">Gain de valeur</div><div class="v" id="scenVal" style="font-size:16px">+28 000 €</div><div class="src">décote DPE levée</div></div>
+            <div class="kpi"><div class="lab">Impact TRI 10 ans</div><div class="v" id="scenTri" style="font-size:16px">+0,9 pt</div></div>
+          </div>
+          <div id="scenNote" style="margin-top:11px;padding:9px 12px;border-radius:9px;font-size:12.5px"></div>
         </div>
       </div>
     </div>
@@ -518,6 +535,32 @@ new Chart(capexTimeline,{type:'bar',
 
 // rendre les tableaux scrollables horizontalement sur petit écran
 document.querySelectorAll('.tbl').forEach(t=>{if(t.parentElement&&t.parentElement.classList.contains('tbl-scroll'))return;const w=document.createElement('div');w.className='tbl-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t);});
+
+
+// Explorateur de scénarios DPE (planRenovation — optimiseur coût/valeur)
+(function(){
+  const E0=2600, byId=id=>document.getElementById(id);
+  const SCEN={
+    rien:{to:'F',toc:'#ef4444',gestes:'aucun geste',net:0,brut:'0 € — mais interdit 2028',ener:2600,val:0,tri:'—',note:'⛔ Interdiction de louer dès 2028 et décote qui s\'aggrave. Le « gratuit » coûte le plus cher.',tone:'bad'},
+    legal:{to:'E',toc:'#f97316',gestes:'VMC + menuiseries',net:6000,brut:'brut 12k − 6k aides',ener:1400,val:8000,tri:'+0,2 pt',note:'Minimum pour rester louable en 2028. Sort de passoire, sans plus — la décote DPE persiste en partie.',tone:'warn'},
+    optimal:{to:'C',toc:'#86efac',gestes:'+ ITE complète',net:16000,brut:'brut 32k − 16k aides',ener:900,val:28000,tri:'+0,9 pt',note:'✦ Meilleur ratio coût / valeur : 16k net → +28k de valeur + 1 700 €/an d\'énergie. La décote DPE disparaît. C\'est l\'optimum de Pareto.',tone:'good'},
+    confort:{to:'B',toc:'#22c55e',gestes:'+ PAC + isolation toiture',net:26000,brut:'brut 48k − 22k aides',ener:550,val:34000,tri:'+1,0 pt',note:'Rendements décroissants : +10k net vs l\'optimal pour seulement +6k de valeur. Pertinent en usage perso, pas en locatif.',tone:'warn'}
+  };
+  const fr=n=>n.toLocaleString('fr-FR');
+  function show(k){const s=SCEN[k];
+    byId('scenDpe').textContent=s.to; byId('scenDpe').style.background=s.toc;
+    byId('scenGestes').textContent=s.gestes;
+    byId('scenNet').textContent=fr(s.net)+' €'; byId('scenBrut').textContent=s.brut;
+    byId('scenEner').textContent=fr(s.ener)+' €/an'; byId('scenEnerDelta').textContent=fr(s.ener-E0)+' €/an';
+    byId('scenVal').textContent=(s.val>0?'+':'')+fr(s.val)+' €'; byId('scenTri').textContent=s.tri;
+    const bg={bad:'var(--badbg)',warn:'var(--warnbg)',good:'var(--goodbg)'}[s.tone];
+    const col={bad:'#7c2222',warn:'#7c5510',good:'#0c5a3f'}[s.tone];
+    const n=byId('scenNote'); n.style.background=bg; n.style.color=col; n.textContent=s.note;
+    document.querySelectorAll('#scenTabs .scen').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+  }
+  document.querySelectorAll('#scenTabs .scen').forEach(b=>b.addEventListener('click',()=>show(b.dataset.k)));
+  show('optimal');
+})();
 
 </script>
 </body>
