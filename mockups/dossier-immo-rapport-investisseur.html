@@ -146,7 +146,12 @@
             <span class="lab" style="margin:0">Indice de confiance</span>
             <span class="pill" style="background:#eef1f5;color:var(--slate)">Moyenne</span>
           </div>
-          <div class="bar" style="margin-top:9px;height:8px"><i style="width:62%;background:var(--slate)"></i></div>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:9px;font-size:10.5px">
+            <div style="display:flex;align-items:center;gap:7px"><span style="width:60px;color:var(--ink2)">Prix</span><span class="bar" style="flex:1"><i style="width:85%;background:var(--good)"></i></span><span class="src" style="width:46px">haute</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span style="width:60px;color:var(--ink2)">Rendement</span><span class="bar" style="flex:1"><i style="width:60%;background:var(--warn)"></i></span><span class="src" style="width:46px">moyenne</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span style="width:60px;color:var(--ink2)">Bâti</span><span class="bar" style="flex:1"><i style="width:40%;background:var(--bad)"></i></span><span class="src" style="width:46px">faible</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span style="width:60px;color:var(--ink2)">Énergie</span><span class="bar" style="flex:1"><i style="width:60%;background:var(--warn)"></i></span><span class="src" style="width:46px">moyenne</span></div>
+          </div>
           <div style="margin-top:12px">
             <div class="lab" style="margin-bottom:6px">Ce que ce rapport ne sait pas encore</div>
             <ul style="margin:0;padding-left:16px;font-size:12px;color:var(--ink2);line-height:1.55">
@@ -357,7 +362,7 @@
       </div>
       <div>
         <div style="position:relative;height:236px"><canvas id="cockpitChart"></canvas></div>
-        <div class="legend-key" style="margin-top:8px"><span><b style="color:var(--accent)">━</b> Patrimoine net (valeur − capital dû)</span><span><b style="color:var(--good)">— —</b> Cashflow cumulé net d'apport</span><span>fin de courbe = revente</span></div>
+        <div class="legend-key" style="margin-top:8px"><span><b style="color:var(--accent)">━</b> Patrimoine net</span><span style="color:#94a3b8">bande = appréciation ±1,5 %/an</span><span><b style="color:#94a3b8">— —</b> Si placé en SCPI 4,5 %</span><span><b style="color:var(--good)">····</b> Cashflow cumulé</span></div>
         <div class="grid3" style="margin-top:12px">
           <div class="kpi"><div class="lab">Patrimoine net à la sortie</div><div class="v mono" id="kPat" style="color:var(--accent);font-size:17px">—</div></div>
           <div class="kpi"><div class="lab">Plus-value nette</div><div class="v mono" id="kPV" style="font-size:17px">—</div></div>
@@ -398,6 +403,21 @@
         </tbody>
       </table>
       <div class="src" style="margin-top:8px">médiane <b>3 380 €/m²</b> · dispersion P25 <b>3 250</b> – P75 <b>3 510</b> · confiance <b>moyenne</b> (n=8). Score de similarité = distance de Gower. Barres = décomposition par critère : <b>géo · surface · époque · DPE</b> (pondérée).</div>
+      <div class="lab" style="margin-top:14px;margin-bottom:2px">Position dans la distribution du marché</div>
+      <div style="position:relative;height:50px">
+        <div style="position:absolute;top:20px;left:0;right:0;height:6px;background:#eef1f5;border-radius:999px"></div>
+        <div style="position:absolute;top:16px;left:10.5%;width:27.4%;height:14px;background:rgba(57,73,171,.12);border:1px solid #c8cdf0;border-radius:4px"></div>
+        <div style="position:absolute;top:13px;left:24.2%;width:2px;height:20px;background:var(--accent)"></div>
+        <div style="position:absolute;top:18px;left:28.4%;width:10px;height:10px;border-radius:50%;background:var(--good);transform:translateX(-50%)"></div>
+        <div style="position:absolute;top:18px;left:37.9%;width:10px;height:10px;border-radius:50%;background:var(--good);transform:translateX(-50%)"></div>
+        <div style="position:absolute;top:18px;left:10.5%;width:10px;height:10px;border-radius:50%;background:var(--warn);transform:translateX(-50%)"></div>
+        <div style="position:absolute;top:8px;left:89.5%;transform:translateX(-50%)"><div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid var(--bad);margin:0 auto"></div></div>
+        <div style="position:absolute;top:32px;left:89.5%;transform:translateX(-50%);font-size:9px;color:var(--bad);font-weight:700;white-space:nowrap">ce bien · 4 000</div>
+        <div style="position:absolute;top:36px;left:0;font-size:9px;color:var(--dim)">3 150</div>
+        <div style="position:absolute;top:36px;right:0;font-size:9px;color:var(--dim)">4 100 €/m²</div>
+        <div style="position:absolute;top:0;left:24.2%;transform:translateX(-50%);font-size:9px;color:var(--accent)">médiane</div>
+      </div>
+      <div class="src">Nuage des ventes (●) · boîte <b>P25–P75</b> · médiane (trait) · le bien (▼) est <b>hors de la boîte, à droite</b> = surcoté vs le marché réel.</div>
     </div>
     <div class="card shadow" style="padding:22px">
       <div class="sec-h"><h2>Marché &amp; délai de vente</h2><span class="chip">medianesParSemestre · annonce</span></div>
@@ -535,13 +555,16 @@ new Chart(radarChart,{type:'radar',data:{labels:['Prix','Cashflow','Énergie','B
     const fn=prix*0.081, emprunt=prix+fn-apport, acquTotal=prix+fn+R.net;
     const {m,rest}=amort(emprunt,taux,duree);
     const valBase=224000+R.val;
-    const labels=[],eq=[],cumA=[]; let cumCF=0, be=null;
+    const labels=[],eq=[],eqLo=[],eqHi=[],scpi=[],cumA=[]; let cumCF=0, be=null, scpiBal=apport+R.net;
     for(let t=0;t<=H;t++){
       labels.push('an '+t);
       const val=valBase*Math.pow(1+app/100,t);
       const cap=t===0?emprunt:(rest[Math.min(rest.length,t*12)-1]??0);
       eq.push(Math.round(val-cap));
-      if(t>0){let cf;if(!R.louable&&t>2)cf=-m*12;else cf=loyer0*R.rentMult*Math.pow(1.01,t)*12*0.80-m*12;cumCF+=cf;if(be===null&&cf>=0)be=t;}
+      eqLo.push(Math.round(valBase*Math.pow(1+(app-1.5)/100,t)-cap));
+      eqHi.push(Math.round(valBase*Math.pow(1+(app+1.5)/100,t)-cap));
+      if(t>0){let cf;if(!R.louable&&t>2)cf=-m*12;else cf=loyer0*R.rentMult*Math.pow(1.01,t)*12*0.80-m*12;cumCF+=cf;if(be===null&&cf>=0)be=t;scpiBal=scpiBal*1.045+Math.max(0,-cf);}
+      scpi.push(Math.round(scpiBal));
       cumA.push(Math.round(cumCF-(apport+R.net)));
     }
     const valH=valBase*Math.pow(1+app/100,H),fraisV=valH*0.07,capH=rest[Math.min(rest.length,H*12)-1]??0;
@@ -556,12 +579,15 @@ new Chart(radarChart,{type:'radar',data:{labels:['Prix','Cashflow','Énergie','B
     $('kBE').textContent=be?('an '+be):'hors horizon';
     const v=$('cockVerdict');
     if(!R.louable){v.style.background='var(--badbg)';v.style.color='#7c2222';v.innerHTML='⛔ <b>Sans rénovation, interdiction de louer dès 2028</b> : le bien ne produit plus de loyer, le cashflow plonge. À ce stade ce n\'est plus un investissement locatif.';}
-    else{v.style.background='var(--accentbg)';v.style.color='#2a3170';v.innerHTML=`Sur <b>${H} ans</b>, à <b>${fr(prix)} €</b> rénové <b>${R.lab}</b> : tu sors avec <b>${fr(patNet)} €</b> de patrimoine net, une richesse créée de <b>${fr(rich)} €</b> pour <b>${fr(apport+R.net)} €</b> engagés, soit un <b>TRI de ${tri.toFixed(1).replace('.',',')} %</b>. ${plusV>=0?'La négociation + la rénovation créent de la valeur dès l\'entrée.':'À ce prix, la plus-value ne couvre pas les frais — négocie plus bas.'}`;}
+    else{const sc=scpi[scpi.length-1];v.style.background='var(--accentbg)';v.style.color='#2a3170';v.innerHTML=`Sur <b>${H} ans</b>, à <b>${fr(prix)} €</b> rénové <b>${R.lab}</b> : <b>${fr(patNet)} €</b> de patrimoine net, richesse créée <b>${fr(rich)} €</b> pour <b>${fr(apport+R.net)} €</b> engagés → <b>TRI ${tri.toFixed(1).replace('.',',')} %</b>. Le même argent en <b>SCPI 4,5 %</b> ferait <b>${fr(sc)} €</b> → le bien ${patNet>=sc?'<b class="good">bat</b> le placement passif (effet de levier)':'<b class="warn">reste sous</b> le passif — négocie ou vise plus d\'appréciation'}.${plusV<0?' ⚠ à ce prix la plus-value ne couvre pas les frais.':''}`;}
     const ds=[
-      {label:'Patrimoine net',data:eq,borderColor:ACC,backgroundColor:'rgba(57,73,171,.08)',borderWidth:2.4,fill:true,tension:.3,pointRadius:0},
-      {label:'Cashflow cumulé',data:cumA,borderColor:GOOD,borderWidth:1.8,borderDash:[6,4],fill:false,tension:.3,pointRadius:0},
+      {label:'opt',data:eqHi,borderColor:'transparent',backgroundColor:'rgba(57,73,171,.10)',pointRadius:0,fill:'+1',tension:.3},
+      {label:'pess',data:eqLo,borderColor:'transparent',pointRadius:0,fill:false,tension:.3},
+      {label:'Patrimoine net',data:eq,borderColor:ACC,borderWidth:2.5,fill:false,tension:.3,pointRadius:0},
+      {label:'Si placé en SCPI ~4,5 %',data:scpi,borderColor:'#94a3b8',borderWidth:1.7,borderDash:[5,4],fill:false,tension:.3,pointRadius:0},
+      {label:'Cashflow cumulé',data:cumA,borderColor:GOOD,borderWidth:1.5,borderDash:[2,3],fill:false,tension:.3,pointRadius:0},
       {label:'z',data:labels.map(()=>0),borderColor:DIM,borderWidth:1,pointRadius:0,fill:false}];
-    if(!chart){chart=new Chart($('cockpitChart'),{type:'line',data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{filter:c=>c.dataset.label!=='z',callbacks:{label:c=>c.dataset.label+': '+fr(c.raw)+' €'}}},scales:{x:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5},maxTicksLimit:9}},y:{grid:{color:LINE},ticks:{color:SLATE,font:{size:9.5},callback:v=>Math.round(v/1000)+'k'}}}}});}
+    if(!chart){chart=new Chart($('cockpitChart'),{type:'line',data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{filter:c=>!['z','opt','pess'].includes(c.dataset.label),callbacks:{label:c=>c.dataset.label+': '+fr(c.raw)+' €'}}},scales:{x:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5},maxTicksLimit:9}},y:{grid:{color:LINE},ticks:{color:SLATE,font:{size:9.5},callback:v=>Math.round(v/1000)+'k'}}}}});}
     else{chart.data.labels=labels;chart.data.datasets=ds;chart.update();}
   }
   ['cPrix','cApport','cTaux','cDuree','cLoyer','cApp','cHor'].forEach(id=>$(id).addEventListener('input',run));
