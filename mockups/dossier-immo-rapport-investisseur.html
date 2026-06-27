@@ -46,6 +46,9 @@
   .scen{font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}
   .scen.on{background:var(--accent);color:#fff;border-color:var(--accent)}
   .dpebadge{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:7px;color:#fff;font-weight:800;font-size:14px}
+  input[type=range]{-webkit-appearance:none;height:4px;border-radius:999px;background:#dfe4ec;width:100%;margin:5px 0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.25);cursor:pointer}
+  .ctl{font-size:12px}.ctl .row{display:flex;justify-content:space-between}.val{font-weight:700}
   /* ───────── ULTRA-RESPONSIVE ───────── */
   @media (max-width: 880px){
     .wrap{padding:0 13px}
@@ -334,24 +337,38 @@
     </div>
   </section>
 
-  <!-- ───────── 4. PROJECTION / DÉCISION (daltonien-safe) ───────── -->
+  <!-- ───────── 4. COCKPIT — PROJECTION LONG TERME (interactif) ───────── -->
   <section id="projection" class="card shadow" style="padding:22px;margin-bottom:18px;border-color:#d6dcf2">
-    <div class="sec-h"><h2>Quand cet achat se rembourse-t-il ?</h2><span class="chip">scénarios × CapEx bâti</span></div>
-    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px">
-      <div><canvas id="projChart" height="232"></canvas>
-        <div class="legend-key" style="margin-top:8px">
-          <span><b style="color:var(--good)">━</b> Optimiste (croise an 8)</span>
-          <span><b style="color:var(--accent)">— —</b> Base (an 13)</span>
-          <span><b style="color:var(--bad)">·····</b> Pessimiste (hors horizon)</span>
-          <span>ligne fine = seuil 0 (loyer = mensualité)</span>
+    <div class="sec-h"><h2>Cockpit — projection long terme <span class="src" style="font-weight:400">— triture les leviers, vois ta richesse à la revente</span></h2><span class="chip">simulation interactive</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1.55fr;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div class="lab">Tes leviers</div>
+        <div class="ctl"><div class="row"><span>Prix d'achat négocié</span><span class="val mono" id="vPrix">238 000 €</span></div><input type="range" id="cPrix" min="224000" max="268000" step="1000" value="238000"></div>
+        <div class="ctl"><div class="row" style="margin-bottom:4px"><span>Rénovation DPE</span><span class="val mono" id="vReno">Optimal F→C</span></div>
+          <div id="cockReno" style="display:flex;gap:5px;flex-wrap:wrap">
+            <button class="scen" data-k="rien">Rien</button><button class="scen" data-k="legal">F→E</button><button class="scen on" data-k="optimal">F→C ✦</button><button class="scen" data-k="confort">F→B</button>
+          </div></div>
+        <div class="ctl"><div class="row"><span>Apport</span><span class="val mono" id="vApp">30 000 €</span></div><input type="range" id="cApport" min="0" max="120000" step="5000" value="30000"></div>
+        <div class="ctl"><div class="row"><span>Taux crédit</span><span class="val mono" id="vTx">3,5 %</span></div><input type="range" id="cTaux" min="1" max="6" step="0.1" value="3.5"></div>
+        <div class="ctl"><div class="row"><span>Durée crédit</span><span class="val mono" id="vDr">20 ans</span></div><input type="range" id="cDuree" min="10" max="25" step="1" value="20"></div>
+        <div class="ctl"><div class="row"><span>Loyer mensuel</span><span class="val mono" id="vLo">950 €</span></div><input type="range" id="cLoyer" min="600" max="1500" step="25" value="950"></div>
+        <div class="ctl"><div class="row"><span>Appréciation marché /an</span><span class="val mono" id="vAp">+1,0 %</span></div><input type="range" id="cApp" min="-1" max="3" step="0.25" value="1"></div>
+        <div class="ctl"><div class="row"><span>Horizon de détention</span><span class="val mono" id="vHo">15 ans</span></div><input type="range" id="cHor" min="5" max="25" step="1" value="15"></div>
+      </div>
+      <div>
+        <div style="position:relative;height:236px"><canvas id="cockpitChart"></canvas></div>
+        <div class="legend-key" style="margin-top:8px"><span><b style="color:var(--accent)">━</b> Patrimoine net (valeur − capital dû)</span><span><b style="color:var(--good)">— —</b> Cashflow cumulé net d'apport</span><span>fin de courbe = revente</span></div>
+        <div class="grid3" style="margin-top:12px">
+          <div class="kpi"><div class="lab">Patrimoine net à la sortie</div><div class="v mono" id="kPat" style="color:var(--accent);font-size:17px">—</div></div>
+          <div class="kpi"><div class="lab">Plus-value nette</div><div class="v mono" id="kPV" style="font-size:17px">—</div></div>
+          <div class="kpi"><div class="lab">Cashflow cumulé</div><div class="v mono" id="kCF" style="font-size:17px">—</div></div>
+          <div class="kpi"><div class="lab">Richesse créée (vs apport)</div><div class="v mono" id="kRich" style="font-size:17px">—</div></div>
+          <div class="kpi"><div class="lab">TRI global annualisé</div><div class="v mono" id="kTRI" style="font-size:17px">—</div></div>
+          <div class="kpi"><div class="lab">Cashflow positif dès</div><div class="v mono" id="kBE" style="font-size:17px">—</div></div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
-        <div class="kpi"><div class="lab">Bascule cashflow <span class="src" style="font-weight:400">loyer = mensualité</span></div><div class="v mono">an 8 <span style="color:var(--dim);font-weight:500;font-size:14px">→ 13 →</span> <span class="bad">∞</span></div><div class="src">optimiste · base · pessimiste (avec CapEx)</div></div>
-        <div class="kpi"><div class="lab">Apport (30 k€) reconstitué</div><div class="v mono">an 6</div><div class="src">capital remboursé + plus-value (≠ trésorerie)</div></div>
-        <div class="kpi"><div class="lab">TRI à 10 ans</div><div class="v mono"><span class="bad" style="font-size:15px">3,1</span> · <span style="font-size:18px">4,9</span> · <span class="good" style="font-size:15px">8,2 %</span></div><div class="src">CapEx bâti inclus dans le base</div></div>
-      </div>
     </div>
+    <div id="cockVerdict" style="margin-top:14px;padding:13px 15px;border-radius:12px;font-size:13px;background:var(--accentbg);color:#2a3170"></div>
   </section>
 
   <!-- ───────── 4b. VÉRIFICATION ANTI-PIÈGE (priceAnomalyAnalysis) ───────── -->
@@ -503,20 +520,54 @@ new Chart(radarChart,{type:'radar',data:{labels:['Prix','Cashflow','Énergie','B
   ]},
   options:{layout:{padding:8},plugins:{legend:{display:false}},scales:{r:{min:0,max:100,grid:{color:LINE},angleLines:{color:LINE},pointLabels:{color:INK,font:{size:9}},ticks:{display:false}}}}});
 
-// projection — styles de trait (daltonien-safe) + labels
-const yrs=[...Array(16).keys()];
-const opt=[-750,-656,-562,-468,-374,-280,-186,-92,2,96,190,284,378,472,566,660];
-const base=[-750,-692,-634,-577,-519,-461,-403,-346,-288,-230,-173,-115,-57,0,57,115];
-const pess=[-750,-720,-690,-665,-645,-630,-660,-650,-625,-600,-580,-600,-560,-530,-505,-485];
-const mk=(c)=>yrs.map(y=>y===c?5:0);
-new Chart(projChart,{type:'line',data:{labels:yrs.map(y=>'an '+y),datasets:[
-  {label:'Pessimiste',data:pess,borderColor:BAD,borderWidth:1.6,borderDash:[2,3],tension:.3,fill:false,pointRadius:0},
-  {label:'Optimiste',data:opt,borderColor:GOOD,borderWidth:1.8,tension:.35,fill:false,pointRadius:mk(8),pointBackgroundColor:GOOD},
-  {label:'Base',data:base,borderColor:ACC,borderWidth:2.4,borderDash:[7,4],tension:.35,fill:false,pointRadius:mk(13),pointBackgroundColor:ACC},
-  {label:'seuil',data:yrs.map(()=>0),borderColor:DIM,borderWidth:1,pointRadius:0,fill:false}]},
-  options:{plugins:{legend:{display:false},tooltip:{filter:c=>c.dataset.label!=='seuil',callbacks:{label:c=>c.dataset.label+': '+(c.raw>0?'+':'')+c.raw+' €/mo'}}},
-   interaction:{mode:'index',intersect:false},
-   scales:{x:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5}}},y:{grid:{color:LINE},ticks:{color:SLATE,font:{size:9.5},callback:v=>(v>0?'+':'')+v+'€'}}}}});
+// COCKPIT long terme — moteur de simulation interactif
+(function(){
+  const $=id=>document.getElementById(id);
+  const RENO={rien:{val:0,net:0,rentMult:0,louable:false,lab:'Ne rien faire'},legal:{val:8000,net:6000,rentMult:1.0,louable:true,lab:'Min. légal F→E'},optimal:{val:28000,net:16000,rentMult:1.05,louable:true,lab:'Optimal F→C'},confort:{val:34000,net:26000,rentMult:1.08,louable:true,lab:'Confort F→B'}};
+  let renoKey='optimal';
+  const fr=n=>Math.round(n).toLocaleString('fr-FR');
+  function amort(montant,tauxA,annees){const r=tauxA/100/12,n=annees*12;const m=r?montant*r/(1-Math.pow(1+r,-n)):montant/n;const rest=[];let b=montant;for(let i=1;i<=n;i++){b=Math.max(0,b-(m-b*r));rest.push(b);}return{m,rest,n};}
+  function irr(cf){let lo=-0.9,hi=1.5;for(let k=0;k<90;k++){const mid=(lo+hi)/2;let v=0;for(let t=0;t<cf.length;t++)v+=cf[t]/Math.pow(1+mid,t);if(v>0)lo=mid;else hi=mid;}return (lo+hi)/2;}
+  let chart;
+  function run(){
+    const prix=+$('cPrix').value,apport=+$('cApport').value,taux=+$('cTaux').value,duree=+$('cDuree').value,loyer0=+$('cLoyer').value,app=+$('cApp').value,H=+$('cHor').value,R=RENO[renoKey];
+    $('vPrix').textContent=fr(prix)+' €';$('vApp').textContent=fr(apport)+' €';$('vTx').textContent=taux.toFixed(1).replace('.',',')+' %';$('vDr').textContent=duree+' ans';$('vLo').textContent=fr(loyer0)+' €';$('vAp').textContent=(app>=0?'+':'')+app.toFixed(2).replace('.',',')+' %';$('vHo').textContent=H+' ans';$('vReno').textContent=R.lab;
+    const fn=prix*0.081, emprunt=prix+fn-apport, acquTotal=prix+fn+R.net;
+    const {m,rest}=amort(emprunt,taux,duree);
+    const valBase=224000+R.val;
+    const labels=[],eq=[],cumA=[]; let cumCF=0, be=null;
+    for(let t=0;t<=H;t++){
+      labels.push('an '+t);
+      const val=valBase*Math.pow(1+app/100,t);
+      const cap=t===0?emprunt:(rest[Math.min(rest.length,t*12)-1]??0);
+      eq.push(Math.round(val-cap));
+      if(t>0){let cf;if(!R.louable&&t>2)cf=-m*12;else cf=loyer0*R.rentMult*Math.pow(1.01,t)*12*0.80-m*12;cumCF+=cf;if(be===null&&cf>=0)be=t;}
+      cumA.push(Math.round(cumCF-(apport+R.net)));
+    }
+    const valH=valBase*Math.pow(1+app/100,H),fraisV=valH*0.07,capH=rest[Math.min(rest.length,H*12)-1]??0;
+    const netSale=valH-fraisV-capH, patNet=valH-capH, plusV=valH-fraisV-acquTotal, rich=netSale+cumCF-(apport+R.net);
+    const cf=[-(apport+R.net)];for(let t=1;t<=H;t++){let c;if(!R.louable&&t>2)c=-m*12;else c=loyer0*R.rentMult*Math.pow(1.01,t)*12*0.80-m*12;if(t===H)c+=netSale;cf.push(c);}
+    const tri=irr(cf)*100;
+    $('kPat').textContent=fr(patNet)+' €';
+    $('kPV').textContent=(plusV>=0?'+':'')+fr(plusV)+' €';$('kPV').className='v mono '+(plusV>=0?'good':'bad');
+    $('kCF').textContent=(cumCF>=0?'+':'')+fr(cumCF)+' €';$('kCF').className='v mono '+(cumCF>=0?'good':'bad');
+    $('kRich').textContent=(rich>=0?'+':'')+fr(rich)+' €';$('kRich').className='v mono '+(rich>=0?'good':'bad');
+    $('kTRI').textContent=(isFinite(tri)?tri.toFixed(1).replace('.',','):'—')+' %';$('kTRI').className='v mono '+(tri>=4?'good':tri>=0?'warn':'bad');
+    $('kBE').textContent=be?('an '+be):'hors horizon';
+    const v=$('cockVerdict');
+    if(!R.louable){v.style.background='var(--badbg)';v.style.color='#7c2222';v.innerHTML='⛔ <b>Sans rénovation, interdiction de louer dès 2028</b> : le bien ne produit plus de loyer, le cashflow plonge. À ce stade ce n\'est plus un investissement locatif.';}
+    else{v.style.background='var(--accentbg)';v.style.color='#2a3170';v.innerHTML=`Sur <b>${H} ans</b>, à <b>${fr(prix)} €</b> rénové <b>${R.lab}</b> : tu sors avec <b>${fr(patNet)} €</b> de patrimoine net, une richesse créée de <b>${fr(rich)} €</b> pour <b>${fr(apport+R.net)} €</b> engagés, soit un <b>TRI de ${tri.toFixed(1).replace('.',',')} %</b>. ${plusV>=0?'La négociation + la rénovation créent de la valeur dès l\'entrée.':'À ce prix, la plus-value ne couvre pas les frais — négocie plus bas.'}`;}
+    const ds=[
+      {label:'Patrimoine net',data:eq,borderColor:ACC,backgroundColor:'rgba(57,73,171,.08)',borderWidth:2.4,fill:true,tension:.3,pointRadius:0},
+      {label:'Cashflow cumulé',data:cumA,borderColor:GOOD,borderWidth:1.8,borderDash:[6,4],fill:false,tension:.3,pointRadius:0},
+      {label:'z',data:labels.map(()=>0),borderColor:DIM,borderWidth:1,pointRadius:0,fill:false}];
+    if(!chart){chart=new Chart($('cockpitChart'),{type:'line',data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{filter:c=>c.dataset.label!=='z',callbacks:{label:c=>c.dataset.label+': '+fr(c.raw)+' €'}}},scales:{x:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5},maxTicksLimit:9}},y:{grid:{color:LINE},ticks:{color:SLATE,font:{size:9.5},callback:v=>Math.round(v/1000)+'k'}}}}});}
+    else{chart.data.labels=labels;chart.data.datasets=ds;chart.update();}
+  }
+  ['cPrix','cApport','cTaux','cDuree','cLoyer','cApp','cHor'].forEach(id=>$(id).addEventListener('input',run));
+  document.querySelectorAll('#cockReno .scen').forEach(b=>b.addEventListener('click',()=>{renoKey=b.dataset.k;document.querySelectorAll('#cockReno .scen').forEach(x=>x.classList.toggle('on',x===b));run();}));
+  run();
+})();
 
 // CapEx timeline — Gantt à couloirs (1 poste = 1 ligne, barre = fenêtre d'échéance)
 const beLines={id:'beLines',afterDatasetsDraw(ch){const a=ch.chartArea,x=ch.scales.x,ctx=ch.ctx;[[8,'bascule an 8'],[13,'an 13']].forEach(([v,t])=>{const px=x.getPixelForValue(v);if(px==null)return;ctx.save();ctx.strokeStyle='#cbd5e1';ctx.setLineDash([3,3]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#94a3b8';ctx.font='9px Inter';ctx.fillText(t,px+3,a.top+9);ctx.restore();});}};
