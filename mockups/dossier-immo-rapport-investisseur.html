@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dossier-immo — Rapport investisseur</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a; --ink2:#334155; --dim:#5b6677; --line:#e7ebf0; --bg:#f5f7fa; --card:#ffffff;
+    --good:#047857; --goodbg:#e9f6f0; --warn:#b45309; --warnbg:#fdf3e7; --bad:#b91c1c; --badbg:#fbecec;
+    --accent:#3949ab; --accentbg:#eef0fb; --slate:#475569;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .serif{font-family:Newsreader,Georgia,serif}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+  .shadow{box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 26px -14px rgba(15,23,42,.12)}
+  .src{font-size:11px;color:var(--slate)}
+  .lab{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  .mono{font-variant-numeric:tabular-nums}
+  .good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:3px 11px;border-radius:999px}
+  .bar{height:7px;border-radius:999px;background:#eef1f5;overflow:hidden}
+  .bar>i{display:block;height:100%;border-radius:999px}
+  .kpi{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff}
+  .kpi .v{font-size:21px;font-weight:800;letter-spacing:-.02em}
+  .sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 14px;gap:12px}
+  .sec-h h2{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);font-weight:600;background:#f3f5f8;border:1px solid var(--line);padding:2px 8px;border-radius:6px}
+  .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+  .tbl th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);font-weight:600;text-align:left;padding:6px 8px}
+  .tbl td{padding:8px;border-top:1px solid var(--line)}
+  .dot{width:9px;height:9px;border-radius:999px;display:inline-block}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .arrow{font-size:11px;font-weight:700}
+  .legend-key{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--slate)}
+  .legend-key span{display:inline-flex;align-items:center;gap:5px}
+</style>
+</head>
+<body>
+
+<!-- ───────── STICKY VERDICT BAR (zéro score /100) ───────── -->
+<div style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:56px">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px">d</div>
+      <div style="font-weight:700">dossier<span style="color:var(--dim)">-immo</span></div>
+      <span class="src" style="margin-left:6px">12 Rue Léon Jamin · Nantes 44000</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span class="pill" style="background:var(--badbg);color:var(--bad)">● Surévalué</span>
+      <a href="#prix" style="text-decoration:none"><button style="background:var(--accent);color:#fff;border:0;border-radius:9px;padding:8px 16px;font-weight:600;font-size:13px;cursor:pointer">Viser −30 000 € →</button></a>
+    </div>
+  </div>
+  <!-- mini-nav ancrée -->
+  <div class="wrap" style="display:flex;gap:18px;height:34px;align-items:center;font-size:12px;color:var(--slate);border-top:1px solid var(--line)">
+    <a href="#prix" style="color:inherit;text-decoration:none">Prix</a>
+    <a href="#bati" style="color:inherit;text-decoration:none">Risque bâti</a>
+    <a href="#energie" style="color:inherit;text-decoration:none">Énergie</a>
+    <a href="#rendement" style="color:inherit;text-decoration:none">Rendement</a>
+    <a href="#projection" style="color:inherit;text-decoration:none">Projection</a>
+    <a href="#marche" style="color:inherit;text-decoration:none">Marché</a>
+    <a href="#risques" style="color:inherit;text-decoration:none">Risques</a>
+    <span style="margin-left:auto;color:var(--good);font-weight:600">↺ Depuis ta dernière visite : −4 k€ valeur juste · 2 ventes ajoutées</span>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:24px;padding-bottom:64px">
+
+  <!-- ───────── HERO : reçu de négociation (le gain domine) ───────── -->
+  <section class="card shadow" style="padding:26px;margin-bottom:18px">
+    <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:30px">
+      <div>
+        <div class="lab">Appartement · T3 · 67 m² · 1923 · hyper-centre Nantes</div>
+        <h1 class="serif" style="font-size:25px;line-height:1.12;margin:6px 0 18px">12 Rue Léon Jamin</h1>
+
+        <div class="lab">Verdict</div>
+        <div style="display:flex;align-items:flex-end;gap:14px;margin-top:4px">
+          <div>
+            <div style="font-size:13px;color:var(--dim)">Prix affiché</div>
+            <div class="mono" style="font-size:19px;color:var(--dim);text-decoration:line-through">268 000 €</div>
+          </div>
+          <div style="font-size:22px;color:var(--dim);padding-bottom:2px">→</div>
+          <div>
+            <div style="font-size:13px;color:var(--ink2)">Valeur juste estimée</div>
+            <div class="mono" style="font-size:30px;font-weight:800;line-height:1">224 000 €</div>
+            <div class="src">fourchette 213 – 235 k€ (IC 95 %)</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;padding:14px 16px;background:var(--badbg);border:1px solid #f1c9c9;border-radius:13px">
+          <div style="display:flex;align-items:baseline;gap:10px">
+            <div class="mono bad" style="font-size:30px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">−30 000 €</div>
+            <div style="font-size:13px;color:#7c2222">marge de négociation réaliste → cible <b>238 000 €</b><br><span class="src" style="color:#9b4a4a">surcote totale −44 k€ (valeur juste 224 k€) ; le marché ne s'aligne pas à 100 % → cible −30 k€, pondérée par le délai de vente</span></div>
+          </div>
+          <div class="src" style="margin-top:10px;color:#9b4a4a">Composition de la cible −30 k€ :</div>
+          <div style="margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;font-size:11.5px">
+            <span class="chip" style="text-transform:none;background:#fff">−23 k€ décote DPE F</span>
+            <span class="chip" style="text-transform:none;background:#fff">−12 k€ vs 8 ventes comparables</span>
+            <span class="chip" style="text-transform:none;background:#fff">+5 k€ atouts (étage, cave)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- colonne droite : confiance honnête + suivi -->
+      <div style="border-left:1px solid var(--line);padding-left:30px;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="lab" style="margin:0">Indice de confiance</span>
+            <span class="pill" style="background:#eef1f5;color:var(--slate)">Moyenne</span>
+          </div>
+          <div class="bar" style="margin-top:9px;height:8px"><i style="width:62%;background:var(--slate)"></i></div>
+          <div style="margin-top:12px">
+            <div class="lab" style="margin-bottom:6px">Ce que ce rapport ne sait pas encore</div>
+            <ul style="margin:0;padding-left:16px;font-size:12px;color:var(--ink2);line-height:1.55">
+              <li>DPE <b>estimé</b> (bien non visité) — à confirmer sur place</li>
+              <li>État toiture <b>déduit</b> de l'âge + LiDAR, pas d'un PV de copro</li>
+              <li>Seulement <b>8 ventes</b> comparables sur 24 mois</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+          <div style="display:flex;gap:8px">
+            <button style="flex:1;background:var(--accentbg);color:var(--accent);border:1px solid #c8cdf0;border-radius:9px;padding:9px;font-weight:600;font-size:12.5px;cursor:pointer">★ Surveiller ce bien</button>
+            <button style="flex:1;background:#fff;color:var(--ink2);border:1px solid var(--line);border-radius:9px;padding:9px;font-weight:600;font-size:12.5px;cursor:pointer">+ Surveiller le secteur</button>
+          </div>
+          <div class="src" style="margin-top:7px;text-align:center">Alerte e-mail si : prix ↓ · nouvelle vente comparable · DOM &gt; 120 j</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 1. LA FACTURE DE PRIX (réconcilie à l'euro) ───────── -->
+  <section id="prix" class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>La facture de prix</h2>
+      <span class="chip">DVF · ADEME · n=8</span></div>
+    <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:28px">
+      <div>
+        <table class="tbl">
+          <tbody>
+            <tr><td>Médiane quartier <span class="src">DVF · surface+pièces+récent (n=8)</span></td><td class="mono" style="text-align:right">3 380 €/m²</td></tr>
+            <tr><td><span class="arrow" style="color:var(--slate)">▲</span> Étage élevé (4/5, ascenseur)</td><td class="mono" style="text-align:right">+180</td></tr>
+            <tr><td><span class="arrow" style="color:var(--slate)">▲</span> Balcon, cave, faibles charges</td><td class="mono" style="text-align:right">+120</td></tr>
+            <tr><td><span class="arrow" style="color:var(--slate)">▼</span> DPE F (passoire — décote marché)</td><td class="mono" style="text-align:right">−340</td></tr>
+            <tr style="font-weight:700;background:#f8fafc"><td>= Valeur ajustée</td><td class="mono" style="text-align:right">3 340 €/m²</td></tr>
+            <tr style="font-weight:700"><td>× 67 m² = <b>Valeur juste</b></td><td class="mono" style="text-align:right">224 000 €<div class="src" style="font-weight:400">213 – 235 k€</div></td></tr>
+            <tr><td class="bad">Prix affiché (4 000 €/m²)</td><td class="mono bad" style="text-align:right">268 000 €</td></tr>
+            <tr style="font-weight:700"><td class="bad">Écart à la valeur juste</td><td class="mono bad" style="text-align:right">+19,6 % · 44 000 €</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--ink2)">Chaque ligne est <b>sourcée et désactivable</b> — tu manipules le raisonnement. La décote DPE (−340/m²) reflète le <b>prix de marché</b> d'une passoire ; elle n'est <b>pas</b> additionnée au coût des travaux (section bâti), elle en est la contrepartie.</div>
+        <div style="margin-top:8px;padding:8px 11px;background:var(--warnbg);border:1px solid #f0d8b0;border-radius:9px;font-size:12px;color:#7c5510">⚠ <b>DPE annoncé E, mais ADEME = F</b> (incohérent) : le vendeur sous-estime la passoire → argument de négociation supplémentaire.</div>
+      </div>
+      <div><canvas id="factureChart" height="210"></canvas>
+        <div class="src" style="margin-top:6px;text-align:center">cascade : médiane → ajustements (slate ▲▼) → valeur juste → prix affiché</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 1b. COÛT TOTAL D'ENTRÉE (budgetAcquereur) ───────── -->
+  <section class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Coût total d'entrée — clé en main</h2><span class="chip">budgetAcquereur</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+      <div class="kpi"><div class="lab">Prix cible négocié</div><div class="v mono" style="font-size:18px">238 000 €</div><div class="src">après −30 k€</div></div>
+      <div class="kpi"><div class="lab">+ Frais de notaire</div><div class="v mono" style="font-size:18px">19 200 €</div><div class="src">~8,1 % ancien</div></div>
+      <div class="kpi"><div class="lab">+ Remise à niveau</div><div class="v mono warn" style="font-size:18px">25 000 €</div><div class="src">CapEx net d'aides</div></div>
+      <div class="kpi" style="border-color:#c8cdf0;background:var(--accentbg)"><div class="lab">= Sortie de poche</div><div class="v mono" style="font-size:18px;color:var(--accent)">282 000 €</div><div class="src">fourchette 274 – 292 k€</div></div>
+    </div>
+    <div class="src" style="margin-top:8px">Le vrai prix d'acquisition n'est pas l'affiche : c'est le <b>clé en main</b> (prix + notaire + remise à niveau). À 282 k€, il dépasse le prix affiché 268 k€ — d'où la nécessité de négocier ET provisionner.</div>
+  </section>
+
+  <!-- ───────── 2. RISQUE BÂTI (structurel) ───────── -->
+  <section id="bati" class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Risque bâti &amp; CapEx <span class="src" style="font-weight:400">— pathologies structurelles</span></h2>
+      <span class="chip">pathologies · LiDAR · RNC</span></div>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:center">
+      <div style="position:relative;height:172px">
+        <canvas id="capexTimeline"></canvas>
+        <div class="src" style="margin-top:6px">Frise du « quand » : chaque barre = la <b>fenêtre d'échéance probable</b> d'un poste sur l'axe temps · pointillés = <b>bascules cashflow an 8 / 13</b>. Proba &amp; coût détaillés à droite.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div style="padding:8px 11px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px">
+          <div style="display:flex;justify-content:space-between;font-size:13px"><b>Toiture</b> <span class="mono warn">pondéré 15 400 €</span></div>
+          <div class="src">70 % · ~6 ans · 18–26 k€ · mousse→infiltration→charpente</div>
+          <div class="bar" style="margin-top:5px"><i style="width:70%;background:var(--warn)"></i></div>
+        </div>
+        <div style="padding:8px 11px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px">
+          <div style="display:flex;justify-content:space-between;font-size:13px"><b>Ravalement façade</b> <span class="mono warn">pondéré 4 050 €</span></div>
+          <div class="src">45 % · ~11 ans · 7–11 k€ · vérifier PPT copro</div>
+          <div class="bar" style="margin-top:5px"><i style="width:45%;background:var(--warn)"></i></div>
+        </div>
+        <div style="padding:8px 11px;background:#fbfcfe;border:1px solid var(--line);border-left:3px solid #cbd5e1;border-radius:8px">
+          <div style="display:flex;justify-content:space-between;font-size:12.5px"><b>Ascenseur · colonnes EU/EV · élec PC</b><span class="src">à confirmer</span></div>
+          <div class="src">&gt;15 ans · non signalés · DTG / PV d'AG</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+      <div class="kpi"><div class="lab">CapEx bâti pondéré</div><div class="v warn" style="font-size:16px">19 500 €</div><div class="src">Σ proba × coût (toiture + façade), phasé sur 12 ans</div></div>
+      <div class="kpi"><div class="lab">Copro &amp; syndic</div><div class="v" style="font-size:13px">Foncia · 24 lots · <b class="good">actif</b></div><div class="src">fonds ALUR faible · appel de fonds ~3 200 €/lot prévu (60 %, 3 ans)</div></div>
+    </div>
+  </section>
+
+  <!-- ───────── 2b. ÉNERGIE & RÉGLEMENTATION (DPE) ───────── -->
+  <section id="energie" class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Énergie &amp; réglementation <span class="src" style="font-weight:400">— DPE F, le compte à rebours</span></h2>
+      <span class="chip">ADEME · dpeRenovationPlan</span></div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:26px">
+      <div>
+        <div class="lab" style="margin-bottom:8px">Étiquette énergie (kWh/m²/an)</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#15803d">A</div><div style="height:18px;width:30%;background:#15803d;border-radius:0 4px 4px 0"></div><div class="src">≤ 70</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#16a34a">B</div><div style="height:18px;width:40%;background:#22c55e;border-radius:0 4px 4px 0"></div><div class="src">71–110</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#65a30d">C</div><div style="height:18px;width:50%;background:#86efac;border-radius:0 4px 4px 0"></div><div class="src">111–180</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#ca8a04">D</div><div style="height:18px;width:62%;background:#fbbf24;border-radius:0 4px 4px 0"></div><div class="src">181–250</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#ea580c">E</div><div style="height:18px;width:74%;background:#f97316;border-radius:0 4px 4px 0"></div><span class="pill" style="background:var(--warnbg);color:var(--warn);font-size:9px">◀ objectif 2028</span></div>
+          <div style="display:flex;align-items:center;gap:8px;outline:2px solid var(--ink);outline-offset:2px;border-radius:4px"><div style="width:15px;font-weight:800;color:#dc2626">F</div><div style="height:22px;width:87%;background:#ef4444;border-radius:0 4px 4px 0"></div><span class="pill" style="background:var(--badbg);color:var(--bad);font-size:9px;font-weight:700">◀ CE BIEN · 372</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:15px;font-weight:800;color:#991b1b">G</div><div style="height:18px;width:100%;background:#991b1b;border-radius:0 4px 4px 0"></div><div class="src">≥ 451</div></div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--warnbg);border-radius:8px;font-size:11.5px;color:#7c5510">⚠ DPE annoncé <b>E</b> mais ADEME = <b>F</b> — le vendeur sous-estime la passoire.</div>
+        <div class="lab" style="margin:14px 0 6px">Calendrier d'interdiction de location</div>
+        <div style="display:flex;height:36px;border-radius:8px;overflow:hidden;font-size:10.5px;text-align:center;color:#fff">
+          <div style="flex:1;background:#991b1b;display:flex;flex-direction:column;justify-content:center"><b>2025</b><span>G interdit</span></div>
+          <div style="flex:1.1;background:#ef4444;display:flex;flex-direction:column;justify-content:center;outline:2px solid var(--ink);outline-offset:-2px"><b>2028</b><span>F interdit ◀ vous</span></div>
+          <div style="flex:1;background:#f97316;display:flex;flex-direction:column;justify-content:center"><b>2034</b><span>E interdit</span></div>
+        </div>
+        <div class="src" style="margin-top:5px">+ audit énergétique obligatoire à la vente d'un bien F/G.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+        <div class="kpi"><div class="lab">Coût énergie actuel (passoire)</div><div class="v warn" style="font-size:18px">~2 600 €/an</div><div class="src">→ ~1 400 €/an après F→E <b class="good">(−46 %)</b></div></div>
+        <div style="padding:12px 14px;border:1px solid #f1c9c9;border-radius:11px;background:var(--badbg)">
+          <div style="display:flex;justify-content:space-between;font-size:13px"><b class="bad">F → E</b> — sortir de passoire <span class="mono bad">10 – 14 k€</span></div>
+          <div class="src bad">VMC + menuiseries · <b>obligatoire 2028</b></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:7px;color:var(--good)"><span>− MaPrimeRénov + CEE + Éco-PTZ</span><span class="mono">−6 000 €</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;border-top:1px solid #f1c9c9;margin-top:5px;padding-top:5px"><span>= coût net</span><span class="mono">~6 000 €</span></div>
+        </div>
+        <div style="padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fbfcfe">
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>E → C — opportunité</span><span class="mono src">+14 – 20 k€</span></div>
+          <div class="src">ITE complète · <b>optionnel</b> · gain de valeur + charges (décote déjà dans le prix)</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:13px 15px;background:var(--accentbg);border:1px solid #c8cdf0;border-radius:12px;font-size:13px;color:#2a3170">
+      🔗 <b>Pont risque → rentabilité :</b> bâti (19,5 k€) + DPE F→E net (6 k€) réinjectés dans le financement → la bascule cashflow passe de l'<b>an 8</b> à l'<b>an 13</b> et le TRI 10 ans de <b>6,8 %</b> à <b>4,9 %</b>. <b>Bâti et énergie pilotent ta rentabilité — détail ci-dessous.</b>
+    </div>
+  </section>
+
+  <!-- ───────── 3. RENDEMENT RÉEL (nouveau : net-net + fiscalité + percentile rendement) ───────── -->
+  <section id="rendement" class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Rendement réel</h2><span class="chip">rendement · yieldBenchmark</span></div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:26px">
+      <div>
+        <table class="tbl">
+          <tbody>
+            <tr><td>Loyer brut estimé <span class="src">observatoire des loyers · inféré</span></td><td class="mono" style="text-align:right">11 400 €/an</td></tr>
+            <tr><td>Rendement brut</td><td class="mono" style="text-align:right">4,3 %</td></tr>
+            <tr><td>− charges copropriété</td><td class="mono" style="text-align:right">−2 040 €</td></tr>
+            <tr><td>− taxe foncière</td><td class="mono" style="text-align:right">−900 €</td></tr>
+            <tr><td>− vacance + gestion + assurance PNO</td><td class="mono" style="text-align:right">−110 €</td></tr>
+            <tr><td>Rendement net</td><td class="mono" style="text-align:right">3,1 %</td></tr>
+            <tr style="font-weight:700;background:#f8fafc"><td>Rendement net-net <span class="src" style="font-weight:400">après impôt</span></td><td class="mono good" style="text-align:right">2,6 %</td></tr>
+            <tr><td>Cashflow mensuel <span class="src">après crédit 1 450 €/mo · dont +450 de capital</span></td><td class="mono bad" style="text-align:right">−750 €/mo</td></tr>
+            <tr><td>Coût économique réel <span class="src">hors capital remboursé (épargne forcée)</span></td><td class="mono" style="text-align:right">~−300 €/mo</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+          <span class="lab" style="margin:0">Régime fiscal</span>
+          <span class="pill" style="background:var(--accentbg);color:var(--accent)">LMNP réel ✓</span>
+          <span class="pill" style="background:#f3f5f8;color:var(--slate)">Micro-BIC</span>
+          <span class="src">LMNP réel : +0,5 pt net-net (amortissement)</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="position:relative;width:104px;height:104px"><canvas id="yieldGauge"></canvas>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="mono" style="font-size:22px;font-weight:800">41<span style="font-size:11px">e</span></div><div class="src">pct rendement</div></div></div>
+          <div style="font-size:12.5px">
+            <div style="margin-bottom:4px">Ton rendement net vs <b>marché locatif</b> du secteur :</div>
+            <div class="pill" style="background:var(--warnbg);color:var(--warn)">Sous la médiane</div>
+            <div class="src" style="margin-top:6px">rendement net · p25 2,8 · p50 3,4 · p75 4,1 · n=140</div>
+          </div>
+        </div>
+        <div style="padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fbfcfe;font-size:12.5px;color:var(--ink2)">
+          <b>vs placement passif :</b> une SCPI ~4,5 % nette est <b>sans levier</b>. Ici le levier (30 k€ d'apport pilotent 265 k€ + remboursement du capital) porte le rendement réel : <b class="good">TRI 4,9–8,2 %</b> une fois négocié, CapEx inclus. L'arbitrage se joue sur le <b>levier + la négociation</b>, pas sur le rendement courant (2,6 %).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 4. PROJECTION / DÉCISION (daltonien-safe) ───────── -->
+  <section id="projection" class="card shadow" style="padding:22px;margin-bottom:18px;border-color:#d6dcf2">
+    <div class="sec-h"><h2>Quand cet achat se rembourse-t-il ?</h2><span class="chip">scénarios × CapEx bâti</span></div>
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:24px">
+      <div><canvas id="projChart" height="232"></canvas>
+        <div class="legend-key" style="margin-top:8px">
+          <span><b style="color:var(--good)">━</b> Optimiste (croise an 8)</span>
+          <span><b style="color:var(--accent)">— —</b> Base (an 13)</span>
+          <span><b style="color:var(--bad)">·····</b> Pessimiste (hors horizon)</span>
+          <span>ligne fine = seuil 0 (loyer = mensualité)</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+        <div class="kpi"><div class="lab">Bascule cashflow <span class="src" style="font-weight:400">loyer = mensualité</span></div><div class="v mono">an 8 <span style="color:var(--dim);font-weight:500;font-size:14px">→ 13 →</span> <span class="bad">∞</span></div><div class="src">optimiste · base · pessimiste (avec CapEx)</div></div>
+        <div class="kpi"><div class="lab">Apport (30 k€) reconstitué</div><div class="v mono">an 6</div><div class="src">capital remboursé + plus-value (≠ trésorerie)</div></div>
+        <div class="kpi"><div class="lab">TRI à 10 ans</div><div class="v mono"><span class="bad" style="font-size:15px">3,1</span> · <span style="font-size:18px">4,9</span> · <span class="good" style="font-size:15px">8,2 %</span></div><div class="src">CapEx bâti inclus dans le base</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 4b. VÉRIFICATION ANTI-PIÈGE (priceAnomalyAnalysis) ───────── -->
+  <section class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Vérification anti-piège <span class="src" style="font-weight:400">— « pourquoi ce prix ? »</span></h2><span class="chip">priceAnomalyAnalysis</span></div>
+    <div style="font-size:13px;color:var(--ink2);margin-bottom:11px">La surcote de +19,6 % cache-t-elle un défaut, ou est-ce une simple survalorisation négociable ? On teste les hypothèses :</div>
+    <div class="grid3">
+      <div class="kpi"><div style="display:flex;gap:6px;align-items:center"><span class="dot" style="background:var(--bad)"></span><b>Travaux sous-estimés</b></div><div class="src" style="margin-top:5px">✓ Confirmé — 31 k€ de CapEx absents de l'annonce.</div></div>
+      <div class="kpi"><div style="display:flex;gap:6px;align-items:center"><span class="dot" style="background:var(--warn)"></span><b>Charges / copro lourdes</b></div><div class="src" style="margin-top:5px">~ Partiel — fonds travaux faible + appel de fonds probable.</div></div>
+      <div class="kpi"><div style="display:flex;gap:6px;align-items:center"><span class="dot" style="background:var(--good)"></span><b>Qualité cachée ?</b></div><div class="src" style="margin-top:5px">✗ Aucune — rien dans le bien ne justifie l'écart de prix.</div></div>
+    </div>
+    <div style="margin-top:11px;padding:12px 14px;background:#f8fafc;border:1px solid var(--line);border-radius:11px;font-size:13px;color:var(--ink2)">
+      <b>Conclusion :</b> l'écart est une <b>survalorisation négociable</b> doublée de travaux à provisionner — <b>pas</b> un défaut masqué qui rendrait le bien à éviter. Écart résiduel inexpliqué : <b>&lt; 3 %</b>.
+    </div>
+  </section>
+
+  <!-- ───────── 5. COMPARABLES AUDITABLES + MARCHÉ + DOM ───────── -->
+  <section id="marche" class="grid2" style="margin-bottom:18px">
+    <div class="card shadow" style="padding:22px">
+      <div class="sec-h"><h2>Ventes comparables</h2><span class="chip">DVF · distance de Gower</span></div>
+      <table class="tbl">
+        <thead><tr><th>Adresse</th><th style="text-align:right">Surf.</th><th style="text-align:right">Prix</th><th style="text-align:right">€/m²</th><th style="text-align:right">Dist.</th><th style="text-align:right">Date</th><th style="text-align:right">Simil.</th></tr></thead>
+        <tbody class="mono">
+          <tr><td class="serif" style="font-variant:normal">8 R. Léon Jamin</td><td style="text-align:right">71</td><td style="text-align:right">243 k</td><td style="text-align:right">3 420</td><td style="text-align:right">40 m</td><td style="text-align:right">02/25</td><td style="text-align:right"><span class="good">94</span><div style="display:flex;gap:2px;justify-content:flex-end;margin-top:3px"><span class="bar" style="width:10px"><i style="width:98%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:90%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:85%;background:var(--warn)"></i></span><span class="bar" style="width:10px"><i style="width:80%;background:var(--good)"></i></span></div></td></tr>
+          <tr><td>3 R. Gambetta</td><td style="text-align:right">64</td><td style="text-align:right">225 k</td><td style="text-align:right">3 510</td><td style="text-align:right">180 m</td><td style="text-align:right">11/24</td><td style="text-align:right"><span class="good">88</span><div style="display:flex;gap:2px;justify-content:flex-end;margin-top:3px"><span class="bar" style="width:10px"><i style="width:80%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:95%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:70%;background:var(--warn)"></i></span><span class="bar" style="width:10px"><i style="width:60%;background:var(--bad)"></i></span></div></td></tr>
+          <tr><td>21 R. Coulmiers</td><td style="text-align:right">73</td><td style="text-align:right">237 k</td><td style="text-align:right">3 250</td><td style="text-align:right">320 m</td><td style="text-align:right">06/24</td><td style="text-align:right"><span class="warn">79</span><div style="display:flex;gap:2px;justify-content:flex-end;margin-top:3px"><span class="bar" style="width:10px"><i style="width:65%;background:var(--warn)"></i></span><span class="bar" style="width:10px"><i style="width:78%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:90%;background:var(--good)"></i></span><span class="bar" style="width:10px"><i style="width:88%;background:var(--good)"></i></span></div></td></tr>
+        </tbody>
+      </table>
+      <div class="src" style="margin-top:8px">médiane <b>3 380 €/m²</b> · dispersion P25 <b>3 250</b> – P75 <b>3 510</b> · confiance <b>moyenne</b> (n=8). Score de similarité = distance de Gower. Barres = décomposition par critère : <b>géo · surface · époque · DPE</b> (pondérée).</div>
+    </div>
+    <div class="card shadow" style="padding:22px">
+      <div class="sec-h"><h2>Marché &amp; délai de vente</h2><span class="chip">medianesParSemestre · annonce</span></div>
+      <canvas id="marketChart" height="118"></canvas>
+      <div class="grid3" style="margin-top:12px">
+        <div class="kpi"><div class="lab">Tendance 24 mois</div><div class="v" style="font-size:16px;color:var(--slate)">+3,1 %</div></div>
+        <div class="kpi"><div class="lab">Délai de vente (DOM)</div><div class="v" style="font-size:16px">~95 j</div><div class="src">secteur</div></div>
+        <div class="kpi"><div class="lab">Cette annonce</div><div class="v warn" style="font-size:14px">62 j · 1 baisse</div><div class="src">−5 k€ déjà</div></div>
+      </div>
+      <div class="src" style="margin-top:8px">Annonce récente (62 j) mais <b>déjà 1 baisse de −5 k€</b> → vendeur conscient de la surcote et ouvert à la négociation (levier ≠ simple écart à la valeur juste).</div>
+    </div>
+  </section>
+
+  <!-- ───────── 6. PROFIL + GÉORISQUES + LIQUIDITÉ (enrichi) ───────── -->
+  <section id="risques" class="grid3" style="margin-bottom:18px;grid-template-columns:1.1fr 1fr 1fr">
+    <div class="card shadow" style="padding:20px">
+      <div class="sec-h" style="margin-bottom:8px"><h2 style="font-size:16px">Profil investisseur</h2><span class="chip">investorRiskProfile</span></div>
+      <canvas id="radarChart" height="180"></canvas>
+      <div style="margin-top:8px;font-size:11.5px;color:var(--ink2);line-height:1.5">
+        <div><span class="dot" style="background:var(--accent)"></span> ce bien · <span class="dot" style="background:#cbd5e1"></span> médiane zone <span class="src">· axes = percentile (0–100)</span></div>
+        <div style="margin-top:6px"><b class="good">Prix 74</b> — 11,5 % sous la valeur ajustée <span class="src">DVF · impact +</span></div>
+        <div><b class="bad">Énergie 38</b> — DPE F, travaux 2028 <span class="src">ADEME · impact −</span></div>
+        <div><b class="warn">Bâti 55</b> — toiture déduite, PV copro manquant <span class="src">évalué partiellement</span></div>
+        <div class="src" style="margin-top:4px"><b>Quartier 72</b> : 🚇 Tram L1 3 min · 🏫 2 écoles &lt;300 m · 🌳 Jardin des Plantes 5 min</div>
+      </div>
+    </div>
+    <div class="card shadow" style="padding:20px">
+      <div class="sec-h" style="margin-bottom:8px"><h2 style="font-size:16px">Risques naturels</h2><span class="chip">Géorisques</span></div>
+      <div class="grid2" style="gap:9px">
+        <div class="kpi"><div class="lab">Sismicité</div><div class="v" style="font-size:14px">Zone 3</div><div class="src">modérée</div></div>
+        <div class="kpi"><div class="lab">Radon</div><div class="v good" style="font-size:14px">Niveau 1</div><div class="src">faible</div></div>
+        <div class="kpi"><div class="lab">Argile (RGA)</div><div class="v warn" style="font-size:14px">Moyen</div><div class="src">→ fissures façade</div></div>
+        <div class="kpi"><div class="lab">Sécheresse</div><div class="v warn" style="font-size:14px">2 arrêtés CATNAT</div><div class="src">aggrave l'argile</div></div>
+        <div class="kpi"><div class="lab">Inondation</div><div class="v good" style="font-size:14px">Hors zone</div></div>
+        <div class="kpi"><div class="lab">Sites pollués</div><div class="v" style="font-size:14px">1 à &lt;500 m</div><div class="src">BASIAS · ancien garage</div></div>
+      </div>
+      <div class="src" style="margin-top:9px"><b>Argile + 2 CATNAT sécheresse</b> : le risque fondations/façade n'est pas théorique → justifie une <b>clause</b> + un devis fissures avant offre.</div>
+    </div>
+    <div class="card shadow" style="padding:20px">
+      <div class="sec-h" style="margin-bottom:8px"><h2 style="font-size:16px">Liquidité &amp; revente</h2><span class="chip">liquidityInsight</span></div>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        <div style="position:relative;width:74px;height:74px"><canvas id="liqGauge"></canvas>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="mono" style="font-size:15px;font-weight:800">~75<span style="font-size:9px">j</span></div></div></div>
+        <div style="font-size:12px">Délai de revente estimé<br><b>pool acheteurs large</b></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div><div style="display:flex;justify-content:space-between;font-size:11.5px"><span>Primo-occupant</span><span class="mono">0,82</span></div><div class="bar"><i style="width:82%;background:var(--accent)"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11.5px"><span>Investisseur locatif</span><span class="mono">0,64</span></div><div class="bar"><i style="width:64%;background:var(--accent)"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11.5px"><span>Primo après travaux</span><span class="mono">0,55</span></div><div class="bar"><i style="width:55%;background:var(--accent)"></i></div></div>
+      </div>
+      <div class="src" style="margin-top:9px"><b>Facteurs clés :</b> + hyper-centre, tram, T3 recherché · <b class="warn">− DPE F</b> rétrécit le pool (refus de prêt « passoire »). Confiance estimation : moyenne.</div>
+    </div>
+  </section>
+
+  <!-- ───────── 6b. DUE DILIGENCE AVANT OFFRE (documentChecklist · planActionPreAchat) ───────── -->
+  <section class="card shadow" style="padding:22px;margin-bottom:18px">
+    <div class="sec-h"><h2>Avant de faire une offre — due diligence <span class="src" style="font-weight:400">— lever les incertitudes</span></h2><span class="chip">documentChecklist · planActionPreAchat</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div>
+        <div class="lab" style="margin-bottom:8px">Documents à exiger</div>
+        <table class="tbl">
+          <tbody>
+            <tr><td>3 derniers PV d'AG <span class="src">votes travaux, conflits, impayés</span></td><td class="mono bad" style="text-align:right">critique</td></tr>
+            <tr><td>DTG / carnet d'entretien <span class="src">état réel toiture &amp; façade</span></td><td class="mono bad" style="text-align:right">critique</td></tr>
+            <tr><td>Pré-état daté + fonds ALUR <span class="src">appels de fonds à venir</span></td><td class="mono warn" style="text-align:right">important</td></tr>
+            <tr><td>DPE complet + audit énergétique <span class="src">F→E réel, amiante</span></td><td class="mono warn" style="text-align:right">important</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="lab" style="margin-bottom:8px">Plan d'action</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--ink2)">
+          <div style="display:flex;gap:9px"><span class="mono" style="color:var(--accent);font-weight:700">1.</span><span>Visite + <b>devis fissures façade</b> (aléa argile) et état toiture</span></div>
+          <div style="display:flex;gap:9px"><span class="mono" style="color:var(--accent);font-weight:700">2.</span><span>Lire les 3 PV d'AG → confirmer/infirmer l'<b>appel de fonds ~3 200 €/lot</b></span></div>
+          <div style="display:flex;gap:9px"><span class="mono" style="color:var(--accent);font-weight:700">3.</span><span>Offre à <b>238 k€</b> argumentée (DPE incohérent + CapEx + baisse déjà actée)</span></div>
+        </div>
+        <div class="src" style="margin-top:11px">Cette séquence transforme les <b>« ce que ce rapport ne sait pas encore »</b> en actions de vérification — avant de s'engager.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── FOOTER PROVENANCE + RÉTENTION ───────── -->
+  <section class="card" style="padding:18px 22px;background:#fbfcfe">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div class="src" style="max-width:62%">Sources traçables : <b>DVF</b> (prix, comparables) · <b>ADEME</b> (énergie) · <b>Géorisques</b> (aléas) · <b>RNC</b> (copropriété) · <b>BDNB / IGN LiDAR</b> (bâti). Chaque chiffre pointe sa source au clic.</div>
+      <div style="display:flex;gap:8px">
+        <button style="background:var(--accent);color:#fff;border:0;border-radius:9px;padding:8px 14px;font-weight:600;font-size:12.5px;cursor:pointer">Recevoir le digest hebdo du secteur</button>
+        <button style="background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font-weight:600;font-size:12.5px;cursor:pointer">Méthodologie</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const INK='#0f172a', DIM='#94a3b8', LINE='#e7ebf0', SLATE='#475569';
+const GOOD='#047857', WARN='#b45309', BAD='#b91c1c', ACC='#3949ab';
+Chart.defaults.font.family='Inter';
+
+new Chart(yieldGauge,{type:'doughnut',data:{datasets:[{data:[41,59],backgroundColor:[WARN,'#eef1f5'],borderWidth:0,circumference:360,cutout:'80%'}]},options:{plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+new Chart(liqGauge,{type:'doughnut',data:{datasets:[{data:[75,45],backgroundColor:[ACC,'#eef1f5'],borderWidth:0,cutout:'76%'}]},options:{plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+
+// facture cascade — direction = slate (neutre), pas vert/rouge
+new Chart(factureChart,{type:'bar',data:{labels:['Médiane','+Étage','+Atouts','−DPE F','Valeur\njuste','Prix\naffiché'],
+  datasets:[{data:[[0,3380],[3380,3560],[3560,3680],[3340,3680],[0,3340],[0,4000]],
+    backgroundColor:['#cbd5e1',SLATE,SLATE,SLATE,ACC,BAD],borderRadius:3}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const v=c.raw;const d=Math.round(Math.abs(v[1]-v[0]));return (c.dataIndex>0&&c.dataIndex<4?(c.dataIndex===3?'−':'+'):'')+d+' €/m²';}}}},
+   scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{size:9.5}}},y:{min:3200,max:4150,grid:{color:LINE},ticks:{color:DIM,font:{size:9.5},callback:v=>v+'€'}}}}});
+
+new Chart(marketChart,{type:'line',data:{labels:['S1·23','S2·23','S1·24','S2·24','S1·25'],
+  datasets:[{label:'médiane €/m²',data:[3280,3300,3340,3360,3380],borderColor:ACC,backgroundColor:'rgba(57,73,171,.07)',fill:true,tension:.35,pointRadius:3,pointBackgroundColor:ACC},
+            {label:'ce bien',data:[null,null,null,null,4000],borderColor:BAD,pointRadius:[0,0,0,0,6],pointStyle:'rectRot',pointBackgroundColor:BAD,borderWidth:0}]},
+  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:DIM,font:{size:9.5}}},y:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5},callback:v=>(v/1000).toFixed(1)+'k'}}}}});
+
+// radar ce bien + médiane zone (ghost)
+new Chart(radarChart,{type:'radar',data:{labels:['Prix','Cashflow','Énergie','Bâti','Liquidité','Quartier'],
+  datasets:[
+    {label:'médiane zone',data:[55,52,58,60,62,60],backgroundColor:'rgba(203,213,225,.25)',borderColor:'#cbd5e1',borderWidth:1.5,pointRadius:0},
+    {label:'ce bien',data:[74,55,38,55,80,72],backgroundColor:'rgba(57,73,171,.10)',borderColor:ACC,borderWidth:2,pointBackgroundColor:ACC,pointRadius:2}
+  ]},
+  options:{layout:{padding:8},plugins:{legend:{display:false}},scales:{r:{min:0,max:100,grid:{color:LINE},angleLines:{color:LINE},pointLabels:{color:INK,font:{size:9}},ticks:{display:false}}}}});
+
+// projection — styles de trait (daltonien-safe) + labels
+const yrs=[...Array(16).keys()];
+const opt=[-750,-656,-562,-468,-374,-280,-186,-92,2,96,190,284,378,472,566,660];
+const base=[-750,-692,-634,-577,-519,-461,-403,-346,-288,-230,-173,-115,-57,0,57,115];
+const pess=[-750,-720,-690,-665,-645,-630,-660,-650,-625,-600,-580,-600,-560,-530,-505,-485];
+const mk=(c)=>yrs.map(y=>y===c?5:0);
+new Chart(projChart,{type:'line',data:{labels:yrs.map(y=>'an '+y),datasets:[
+  {label:'Pessimiste',data:pess,borderColor:BAD,borderWidth:1.6,borderDash:[2,3],tension:.3,fill:false,pointRadius:0},
+  {label:'Optimiste',data:opt,borderColor:GOOD,borderWidth:1.8,tension:.35,fill:false,pointRadius:mk(8),pointBackgroundColor:GOOD},
+  {label:'Base',data:base,borderColor:ACC,borderWidth:2.4,borderDash:[7,4],tension:.35,fill:false,pointRadius:mk(13),pointBackgroundColor:ACC},
+  {label:'seuil',data:yrs.map(()=>0),borderColor:DIM,borderWidth:1,pointRadius:0,fill:false}]},
+  options:{plugins:{legend:{display:false},tooltip:{filter:c=>c.dataset.label!=='seuil',callbacks:{label:c=>c.dataset.label+': '+(c.raw>0?'+':'')+c.raw+' €/mo'}}},
+   interaction:{mode:'index',intersect:false},
+   scales:{x:{grid:{color:LINE},ticks:{color:DIM,font:{size:9.5}}},y:{grid:{color:LINE},ticks:{color:SLATE,font:{size:9.5},callback:v=>(v>0?'+':'')+v+'€'}}}}});
+
+// CapEx timeline — Gantt à couloirs (1 poste = 1 ligne, barre = fenêtre d'échéance)
+const beLines={id:'beLines',afterDatasetsDraw(ch){const a=ch.chartArea,x=ch.scales.x,ctx=ch.ctx;[[8,'bascule an 8'],[13,'an 13']].forEach(([v,t])=>{const px=x.getPixelForValue(v);if(px==null)return;ctx.save();ctx.strokeStyle='#cbd5e1';ctx.setLineDash([3,3]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#94a3b8';ctx.font='9px Inter';ctx.fillText(t,px+3,a.top+9);ctx.restore();});}};
+new Chart(capexTimeline,{type:'bar',
+  data:{labels:['Toiture · 70 %','Ravalement façade · 45 %','Ascenseur/colonnes · ?'],
+    datasets:[{data:[[4,8],[9,13],[14,16]],
+      backgroundColor:['rgba(180,83,9,.6)','rgba(180,83,9,.42)','rgba(148,163,184,.4)'],
+      borderColor:[WARN,WARN,'#94a3b8'],borderWidth:1.5,borderRadius:5,barPercentage:0.6}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`échéance probable : an ${c.raw[0]}–${c.raw[1]}`}}},
+    scales:{
+      x:{type:'linear',min:0,max:16,position:'top',grid:{color:LINE},title:{display:true,text:'années depuis l\'achat',color:SLATE,font:{size:10}},ticks:{color:DIM,font:{size:9.5},stepSize:2,callback:v=>'an '+v}},
+      y:{grid:{display:false},ticks:{color:INK,font:{size:11}}}}},
+  plugins:[beLines]});
+
+</script>
+</body>
+</html>
